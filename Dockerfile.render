@@ -4,7 +4,9 @@ WORKDIR /var/www/html
 
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader --no-scripts
+RUN composer install --no-dev --optimize-autoloader --no-scripts && \
+    mkdir -p var/cache var/log && \
+    chmod -R 777 var/
 
 EXPOSE 8000
 
