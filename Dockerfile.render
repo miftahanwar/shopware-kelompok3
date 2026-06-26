@@ -2,10 +2,10 @@ FROM ghcr.io/shopware/docker-dev:php8.3-node22-caddy
 
 WORKDIR /var/www/html
 
-COPY . .
+COPY --chown=www-data:www-data . .
 
 RUN composer install --no-dev --optimize-autoloader --no-scripts && \
-    mkdir -p var/cache var/log && \
+    mkdir -p var/cache var/log var/sessions && \
     chmod -R 777 var/
 
 EXPOSE 8000
