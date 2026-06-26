@@ -8,4 +8,4 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 EXPOSE 8000
 
-CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD ["supervisord", "-c", "/etc/supervisord.conf"]
