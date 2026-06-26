@@ -1,0 +1,11 @@
+FROM ghcr.io/shopware/docker-dev:php8.3-node22-caddy
+
+WORKDIR /var/www/html
+
+COPY . .
+
+RUN composer install --no-dev --optimize-autoloader
+
+EXPOSE 8000
+
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
