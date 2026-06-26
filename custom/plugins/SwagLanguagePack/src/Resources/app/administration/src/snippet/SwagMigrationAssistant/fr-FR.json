@@ -1,0 +1,679 @@
+{
+    "global": {
+        "error-codes": {
+            "SWAG_MIGRATION_CONNECTION_NAME_ALREADY_EXISTS": "Le nom de la connexion existe déjà.",
+            "SWAG_MIGRATION_CONNECTION_NAME_TO_SHORT": "Le nom de connexion doit comporter au moins 6 caractères.",
+            "SWAG_MIGRATION_INVALID_API_KEY": "La clé API n'a pas la longueur correcte ({length}/40 caractères)."
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "swag_migration": {
+                "label": "Assistant Migration"
+            }
+        }
+    },
+    "swag-migration": {
+        "api-error": {
+            "abortMigration": "Échec d’interruption de la migration.",
+            "approveFinishedMigration": "Échec lors de la finalisation de la migration",
+            "checkConnection": "Échec de la vérification de la connexion au système source.",
+            "fetchConnectionId": "Échec d’obtention l'ID de connexion actif.",
+            "getDataSelection": "Échec d’obtention de la sélection de données pour la connexion en cours.",
+            "getState": "Échec d’obtention de l’état de migration.",
+            "startMigration": "Échec de démarrage de la migration."
+        },
+        "dashboard": {
+            "button": "Ouvrir l'Assistant Migration",
+            "headline": "Déplacer vers Shopware",
+            "information": "La première chose est de relier votre système de boutique existant - l'Assistant Migration vous aidera tout au long du chemin.",
+            "shopInfoCard": {
+                "button": "Ouvrir",
+                "header": "Assistant Migration",
+                "resetButton": "Terminer"
+            },
+            "title": "Assistant Migration"
+        },
+        "general": {
+            "descriptionTextModule": "Module pour migrer les données",
+            "disabledMessages": {
+                "disabled": "La migration est désactivée dans cet environnement.",
+                "loading": "La migration est actuellement en cours.",
+                "noData": "Aucune donnée n'est disponible pour la migration.",
+                "noPermission": "Vous ne disposez pas des autorisations requises pour effectuer une migration.",
+                "noSelectedData": "Aucun élément n'a été sélectionné pour la migration.",
+                "resettingChecksum": "Les sommes de contrôle sont en cours de réinitialisation.",
+                "truncatingMigration": "Les données de migration sont actuellement tronquées.",
+                "unfilledPremapping": "Effectuez tous les mappages requis avant de continuer."
+            },
+            "mainMenuItemGeneral": "Assistant Migration",
+            "tabDataSelector": "Sélection des données",
+            "tabHistory": "Histoire",
+            "tabMain": "Généralités"
+        },
+        "history": {
+            "connectionName": "Nom de la connexion",
+            "contextMenu": {
+                "details": "Afficher les détails",
+                "downloadLogs": "Télécharger le journal"
+            },
+            "detailPage": {
+                "close": "Fermer",
+                "data": "Données",
+                "dataCount": "Jeux de données",
+                "dataName": "Nom",
+                "errorCode": "Message d'erreur",
+                "errorCount": "Compter",
+                "errorLevel": "Niveau de journalisation",
+                "errors": "Détails",
+                "logDescription": "Pour plus de détails {link}",
+                "logDownload": "téléchargez le fichier journal.",
+                "noErrorsOccurred": "Aucune erreur n'est survenue.",
+                "noProgressData": "Cette exécution a été effectuée dans une version précédente du plugin et ses données ont été supprimées.",
+                "status": {
+                    "aborted": "Abandon",
+                    "finished": "Fini",
+                    "running": "Exécution"
+                },
+                "title": "Détails de la migration"
+            },
+            "gateway": "Passerelle",
+            "importDateTime": "Heure de début",
+            "profile": "Profil",
+            "selectedData": "Données",
+            "shopDomain": "Shop domaine",
+            "shopSystem": "Système d'achat",
+            "status": "Statut"
+        },
+        "index": {
+            "abortButton": "Annuler",
+            "backToOverviewButton": "Retour à votre compte",
+            "confirmAbortDialog": {
+                "cancel": "Continuez",
+                "confirm": "Arrêter la",
+                "content": "La migration n'est pas entièrement achevée. Les données déjà migrées peuvent être inutilisables. Si vous quittez maintenant, vous devrez réexécuter complètement le processus de migration.",
+                "hint": "Voulez-vous arrêter la migration ?",
+                "title": "Arrêter la"
+            },
+            "confirmWarningCard": {
+                "currencyMismatch": {
+                    "text": "La devise des données à migrer ne correspond pas à la devise standard [{targetSystemCurrency}]. Les données avec [{sourceSystemCurrency}] peuvent toujours être migrées, mais elles ne seront pas automatiquement converties. Vous pouvez ajuster les prix manuellement par la suite.",
+                    "title": "La migration a reconnu une autre monnaie"
+                },
+                "languageMismatch": {
+                    "text": "La langue des données à migrer ne correspond pas à la langue standard [{targetSystemLanguage}]. Les données avec [{sourceSystemLanguage}] peuvent toujours être migrées, mais elles ne seront pas automatiquement converties. Vous pouvez ajuster les traductions manuellement par la suite.",
+                    "title": "La migration a reconnu une autre langue"
+                }
+            },
+            "continueButton": "Continuer",
+            "error-resolution": {
+                "codes": {
+                    "SWAG_MIGRATION_CONVERT_ASSOCIATION_MISSING": "Entité associée manquante",
+                    "SWAG_MIGRATION_CONVERT_CHILD_ENTITY_FAILED": "La conversion de l'entité enfant a échoué",
+                    "SWAG_MIGRATION_CONVERT_DOCUMENT_TYPE_UNSUPPORTED": "Conversion de type de document non prise en charge",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_ALREADY_EXISTS": "L'entité existe déjà",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_FAILED": "La conversion de l'entité a échoué",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_UNKNOWN": "Entité dépendante inconnue",
+                    "SWAG_MIGRATION_CONVERT_FIELD_REASSIGNED": "Champ d'entité automatiquement réaffecté",
+                    "SWAG_MIGRATION_CONVERT_LANGUAGE_PACK_DEACTIVATED": "Module linguistique désactivé",
+                    "SWAG_MIGRATION_CONVERT_MAIN_VARIANT_RELATION_FAILED": "La conversion de la relation de variante principale a échoué",
+                    "SWAG_MIGRATION_CONVERT_OBJECT_TYPE_UNSUPPORTED": "Type d'objet non pris en charge",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_CALCULATION_TYPE_UNSUPPORTED": "Type de calcul d'expédition non pris en charge",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_PRICE_UNSUPPORTED": "Type de prix d'expédition non pris en charge",
+                    "SWAG_MIGRATION_CONVERT_SOURCE_DATA_INCOMPLETE": "Données sources incomplètes",
+                    "SWAG_MIGRATION_CONVERT_UNSERIALIZED_DATA_INVALID": "Données non sérialisées non valides",
+                    "SWAG_MIGRATION_FETCH_DATASET_MISSING": "Ensemble de données pour l'entité manquante",
+                    "SWAG_MIGRATION_FETCH_ENTITY_COUNT_FAILED": "Impossible de lire le nombre d'entités depuis le système source",
+                    "SWAG_MIGRATION_FETCH_PROCESSOR_MISSING": "Processeur pour l'entité manquante",
+                    "SWAG_MIGRATION_MEDIA_DEFAULT_FOLDER_UNSUPPORTED": "Dossier multimédia par défaut non pris en charge",
+                    "SWAG_MIGRATION_MEDIA_FILE_MISSING": "Fichier multimédia manquant",
+                    "SWAG_MIGRATION_MEDIA_MIME_TYPE_UNKNOWN": "Type MIME de média inconnu",
+                    "SWAG_MIGRATION_MEDIA_TEMPORARY_FILE_FAILED": "La création du fichier temporaire multimédia a échoué",
+                    "SWAG_MIGRATION_RUN_ABORTED": "La migration a été abandonnée automatiquement",
+                    "SWAG_MIGRATION_RUN_EXCEPTION": "Une exception de migration s'est produite",
+                    "SWAG_MIGRATION_RUN_MESSAGE_QUEUE_EXCEPTION": "Une exception de file de messages s'est produite",
+                    "SWAG_MIGRATION_VALIDATION_ASSOCIATION_INVALID": "L'association d'entités n'est pas valide",
+                    "SWAG_MIGRATION_VALIDATION_EXCEPTION": "Une exception de validation s'est produite",
+                    "SWAG_MIGRATION_VALIDATION_OPTIONAL_FIELD_VALUE_INVALID": "Le champ facultatif a une valeur non valide",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_MISSING": "Le champ obligatoire est manquant",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_VALUE_INVALID": "Le champ obligatoire a une valeur non valide",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_TRANSLATION_INVALID": "La traduction requise n'est pas valide",
+                    "SWAG_MIGRATION_WRITE_EXCEPTION": "Une exception d'écriture s'est produite",
+                    "SWAG_MIGRATION_WRITE_THEME_COMPILING_FAILED": "La compilation du thème a échoué",
+                    "unknown": "Erreur inconnue"
+                },
+                "descriptionTitle": "Description du champ",
+                "errors": {
+                    "continueMigrationFailed": "Échec de la poursuite de la migration.",
+                    "downloadLogsFailed": "Le téléchargement du fichier journal a échoué.",
+                    "fetchExampleFailed": "Impossible de récupérer des exemples de données.",
+                    "fetchExistingFixesFailed": "Impossible de récupérer les correctifs existants.",
+                    "fetchFilterDataFailed": "Impossible de récupérer les données du filtre.",
+                    "fetchLogsFailed": "Impossible de récupérer les données du journal.",
+                    "fetchRunFailed": "Impossible de récupérer les données d'exécution de la migration.",
+                    "fieldValueNotSet": "La valeur du champ n'est pas définie.",
+                    "invalidFieldValueFormat": "Format de valeur de champ non valide.",
+                    "noEntityIdsFound": "Aucun ID d'entité valide n'a été trouvé dans les entrées de journal sélectionnées.",
+                    "noLogsSelected": "Sélectionnez au moins une entrée de journal à résoudre.",
+                    "resetResolutionFailed": "Impossible de réinitialiser la résolution des erreurs.",
+                    "submitResolutionFailed": "Échec de la résolution de l'erreur de soumission.",
+                    "validationFailed": "La validation a échoué."
+                },
+                "modals": {
+                    "details": {
+                        "convertedDataLabel": "Données converties",
+                        "sourceDataLabel": "Données sources",
+                        "title": "Détails : {entityName}"
+                    },
+                    "error": {
+                        "left": {
+                            "details": "Détails",
+                            "reset": "Réinitialiser",
+                            "select-all": "Tout sélectionner ({count})",
+                            "status": {
+                                "resolved": "Résolu",
+                                "unresolved": "Non résolu"
+                            }
+                        },
+                        "right": {
+                            "apply": "Appliquer les modifications",
+                            "banner": {
+                                "content": "Veuillez créer au moins une option à sélectionner dans la zone d'administration correspondante.",
+                                "link": "Ajouter une option",
+                                "title": "Aucune option disponible"
+                            },
+                            "title": "Modifier : {count} Articles",
+                            "unhandledBanner": {
+                                "content": "Le type de champ n'a pas pu être déterminé. Corrigez les données sources brutes. La valeur doit être au format correct.",
+                                "title": "Type de champ inconnu"
+                            },
+                            "unresolvableBanner": {
+                                "content": "Consultez le fichier journal pour plus d'informations.",
+                                "title": "Cette erreur ne peut actuellement pas être résolue via l'assistant de migration"
+                            }
+                        },
+                        "table": {
+                            "columns": {
+                                "status": "Statut"
+                            }
+                        },
+                        "title": "Corriger une erreur : {code}, {entityName}, {fieldName}"
+                    }
+                },
+                "step": {
+                    "card": {
+                        "filter": {
+                            "code": {
+                                "label": "Nom de l'erreur",
+                                "placeholder": "Sélectionnez un nom d'erreur"
+                            },
+                            "entity": {
+                                "label": "Entité",
+                                "placeholder": "Sélectionnez une entité"
+                            },
+                            "field": {
+                                "label": "Champ",
+                                "placeholder": "Sélectionnez un champ"
+                            },
+                            "reset": "Rétablir les filtres",
+                            "status": {
+                                "label": "État de l'erreur",
+                                "options": {
+                                    "resolved": "Résolu",
+                                    "unresolved": "Non résolu"
+                                },
+                                "placeholder": "Sélectionnez un état d'erreur"
+                            },
+                            "title": "Filtres | Filtres ({count}) | Filtres ({count})"
+                        },
+                        "table": {
+                            "columns": {
+                                "code": "Code",
+                                "count": "Fixe/Total",
+                                "entity": "Entité",
+                                "field": "Champ",
+                                "gatewayName": "Passerelle",
+                                "name": "Nom",
+                                "profileName": "Profil"
+                            },
+                            "empty-state": {
+                                "description": "Aucun journal correspondant aux filtres sélectionnés n'a été trouvé.",
+                                "headline": "Rien trouvé"
+                            }
+                        },
+                        "tabs": {
+                            "errors": "Erreurs ({count})",
+                            "infos": "Infos ({count})",
+                            "warnings": "Avertissements ({count})"
+                        },
+                        "title": "Erreurs réparables"
+                    },
+                    "continue-modal": {
+                        "text-fixable": "Il existe des groupes {count} d'erreurs réparables qui ne sont toujours pas résolues. Veuillez corriger ces erreurs avant de continuer afin d'éviter des erreurs de suivi.",
+                        "text-unfixable": "Il existe des erreurs {count} non réparables qui ne sont toujours pas résolues. Si vous continuez sans résoudre les erreurs restantes, des erreurs de suivi peuvent apparaître.",
+                        "title": "Continuer"
+                    },
+                    "header": {
+                        "banner": {
+                            "content": "Certains avertissements ou erreurs {count} ne peuvent pas être résolus depuis cet écran. Pour en savoir plus, téléchargez le fichier journal et consultez les messages d'erreur détaillés. Les problèmes sous-jacents peuvent devoir être résolus dans le système source. Une fois le problème résolu, relancez la migration pour continuer.",
+                            "title": "Certaines erreurs ne peuvent pas être corrigées via cette vue"
+                        },
+                        "continue": "Continuer",
+                        "continueTooltip": "Corrigez toutes les erreurs réparables avant de continuer.",
+                        "description": "Vérifiez et corrigez les erreurs de migration survenues lors de l'importation. Résolvez les problèmes de données directement dans cette vue ou téléchargez le fichier journal pour obtenir des informations détaillées. Continuez une fois que toutes les erreurs réparables sont résolues. Vous pouvez quitter cette vue et y revenir plus tard",
+                        "documentation": "Documentation",
+                        "download": "Télécharger le fichier journal",
+                        "title": "Résolution des erreurs"
+                    }
+                }
+            },
+            "errorTypes": {
+                "error": "Erreur",
+                "info": "Informations",
+                "warning": "Avertissement"
+            },
+            "finishButton": "Terminer",
+            "loadingScreenCard": {
+                "documentationLink": "https://developer.shopware.com/docs/guides/hosting/infrastructure/message-queue.html#message-queue",
+                "documentationLinkText": "Documentation sur la file de messages",
+                "flowChart": {
+                    "cleanup": "Nettoyage",
+                    "errorResolution": "Résolution des erreurs",
+                    "fetchData": "Lecture",
+                    "finish": "Fait",
+                    "indexing": "Indexation",
+                    "premapping": "Vérification",
+                    "processMedia": "Téléchargement",
+                    "writeData": "Rédaction"
+                },
+                "notice": "Conseil : Ce processus s’exécute dans la file des messages. Vous n’avez pas besoin de rester sur cette page si votre boutique est correctement configurée.",
+                "result": {
+                    "historyHint": "Vous pouvez consulter ces informations à tout moment dans l’historique des migrations. Il est possible que d’autres messages de journal soient ajoutés ultérieurement car le téléchargement des médias est toujours en cours d’exécution en arrière-plan.",
+                    "title": "L'assistant de migration est terminé"
+                },
+                "status": {
+                    "aborting": {
+                        "caption": "Les données non écrites sont nettoyées. Les données déjà migrées peuvent être inutilisables.",
+                        "long": "La migration est en train d’être interrompue",
+                        "short": "Interruption"
+                    },
+                    "cleanup": {
+                        "caption": "Les données temporaires sont en cours de suppression. La migration est presque terminée.",
+                        "long": "La migration est en cours de nettoyage",
+                        "short": "Nettoyage"
+                    },
+                    "error-resolution": {
+                        "caption": "La migration est suspendue jusqu'à ce que toutes les erreurs soient résolues.",
+                        "long": "Les erreurs peuvent être résolues",
+                        "short": "Résolution des erreurs"
+                    },
+                    "fetching": {
+                        "caption": "Les nouvelles affectations sont traitées.",
+                        "long": "Les données seront lues depuis votre système",
+                        "short": "Lecture"
+                    },
+                    "finish": "Fait",
+                    "indexing": {
+                        "caption": "La migration est presque terminée.",
+                        "long": "Les nouvelles données sont en cours d'indexation",
+                        "short": "Indexation"
+                    },
+                    "media-processing": {
+                        "caption": "Le traitement des données d'image volumineuses peut prendre un certain temps.",
+                        "long": "Le média est en cours de transfert",
+                        "short": "Transfert des médias"
+                    },
+                    "unknown": "Inconnu",
+                    "writing": {
+                        "caption": "Selon la taille de la boutique, cela peut prendre quelques instants.",
+                        "long": "Les données sont en cours d’écriture dans Shopware 6",
+                        "short": "Rédaction"
+                    }
+                }
+            },
+            "migrateButton": "Démarrer la migration",
+            "migrationAlreadyRunning": "La migration a déjà commencé.",
+            "pauseButton": "Mettre en pause",
+            "pluginVersionText": "Nous avons remarqué qu'une mise à jour de plugin est disponible dans votre système source {sourceSystem}. Veuillez mettre à jour le plugin \"{pluginName}\" avant de commencer la migration.",
+            "premappingCard": {
+                "cardTitle": "Affectations",
+                "group": {
+                    "delivery_time": "Temps de livraison",
+                    "manufacturer": "Fabricants",
+                    "newsletter_status": "Statut de la newsletter",
+                    "order_delivery_state": "Etats de livraison de la commande",
+                    "order_state": "Etats de la commande",
+                    "payment_method": "Modes de paiement",
+                    "salesChannel": "Newsletter canal de vente",
+                    "salutation": "Salutation",
+                    "shipping_availability_rule": "Disponibilité du mode d'expédition",
+                    "source_timezone": "Fuseau horaire",
+                    "transaction_state": "États de la transaction",
+                    "user": "Utilisateur d'administration"
+                },
+                "newAssignmentTitle": "Nouvelles affectations",
+                "placeholder": "Veuillez sélectionner",
+                "previousTitle": "Précédent",
+                "unfilledAlert": "Nous avons détecté qu'il y a des données qui nécessitent une affectation manuelle."
+            },
+            "savePremapping": {
+                "message": "Le prémappage a été enregistré.",
+                "saveButton": "Enregistrement du prémappage"
+            },
+            "selectDataCard": {
+                "cardTitle": "Sélection des données",
+                "dataHeader": "Données",
+                "dataSelection": {
+                    "basicSettings": "Données de base",
+                    "cms": "Mises en page",
+                    "customerWishlists": "Listes de souhaits",
+                    "customersOrders": "Clients et commandes",
+                    "media": "Médias",
+                    "newsletterRecipient": "Destinataire de",
+                    "processMediaFiles": "Médias",
+                    "productReviews": "Avis sur les produits",
+                    "products": "Produits",
+                    "promotions": "Promotions",
+                    "seoUrls": "Adresse de référencement"
+                },
+                "dataTypes": {
+                    "basicData": "Données de la boutique",
+                    "pluginData": "Données du plugin"
+                },
+                "entities": {
+                    "category": "Catégories :",
+                    "category_association": "Associations de catégorie :",
+                    "category_cms_page_association": "Associations de disposition de catégorie :",
+                    "category_custom_field": "Champs personnalisés de catégorie",
+                    "category_product_stream_association": "Associations dynamiques de catégories et de groupes de produits :",
+                    "cms_page": "Mises en page :",
+                    "country": "Pays :",
+                    "country_state": "Pays Etats :",
+                    "currency": "Devises :",
+                    "custom_field_set": "Jeux de champs personnalisés :",
+                    "customer": "Clients :",
+                    "customer_custom_field": "Champs personnalisés du client",
+                    "customer_group": "Groupes de clients :",
+                    "customer_group_custom_field": "Groupe de champs personnalisés du client",
+                    "customer_wishlist": "Listes de souhaits :",
+                    "delivery_time": "Délais de livraison :",
+                    "language": "Langues :",
+                    "mail_header_footer": "En-têtes et pieds de page des e-mails",
+                    "mail_template": "Modèles d'e-mail :",
+                    "main_variant_relation": "Relations de variantes principales :",
+                    "media": "Médias :",
+                    "media_folder": "Dossiers médias :",
+                    "media_folder_inheritance": "Héritage des dossiers multimédias :",
+                    "number_range": "Nombre de plages :",
+                    "order": "Commandes :",
+                    "order_custom_field": "Champs personnalisés de commande",
+                    "order_document": "Documents de commande :",
+                    "order_document_base_config": "Config du document :",
+                    "order_document_custom_field": "Champs personnalisés de document de commande",
+                    "order_document_inheritance": "Relations de document de commande :",
+                    "page_system_config": "Informations de base de la page :",
+                    "product": "Produits :",
+                    "product_canonical_association": "Associations de produits canoniques",
+                    "product_cms_page_association": "Associations de présentation de produits",
+                    "product_cross_selling": "Vente croisée :",
+                    "product_custom_field": "Champs personnalisés de produit",
+                    "product_feature_set": "Caractéristiques essentielles :",
+                    "product_manufacturer": "Fabricants de produits :",
+                    "product_manufacturer_custom_field": "Champs personnalisés de fabricant de produit",
+                    "product_option_relation": "Options du produit :",
+                    "product_price_custom_field": "Champs personnalisés de prix de produit",
+                    "product_property_relation": "Propriétés du produit :",
+                    "product_review": "Avis :",
+                    "product_sorting": "Tri des produits :",
+                    "product_stream": "Groupes de produits dynamiques :",
+                    "product_stream_filter_inheritance": "Filtres dynamiques des groupes de produits :",
+                    "promotion": "Promotions :",
+                    "property_group": "Groupes de propriétés :",
+                    "property_group_option": "Propriétés :",
+                    "rule": "Règles :",
+                    "sales_channel": "Canaux de vente :",
+                    "sales_channel_domain": "Domaines :",
+                    "sales_channel_home_cms_page_association": "Associations d'aménagement de la maison des canaux de vente",
+                    "salutation": "Salutations :",
+                    "seo_url": "URL SEO :",
+                    "seo_url_template": "Modèles d'URL SEO :",
+                    "shipping_method": "Modes d'expédition :",
+                    "snippet": "Extraits de code :",
+                    "snippet_set": "Ensembles d'extraits :",
+                    "system_config": "Informations de base :",
+                    "tax": "Taux d'imposition :",
+                    "tax_rule": "Règles fiscales :",
+                    "translation": "Traductions :",
+                    "unit": "Unités d'échelle :"
+                },
+                "headers": {
+                    "dataType": "Type",
+                    "name": "Nom",
+                    "total": "Jeux de données"
+                },
+                "noData": "Rien n'a été trouvé pour migrer.",
+                "noDataSubline": "Vérifiez votre connexion ou essayez un autre profil."
+            },
+            "shopInfoCard": {
+                "buttonCreateConnection": "Créer une nouvelle connexion",
+                "buttonCreateInitialConnection": "Créer la connexion initiale",
+                "buttonEditSettings": "Modifier la connexion",
+                "buttonProfileInstallation": "Installer un autre profil",
+                "buttonRemoveCredentials": "Supprimer les données d'accès",
+                "buttonResetChecksums": "Réinitialiser les sommes de contrôle",
+                "buttonResetMigration": "Migration complète",
+                "buttonSelectConnection": "Modifier la connexion",
+                "cardTitle": "Système d'achat",
+                "connected": "Connecté",
+                "connectionCheck": "Vérification de connexion :",
+                "gateway": "Passerelle :",
+                "lastMigration": "Dernière migration :",
+                "link": "Aide et documentation",
+                "noConnection": "Pas de connexion",
+                "noConnectionCheckDoneYet": "Aucune vérification de connexion n'a encore été effectuée",
+                "noMigrationDoneYet": "-",
+                "notConnected": "Non connecté",
+                "profile": "Profil système :",
+                "refreshButton": "Actualiser la connexion",
+                "removeCredentialsConfirmDialog": {
+                    "abortButtonText": "Annuler",
+                    "content": "Il n'y aura plus de connexion active après cela. Entrez à nouveau vos données d'accès pour restaurer la connexion.",
+                    "contentHint": "Souhaitez-vous supprimer les données d'accès actuelles ?",
+                    "title": "Supprimer les données d'accès"
+                },
+                "resetChecksumsConfirmDialog": {
+                    "abortButtonText": "Annuler",
+                    "confirmButtonText": "Oui, réinitialiser",
+                    "content": "Si vous réinitialisez les sommes de contrôle, toutes les données du système source seront reconnues lors de la prochaine migration. Cela inclut les ensembles de données déjà migrés ou inchangés. <br><br><strong>Important :</strong> Les modifications apportées aux enregistrements de données que vous avez effectuées dans Shopware 6 depuis la dernière migration seront remplacées. Les données du système source ont la priorité.",
+                    "contentHint": "Voulez-vous réinitialiser les sommes de contrôle ?",
+                    "title": "Réinitialiser les sommes de contrôle"
+                },
+                "resetMigrationConfirmDialog": {
+                    "abortButtonText": "Annuler",
+                    "confirmButtonText": "Finaliser maintenant",
+                    "content": "Super ! Finalisons maintenant votre migration et nettoyons les fichiers temporaires et les données inutilisées. <strong>S'il vous plaît noter :</strong> La finalisation de la migration est terminal. Vous ne pourrez plus migrer des données via la connexion actuelle.",
+                    "errorNotification": {
+                        "message": "Une migration est en cours.",
+                        "title": "Une erreur s'est produite lors de la finalisation de la migration"
+                    },
+                    "header": "Avez-vous fini de migrer les données de votre boutique ?",
+                    "title": "Finaliser la migration"
+                },
+                "updateBanner": {
+                    "isResettingChecksums": {
+                        "message": "Les checksums sont en cours de réinitialisation. Cela peut prendre quelques minutes.",
+                        "title": "Réinitialisation des checksums"
+                    },
+                    "isTruncatingMigration": {
+                        "message": "Les données de migration sont tronquées. Cela peut prendre quelques minutes.",
+                        "title": "Tronquer les données de migration"
+                    }
+                }
+            },
+            "shopwareMajorVersionText": "Nous avons remarqué que la version {sourceSystem} de votre système source ne correspond pas à la version {targetSystem} de votre système cible. Assurez-vous d'utiliser la même version majeure pour les deux systèmes avant de commencer la migration.",
+            "title": "Généralités",
+            "warningModal": {
+                "cancelButton": "Retour",
+                "confirmButton": "Continuez quand même",
+                "message": {
+                    "currency": "Une migration avec différentes devises par défaut peut entraîner la corruption des enregistrements de données et entraîner des effets secondaires imprévisibles.",
+                    "language": "Une migration avec différentes langues par défaut peut entraîner la corruption des enregistrements de données et entraîner des effets secondaires imprévisibles."
+                },
+                "title": "Inconcordance de données détectée"
+            }
+        },
+        "wizard": {
+            "buttonAbort": "Annuler",
+            "buttonConnect": "Connecter",
+            "buttonConnectionCreate": "Établir une",
+            "buttonConnectionSelect": "Modifier la connexion",
+            "buttonEdit": "Modifier la connexion",
+            "buttonFinish": "Fait",
+            "buttonLater": "Fermer",
+            "buttonLetsGo": "Démarrer",
+            "buttonNext": "Continuer",
+            "buttonToProfileInformation": "Informations",
+            "buttonUseSsl": "Utiliser HTTPS",
+            "pages": {
+                "connectionCreate": {
+                    "connectionLabel": "Nom de la connexion",
+                    "connectionPlaceholder": "Saisissez le nom",
+                    "connectionTooltip": "Entrez un nom unique pour la connexion.",
+                    "gatewayLabel": "Passerelle",
+                    "gatewayPlaceholder": "Sélectionnez la passerelle",
+                    "gatewayTooltip": "Type de connexion entre les systèmes.",
+                    "gateways": {
+                        "shopwareApi": "API",
+                        "shopwareLocal": "Base de données locale"
+                    },
+                    "hint": {
+                        "local": "Remarque : Les systèmes de magasin doivent être sur le même serveur. Vous avez besoin de données d'accès à la base de données."
+                    },
+                    "profileInstall": "Installer un autre profil",
+                    "profileLabel": "Profil système d'achat",
+                    "profilePlaceholder": "Sélectionner un profil",
+                    "title": "Migration — Créer une nouvelle connexion"
+                },
+                "connectionSelect": {
+                    "connectionLabel": "Nom de la connexion",
+                    "connectionPlaceholder": "Veuillez sélectionner une connexion",
+                    "title": "Migration — Modification de la connexion"
+                },
+                "credentials": {
+                    "emptyState": "Désolé aucun formulaire pour le profil sélectionné trouvé.",
+                    "error": {
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR": "Impossible de se connecter au serveur. S'il vous plaît vérifier le domaine de boutique donné.",
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR__HINT": "Si vous rencontrez des difficultés pour vous connecter, il peut être utile de vérifier la version de curl actuellement installée sur votre serveur et de la mettre à jour.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ATTRIBUTES_WRONG": "La connexion à la base de données ne possède pas les bons attributs et ils ne peuvent pas être définis.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ERROR": "Impossible d'établir la connexion à la base de données.",
+                        "SWAG_MIGRATION__DUPLICATE_SOURCE_CONNECTION": "Une connexion au même système source existe déjà. Veuillez utiliser une autre connexion.",
+                        "SWAG_MIGRATION__GATEWAY_READ": "Impossible de se connecter au serveur. S'il vous plaît vérifier le domaine de boutique donné.",
+                        "SWAG_MIGRATION__GATEWAY_READ__HINT": "Si vous rencontrez des difficultés pour vous connecter, il peut être utile de vérifier la version de curl actuellement installée sur votre serveur et de la mettre à jour.",
+                        "SWAG_MIGRATION__INVALID_CONNECTION_CREDENTIALS": "Les données d'accès pour la connexion au système source n'existent pas ou sont incorrectes. Veuillez les vérifier et réessayer.",
+                        "SWAG_MIGRATION__IS_RUNNING": "Une migration est en cours. Par conséquent, vous ne pouvez pas modifier les informations d'identification tant que la migration n'est pas terminée.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED": "Le plugin requis « Migration Connector » n'est pas installé dans Shopware 5. Veuillez installer le plugin gratuit et réessayer.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED__HINT": "Si vous avez déjà installé le « Migration Connector » et vidé le cache dans le backend Shopware 5 (Configuration > Cache/performance), essayez de supprimer manuellement votre dossier de cache Shopware 5 (var/cache).",
+                        "SWAG_MIGRATION__SSL_REQUIRED": "Nous avons déterminé que le domaine de magasin donné est requis une connexion SSL.",
+                        "alertErrorTitle": "Attention",
+                        "contentTitle": "Pas de connexion",
+                        "undefinedErrorMsg": "Erreur interne du serveur. Veuillez réessayer."
+                    },
+                    "shopware55": {
+                        "api": {
+                            "apiKeyLabel": "Clé API",
+                            "apiKeyPlaceholder": "Saisir la clé",
+                            "apiKeyTooltip": "La clé API est utilisée pour la sécurité et l'identification.",
+                            "apiUserLabel": "Nom d'utilisateur (utilisateur de l'API)",
+                            "apiUserPlaceholder": "Entrez nom d'utilisateur",
+                            "apiUserTooltip": "Nom d'utilisateur de votre backend Shopware 5.",
+                            "endpointLabel": "Shop domaine",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Ma boutique utilise une connexion sécurisée (SSL)",
+                            "pluginLinkText": "Plus d'informations sur le plugin",
+                            "pluginName": "Connecteur de migration",
+                            "steps": {
+                                "step1": "Installez et activez le plugin {pluginName} depuis votre backend Shopware 5 sous Plugin Manager > Extensions > Migration tools.",
+                                "step2": "Accédez à la section Administration des utilisateurs dans votre backend Shopware 5.",
+                                "step3": "Sélectionnez l'utilisateur que vous souhaitez utiliser pour la connexion.",
+                                "step4": "Activez l'accès à l'API et enregistrez.",
+                                "step5": "Assurez-vous que l'utilisateur possède le rôle local_admin.",
+                                "step6": "Entrez les informations d'identification de l'API ici pour établir la connexion."
+                            },
+                            "title": "Connectez votre boutique Shopware 5"
+                        },
+                        "local": {
+                            "dbHostLabel": "Hôte",
+                            "dbHostPlaceholder": "Saisir l'hôte",
+                            "dbNameLabel": "Nom de la base",
+                            "dbNamePlaceholder": "Saisissez le nom",
+                            "dbPasswordLabel": "mot de passe",
+                            "dbPasswordPlaceholder": "Saisir le mot",
+                            "dbPortLabel": "Port",
+                            "dbUserLabel": "Utilisateur",
+                            "dbUserPlaceholder": "Entrez nom d'utilisateur",
+                            "installationRoot": "Dossier d'installation",
+                            "installationRootPlaceholder": "Entrez la racine d'installation"
+                        }
+                    },
+                    "shopware6": {
+                        "api": {
+                            "apiPasswordLabel": "Clé d'accès secret",
+                            "apiPasswordPlaceholder": "Entrez la clé d'accès secrète",
+                            "apiPasswordTooltip": "La clé d'accès secrète est utilisée pour la sécurité et l'identification.",
+                            "apiUserLabel": "ID de clé d'accès",
+                            "apiUserPlaceholder": "Saisissez l'ID de clé d'accès",
+                            "apiUserTooltip": "Accédez à l'ID de clé de votre intégration.",
+                            "endpointLabel": "Shop domaine",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Ma boutique utilise une connexion sécurisée (SSL)",
+                            "integrationLink": "https://docs.shopware.com/en/shopware-6-en/settings/system/integrationen",
+                            "integrationLinkText": "En savoir plus sur les intégrations",
+                            "pluginLink": "https://store.shopware.com/en/swag257162657297f/migration-assistant.html",
+                            "pluginLinkText": "En savoir plus sur l'extension Migration Assistant",
+                            "pluginName": "Assistant Migration",
+                            "steps": {
+                                "step1": "Installez et activez l'extension {pluginName} sur le système source.",
+                                "step2": "Créez une intégration dans le système source via Paramètres > Système > Intégrations.",
+                                "step3": "Générez un identifiant de clé d'accès et une clé d'accès secrète.",
+                                "step4": "Entrez les clés d'accès et le domaine de la boutique ici pour établir la connexion."
+                            },
+                            "title": "Connectez votre boutique Shopware 6"
+                        }
+                    },
+                    "statusTitle": "Vérification de connexion",
+                    "success": {
+                        "SWAG_MIGRATION__REQUEST_CERTIFICATE_INVALID": "Nous avons déterminé que le certificat SSL du domaine boutique spécifié n'est pas sécurisé. Vérifiez le certificat pour votre propre sécurité.",
+                        "contentInformation": "Vous pouvez commencer votre migration.",
+                        "contentTitle": "Connexion réussie",
+                        "undefinedErrorMsg": "Une erreur inconnue s'est produite lors de la vérification du certificat SSL à partir du domaine boutique spécifié."
+                    },
+                    "title": "Migration — Établir une connexion"
+                },
+                "introduction": {
+                    "contentHeadline": "Bougeons quelques choses",
+                    "contentInformation": "Ensemble, nous connecterons votre système de boutique à Shopware 6. Ensuite, l'Assistant Migration vous aidera à migrer vos données étape par étape.",
+                    "title": "Assistant Migration"
+                },
+                "profileInstallation": {
+                    "availabilityHeadline": "Précédemment disponible :",
+                    "availableVersionHeadline": "Prise en charge :",
+                    "content": "Choisissez le système de magasin à partir de laquelle migrer les données et assurez-vous d'installer le plugin de profil correspondant également.",
+                    "installationButton": "Installer",
+                    "installedHint": "Installé",
+                    "magentoProfileHeadline": "Magento - Profil",
+                    "profileManufacturer": "shopware AG",
+                    "shopwareProfileHeadline": "Shopware - Profil",
+                    "title": "Migration - Shopsystem-Profile"
+                }
+            }
+        },
+        "worker-listener": {
+            "mediaProcessing": {
+                "message": "Aucun fichier restant. | Un fichier restant. | {n} fichiers restants.",
+                "messageSuccess": "Le téléchargement multimédia est terminé.",
+                "title": "Le média est en cours de téléchargement",
+                "titleSuccess": "Téléchargement des médias terminé"
+            }
+        }
+    }
+}

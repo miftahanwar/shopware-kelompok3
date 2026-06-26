@@ -1,0 +1,679 @@
+{
+    "global": {
+        "error-codes": {
+            "SWAG_MIGRATION_CONNECTION_NAME_ALREADY_EXISTS": "Yhteyden nimi on jo olemassa.",
+            "SWAG_MIGRATION_CONNECTION_NAME_TO_SHORT": "Yhteyden nimen on oltava vähintään 6 merkkiä pitkä.",
+            "SWAG_MIGRATION_INVALID_API_KEY": "API-avaimella ei ole oikeaa pituutta ({length}/40 merkkiä)."
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "swag_migration": {
+                "label": "Muuttoliikkeen"
+            }
+        }
+    },
+    "swag-migration": {
+        "api-error": {
+            "abortMigration": "Siirron keskeyttäminen epäonnistui.",
+            "approveFinishedMigration": "Epäonnistui siirron suorittamisen aikana",
+            "checkConnection": "Yhteyden tarkistaminen lähdejärjestelmään epäonnistui.",
+            "fetchConnectionId": "Aktiivisen yhteyden tunnuksen saaminen epäonnistui.",
+            "getDataSelection": "Nykyisen yhteyden tietojen valinnan hakeminen epäonnistui.",
+            "getState": "Siirtotilan saaminen epäonnistui.",
+            "startMigration": "Siirtymisen aloittaminen epäonnistui."
+        },
+        "dashboard": {
+            "button": "Siirtymisapuri",
+            "headline": "Siirtyminen Shopwareen",
+            "information": "Ensimmäinen asia on yhdistää nykyinen myymäläjärjestelmä - muuttoliikkeen avustaja auttaa sinua matkan varrella.",
+            "shopInfoCard": {
+                "button": "Avaa",
+                "header": "Muuttoliikkeen",
+                "resetButton": "Viimeistele"
+            },
+            "title": "Muuttoliikkeen"
+        },
+        "general": {
+            "descriptionTextModule": "Moduuli tietojen siirtämiseen",
+            "disabledMessages": {
+                "disabled": "Siirtyminen on poistettu käytöstä tässä ympäristössä.",
+                "loading": "Maahanmuutto on parhaillaan käynnissä.",
+                "noData": "Siirtymistä varten ei ole saatavilla tietoja.",
+                "noPermission": "Sinulla ei ole vaadittuja käyttöoikeuksia siirron suorittamiseen.",
+                "noSelectedData": "Siirtämistä varten ei ole valittu kohteita.",
+                "resettingChecksum": "Tarkistussummat nollataan parhaillaan.",
+                "truncatingMigration": "Siirtotietoja lyhennetään parhaillaan.",
+                "unfilledPremapping": "Suorita kaikki vaaditut kartoitukset ennen jatkamista."
+            },
+            "mainMenuItemGeneral": "Muuttoliikkeen",
+            "tabDataSelector": "Tietojen valinta",
+            "tabHistory": "Historia",
+            "tabMain": "Kenraali"
+        },
+        "history": {
+            "connectionName": "Yhteyden nimi",
+            "contextMenu": {
+                "details": "Näytä tiedot",
+                "downloadLogs": "Lataa loki"
+            },
+            "detailPage": {
+                "close": "Sulje",
+                "data": "Tiedot",
+                "dataCount": "Tietoaineistot",
+                "dataName": "Nimi",
+                "errorCode": "Virhesanoma",
+                "errorCount": "Kreivi",
+                "errorLevel": "Lokitaso",
+                "errors": "Yksityiskohdat",
+                "logDescription": "Lisätietoja {link}",
+                "logDownload": "lataa lokitiedosto.",
+                "noErrorsOccurred": "Virheitä ei ole tapahtunut.",
+                "noProgressData": "Tämä suoritus suoritettiin laajennuksen edellisessä versiossa ja sen tiedot on poistettu.",
+                "status": {
+                    "aborted": "Keskeytetty",
+                    "finished": "Valmis",
+                    "running": "Juoksu"
+                },
+                "title": "Siirron tiedot"
+            },
+            "gateway": "Portti",
+            "importDateTime": "Aloitusaika",
+            "profile": "Profile",
+            "selectedData": "Tiedot",
+            "shopDomain": "Kauppa verkkotunnus",
+            "shopSystem": "Kauppa järjestelmä",
+            "status": "Tila"
+        },
+        "index": {
+            "abortButton": "Peruuta",
+            "backToOverviewButton": "Takaisin yleiskuvaan",
+            "confirmAbortDialog": {
+                "cancel": "Jatkakaa",
+                "confirm": "Pysäytä siirto",
+                "content": "Muuttoliike ei ole täysin valmis. Jo siirretty tieto saattaa olla käyttökelvoton. Jos lopetat nyt, sinun on käynnistävä siirtoprosessi kokonaan uudelleen.",
+                "hint": "Haluatko pysäyttää muuttoliikkeen?",
+                "title": "Pysäytä siirto"
+            },
+            "confirmWarningCard": {
+                "currencyMismatch": {
+                    "text": "Siirrettävien tietojen valuutta ei vastaa tavanomaista valuuttaa [{targetSystemCurrency}]. [{sourceSystemCurrency}] -toiminnon tietoja voidaan edelleen siirtää, mutta niitä ei muunneta automaattisesti. Voit säätää hintoja manuaalisesti jälkikäteen.",
+                    "title": "Siirtolaisuus on tunnustanut toisen valuutan"
+                },
+                "languageMismatch": {
+                    "text": "Siirrettävien tietojen kieli ei vastaa vakiokieltä [{targetSystemLanguage}]. [{sourceSystemLanguage}] -toiminnon tietoja voidaan edelleen siirtää, mutta niitä ei muunneta automaattisesti. Voit säätää käännöksiä manuaalisesti jälkikäteen.",
+                    "title": "Siirtolaisuus on tunnustanut toisen kielen"
+                }
+            },
+            "continueButton": "Jatka",
+            "error-resolution": {
+                "codes": {
+                    "SWAG_MIGRATION_CONVERT_ASSOCIATION_MISSING": "Liittyvä entiteetti puuttuu",
+                    "SWAG_MIGRATION_CONVERT_CHILD_ENTITY_FAILED": "Alkeisentiteetin muuntaminen epäonnistui",
+                    "SWAG_MIGRATION_CONVERT_DOCUMENT_TYPE_UNSUPPORTED": "Asiakirjatyyppien muuntamista ei tueta",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_ALREADY_EXISTS": "Entiteetti on jo olemassa",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_FAILED": "Entiteetin muuntaminen epäonnistui",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_UNKNOWN": "Riippuvainen entiteetti tuntematon",
+                    "SWAG_MIGRATION_CONVERT_FIELD_REASSIGNED": "Entiteettikenttä määritetään automaattisesti uudelleen",
+                    "SWAG_MIGRATION_CONVERT_LANGUAGE_PACK_DEACTIVATED": "Kielipaketti deaktivoitu",
+                    "SWAG_MIGRATION_CONVERT_MAIN_VARIANT_RELATION_FAILED": "Päävarianttisuhteen muuntaminen epäonnistui",
+                    "SWAG_MIGRATION_CONVERT_OBJECT_TYPE_UNSUPPORTED": "Objektityyppiä ei tueta",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_CALCULATION_TYPE_UNSUPPORTED": "Toimituslaskentatyyppiä ei tueta",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_PRICE_UNSUPPORTED": "Toimitushintatyyppi ei tueta",
+                    "SWAG_MIGRATION_CONVERT_SOURCE_DATA_INCOMPLETE": "Lähdetiedot puutteelliset",
+                    "SWAG_MIGRATION_CONVERT_UNSERIALIZED_DATA_INVALID": "Sarjaamattomat tiedot ovat virheellisiä",
+                    "SWAG_MIGRATION_FETCH_DATASET_MISSING": "Entiteetin tietojoukko puuttuu",
+                    "SWAG_MIGRATION_FETCH_ENTITY_COUNT_FAILED": "Entiteettien lukumäärän lukeminen lähdejärjestelmästä epäonnistui",
+                    "SWAG_MIGRATION_FETCH_PROCESSOR_MISSING": "Yksikön prosessori puuttuu",
+                    "SWAG_MIGRATION_MEDIA_DEFAULT_FOLDER_UNSUPPORTED": "Median oletuskansiota ei tueta",
+                    "SWAG_MIGRATION_MEDIA_FILE_MISSING": "Mediatiedosto puuttuu",
+                    "SWAG_MIGRATION_MEDIA_MIME_TYPE_UNKNOWN": "Median MIME-tyyppi tuntematon",
+                    "SWAG_MIGRATION_MEDIA_TEMPORARY_FILE_FAILED": "Median väliaikaisen tiedoston luominen epäonnistui",
+                    "SWAG_MIGRATION_RUN_ABORTED": "Siirto keskeytettiin automaattisesti",
+                    "SWAG_MIGRATION_RUN_EXCEPTION": "Siirtopoikkeus tapahtui",
+                    "SWAG_MIGRATION_RUN_MESSAGE_QUEUE_EXCEPTION": "Viestijonon poikkeus tapahtui",
+                    "SWAG_MIGRATION_VALIDATION_ASSOCIATION_INVALID": "Entiteettiyhdistys on virheellinen",
+                    "SWAG_MIGRATION_VALIDATION_EXCEPTION": "Vahvistuspoikkeus tapahtui",
+                    "SWAG_MIGRATION_VALIDATION_OPTIONAL_FIELD_VALUE_INVALID": "Valinnaisella kentällä on virheellinen arvo",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_MISSING": "Pakollinen kenttä puuttuu",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_VALUE_INVALID": "Pakollisella kentällä on virheellinen arvo",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_TRANSLATION_INVALID": "Vaadittu käännös on virheellinen",
+                    "SWAG_MIGRATION_WRITE_EXCEPTION": "Kirjoituspoikkeus tapahtui",
+                    "SWAG_MIGRATION_WRITE_THEME_COMPILING_FAILED": "Teeman kokoaminen epäonnistui",
+                    "unknown": "Tuntematon virhe"
+                },
+                "descriptionTitle": "Kentän kuvaus",
+                "errors": {
+                    "continueMigrationFailed": "Siirtymisen jatkaminen epäonnistui.",
+                    "downloadLogsFailed": "Lokitiedoston lataaminen epäonnistui.",
+                    "fetchExampleFailed": "Esimerkkitietojen hakeminen epäonnistui.",
+                    "fetchExistingFixesFailed": "Olemassa olevien korjausten hakeminen epäonnistui.",
+                    "fetchFilterDataFailed": "Suodatintietojen hakeminen epäonnistui.",
+                    "fetchLogsFailed": "Lokitietojen hakeminen epäonnistui.",
+                    "fetchRunFailed": "Siirtosuoritustietojen hakeminen epäonnistui.",
+                    "fieldValueNotSet": "Kentän arvoa ei ole määritetty.",
+                    "invalidFieldValueFormat": "Virheellinen kenttäarvon muoto.",
+                    "noEntityIdsFound": "Valituista lokimerkinnöistä ei löytynyt kelvollisia entiteettitunnuksia.",
+                    "noLogsSelected": "Valitse vähintään yksi lokimerkintä ratkaistaksesi.",
+                    "resetResolutionFailed": "Virheen tarkkuuden palauttaminen epäonnistui.",
+                    "submitResolutionFailed": "Virheenkorjauksen lähettäminen epäonnistui.",
+                    "validationFailed": "Vahvistus epäonnistui."
+                },
+                "modals": {
+                    "details": {
+                        "convertedDataLabel": "Muunnetut tiedot",
+                        "sourceDataLabel": "Lähdetiedot",
+                        "title": "yksityiskohdat: {entityName}"
+                    },
+                    "error": {
+                        "left": {
+                            "details": "Näytä tiedot",
+                            "reset": "Palauta",
+                            "select-all": "Valitse kaikki ({count})",
+                            "status": {
+                                "resolved": "Ratkaistu",
+                                "unresolved": "Ratkaisematon"
+                            }
+                        },
+                        "right": {
+                            "apply": "Käytä muutoksia",
+                            "banner": {
+                                "content": "Luo vähintään yksi vaihtoehto valittavaksi vastaavassa hallinta-alueella.",
+                                "link": "Lisää vaihtoehto",
+                                "title": "Vaihtoehtoa ei ole käytettävissä"
+                            },
+                            "title": "Muokkaa: {count} Items",
+                            "unhandledBanner": {
+                                "content": "Kenttätyyppiä ei voitu määrittää. Korjaa raakalähdetiedot. Arvon on oltava oikeassa muodossa.",
+                                "title": "Tuntematon kenttätyyppi"
+                            },
+                            "unresolvableBanner": {
+                                "content": "Tarkista lokitiedostosta lisätietoja.",
+                                "title": "Tätä virhettä ei tällä hetkellä voida ratkaista Siirtoavustajan avulla"
+                            }
+                        },
+                        "table": {
+                            "columns": {
+                                "status": "Tila"
+                            }
+                        },
+                        "title": "Korjaa virhe: {code}, {entityName}, {fieldName}"
+                    }
+                },
+                "step": {
+                    "card": {
+                        "filter": {
+                            "code": {
+                                "label": "Virheen nimi",
+                                "placeholder": "Valitse virheen nimi"
+                            },
+                            "entity": {
+                                "label": "Yhteisö",
+                                "placeholder": "Valitse entiteetti"
+                            },
+                            "field": {
+                                "label": "Kentällä",
+                                "placeholder": "Valitse kenttä"
+                            },
+                            "reset": "Palauta suodattimet",
+                            "status": {
+                                "label": "Virhetila",
+                                "options": {
+                                    "resolved": "Ratkaistu",
+                                    "unresolved": "Ratkaisematon"
+                                },
+                                "placeholder": "Virhetilan valitseminen"
+                            },
+                            "title": "Suodattimet | Suodattimet ({count}) | Suodattimet ({count})"
+                        },
+                        "table": {
+                            "columns": {
+                                "code": "Koodi",
+                                "count": "Kiinteä/Yhteensä",
+                                "entity": "Yhteisö",
+                                "field": "Kentällä",
+                                "gatewayName": "Portti",
+                                "name": "Nimi",
+                                "profileName": "Profile"
+                            },
+                            "empty-state": {
+                                "description": "Valittuja suodattimia vastaavia lokeja ei löytynyt.",
+                                "headline": "Mitään ei löytynyt"
+                            }
+                        },
+                        "tabs": {
+                            "errors": "Virheet ({count})",
+                            "infos": "Tiedot ({count})",
+                            "warnings": "Varoitukset ({count})"
+                        },
+                        "title": "Korjattavat virheet"
+                    },
+                    "continue-modal": {
+                        "text-fixable": "On olemassa {count} -ryhmiä korjattavissa olevia virheitä, jotka ovat edelleen ratkaisematta. Korjaa nämä virheet ennen kuin jatkat seurantavirheiden välttämiseksi.",
+                        "text-unfixable": "On olemassa {count} korjaamattomia virheitä, jotka ovat edelleen ratkaisematta. Jos jatkat ratkaisematta jäljellä olevia virheitä, seurantavirheet saattavat näkyä.",
+                        "title": "Jatka"
+                    },
+                    "header": {
+                        "banner": {
+                            "content": "Tässä näytössä on {count} -virheitä tai -varoituksia, joita ei voi korjata. Voit tutkia sitä lataamalla lokitiedoston ja tarkistamalla yksityiskohtaiset virheilmoitukset. Taustalla olevat ongelmat on ehkä korjattava lähdejärjestelmässä. Kun se on ratkaistu, suorita siirto uudelleen jatkaaksesi.",
+                            "title": "Joitakin virheitä ei voida korjata tämän näkymän kautta"
+                        },
+                        "continue": "Jatka",
+                        "continueTooltip": "Korjaa kaikki korjattavat virheet ennen jatkamista.",
+                        "description": "Tarkista ja ratkaise tuonnin aikana ilmenneet siirtovirheet. Korjaa tieto-ongelmat suoraan tässä näkymässä tai lataa lokitiedosto saadaksesi lisätietoja. Jatka, kun kaikki korjattavat virheet on ratkaistu. Voit jättää tämän näkymän ja palata siihen myöhemmin",
+                        "documentation": "Asiakir",
+                        "download": "Lataa lokitiedosto",
+                        "title": "Virheen korjaus"
+                    }
+                }
+            },
+            "errorTypes": {
+                "error": "Virhe",
+                "info": "Tiedot",
+                "warning": "Varoitus"
+            },
+            "finishButton": "Viimeistele",
+            "loadingScreenCard": {
+                "documentationLink": "https://developer.shopware.com/docs/guides/hosting/infrastructure/message-queue.html#message-queue",
+                "documentationLinkText": "Viestijonon dokumentaatio",
+                "flowChart": {
+                    "cleanup": "Siivous",
+                    "errorResolution": "Virheen korjaus",
+                    "fetchData": "Lukeminen",
+                    "finish": "Tehty",
+                    "indexing": "Indeksointi",
+                    "premapping": "Tarkastus",
+                    "processMedia": "Lataaminen",
+                    "writeData": "Kirjoitus"
+                },
+                "notice": "Vihje: Tämä prosessi suoritetaan viestijonossa. Sinun ei tarvitse pysyä tällä sivulla, jos kauppasi on määritetty oikein.",
+                "result": {
+                    "historyHint": "Voit tarkastella näitä tietoja milloin tahansa siirtohistoriassa. On mahdollista, että lisää lokiviestejä lisätään myöhemmin, koska median lataus on edelleen käynnissä taustalla.",
+                    "title": "Muuttoliikkeen avustaja on tehty"
+                },
+                "status": {
+                    "aborting": {
+                        "caption": "Kirjoittamattomat tiedot puhdistetaan. Jo siirretyt tiedot saattavat olla käyttökelvottomia.",
+                        "long": "Maahanmuutto keskeytetään",
+                        "short": "Keskeyttäminen"
+                    },
+                    "cleanup": {
+                        "caption": "Väliaikaiset tiedot poistetaan. Muutto on lähes valmis.",
+                        "long": "Maahanmuuttoa siivotaan",
+                        "short": "Siivous"
+                    },
+                    "error-resolution": {
+                        "caption": "Siirto keskeytetään, kunnes kaikki virheet on ratkaistu.",
+                        "long": "Virheet voidaan ratkaista",
+                        "short": "Virheen korjaus"
+                    },
+                    "fetching": {
+                        "caption": "Uudet tehtävät käsitellään.",
+                        "long": "Tiedot luetaan järjestelmästäsi",
+                        "short": "Lukeminen"
+                    },
+                    "finish": "Tehty",
+                    "indexing": {
+                        "caption": "Muutto on lähes valmis.",
+                        "long": "Uusia tietoja indeksoidaan",
+                        "short": "Indeksointi"
+                    },
+                    "media-processing": {
+                        "caption": "Suurten kuvatietojen käsittely voi viedä jonkin aikaa.",
+                        "long": "Tiedotusvälineitä siirretään",
+                        "short": "Median siirto"
+                    },
+                    "unknown": "Tuntematon",
+                    "writing": {
+                        "caption": "Kaupan koosta riippuen se voi viedä hetken.",
+                        "long": "Tiedot kirjoitetaan Shopware 6:een",
+                        "short": "Kirjoitus"
+                    }
+                }
+            },
+            "migrateButton": "Siirron aloittaminen",
+            "migrationAlreadyRunning": "Siirtolaisuus alkoi jo.",
+            "pauseButton": "Tauko",
+            "pluginVersionText": "Olemme huomanneet, että plugin päivitys on saatavilla lähdejärjestelmässä {sourceSystem}. Päivitä liitännäinen \"{pluginName}\" ennen kuin aloitat siirron.",
+            "premappingCard": {
+                "cardTitle": "Tehtävät",
+                "group": {
+                    "delivery_time": "Toimitusaika",
+                    "manufacturer": "Valmistajat",
+                    "newsletter_status": "Uutiskirjeen tila",
+                    "order_delivery_state": "Tilauksen toimitustilat",
+                    "order_state": "Tilaa tilat",
+                    "payment_method": "Maksutavat",
+                    "salesChannel": "Uutiskirjeen myyntikanava",
+                    "salutation": "Tervehdys",
+                    "shipping_availability_rule": "Toimitustavan saatavuus",
+                    "source_timezone": "Aikavyöhyke",
+                    "transaction_state": "Tapahtumatilat",
+                    "user": "Hallinnon käyttäjä"
+                },
+                "newAssignmentTitle": "Uusia tehtäviä",
+                "placeholder": "Ole hyvä ja valitse",
+                "previousTitle": "Edellinen",
+                "unfilledAlert": "Olemme havainneet, että on olemassa tietoja, jotka edellyttävät manuaalista toimeksiantoa."
+            },
+            "savePremapping": {
+                "message": "Premapping on tallennettu.",
+                "saveButton": "Tallenna premapping"
+            },
+            "selectDataCard": {
+                "cardTitle": "Tietojen valinta",
+                "dataHeader": "Tiedot",
+                "dataSelection": {
+                    "basicSettings": "Perustiedot",
+                    "cms": "Asettelut",
+                    "customerWishlists": "Toivelistat",
+                    "customersOrders": "Asiakkaat & tilaukset",
+                    "media": "Media",
+                    "newsletterRecipient": "Uutiskirjeen vastaanottaja",
+                    "processMediaFiles": "Media",
+                    "productReviews": "Tuotearvostelut",
+                    "products": "Tuotteet",
+                    "promotions": "kampanjat",
+                    "seoUrls": "SEO-URL-osoitteet"
+                },
+                "dataTypes": {
+                    "basicData": "Myymälän tiedot",
+                    "pluginData": "Liitännäisen tiedot"
+                },
+                "entities": {
+                    "category": "Luokat:",
+                    "category_association": "Luokka yhdistykset:",
+                    "category_cms_page_association": "Luokan asetteluyhdistykset",
+                    "category_custom_field": "Mukautetut kentät",
+                    "category_product_stream_association": "Luokka dynaamiset tuoteryhmäyhdistykset:",
+                    "cms_page": "Asettelut:",
+                    "country": "Maat:",
+                    "country_state": "Maavaltiot:",
+                    "currency": "Valuutat:",
+                    "custom_field_set": "Mukautetut kenttäjoukot:",
+                    "customer": "Asiakkaat:",
+                    "customer_custom_field": "Asiakkaan mukautetut kentät",
+                    "customer_group": "Asiakasryhmät:",
+                    "customer_group_custom_field": "Asiakasryhmän mukautetut kentät",
+                    "customer_wishlist": "Toivelistat:",
+                    "delivery_time": "Toimitusajat:",
+                    "language": "Kielet:",
+                    "mail_header_footer": "Sähköpostin ylä- ja alatunnisteet",
+                    "mail_template": "Sähköpostimallit:",
+                    "main_variant_relation": "Tärkeimmät muunnoksen suhteet:",
+                    "media": "Media:",
+                    "media_folder": "Media-kansiot:",
+                    "media_folder_inheritance": "Mediakansion perimät:",
+                    "number_range": "Lukualueet:",
+                    "order": "Tilaukset:",
+                    "order_custom_field": "Tilaa mukautetut kentät",
+                    "order_document": "Tilausasiakirjat:",
+                    "order_document_base_config": "Asiakirjan config:",
+                    "order_document_custom_field": "Asiakirjan mukautettujen kenttien tilaaminen",
+                    "order_document_inheritance": "Tilausasiakirjan suhteet:",
+                    "page_system_config": "Sivun perustiedot:",
+                    "product": "Tuotteet:",
+                    "product_canonical_association": "Kanoniset tuoteyhdistykset",
+                    "product_cms_page_association": "Tuotteen asetteluyhdistelmät",
+                    "product_cross_selling": "Ristiinmyynti:",
+                    "product_custom_field": "Tuotteen mukautetut kentät",
+                    "product_feature_set": "Olennaiset ominaisuudet:",
+                    "product_manufacturer": "Tuotteiden valmistajat:",
+                    "product_manufacturer_custom_field": "Tuotteen valmistajan mukautetut kentät",
+                    "product_option_relation": "Tuotevaihtoehdot:",
+                    "product_price_custom_field": "Tuotteen hinta mukautetut kentät",
+                    "product_property_relation": "Tuotteen ominaisuudet:",
+                    "product_review": "Arviot:",
+                    "product_sorting": "Tuotteen lajittelu:",
+                    "product_stream": "Dynaamiset tuoter",
+                    "product_stream_filter_inheritance": "Dynaamiset tuoteryhmän suodat",
+                    "promotion": "Kampanjat:",
+                    "property_group": "Kiinteistöryhmät:",
+                    "property_group_option": "Ominaisuudet:",
+                    "rule": "Säännöt:",
+                    "sales_channel": "Myyntikanavat:",
+                    "sales_channel_domain": "Verkkotunnukset:",
+                    "sales_channel_home_cms_page_association": "Myyntikanavan kotiasetteluyhdistykset",
+                    "salutation": "Tervehdykset:",
+                    "seo_url": "SEO-URL-osoitteet:",
+                    "seo_url_template": "SEO-URL-mallit:",
+                    "shipping_method": "Toimitustavat:",
+                    "snippet": "Katkelmat:",
+                    "snippet_set": "Katkelmasarjat:",
+                    "system_config": "Perustiedot:",
+                    "tax": "Veroprosentit:",
+                    "tax_rule": "Verosäännöt:",
+                    "translation": "Käännökset:",
+                    "unit": "Skaalayksiköt:"
+                },
+                "headers": {
+                    "dataType": "Tyyppi",
+                    "name": "Nimi",
+                    "total": "Data-aineistot"
+                },
+                "noData": "Mitään ei löytynyt muuttoa.",
+                "noDataSubline": "Tarkista yhteys tai kokeile toista profiilia."
+            },
+            "shopInfoCard": {
+                "buttonCreateConnection": "Luo uusi yhteys",
+                "buttonCreateInitialConnection": "Luo alkuperäinen yhteys",
+                "buttonEditSettings": "Muokkaa yhteyttä",
+                "buttonProfileInstallation": "Asenna toinen profiili",
+                "buttonRemoveCredentials": "Poista käyttöoikeustiedot",
+                "buttonResetChecksums": "Palauta tarkistussummat",
+                "buttonResetMigration": "Täydellinen siirto",
+                "buttonSelectConnection": "Vaihda yhteys",
+                "cardTitle": "Kauppa järjestelmä",
+                "connected": "Yhdistetty",
+                "connectionCheck": "Yhteyden tarkistus:",
+                "gateway": "Yhdyskäytävä:",
+                "lastMigration": "Viimeinen muutto:",
+                "link": "Ohje ja dokumentaatio",
+                "noConnection": "Ei yhteyttä",
+                "noConnectionCheckDoneYet": "Yhteyden tarkistusta ei vielä suoritettu",
+                "noMigrationDoneYet": "-",
+                "notConnected": "Ei kytkettynä",
+                "profile": "Järjestelmän profiili:",
+                "refreshButton": "Päivitä yhteys",
+                "removeCredentialsConfirmDialog": {
+                    "abortButtonText": "Peruuta",
+                    "content": "Tämän jälkeen ei ole aktiivista yhteyttä. Palauta yhteys kirjoittamalla käyttötietosi uudelleen.",
+                    "contentHint": "Haluatko poistaa nykyiset käyttöoikeustiedot?",
+                    "title": "Poista käyttöoikeustiedot"
+                },
+                "resetChecksumsConfirmDialog": {
+                    "abortButtonText": "Peruuta",
+                    "confirmButtonText": "Kyllä, nollaa",
+                    "content": "Jos nollaat tarkistussummat, kaikki lähdejärjestelmän tiedot tunnistetaan seuraavassa siirrolla. Tämä sisältää jo siirrettävät tai muuttumattomat tietojoukot. <br><br><strong>Tärkeää:</strong> Shopware 6:ssa edellisen siirron jälkeen tekemiesi tietotietueiden muutokset korvataan. Lähdejärjestelmän tiedot ovat etusijalla.",
+                    "contentHint": "Haluatko nollata tarkistussummat?",
+                    "title": "Palauta tarkistussummat"
+                },
+                "resetMigrationConfirmDialog": {
+                    "abortButtonText": "Peruuta",
+                    "confirmButtonText": "Viimeistelkää nyt",
+                    "content": "Hienoa! Viimeistellään nyt siirtosi ja siivotaan väliaikaiset tiedostot ja käyttämättömät tiedot. <strong>Huomautus:</strong> Siirron viimeisteleminen on päätepiste. Et voi siirtää enää tietoja nykyisen yhteyden kautta.",
+                    "errorNotification": {
+                        "message": "Muuttoliike on parhaillaan käynnissä.",
+                        "title": "Siirtoa viimeistellessä tapahtui virhe"
+                    },
+                    "header": "Oletko lopettanut kauppasi tietojen siirtämisen?",
+                    "title": "Viimeistellään muuttoliike"
+                },
+                "updateBanner": {
+                    "isResettingChecksums": {
+                        "message": "Tarkistussummat nollataan. Tämä voi kestää muutaman minuutin.",
+                        "title": "Tarkistussummien nollaaminen"
+                    },
+                    "isTruncatingMigration": {
+                        "message": "Siirtotietoja lyhennetään. Tämä voi kestää muutaman minuutin.",
+                        "title": "Siirtotietojen lyhentäminen"
+                    }
+                }
+            },
+            "shopwareMajorVersionText": "Olemme huomanneet, että lähdejärjestelmäsi {sourceSystem} versio ei vastaa kohdejärjestelmääsi {targetSystem} -versiota. Varmista, että käytät samaa pääversiota molemmissa järjestelmissä ennen siirron aloittamista.",
+            "title": "Kenraali",
+            "warningModal": {
+                "cancelButton": "Mene takaisin",
+                "confirmButton": "Jatka joka tapauksessa",
+                "message": {
+                    "currency": "Siirtyminen eri oletusvaluutoilla voi johtaa vioittuneisiin tietueisiin ja aiheuttaa arvaamattomia sivuvaikutuksia.",
+                    "language": "Siirtyminen eri oletuskielillä voi johtaa vioittuneisiin tietueisiin ja aiheuttaa arvaamattomia sivuvaikutuksia."
+                },
+                "title": "Tietojen yhteensopimattomuus havaittu"
+            }
+        },
+        "wizard": {
+            "buttonAbort": "Peruuta",
+            "buttonConnect": "Yhdistä",
+            "buttonConnectionCreate": "Yhteyden muodostaminen",
+            "buttonConnectionSelect": "Muuta yhteyttä",
+            "buttonEdit": "Muokkaa yhteyttä",
+            "buttonFinish": "Tehty",
+            "buttonLater": "Sulje",
+            "buttonLetsGo": "Aloita",
+            "buttonNext": "Jatka",
+            "buttonToProfileInformation": "Tiedot",
+            "buttonUseSsl": "HTTPS:n käyttäminen",
+            "pages": {
+                "connectionCreate": {
+                    "connectionLabel": "Yhteyden nimi",
+                    "connectionPlaceholder": "Anna nimi",
+                    "connectionTooltip": "Kirjoita yhteyden yksilöivä nimi.",
+                    "gatewayLabel": "Portti",
+                    "gatewayPlaceholder": "Valitse yhdyskäytävä",
+                    "gatewayTooltip": "Järjestelmien välisen yhteyden tyyppi.",
+                    "gateways": {
+                        "shopwareApi": "API",
+                        "shopwareLocal": "Paikallinen tietokanta"
+                    },
+                    "hint": {
+                        "local": "Huom. Kaupan järjestelmien on oltava samalla palvelimella. Tarvitset pääsyn tietokantaan."
+                    },
+                    "profileInstall": "Asenna toinen profiili",
+                    "profileLabel": "Myymäläjärjestelmän profiili",
+                    "profilePlaceholder": "Valitse profiili",
+                    "title": "Siirto — Luo uusi yhteys"
+                },
+                "connectionSelect": {
+                    "connectionLabel": "Yhteyden nimi",
+                    "connectionPlaceholder": "Valitse yhteys",
+                    "title": "Siirto — Yhteyden muuttaminen"
+                },
+                "credentials": {
+                    "emptyState": "Valitettavasti valitun profiilin lomake ei löytynyt.",
+                    "error": {
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR": "Yhteyden muodostaminen palvelimeen ei onnistu. Tarkista tietyn verkkotunnuksen.",
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR__HINT": "Jos sinulla on ongelmia yhteyden muodostamisessa, kannattaa ehkä tarkistaa palvelimellesi tällä hetkellä asennettu curl-versio ja päivittää se.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ATTRIBUTES_WRONG": "Tietokantayhteydellä ei ole oikeita määritteitä, eikä niitä voi asettaa.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ERROR": "Tietokantayhteyttä ei voitu muodostaa.",
+                        "SWAG_MIGRATION__DUPLICATE_SOURCE_CONNECTION": "Yhteys samaan lähdejärjestelmään on jo olemassa. Käytä toista yhteyttä.",
+                        "SWAG_MIGRATION__GATEWAY_READ": "Yhteyden muodostaminen palvelimeen ei onnistu. Tarkista tietyn verkkotunnuksen.",
+                        "SWAG_MIGRATION__GATEWAY_READ__HINT": "Jos sinulla on ongelmia yhteyden muodostamisessa, kannattaa ehkä tarkistaa palvelimellesi tällä hetkellä asennettu curl-versio ja päivittää se.",
+                        "SWAG_MIGRATION__INVALID_CONNECTION_CREDENTIALS": "Lähdejärjestelmän yhteyden käyttötietoja ei ole olemassa tai ne ovat virheellisiä. Tarkista ne ja yritä uudelleen.",
+                        "SWAG_MIGRATION__IS_RUNNING": "Muuttoliike on parhaillaan käynnissä. Siksi tunnistetietoja ei voi muokata, ennen kuin siirto on valmis.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED": "Tarvittava plugin ”Migration Connector” ei ole asennettu Shopware 5: een. Asenna ilmainen plugin ja yritä uudelleen.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED__HINT": "Jos olet jo asentanut ”Migration Connector” -sovelluksen ja tyhjentänyt välimuistin Shopware 5 -taustajärjestelmässä (Configuration > Cache/Performance), yritä poistaa Shopware 5 -välimuistikansio (var/cache) manuaalisesti.",
+                        "SWAG_MIGRATION__SSL_REQUIRED": "Olemme päättäneet, että tietylle myymäläverkkotunnukselle vaaditaan SSL-yhteys.",
+                        "alertErrorTitle": "Huomio",
+                        "contentTitle": "Ei yhteyttä",
+                        "undefinedErrorMsg": "Sisäisen palvelimen virhe. Yritä uudelleen."
+                    },
+                    "shopware55": {
+                        "api": {
+                            "apiKeyLabel": "API-avain",
+                            "apiKeyPlaceholder": "Anna avain",
+                            "apiKeyTooltip": "API-avainta käytetään suojaukseen ja tunnistamiseen.",
+                            "apiUserLabel": "Käyttäjätunnus (API-käyttäjä)",
+                            "apiUserPlaceholder": "Anna käyttäjätunnus",
+                            "apiUserTooltip": "Käyttäjätunnus Shopware 5 backend.",
+                            "endpointLabel": "Kauppa verkkotunnus",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Kauppani käyttää suojattua yhteyttä (SSL)",
+                            "pluginLinkText": "Lisätietoja laajennuksesta",
+                            "pluginName": "Siirtymisliitin",
+                            "steps": {
+                                "step1": "Asenna ja aktivoi laajennus {pluginName} Shopware 5 -taustajärjestelmästä kohdasta Plugin Manager > Laajennukset > Siirtotyökalut.",
+                                "step2": "Siirry kohtaan Käyttäjähallinta Shopware 5 -taustajärjestelmässä.",
+                                "step3": "Valitse käyttäjä, jota haluat käyttää yhteyteen.",
+                                "step4": "Aktivoi API-käyttö ja tallenna.",
+                                "step5": "Varmista, että käyttäjällä on rooli local_admin.",
+                                "step6": "Kirjoita tähän sovellusliittymän tunnistetiedot yhteyden muodostamiseksi."
+                            },
+                            "title": "Yhdistä Shopware 5 -kauppasi"
+                        },
+                        "local": {
+                            "dbHostLabel": "Isäntä",
+                            "dbHostPlaceholder": "Anna isäntä",
+                            "dbNameLabel": "Tietokannan nimi",
+                            "dbNamePlaceholder": "Anna nimi",
+                            "dbPasswordLabel": "salasana",
+                            "dbPasswordPlaceholder": "Syötä salasana",
+                            "dbPortLabel": "Satama",
+                            "dbUserLabel": "Käyttäjä",
+                            "dbUserPlaceholder": "Anna käyttäjätunnus",
+                            "installationRoot": "Kaupan asennuskansio",
+                            "installationRootPlaceholder": "Syötä asennuksen pääkäyttäjä"
+                        }
+                    },
+                    "shopware6": {
+                        "api": {
+                            "apiPasswordLabel": "Salainen käyttöavain",
+                            "apiPasswordPlaceholder": "Syötä salainen käyttöavain",
+                            "apiPasswordTooltip": "Salaista käyttöavainta käytetään suojaukseen ja tunnistamiseen.",
+                            "apiUserLabel": "Pääsyavaimen tunnus",
+                            "apiUserPlaceholder": "Anna pääsyavaimen tunnus",
+                            "apiUserTooltip": "Access avaimen tunnus integrointi.",
+                            "endpointLabel": "Kauppa verkkotunnus",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Kauppani käyttää suojattua yhteyttä (SSL)",
+                            "integrationLink": "https://docs.shopware.com/en/shopware-6-en/settings/system/integrationen",
+                            "integrationLinkText": "Lisätietoja integraatioista",
+                            "pluginLink": "https://store.shopware.com/en/swag257162657297f/migration-assistant.html",
+                            "pluginLinkText": "Lisätietoja Migration Assistant -laajennuksesta",
+                            "pluginName": "Muuttoliikkeen",
+                            "steps": {
+                                "step1": "Asenna ja aktivoi {pluginName} -laajennus lähdejärjestelmään.",
+                                "step2": "Luo integraatio lähdejärjestelmään kohdasta Asetukset > Järjestelmä > Integraatiot.",
+                                "step3": "Luo käyttöavaimen tunnus ja salainen käyttöavain.",
+                                "step4": "Syötä pääsyn avaimet ja myymäläverkkotunnus tähän yhteyden muodostamiseksi."
+                            },
+                            "title": "Yhdistä Shopware 6 -kauppasi"
+                        }
+                    },
+                    "statusTitle": "Yhteyden tarkistus",
+                    "success": {
+                        "SWAG_MIGRATION__REQUEST_CERTIFICATE_INVALID": "Olemme päättäneet, että määritetyn verkkotunnuksen SSL-sertifikaatti ei ole turvallinen. Tarkista sertifikaatti oman turvallisuutesi varalta.",
+                        "contentInformation": "Voit aloittaa siirron.",
+                        "contentTitle": "Yhteys onnistui",
+                        "undefinedErrorMsg": "Tuntematon virhe, kun tarkistat SSL-varmenteen määritetystä myymälätoimialueesta."
+                    },
+                    "title": "Siirtyminen — yhteyden muodostaminen"
+                },
+                "introduction": {
+                    "contentHeadline": "Siirrämme joitakin asioita",
+                    "contentInformation": "Yhdessä yhdistämme myymäläjärjestelmäsi Shopware 6:een. Siirtymisapuri auttaa sinua siirtämään tietosi vaiheittain.",
+                    "title": "Muuttoliikkeen"
+                },
+                "profileInstallation": {
+                    "availabilityHeadline": "Aikaisemmin saatavilla:",
+                    "availableVersionHeadline": "Tuetut:",
+                    "content": "Valitse myymäläjärjestelmä, josta tietoja siirretään, ja muista asentaa vastaava profiililiitännäinen.",
+                    "installationButton": "Asenna",
+                    "installedHint": "Asennettu",
+                    "magentoProfileHeadline": "Magento - Profil",
+                    "profileManufacturer": "shopware AG",
+                    "shopwareProfileHeadline": "Shopware - Profil",
+                    "title": "Muuttoliike - Shopsystem-Profile"
+                }
+            }
+        },
+        "worker-listener": {
+            "mediaProcessing": {
+                "message": "Tiedostoja ei ole jäljellä. | Yksi tiedosto jäljellä. | {n} tiedostoa jäljellä.",
+                "messageSuccess": "Median lataus on suoritettu loppuun.",
+                "title": "Tietovälinettä ladataan",
+                "titleSuccess": "Median lataus valmis"
+            }
+        }
+    }
+}

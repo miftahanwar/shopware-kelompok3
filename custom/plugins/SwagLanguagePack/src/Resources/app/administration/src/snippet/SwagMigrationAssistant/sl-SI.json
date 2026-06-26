@@ -1,0 +1,679 @@
+{
+    "global": {
+        "error-codes": {
+            "SWAG_MIGRATION_CONNECTION_NAME_ALREADY_EXISTS": "Ime povezave že obstaja.",
+            "SWAG_MIGRATION_CONNECTION_NAME_TO_SHORT": "Ime povezave mora biti dolgo najmanj 6 znakov.",
+            "SWAG_MIGRATION_INVALID_API_KEY": "Tipka API nima pravilne dolžine ({length}/40 znakov)."
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "swag_migration": {
+                "label": "Pomočnik za selitev"
+            }
+        }
+    },
+    "swag-migration": {
+        "api-error": {
+            "abortMigration": "Ni uspelo prekiniti migracije.",
+            "approveFinishedMigration": "Pri dokončanju selitve ni uspelo",
+            "checkConnection": "Ni bilo mogoče preveriti povezave z izvornim sistemom.",
+            "fetchConnectionId": "Ni uspelo dobiti ID-ja aktivne povezave.",
+            "getDataSelection": "Izbira podatkov za trenutno povezavo ni uspela.",
+            "getState": "Ni uspelo dobiti migracijskega stanja.",
+            "startMigration": "Ni uspelo zagnati migracije."
+        },
+        "dashboard": {
+            "button": "Odpri pomočnik za migra",
+            "headline": "Premikanje v nakupovalni program",
+            "information": "Prva stvar je, da povežete svoj obstoječi prodajalni sistem - pomočnik za migracijo vam bo pomagal na poti.",
+            "shopInfoCard": {
+                "button": "Odpri",
+                "header": "Pomočnik za selitev",
+                "resetButton": "Dokončaj"
+            },
+            "title": "Pomočnik za selitev"
+        },
+        "general": {
+            "descriptionTextModule": "Modul za selitev podatkov",
+            "disabledMessages": {
+                "disabled": "Migracije so v tem okolju onemogočene.",
+                "loading": "Migracije trenutno potekajo.",
+                "noData": "Podatkov za selitev ni na voljo.",
+                "noPermission": "Nimate potrebnih dovoljenj za izvajanje selitve.",
+                "noSelectedData": "Za selitev ni bil izbran noben element.",
+                "resettingChecksum": "Kontrolne vsote se trenutno ponastavljajo.",
+                "truncatingMigration": "Podatki o migraciji se trenutno skrajšajo.",
+                "unfilledPremapping": "Pred nadaljevanjem izpolnite vse potrebne preslikave."
+            },
+            "mainMenuItemGeneral": "Pomočnik za selitev",
+            "tabDataSelector": "Izbira podatkov",
+            "tabHistory": "Zgodovina",
+            "tabMain": "Splošno"
+        },
+        "history": {
+            "connectionName": "Ime povezave",
+            "contextMenu": {
+                "details": "Pokaži podrobnosti",
+                "downloadLogs": "Dnevnik prenosa"
+            },
+            "detailPage": {
+                "close": "Zapri",
+                "data": "Podatki",
+                "dataCount": "Nabori podatkov",
+                "dataName": "Ime",
+                "errorCode": "Sporočilo o napaki",
+                "errorCount": "Štetje",
+                "errorLevel": "Raven dnevnika",
+                "errors": "Podrobnosti",
+                "logDescription": "Za več podrobnosti {link}",
+                "logDownload": "prenesite dnevniško datoteko.",
+                "noErrorsOccurred": "Ni prišlo do napak.",
+                "noProgressData": "Ta zagon je bil izveden v prejšnji različici vtičnika in njegovi podatki so bili izbrisani.",
+                "status": {
+                    "aborted": "Prekinil",
+                    "finished": "Končano",
+                    "running": "Tek"
+                },
+                "title": "Podatki o selitvi"
+            },
+            "gateway": "Prehod",
+            "importDateTime": "Začetni čas",
+            "profile": "Profil",
+            "selectedData": "Podatki",
+            "shopDomain": "Domena trgovine",
+            "shopSystem": "Trgovinski sistem",
+            "status": "Status"
+        },
+        "index": {
+            "abortButton": "Prekliči",
+            "backToOverviewButton": "Nazaj na pregled",
+            "confirmAbortDialog": {
+                "cancel": "Nadaljujte",
+                "confirm": "Ustavi selitev",
+                "content": "Selitev ni v celoti končana. Že preseljeni podatki so morda neuporabni. Če zdaj zaprete, boste morali postopek selitve popolnoma znova zagnati.",
+                "hint": "Ali želite ustaviti selitev?",
+                "title": "Ustavi selitev"
+            },
+            "confirmWarningCard": {
+                "currencyMismatch": {
+                    "text": "Valuta podatkov, ki jih je treba preseliti, se ne ujema s standardno valuto [{targetSystemCurrency}]. Podatke z [{sourceSystemCurrency}] je še vedno mogoče preseliti, vendar se ne bodo samodejno pretvorili. Cene lahko prilagodite ročno kasneje.",
+                    "title": "Selitev je priznala drugo valuto"
+                },
+                "languageMismatch": {
+                    "text": "Jezik podatkov, ki jih je treba seliti, se ne ujema s standardnim jezikom [{targetSystemLanguage}]. Podatke z [{sourceSystemLanguage}] je še vedno mogoče preseliti, vendar se ne bodo samodejno pretvorili. Prevode lahko pozneje prilagodite ročno.",
+                    "title": "Selitev je prepoznala drug jezik"
+                }
+            },
+            "continueButton": "Nadaljuj",
+            "error-resolution": {
+                "codes": {
+                    "SWAG_MIGRATION_CONVERT_ASSOCIATION_MISSING": "Pridružena entiteta manjka",
+                    "SWAG_MIGRATION_CONVERT_CHILD_ENTITY_FAILED": "Pretvorba podrednega subjekta ni uspela",
+                    "SWAG_MIGRATION_CONVERT_DOCUMENT_TYPE_UNSUPPORTED": "Pretvorba vrste dokumenta ni podprta",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_ALREADY_EXISTS": "Subjekt že obstaja",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_FAILED": "Pretvorba entiteta ni uspela",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_UNKNOWN": "Odvisna entiteta neznana",
+                    "SWAG_MIGRATION_CONVERT_FIELD_REASSIGNED": "Polje entiteta samodejno prerazporejeno",
+                    "SWAG_MIGRATION_CONVERT_LANGUAGE_PACK_DEACTIVATED": "Jezikovni paket deaktiviran",
+                    "SWAG_MIGRATION_CONVERT_MAIN_VARIANT_RELATION_FAILED": "Pretvorba razmerja glavne variante ni uspela",
+                    "SWAG_MIGRATION_CONVERT_OBJECT_TYPE_UNSUPPORTED": "Vrsta predmeta nepodprta",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_CALCULATION_TYPE_UNSUPPORTED": "Vrsta izračuna pošiljanja ni podprta",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_PRICE_UNSUPPORTED": "Vrsta cene dostave nepodprta",
+                    "SWAG_MIGRATION_CONVERT_SOURCE_DATA_INCOMPLETE": "Izvorni podatki nepopolni",
+                    "SWAG_MIGRATION_CONVERT_UNSERIALIZED_DATA_INVALID": "Nezerializirani podatki so neveljavni",
+                    "SWAG_MIGRATION_FETCH_DATASET_MISSING": "Nabor podatkov za entiteto manjka",
+                    "SWAG_MIGRATION_FETCH_ENTITY_COUNT_FAILED": "Ni uspelo prebrati števila entitet iz izvornega sistema",
+                    "SWAG_MIGRATION_FETCH_PROCESSOR_MISSING": "Procesor za entiteto manjka",
+                    "SWAG_MIGRATION_MEDIA_DEFAULT_FOLDER_UNSUPPORTED": "Medijska privzeta mapa ni podprta",
+                    "SWAG_MIGRATION_MEDIA_FILE_MISSING": "Manjka medijska datoteka",
+                    "SWAG_MIGRATION_MEDIA_MIME_TYPE_UNKNOWN": "Vrsta MIME medija neznana",
+                    "SWAG_MIGRATION_MEDIA_TEMPORARY_FILE_FAILED": "Ustvarjanje začasne datoteke medijev ni uspelo",
+                    "SWAG_MIGRATION_RUN_ABORTED": "Migracija je samodejno prekinjena",
+                    "SWAG_MIGRATION_RUN_EXCEPTION": "Prišlo je do izjeme migracije",
+                    "SWAG_MIGRATION_RUN_MESSAGE_QUEUE_EXCEPTION": "Pojavila se je izjema čakalne vrste",
+                    "SWAG_MIGRATION_VALIDATION_ASSOCIATION_INVALID": "Združevanje subjektov je neveljavno",
+                    "SWAG_MIGRATION_VALIDATION_EXCEPTION": "Pojavila se je izjema za",
+                    "SWAG_MIGRATION_VALIDATION_OPTIONAL_FIELD_VALUE_INVALID": "Neobvezno polje ima neveljavno vrednost",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_MISSING": "Obvezno polje manjka",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_VALUE_INVALID": "Obvezno polje ima neveljavno vrednost",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_TRANSLATION_INVALID": "Zahtevani prevod je neveljaven",
+                    "SWAG_MIGRATION_WRITE_EXCEPTION": "Nastala je izjema pri pisanju",
+                    "SWAG_MIGRATION_WRITE_THEME_COMPILING_FAILED": "Kompilacija teme ni uspela",
+                    "unknown": "Neznana napaka"
+                },
+                "descriptionTitle": "Opis polja",
+                "errors": {
+                    "continueMigrationFailed": "Neuspešna nadaljnja migracija.",
+                    "downloadLogsFailed": "Prenos dnevniške datoteke ni uspel.",
+                    "fetchExampleFailed": "Pridobivanje primernih podatkov ni uspelo.",
+                    "fetchExistingFixesFailed": "Ni uspelo pridobiti obstoječih popravkov.",
+                    "fetchFilterDataFailed": "Pridobivanje podatkov filtra ni uspelo.",
+                    "fetchLogsFailed": "Pridobivanje dnevniških podatkov ni uspelo.",
+                    "fetchRunFailed": "Pridobivanje podatkov o poteku selitve ni uspelo.",
+                    "fieldValueNotSet": "Vrednost polja ni nastavljena.",
+                    "invalidFieldValueFormat": "Neveljavna oblika vrednosti polja.",
+                    "noEntityIdsFound": "V izbranih vnosih dnevnika niso našli veljavnih ID-jev entitet.",
+                    "noLogsSelected": "Prosimo, izberite vsaj en vnos dnevnika, ki ga želite rešiti.",
+                    "resetResolutionFailed": "Ponastavitev reševanja napak ni uspela.",
+                    "submitResolutionFailed": "Odločitev napake ni uspela.",
+                    "validationFailed": "Preverjanje ni uspelo."
+                },
+                "modals": {
+                    "details": {
+                        "convertedDataLabel": "Pretvorjeni podatki",
+                        "sourceDataLabel": "Izvorni podatki",
+                        "title": "Podrobnosti: {entityName}"
+                    },
+                    "error": {
+                        "left": {
+                            "details": "Pokaži podrobnosti",
+                            "reset": "Ponastavi",
+                            "select-all": "Izberi vse ({count})",
+                            "status": {
+                                "resolved": "Rešeno",
+                                "unresolved": "Nerešeno"
+                            }
+                        },
+                        "right": {
+                            "apply": "Uporabi spremembe",
+                            "banner": {
+                                "content": "Prosimo, ustvarite vsaj eno možnost, ki jo želite izbrati v ustreznem administracijskem območju.",
+                                "link": "Dodaj možnost",
+                                "title": "Možnosti ni na voljo"
+                            },
+                            "title": "Uredi: {count} Izdelki",
+                            "unhandledBanner": {
+                                "content": "Vrsta polja ni bilo mogoče določiti. Prosimo, popravite surove izvorne podatke. Vrednost mora biti v pravilni obliki.",
+                                "title": "Neznana vrsta polja"
+                            },
+                            "unresolvableBanner": {
+                                "content": "Za več informacij preverite datoteko dnevnika.",
+                                "title": "Te napake trenutno ni mogoče odpraviti prek Pomočnika za migracijo"
+                            }
+                        },
+                        "table": {
+                            "columns": {
+                                "status": "Status"
+                            }
+                        },
+                        "title": "Popravite napako: {code}, {entityName}, {fieldName}"
+                    }
+                },
+                "step": {
+                    "card": {
+                        "filter": {
+                            "code": {
+                                "label": "Ime napake",
+                                "placeholder": "Izberite ime napake"
+                            },
+                            "entity": {
+                                "label": "Subjekt",
+                                "placeholder": "Izberite entiteto"
+                            },
+                            "field": {
+                                "label": "Polje",
+                                "placeholder": "Izberite polje"
+                            },
+                            "reset": "Ponastavi filtre",
+                            "status": {
+                                "label": "Stanje napake",
+                                "options": {
+                                    "resolved": "Rešeno",
+                                    "unresolved": "Nerešeno"
+                                },
+                                "placeholder": "Izberite stanje napake"
+                            },
+                            "title": "Filtri | Filtri ({count}) | Filtri ({count})"
+                        },
+                        "table": {
+                            "columns": {
+                                "code": "Koda",
+                                "count": "Fikso/Skupaj",
+                                "entity": "Subjekt",
+                                "field": "Polje",
+                                "gatewayName": "Prehod",
+                                "name": "Ime",
+                                "profileName": "Profil"
+                            },
+                            "empty-state": {
+                                "description": "Ni bilo najdenih dnevnikov, ki bi se ujemali z izbranimi filtri.",
+                                "headline": "Nič najdeno"
+                            }
+                        },
+                        "tabs": {
+                            "errors": "Napake ({count})",
+                            "infos": "Informacije ({count})",
+                            "warnings": "Opozorila ({count})"
+                        },
+                        "title": "Napake, ki jih je mogoče popraviti"
+                    },
+                    "continue-modal": {
+                        "text-fixable": "Obstajajo skupine {count} napak, ki jih je mogoče popraviti, ki so še vedno nerešene. Te napake popravite, preden nadaljujete, da se izognete nadaljnjim napakam.",
+                        "text-unfixable": "Obstajajo {count} nepopravljive napake, ki so še vedno nerešene. Če nadaljujete, ne da bi odpravili preostale napake, se lahko pojavijo nadaljnje napake.",
+                        "title": "Nadaljuj"
+                    },
+                    "header": {
+                        "banner": {
+                            "content": "Obstajajo napake ali opozorila {count} , ki jih na tem zaslonu ni mogoče odpraviti. Če želite raziskati, prenesite dnevniško datoteko in preglejte podrobna sporočila o napakah. Osnovna vprašanja bo morda treba odpraviti v izvornem sistemu. Ko je rešena, ponovno zaženite migracijo za nadaljevanje.",
+                            "title": "Nekatere napake ni mogoče popraviti s tem pogledom"
+                        },
+                        "continue": "Nadaljuj",
+                        "continueTooltip": "Pred nadaljevanjem popravite vse napake, ki jih je mogoče popraviti.",
+                        "description": "Preglejte in odpravite napake pri selitvi, ki so se pojavile med uvozom. Odpravite težave s podatki neposredno v tem pogledu ali prenesite dnevniško datoteko za podrobne informacije. Nadaljujte, ko so odpravljene vse napake, ki jih je mogoče popraviti. Ta pogled lahko zapustite in se k njemu vrnete kasneje",
+                        "documentation": "Dokumentacija",
+                        "download": "Prenesite datoteko dnevnika",
+                        "title": "Reševanje napak"
+                    }
+                }
+            },
+            "errorTypes": {
+                "error": "Napaka",
+                "info": "Informacije",
+                "warning": "Opozorilo"
+            },
+            "finishButton": "Dokončaj",
+            "loadingScreenCard": {
+                "documentationLink": "https://developer.shopware.com/docs/guides/hosting/infrastructure/message-queue.html#message-queue",
+                "documentationLinkText": "Dokumentacija čakalne vrste sporočil",
+                "flowChart": {
+                    "cleanup": "Čiščenje",
+                    "errorResolution": "Reševanje napak",
+                    "fetchData": "Branje",
+                    "finish": "Končano",
+                    "indexing": "Indeksiranje",
+                    "premapping": "Preverjanje",
+                    "processMedia": "Prenos",
+                    "writeData": "Pisanje"
+                },
+                "notice": "Nasvet: Ta postopek poteka v čakalni vrsti sporočil. Če je vaša trgovina pravilno konfigurirana, vam ni treba ostati na tej strani.",
+                "result": {
+                    "historyHint": "Te podatke si lahko ogledate kadarkoli v zgodovini selitev. Možno je, da bo kasneje dodanih več dnevniških sporočil, ker prenos medijev še vedno poteka v ozadju.",
+                    "title": "Pomočnik za selitev je končan"
+                },
+                "status": {
+                    "aborting": {
+                        "caption": "Nenapisani podatki se očistijo. Že seljeni podatki so morda neuporabni.",
+                        "long": "Migracije so prekinjene",
+                        "short": "Abortacija"
+                    },
+                    "cleanup": {
+                        "caption": "Začasni podatki se odstranijo. Migracija je skoraj končana.",
+                        "long": "Migracije se čistijo",
+                        "short": "Čiščenje"
+                    },
+                    "error-resolution": {
+                        "caption": "Selitev se zaustavi, dokler niso odpravljene vse napake.",
+                        "long": "Napake je mogoče odpraviti",
+                        "short": "Reševanje napak"
+                    },
+                    "fetching": {
+                        "caption": "Nove naloge so obdelane.",
+                        "long": "Podatki bodo prebrani iz vašega sistema",
+                        "short": "Branje"
+                    },
+                    "finish": "Končano",
+                    "indexing": {
+                        "caption": "Migracija je skoraj končana.",
+                        "long": "Novi podatki se indeksirajo",
+                        "short": "Indeksiranje"
+                    },
+                    "media-processing": {
+                        "caption": "Obdelava velikih slikovnih podatkov lahko traja nekaj časa.",
+                        "long": "Mediji se prenašajo",
+                        "short": "Prenos medijev"
+                    },
+                    "unknown": "Neznano",
+                    "writing": {
+                        "caption": "Glede na velikost trgovine lahko traja nekaj trenutkov.",
+                        "long": "Podatki so zapisani v Shopware 6",
+                        "short": "Pisanje"
+                    }
+                }
+            },
+            "migrateButton": "Začetek selitve",
+            "migrationAlreadyRunning": "Selitev se je že začela.",
+            "pauseButton": "Pause",
+            "pluginVersionText": "Opazili smo, da je posodobitev vtičnika na voljo v vašem izvornem sistemu {sourceSystem}. Preden začnete selitev, posodobite vtičnik \"{pluginName}«.",
+            "premappingCard": {
+                "cardTitle": "Naloge",
+                "group": {
+                    "delivery_time": "Čas dobave",
+                    "manufacturer": "Proizvajalci",
+                    "newsletter_status": "Status novic",
+                    "order_delivery_state": "Države za dostavo naročil",
+                    "order_state": "Naročilo navaja",
+                    "payment_method": "Načini plačila",
+                    "salesChannel": "Prodajalec novic",
+                    "salutation": "Pozdravanje",
+                    "shipping_availability_rule": "Razpoložljivost načina pošiljanja",
+                    "source_timezone": "Časovni pas",
+                    "transaction_state": "Transakcijska stanja",
+                    "user": "Uporabnik administracije"
+                },
+                "newAssignmentTitle": "Nove naloge",
+                "placeholder": "Prosimo, izberite",
+                "previousTitle": "Prejšnji",
+                "unfilledAlert": "Ugotovili smo, da obstajajo podatki, ki zahtevajo ročno dodelitev."
+            },
+            "savePremapping": {
+                "message": "Premapping je bil shranjen.",
+                "saveButton": "Shrani preslikavo"
+            },
+            "selectDataCard": {
+                "cardTitle": "Izbira podatkov",
+                "dataHeader": "Podatki",
+                "dataSelection": {
+                    "basicSettings": "Osnovni podatki",
+                    "cms": "Postavitve",
+                    "customerWishlists": "Seznami želja",
+                    "customersOrders": "Stranke in naročila",
+                    "media": "Mediji",
+                    "newsletterRecipient": "Prejemnik novic",
+                    "processMediaFiles": "Mediji",
+                    "productReviews": "Ocene izdelkov",
+                    "products": "Izdelki",
+                    "promotions": "Promocije",
+                    "seoUrls": "SEO URL-ji"
+                },
+                "dataTypes": {
+                    "basicData": "Podatki o trgovini",
+                    "pluginData": "Podatki o vtičnikih"
+                },
+                "entities": {
+                    "category": "Kategorije:",
+                    "category_association": "Kategorija združenja:",
+                    "category_cms_page_association": "Združenja postavitve kategorije:",
+                    "category_custom_field": "Polja po meri kategorije",
+                    "category_product_stream_association": "Kategorija dinamičnih združenj skupin izdelkov:",
+                    "cms_page": "Postavitve:",
+                    "country": "Države:",
+                    "country_state": "Država navaja:",
+                    "currency": "Valute:",
+                    "custom_field_set": "Nabori polj po meri:",
+                    "customer": "Stranke:",
+                    "customer_custom_field": "Polja po meri strank",
+                    "customer_group": "Skupine strank:",
+                    "customer_group_custom_field": "Polja po meri skupine strank",
+                    "customer_wishlist": "Seznami želja:",
+                    "delivery_time": "Dostavni roki:",
+                    "language": "Jeziki:",
+                    "mail_header_footer": "E-poštne glave in podnožja",
+                    "mail_template": "E-poštne predloge:",
+                    "main_variant_relation": "Glavni variantni odnosi:",
+                    "media": "Mediji:",
+                    "media_folder": "Mape predstavnosti:",
+                    "media_folder_inheritance": "Dediščine medijskih map:",
+                    "number_range": "Obsegi števil:",
+                    "order": "Naročila:",
+                    "order_custom_field": "Naročite polja po meri",
+                    "order_document": "Naročilni dokumenti:",
+                    "order_document_base_config": "Config dokumenta:",
+                    "order_document_custom_field": "Naročite polja po meri dokumenta",
+                    "order_document_inheritance": "Odnosi z dokumentom naročila:",
+                    "page_system_config": "Osnovne informacije na strani:",
+                    "product": "Izdelki:",
+                    "product_canonical_association": "Kanonska združenja izdelkov",
+                    "product_cms_page_association": "Združenja postavitve izdelkov",
+                    "product_cross_selling": "Navzkrižna prodaja:",
+                    "product_custom_field": "Polja po meri izdelka",
+                    "product_feature_set": "Bistvene značilnosti:",
+                    "product_manufacturer": "Proizvajalci izdelkov:",
+                    "product_manufacturer_custom_field": "Polja po meri proizvajalca izdelka",
+                    "product_option_relation": "Možnosti izdelka:",
+                    "product_price_custom_field": "Polja po meri cene izdelka",
+                    "product_property_relation": "Lastnosti izdelka:",
+                    "product_review": "Mnenja:",
+                    "product_sorting": "Sortiranje proizvodov:",
+                    "product_stream": "Dinamične skupine izdelkov:",
+                    "product_stream_filter_inheritance": "Filtri dinamične skupine izdelkov:",
+                    "promotion": "Promocije:",
+                    "property_group": "Skupine nepremičnin:",
+                    "property_group_option": "Lastnosti:",
+                    "rule": "Pravila:",
+                    "sales_channel": "Prodajne poti:",
+                    "sales_channel_domain": "Domene:",
+                    "sales_channel_home_cms_page_association": "Združenja za postavitev domačega kanala prodajnega kanala",
+                    "salutation": "Pozdravi:",
+                    "seo_url": "SEO URL-ji:",
+                    "seo_url_template": "Predloge URL SEO:",
+                    "shipping_method": "Načini pošiljanja:",
+                    "snippet": "Odrezki:",
+                    "snippet_set": "Kompleti izrezkov:",
+                    "system_config": "Osnovne informacije:",
+                    "tax": "Davčne stopnje:",
+                    "tax_rule": "Davčna pravila:",
+                    "translation": "Prevodi:",
+                    "unit": "Enote lestvice:"
+                },
+                "headers": {
+                    "dataType": "Vrsta",
+                    "name": "Ime",
+                    "total": "Podatkovni nizi"
+                },
+                "noData": "Nič ni bilo mogoče seliti.",
+                "noDataSubline": "Preverite svojo povezavo ali poskusite z drugim profilom."
+            },
+            "shopInfoCard": {
+                "buttonCreateConnection": "Ustvarite novo povezavo",
+                "buttonCreateInitialConnection": "Ustvarite začetno povezavo",
+                "buttonEditSettings": "Uredi povezavo",
+                "buttonProfileInstallation": "Namesti drug profil",
+                "buttonRemoveCredentials": "Brisanje podatkov za dostop",
+                "buttonResetChecksums": "Ponastavi kontrolne vsote",
+                "buttonResetMigration": "Popolna selitev",
+                "buttonSelectConnection": "Spreminjanje povezave",
+                "cardTitle": "Trgovinski sistem",
+                "connected": "Povezan",
+                "connectionCheck": "Preverjanje povezave:",
+                "gateway": "Prehod:",
+                "lastMigration": "Zadnja selitev:",
+                "link": "Pomoč in dokumentacija",
+                "noConnection": "Ni povezave",
+                "noConnectionCheckDoneYet": "Preverjanje povezave še ni bilo opravljeno",
+                "noMigrationDoneYet": "-",
+                "notConnected": "Ni povezan",
+                "profile": "Profil sistema:",
+                "refreshButton": "Osveži povezavo",
+                "removeCredentialsConfirmDialog": {
+                    "abortButtonText": "Prekliči",
+                    "content": "Po tem ne bo aktivne povezave. Znova vnesite podatke za dostop, da obnovite povezavo.",
+                    "contentHint": "Želite izbrisati trenutne podatke o dostopu?",
+                    "title": "Brisanje podatkov za dostop"
+                },
+                "resetChecksumsConfirmDialog": {
+                    "abortButtonText": "Prekliči",
+                    "confirmButtonText": "Da, ponastavite",
+                    "content": "Če ponastavite kontrolne vsote, bodo vsi podatki iz izvornega sistema prepoznani v naslednji selitvi. To vključuje že preseljene ali nespremenjene nabore podatkov. <br><br><strong>Pomembno:</strong> Spremembe podatkovnih zapisov, ki ste jih naredili v Shopware 6 od zadnje selitve, bodo prepisane. Podatki o izvornem sistemu imajo prednost.",
+                    "contentHint": "Ali želite ponastaviti kontrolne vsote?",
+                    "title": "Ponastavi kontrolne vsote"
+                },
+                "resetMigrationConfirmDialog": {
+                    "abortButtonText": "Prekliči",
+                    "confirmButtonText": "Dokončati zdaj",
+                    "content": "Odlično! Zdaj dokončamo selitev in očistimo začasne datoteke in neuporabljene podatke. <strong>Prosimo, upoštevajte:</strong> Dokončanje selitve je terminalno. Preko trenutne povezave ne boste mogli več preseliti podatkov.",
+                    "errorNotification": {
+                        "message": "Trenutno poteka selitev.",
+                        "title": "Pri dokončanju selitve je prišlo do napake"
+                    },
+                    "header": "Ste končali s selitvijo podatkov o trgovini?",
+                    "title": "Dokončanje selitve"
+                },
+                "updateBanner": {
+                    "isResettingChecksums": {
+                        "message": "Kontrolne vsote se ponastavljajo. To lahko traja nekaj minut.",
+                        "title": "Ponastavitev kontrolnih vsot"
+                    },
+                    "isTruncatingMigration": {
+                        "message": "Podatki o migraciji se skrajšajo. To lahko traja nekaj minut.",
+                        "title": "Skrajšanje podatkov o selitvi"
+                    }
+                }
+            },
+            "shopwareMajorVersionText": "Opazili smo, da različica vašega izvornega sistema {sourceSystem} ne ustreza z različico ciljnega sistema {targetSystem} . Pred začetkom selitve uporabite isto večjo različico za oba sistema.",
+            "title": "Splošno",
+            "warningModal": {
+                "cancelButton": "Pojdi nazaj",
+                "confirmButton": "Nadaljuj vseeno",
+                "message": {
+                    "currency": "Selitev z različnimi privzetimi valutami lahko privede do poškodovanih zapisov podatkov in povzroči nepredvidljive stranske učinke.",
+                    "language": "Selitev z različnimi privzetimi jeziki lahko povzroči poškodovane zapise podatkov in povzroči nepredvidljive stranske učinke."
+                },
+                "title": "Zaznana je neusklajenost podatkov"
+            }
+        },
+        "wizard": {
+            "buttonAbort": "Prekliči",
+            "buttonConnect": "Povežite",
+            "buttonConnectionCreate": "Vzpostaviti povezavo",
+            "buttonConnectionSelect": "Spremeni povezavo",
+            "buttonEdit": "Uredi povezavo",
+            "buttonFinish": "Končano",
+            "buttonLater": "Zapri",
+            "buttonLetsGo": "Začetek",
+            "buttonNext": "Nadaljuj",
+            "buttonToProfileInformation": "Informacije",
+            "buttonUseSsl": "Uporabi HTTPS",
+            "pages": {
+                "connectionCreate": {
+                    "connectionLabel": "Ime povezave",
+                    "connectionPlaceholder": "Vnesite ime",
+                    "connectionTooltip": "Vnesite enolično ime za povezavo.",
+                    "gatewayLabel": "Prehod",
+                    "gatewayPlaceholder": "Izberite prehod",
+                    "gatewayTooltip": "Vrsta povezave med sistemi.",
+                    "gateways": {
+                        "shopwareApi": "API",
+                        "shopwareLocal": "Lokalna baza podatkov"
+                    },
+                    "hint": {
+                        "local": "Opomba: Trgovinski sistemi morajo biti na istem strežniku. Potrebujete dostop do podatkov zbirke podatkov."
+                    },
+                    "profileInstall": "Namesti drug profil",
+                    "profileLabel": "Profil sistema trgovine",
+                    "profilePlaceholder": "Izberi profil",
+                    "title": "Selitev — Ustvarjanje nove povezave"
+                },
+                "connectionSelect": {
+                    "connectionLabel": "Ime povezave",
+                    "connectionPlaceholder": "Izberite povezavo",
+                    "title": "Selitev — Spreminjanje povezave"
+                },
+                "credentials": {
+                    "emptyState": "Žal mi je noben obrazec za izbrani profil najden.",
+                    "error": {
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR": "Ni bilo mogoče vzpostaviti povezave s strežnikom. Prosimo, preverite določeno domeno trgovine.",
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR__HINT": "Če imate težave pri povezovanju, bi bilo morda vredno preveriti trenutno nameščeno različico curl na vašem strežniku in jo posodobiti.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ATTRIBUTES_WRONG": "Povezava zbirke podatkov nima pravih atributov in jih ni mogoče nastaviti.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ERROR": "Povezave z bazo podatkov ni bilo mogoče vzpostaviti.",
+                        "SWAG_MIGRATION__DUPLICATE_SOURCE_CONNECTION": "Povezava z istim izvornim sistemom že obstaja. Prosimo, uporabite drugo povezavo.",
+                        "SWAG_MIGRATION__GATEWAY_READ": "Ni bilo mogoče vzpostaviti povezave s strežnikom. Prosimo, preverite določeno domeno trgovine.",
+                        "SWAG_MIGRATION__GATEWAY_READ__HINT": "Če imate težave pri povezovanju, bi bilo morda vredno preveriti trenutno nameščeno različico curl na vašem strežniku in jo posodobiti.",
+                        "SWAG_MIGRATION__INVALID_CONNECTION_CREDENTIALS": "Podatki o dostopu za povezavo z izvornim sistemom ne obstajajo ali so napačni. Prosimo, preverite jih in poskusite znova.",
+                        "SWAG_MIGRATION__IS_RUNNING": "Trenutno poteka selitev. Zato poverilnic ne morete urejati, dokler selitev ni dokončana.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED": "Zahtevani vtičnik »Migration Connector« ni nameščen v Shopware 5. Namestite brezplačen vtičnik in poskusite znova.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED__HINT": "Če ste že namestili »Migration Connector« in izbrisali predpomnilnik v ozadju Shopware 5 (Konfiguracija > Vpomnilnik/zmogljivost), poskusite ročno izbrisati mapo predpomnilnika Shopware 5 (var/cache).",
+                        "SWAG_MIGRATION__SSL_REQUIRED": "Ugotovili smo, da je določena domena trgovine potrebna SSL povezava.",
+                        "alertErrorTitle": "Pozornost",
+                        "contentTitle": "Ni povezave",
+                        "undefinedErrorMsg": "Napaka notranjega strežnika. Prosimo, poskusite znova."
+                    },
+                    "shopware55": {
+                        "api": {
+                            "apiKeyLabel": "API ključ",
+                            "apiKeyPlaceholder": "Vnesite ključ",
+                            "apiKeyTooltip": "Ključ API se uporablja za varnost in identifikacijo.",
+                            "apiUserLabel": "Uporabniško ime (uporabnik API)",
+                            "apiUserPlaceholder": "Vnesite uporabniško ime",
+                            "apiUserTooltip": "Uporabniško ime vašega Shopware 5 Backend.",
+                            "endpointLabel": "Domena trgovine",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Moja trgovina uporablja varno povezavo (SSL)",
+                            "pluginLinkText": "Več informacij o vtičniku",
+                            "pluginName": "Migracijski konektor",
+                            "steps": {
+                                "step1": "Namestite in aktivirajte vtičnik {pluginName} iz ozadja Shopware 5 v razdelku Upravitelj vtičnikov > Razširitve > Orodja za selitev.",
+                                "step2": "V ozadju Shopware 5 pojdite na Upravljanje uporabnikov.",
+                                "step3": "Izberite uporabnika, ki ga želite uporabiti za povezavo.",
+                                "step4": "Aktivirajte dostop do API-ja in shranite.",
+                                "step5": "Prepričajte se, da ima uporabnik vlogo local_admin.",
+                                "step6": "Tukaj vnesite poverilnice API, da vzpostavite povezavo."
+                            },
+                            "title": "Povežite svojo trgovino Shopware 5"
+                        },
+                        "local": {
+                            "dbHostLabel": "Gostitelj",
+                            "dbHostPlaceholder": "Vnesite gostitelja",
+                            "dbNameLabel": "Ime baze podatkov",
+                            "dbNamePlaceholder": "Vnesite ime",
+                            "dbPasswordLabel": "Geslo",
+                            "dbPasswordPlaceholder": "Vnesite geslo",
+                            "dbPortLabel": "Pristanišče",
+                            "dbUserLabel": "Uporabnik",
+                            "dbUserPlaceholder": "Vnesite uporabniško ime",
+                            "installationRoot": "Mapa za namestitev trgovine",
+                            "installationRootPlaceholder": "Vnesite korensko namestitev"
+                        }
+                    },
+                    "shopware6": {
+                        "api": {
+                            "apiPasswordLabel": "Skrivni ključ za dostop",
+                            "apiPasswordPlaceholder": "Vnesite skrivni ključ za dostop",
+                            "apiPasswordTooltip": "Skrivni ključ za dostop se uporablja za varnost in identifikacijo.",
+                            "apiUserLabel": "ID ključa za dostop",
+                            "apiUserPlaceholder": "Vnesite ID ključa za dostop",
+                            "apiUserTooltip": "Dostop do ključa vaše integracije.",
+                            "endpointLabel": "Domena trgovine",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Moja trgovina uporablja varno povezavo (SSL)",
+                            "integrationLink": "https://docs.shopware.com/en/shopware-6-en/settings/system/integrationen",
+                            "integrationLinkText": "Več o integracijah",
+                            "pluginLink": "https://store.shopware.com/en/swag257162657297f/migration-assistant.html",
+                            "pluginLinkText": "Več o razširitvi Migration Assistant",
+                            "pluginName": "Pomočnik za selitev",
+                            "steps": {
+                                "step1": "Namestite in aktivirajte razširitev {pluginName} v izvornem sistemu.",
+                                "step2": "Ustvarite integracijo v izvornem sistemu prek Nastavitve > Sistem > Integracije.",
+                                "step3": "Ustvarite ID dostopnega ključa in tajni ključ za dostop.",
+                                "step4": "Tukaj vnesite ključe za dostop in domeno trgovine, da vzpostavite povezavo."
+                            },
+                            "title": "Povežite svojo trgovino Shopware 6"
+                        }
+                    },
+                    "statusTitle": "Preverjanje povezave",
+                    "success": {
+                        "SWAG_MIGRATION__REQUEST_CERTIFICATE_INVALID": "Ugotovili smo, da certifikat SSL določene domene trgovine ni varen. Preverite potrdilo za lastno varnost.",
+                        "contentInformation": "Selitev lahko začnete.",
+                        "contentTitle": "Povezava uspešna",
+                        "undefinedErrorMsg": "Med preverjanjem potrdila SSL iz določene domene trgovine je prišlo do neznane napake."
+                    },
+                    "title": "Migracije — vzpostaviti povezavo"
+                },
+                "introduction": {
+                    "contentHeadline": "Premakni se nekaj stvari",
+                    "contentInformation": "Skupaj bomo vaš prodajalni sistem povezali s Shopware 6. Nato vam pomočnik za selitev pomaga preseliti podatke korak za korakom.",
+                    "title": "Pomočnik za selitev"
+                },
+                "profileInstallation": {
+                    "availabilityHeadline": "Prej na voljo:",
+                    "availableVersionHeadline": "Podprto:",
+                    "content": "Izberite prodajalni sistem, s katerega želite preseliti podatke, in se prepričajte, da namestite tudi ustrezen vtičnik profila.",
+                    "installationButton": "Namesti",
+                    "installedHint": "Nameščen",
+                    "magentoProfileHeadline": "Magento - Profil",
+                    "profileManufacturer": "prodajalna oprema AG",
+                    "shopwareProfileHeadline": "Nakupovalni pribor - Profil",
+                    "title": "Migracije - Profil Trgovinskega sistema"
+                }
+            }
+        },
+        "worker-listener": {
+            "mediaProcessing": {
+                "message": "Datoteke ne ostanejo. | Preostala je ena datoteka. | {n} preostalih datotek.",
+                "messageSuccess": "Prenos medijev je zaključen.",
+                "title": "Medij se prenaša",
+                "titleSuccess": "Dokončan prenos predstavnosti"
+            }
+        }
+    }
+}

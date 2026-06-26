@@ -1,0 +1,679 @@
+{
+    "global": {
+        "error-codes": {
+            "SWAG_MIGRATION_CONNECTION_NAME_ALREADY_EXISTS": "Savienojuma nosaukums jau pastāv.",
+            "SWAG_MIGRATION_CONNECTION_NAME_TO_SHORT": "Savienojuma nosaukumam jābūt vismaz 6 rakstzīmēm.",
+            "SWAG_MIGRATION_INVALID_API_KEY": "API taustiņam nav pareiza garuma ({length}/40 rakstzīmes)."
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "swag_migration": {
+                "label": "Migrācijas asistents"
+            }
+        }
+    },
+    "swag-migration": {
+        "api-error": {
+            "abortMigration": "Neizdevās pārtraukt migrāciju.",
+            "approveFinishedMigration": "Migrācijas pabeigšanas laikā neizdevās",
+            "checkConnection": "Neizdevās pārbaudīt savienojumu ar avota sistēmu.",
+            "fetchConnectionId": "Neizdevās iegūt aktīvā savienojuma ID.",
+            "getDataSelection": "Neizdevās iegūt datu izvēli pašreizējam savienojumam.",
+            "getState": "Neizdevās iegūt migrācijas stāvokli.",
+            "startMigration": "Neizdevās sākt migrāciju."
+        },
+        "dashboard": {
+            "button": "Atveriet migrācijas palīgu",
+            "headline": "Pārcelšanās uz Shopware",
+            "information": "Vispirms ir jāsaista esošā veikala sistēma - migrācijas palīgs jums palīdzēs.",
+            "shopInfoCard": {
+                "button": "Atvērt",
+                "header": "Migrācijas palīgs",
+                "resetButton": "Pabeigt"
+            },
+            "title": "Migrācijas asistents"
+        },
+        "general": {
+            "descriptionTextModule": "Datu migrēšanas modulis",
+            "disabledMessages": {
+                "disabled": "Migrācija šajā vidē ir atspējota.",
+                "loading": "Pašlaik notiek migrācija.",
+                "noData": "Migrācijai nav pieejami dati.",
+                "noPermission": "Jums nav nepieciešamo atļauju, lai veiktu migrāciju.",
+                "noSelectedData": "Migrācijai nav atlasīti neviens vienums.",
+                "resettingChecksum": "Kontrolsummas pašlaik tiek atiestatītas.",
+                "truncatingMigration": "Migrācijas dati pašlaik tiek saīsināti.",
+                "unfilledPremapping": "Pirms turpināt, pabeidziet visas nepieciešamās kartēšanas."
+            },
+            "mainMenuItemGeneral": "Migrācijas asistents",
+            "tabDataSelector": "Datu atlase",
+            "tabHistory": "Vēsture",
+            "tabMain": "Galvenais"
+        },
+        "history": {
+            "connectionName": "Savienojuma nosaukums",
+            "contextMenu": {
+                "details": "Rādīt detalizētu informāciju",
+                "downloadLogs": "Lejupielādes žurnāls"
+            },
+            "detailPage": {
+                "close": "Aizvērt",
+                "data": "Dati",
+                "dataCount": "Datu kopas",
+                "dataName": "Nosaukums",
+                "errorCode": "Kļūdas ziņojums",
+                "errorCount": "Skaits",
+                "errorLevel": "Žurnāla līmenis",
+                "errors": "Sīkāka informācija",
+                "logDescription": "Sīkākai informācijai {link}",
+                "logDownload": "lejupielādējiet žurnālfailu.",
+                "noErrorsOccurred": "Kļūdas nav radušās.",
+                "noProgressData": "Šī palaišana tika veikta iepriekšējā spraudņa versijā, un tā dati ir izdzēsti.",
+                "status": {
+                    "aborted": "Pārtraukts",
+                    "finished": "Pabeigts",
+                    "running": "Skriešana"
+                },
+                "title": "Migrācijas dati"
+            },
+            "gateway": "Vārteja",
+            "importDateTime": "Sākuma laiks",
+            "profile": "Profils",
+            "selectedData": "Dati",
+            "shopDomain": "Veikala domēns",
+            "shopSystem": "Veikala sistēma",
+            "status": "Statuss"
+        },
+        "index": {
+            "abortButton": "Atcelt",
+            "backToOverviewButton": "Atpakaļ uz pārskatu",
+            "confirmAbortDialog": {
+                "cancel": "Turpiniet",
+                "confirm": "Pārtraukt migrāciju",
+                "content": "Migrācija nav pilnībā pabeigta. Jau migrētie dati var būt nelietojami. Ja jūs pametat tūlīt, jums būs pilnībā jāpārstrādā migrācijas process.",
+                "hint": "Vai vēlaties apturēt migrāciju?",
+                "title": "Pārtraukt migrāciju"
+            },
+            "confirmWarningCard": {
+                "currencyMismatch": {
+                    "text": "Migrējamo datu valūta neatbilst standarta valūtai [{targetSystemCurrency}]. Datus ar [{sourceSystemCurrency}] joprojām var migrēt, bet tie netiks automātiski konvertēti. Pēc tam jūs varat pielāgot cenas manuāli.",
+                    "title": "Migrācija ir atzinusi citu valūtu"
+                },
+                "languageMismatch": {
+                    "text": "Migrējamo datu valoda neatbilst standarta valodai [{targetSystemLanguage}]. Datus ar [{sourceSystemLanguage}] joprojām var migrēt, bet tie netiks automātiski konvertēti. Pēc tam tulkojumus varat pielāgot manuāli.",
+                    "title": "Migrācija ir atzinusi citu valodu"
+                }
+            },
+            "continueButton": "Turpināt",
+            "error-resolution": {
+                "codes": {
+                    "SWAG_MIGRATION_CONVERT_ASSOCIATION_MISSING": "Trūkst saistītās entītijas",
+                    "SWAG_MIGRATION_CONVERT_CHILD_ENTITY_FAILED": "Bērnu vienības konvertēšana neizdevās",
+                    "SWAG_MIGRATION_CONVERT_DOCUMENT_TYPE_UNSUPPORTED": "Dokumenta tipa konvertēšana netiek atbalstīta",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_ALREADY_EXISTS": "Entitācija jau pastāv",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_FAILED": "Entītijas konvertēšana neizdev",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_UNKNOWN": "Atkarīgā vienība nav zināma",
+                    "SWAG_MIGRATION_CONVERT_FIELD_REASSIGNED": "Entītijas lauks automātiski pārpiešķirts",
+                    "SWAG_MIGRATION_CONVERT_LANGUAGE_PACK_DEACTIVATED": "Valodu pakotne deaktivizēta",
+                    "SWAG_MIGRATION_CONVERT_MAIN_VARIANT_RELATION_FAILED": "Galvenā varianta attiecību konvertēšana neizdevās",
+                    "SWAG_MIGRATION_CONVERT_OBJECT_TYPE_UNSUPPORTED": "Objekta tips nav atbalstīts",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_CALCULATION_TYPE_UNSUPPORTED": "Piegādes aprēķina veids nav atbalstīts",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_PRICE_UNSUPPORTED": "Piegādes cenas veids neatbalstīts",
+                    "SWAG_MIGRATION_CONVERT_SOURCE_DATA_INCOMPLETE": "Avota dati nepilnīgi",
+                    "SWAG_MIGRATION_CONVERT_UNSERIALIZED_DATA_INVALID": "Nesērijveida dati nederīgi",
+                    "SWAG_MIGRATION_FETCH_DATASET_MISSING": "Trūkst entītijas datu kopas",
+                    "SWAG_MIGRATION_FETCH_ENTITY_COUNT_FAILED": "Neizdevās nolasīt entītiju skaitu no avota sistēmas",
+                    "SWAG_MIGRATION_FETCH_PROCESSOR_MISSING": "Trūkst entītijas procesora",
+                    "SWAG_MIGRATION_MEDIA_DEFAULT_FOLDER_UNSUPPORTED": "Multivides noklusējuma mape netiek atbalstīta",
+                    "SWAG_MIGRATION_MEDIA_FILE_MISSING": "Trūkst multivides faila",
+                    "SWAG_MIGRATION_MEDIA_MIME_TYPE_UNKNOWN": "Multivides MIME tips nav zināms",
+                    "SWAG_MIGRATION_MEDIA_TEMPORARY_FILE_FAILED": "Multivides pagaidu failu izveide neizdevās",
+                    "SWAG_MIGRATION_RUN_ABORTED": "Migrācija tiek pārtraukta automātiski",
+                    "SWAG_MIGRATION_RUN_EXCEPTION": "Migrācijas izņēmums ir noticis",
+                    "SWAG_MIGRATION_RUN_MESSAGE_QUEUE_EXCEPTION": "Notika ziņojumu rindas izņēmums",
+                    "SWAG_MIGRATION_VALIDATION_ASSOCIATION_INVALID": "Uzņēmumu asociācija nav derīga",
+                    "SWAG_MIGRATION_VALIDATION_EXCEPTION": "Notika validācijas izņēmums",
+                    "SWAG_MIGRATION_VALIDATION_OPTIONAL_FIELD_VALUE_INVALID": "Izvēles laukam ir nederīga vērtība",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_MISSING": "Trūkst obligātā lauka",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_VALUE_INVALID": "Obligātajam laukam ir nederīga vērtība",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_TRANSLATION_INVALID": "Nepieciešamais tulkojums nav derīgs",
+                    "SWAG_MIGRATION_WRITE_EXCEPTION": "Notika rakstīšanas izņēmums",
+                    "SWAG_MIGRATION_WRITE_THEME_COMPILING_FAILED": "Tēmas apkopošana neizdevās",
+                    "unknown": "Nezināma kļūda"
+                },
+                "descriptionTitle": "Lauka apraksts",
+                "errors": {
+                    "continueMigrationFailed": "Neizdevās turpināt migrāciju.",
+                    "downloadLogsFailed": "Neizdevās lejupielādēt žurnāla failu.",
+                    "fetchExampleFailed": "Neizdevās iegūt piemēru datus.",
+                    "fetchExistingFixesFailed": "Neizdevās iegūt esošos labojumus.",
+                    "fetchFilterDataFailed": "Filtra datu ieguve neizdevās.",
+                    "fetchLogsFailed": "Neizdevās iegūt žurnāla datus.",
+                    "fetchRunFailed": "Migrācijas palaišanas datu ieguve neizdevās.",
+                    "fieldValueNotSet": "Lauka vērtība nav iestatīta.",
+                    "invalidFieldValueFormat": "Nederīgs lauka vērtības formāts.",
+                    "noEntityIdsFound": "Atlasītajos žurnāla ierakstos nav atrasti derīgi entītijas ID.",
+                    "noLogsSelected": "Lūdzu, atlasiet vismaz vienu žurnāla ierakstu, lai to atrisinātu.",
+                    "resetResolutionFailed": "Neizdevās atiestatīt kļūdas izšķirtspēju.",
+                    "submitResolutionFailed": "Kļūdas izšķiršanas iesniegšana neizdevās.",
+                    "validationFailed": "Validācija neizdevās."
+                },
+                "modals": {
+                    "details": {
+                        "convertedDataLabel": "Pārveidoti dati",
+                        "sourceDataLabel": "Avota dati",
+                        "title": "Sīkāka informācija: {entityName}"
+                    },
+                    "error": {
+                        "left": {
+                            "details": "Rādīt detaļas",
+                            "reset": "Atiestatīt",
+                            "select-all": "Atlasīt visu ({count})",
+                            "status": {
+                                "resolved": "Atrisināts",
+                                "unresolved": "Neatrisināts"
+                            }
+                        },
+                        "right": {
+                            "apply": "Lietot izmaiņas",
+                            "banner": {
+                                "content": "Lūdzu, izveidojiet vismaz vienu opciju, lai izvēlētos attiecīgajā administrēšanas apgabalā.",
+                                "link": "Pievienot opciju",
+                                "title": "Nav pieejama opcija"
+                            },
+                            "title": "Rediģēt: {count} pērles",
+                            "unhandledBanner": {
+                                "content": "Lauka veidu nevarēja noteikt. Lūdzu, labojiet neapstrādātos avota datus. Vērtībai jābūt pareizā formātā.",
+                                "title": "Nezināms lauka tips"
+                            },
+                            "unresolvableBanner": {
+                                "content": "Lūdzu pārbaudiet žurnāla failu lai iegūtu plašāku informāciju.",
+                                "title": "Šo kļūdu pašlaik nevar novērst, izmantojot migrācijas palīgu"
+                            }
+                        },
+                        "table": {
+                            "columns": {
+                                "status": "Statuss"
+                            }
+                        },
+                        "title": "Labot kļūdu: {code}, {entityName}, {fieldName}"
+                    }
+                },
+                "step": {
+                    "card": {
+                        "filter": {
+                            "code": {
+                                "label": "Kļūdas nosaukums",
+                                "placeholder": "Izvēlieties kļūdas nosaukumu"
+                            },
+                            "entity": {
+                                "label": "Uzņēmums",
+                                "placeholder": "Atlasiet lauku"
+                            },
+                            "field": {
+                                "label": "Lauks",
+                                "placeholder": "Izvēlieties lauku"
+                            },
+                            "reset": "Atjaunot filtrus",
+                            "status": {
+                                "label": "Kļūdas statuss",
+                                "options": {
+                                    "resolved": "Atrisināts",
+                                    "unresolved": "Neatrisināts"
+                                },
+                                "placeholder": "Izvēlieties kļūdas statusu"
+                            },
+                            "title": "Filtri | Filtri ({count}) | Filtri ({count})"
+                        },
+                        "table": {
+                            "columns": {
+                                "code": "Kods",
+                                "count": "Fiksēts/Kopā",
+                                "entity": "Uzņēmums",
+                                "field": "Lauks",
+                                "gatewayName": "Vārteja",
+                                "name": "Nosaukums",
+                                "profileName": "Profils"
+                            },
+                            "empty-state": {
+                                "description": "Netika atrasti žurnāli, kas atbilst atlasītajiem filtriem.",
+                                "headline": "Nekas nav atrasts"
+                            }
+                        },
+                        "tabs": {
+                            "errors": "Kļūdas ({count})",
+                            "infos": "Informācija ({count})",
+                            "warnings": "Brīdinājumi ({count})"
+                        },
+                        "title": "Labojamās kļūdas"
+                    },
+                    "continue-modal": {
+                        "text-fixable": "Ir {count} labojamu kļūdu grupas, kuras joprojām nav atrisinātas. Lūdzu, labojiet šīs kļūdas, pirms turpināt izvairīties no papildu kļūdām.",
+                        "text-unfixable": "Ir {count} neizlabojamas kļūdas, kas joprojām nav atrisinātas. Ja turpināsit, neatrisinot atlikušās kļūdas, var parādīties papildu kļūdas.",
+                        "title": "Turpināt"
+                    },
+                    "header": {
+                        "banner": {
+                            "content": "Ir {count} kļūdas vai brīdinājumi, kurus nevar novērst no šī ekrāna. Lai izmeklētu, lejupielādējiet žurnāla failu un pārskatiet detalizētus kļūdu ziņojumus. Iespējams, ka pamatā esošās problēmas būs jānovērš avota sistēmā. Kad tas ir atrisināts, atkārtoti palaidiet migrāciju, lai turpinātu.",
+                            "title": "Dažas kļūdas nav labojamas, izmantojot šo skatu"
+                        },
+                        "continue": "Turpināt",
+                        "continueTooltip": "Pirms turpināt, lūdzu, labojiet visas labojamās kļūdas.",
+                        "description": "Pārskatiet un novērsiet migrācijas kļūdas, kas radušās importēšanas laikā. Novērsiet datu problēmas tieši šajā skatā vai lejupielādējiet žurnāla failu, lai iegūtu detalizētu informāciju. Turpiniet, kad visas labojamās kļūdas ir novērstas. Jūs varat atstāt šo skatu un atgriezties pie tā vēlāk",
+                        "documentation": "Dokumentācija",
+                        "download": "Lejupielādēt žurnāla failu",
+                        "title": "Kļūdu izšķiršana"
+                    }
+                }
+            },
+            "errorTypes": {
+                "error": "Kļūda",
+                "info": "Informācija",
+                "warning": "Brīdinājums"
+            },
+            "finishButton": "Pabeigt",
+            "loadingScreenCard": {
+                "documentationLink": "https://developer.shopware.com/docs/guides/hosting/infrastructure/message-queue.html#message-queue",
+                "documentationLinkText": "Ziņojumu rindas dokumentācija",
+                "flowChart": {
+                    "cleanup": "Tīrīšana",
+                    "errorResolution": "Kļūdu izšķiršana",
+                    "fetchData": "Lasīšana",
+                    "finish": "Gatavs",
+                    "indexing": "Indeksēšana",
+                    "premapping": "Pārbaude",
+                    "processMedia": "Lejupielādes",
+                    "writeData": "Rakstīšana"
+                },
+                "notice": "Padoms. Šis process darbojas ziņojumu rindā. Jums nav jāpaliek šajā lapā, ja jūsu veikals ir pareizi konfigurēts.",
+                "result": {
+                    "historyHint": "Šo informāciju jebkurā laikā varat skatīt migrācijas vēsturē. Iespējams, ka vēlāk tiks pievienoti vairāk žurnāla ziņojumu, jo multivides lejupielāde joprojām darbojas fonā.",
+                    "title": "Migrācijas palīgs ir pabeigts"
+                },
+                "status": {
+                    "aborting": {
+                        "caption": "Nerakstītie dati tiek iztīrīti. Jau migrētie dati varētu būt nelietojami.",
+                        "long": "Migrācija tiek pārtraukta",
+                        "short": "Aborts"
+                    },
+                    "cleanup": {
+                        "caption": "Pagaidu dati tiek noņemti. Migrācija ir gandrīz pabeigta.",
+                        "long": "Migrācija tiek attīrīta",
+                        "short": "Tīrīšana"
+                    },
+                    "error-resolution": {
+                        "caption": "Migrācija tiek apturēta, līdz tiek novērstas visas kļūdas.",
+                        "long": "Kļūdas var atrisināt",
+                        "short": "Kļūdu izšķiršana"
+                    },
+                    "fetching": {
+                        "caption": "Jaunie uzdevumi tiek apstrādāti.",
+                        "long": "Dati tiks nolasīti no jūsu sistēmas",
+                        "short": "Lasīšana"
+                    },
+                    "finish": "Gatavs",
+                    "indexing": {
+                        "caption": "Migrācija ir gandrīz pabeigta.",
+                        "long": "Jaunie dati tiek indeksēti",
+                        "short": "Indeksēšana"
+                    },
+                    "media-processing": {
+                        "caption": "Lielu attēlu datu apstrāde var aizņemt kādu laiku.",
+                        "long": "Plašsaziņas līdzekļi tiek pārsūtīti",
+                        "short": "Mediju pārsūtīšana"
+                    },
+                    "unknown": "Nezināms",
+                    "writing": {
+                        "caption": "Atkarībā no veikala lieluma tas var aizņemt dažus mirkļus.",
+                        "long": "Dati tiek rakstīti Shopware 6",
+                        "short": "Rakstīšana"
+                    }
+                }
+            },
+            "migrateButton": "Sākt migrāciju",
+            "migrationAlreadyRunning": "Migrācija ir sākusies.",
+            "pauseButton": "Pauze",
+            "pluginVersionText": "Esam pamanījuši, ka spraudņa atjauninājums ir pieejams jūsu avotu sistēmā {sourceSystem}. Pirms migrēšanas sākšanas, lūdzu, atjauniniet spraudni \"{pluginName}\".",
+            "premappingCard": {
+                "cardTitle": "Uzdevumi",
+                "group": {
+                    "delivery_time": "Piegādes laiks",
+                    "manufacturer": "Ražotāji",
+                    "newsletter_status": "Biļetena statuss",
+                    "order_delivery_state": "Pasūtījuma piegādes statuss",
+                    "order_state": "Pasūtījuma statuss",
+                    "payment_method": "Maksājumu veidi",
+                    "salesChannel": "Newsletter pārdošanas kanāls",
+                    "salutation": "Sveicinājums",
+                    "shipping_availability_rule": "Piegādes metodes pieejamība",
+                    "source_timezone": "Laika zona",
+                    "transaction_state": "Darījuma stāvokļi",
+                    "user": "Administrēšanas lietotājs"
+                },
+                "newAssignmentTitle": "Jauni uzdevumi",
+                "placeholder": "Lūdzu izvēlieties",
+                "previousTitle": "Iepriekšējais",
+                "unfilledAlert": "Mēs esam atklājuši, ka ir dati, kas prasa manuālu piešķiršanu."
+            },
+            "savePremapping": {
+                "message": "Iepriekšejo plānojumu ir saglabāts.",
+                "saveButton": "Saglabāt iepriekšejo plānojumu"
+            },
+            "selectDataCard": {
+                "cardTitle": "Datu atlase",
+                "dataHeader": "Dati",
+                "dataSelection": {
+                    "basicSettings": "Pamatdati",
+                    "cms": "Izkārtojumi",
+                    "customerWishlists": "Vēlmju saraksti",
+                    "customersOrders": "Klienti un pasūtījumi",
+                    "media": "Mediji",
+                    "newsletterRecipient": "Biļetena saņēmējs",
+                    "processMediaFiles": "Mediji",
+                    "productReviews": "Produktu atsauksmes",
+                    "products": "Produkti",
+                    "promotions": "Akcijas",
+                    "seoUrls": "SEO URL"
+                },
+                "dataTypes": {
+                    "basicData": "Veikala dati",
+                    "pluginData": "Spraudņa dati"
+                },
+                "entities": {
+                    "category": "Kategorijas:",
+                    "category_association": "Kategoriju asociācijas:",
+                    "category_cms_page_association": "Kategoriju izkārtojuma asociācijas",
+                    "category_custom_field": "Kategorijas pielāgoti lauki",
+                    "category_product_stream_association": "Kategoriju dinamiskās produktu grupu asociācijas:",
+                    "cms_page": "Izkārtojumi:",
+                    "country": "Valstis:",
+                    "country_state": "Valstu valstis:",
+                    "currency": "Valūtas:",
+                    "custom_field_set": "Pielāgotu lauku kopas",
+                    "customer": "Klienti:",
+                    "customer_custom_field": "Klientu pielāgotie lauki",
+                    "customer_group": "Klientu grupas:",
+                    "customer_group_custom_field": "Klientu grupas pielāgotie lauki",
+                    "customer_wishlist": "Vēlmju saraksti:",
+                    "delivery_time": "Piegādes laiki:",
+                    "language": "Valodas:",
+                    "mail_header_footer": "E-pasta galvenes un kājenes",
+                    "mail_template": "E-pasta veidnes:",
+                    "main_variant_relation": "Galvenais variants attiecības:",
+                    "media": "Mediji:",
+                    "media_folder": "Multivides mapes:",
+                    "media_folder_inheritance": "Multivides mapju mantošana:",
+                    "number_range": "Skaitļu diapazoni:",
+                    "order": "Pasūtījumi:",
+                    "order_custom_field": "Pasūtiet pielāgotus laukus",
+                    "order_document": "Pasūtījuma dokumenti:",
+                    "order_document_base_config": "Dokumenta konfigurācija:",
+                    "order_document_custom_field": "Pasūtīt dokumenta pielāgotos laukus",
+                    "order_document_inheritance": "Pasūtījuma dokumentu attiecības:",
+                    "page_system_config": "Lapas pamatinformācija:",
+                    "product": "Produkti:",
+                    "product_canonical_association": "Kanoniskās produktu asociācijas",
+                    "product_cms_page_association": "Produktu izkārtojuma asociācijas",
+                    "product_cross_selling": "Krusta pārdošana:",
+                    "product_custom_field": "Produkta pielāgotie lauki",
+                    "product_feature_set": "Būtiskie raksturlielumi:",
+                    "product_manufacturer": "Produktu ražotāji:",
+                    "product_manufacturer_custom_field": "Produkta ražotāja pielāgotie lauki",
+                    "product_option_relation": "Produkta iespējas:",
+                    "product_price_custom_field": "Produkta cenas pielāgotie lauki",
+                    "product_property_relation": "Produkta īpašības:",
+                    "product_review": "Atsauksmes:",
+                    "product_sorting": "Produktu šķirošana:",
+                    "product_stream": "Dinamiskās produktu grupas:",
+                    "product_stream_filter_inheritance": "Dinamiskie produktu grupas filtri:",
+                    "promotion": "Akcijas:",
+                    "property_group": "Īpašumu grupas:",
+                    "property_group_option": "Īpašības:",
+                    "rule": "Noteikumi:",
+                    "sales_channel": "Pārdošanas kanāli:",
+                    "sales_channel_domain": "Domēni:",
+                    "sales_channel_home_cms_page_association": "Pārdošanas kanālu mājas izkārtojuma asociācijas",
+                    "salutation": "Sveicieni:",
+                    "seo_url": "SEO URL:",
+                    "seo_url_template": "SEO URL veidnes:",
+                    "shipping_method": "Piegādes metodes:",
+                    "snippet": "Fragmenti:",
+                    "snippet_set": "Fragmentu komplekti:",
+                    "system_config": "Pamatinformācija:",
+                    "tax": "Nodokļu likmes:",
+                    "tax_rule": "Nodokļu noteikumi:",
+                    "translation": "Tulkojumi:",
+                    "unit": "Mēroga vienības:"
+                },
+                "headers": {
+                    "dataType": "Tips",
+                    "name": "Nosaukums",
+                    "total": "Datu kopas"
+                },
+                "noData": "Nekas atrasts migrēt.",
+                "noDataSubline": "Lūdzu, pārbaudiet savu savienojumu vai izmēģiniet citu profilu."
+            },
+            "shopInfoCard": {
+                "buttonCreateConnection": "Izveidot jaunu savienojumu",
+                "buttonCreateInitialConnection": "Izveidojiet sākotnējo savienojumu",
+                "buttonEditSettings": "Rediģēt savienojumu",
+                "buttonProfileInstallation": "Instalējiet citu profilu",
+                "buttonRemoveCredentials": "Dzēst piekļuves datus",
+                "buttonResetChecksums": "Atiestatīt kontrolsummas",
+                "buttonResetMigration": "Pilnīga migrācija",
+                "buttonSelectConnection": "Mainīt savienojumu",
+                "cardTitle": "Veikala sistēma",
+                "connected": "Savienots",
+                "connectionCheck": "Savienojuma kļūda:",
+                "gateway": "Vārteja:",
+                "lastMigration": "Pēdējā migrācija:",
+                "link": "Palīdzība un dokumentācija",
+                "noConnection": "Nav savienojuma",
+                "noConnectionCheckDoneYet": "Pagaidām nav veikta savienojuma pārbaude",
+                "noMigrationDoneYet": "-",
+                "notConnected": "Nav savienots",
+                "profile": "Sistēmas profils:",
+                "refreshButton": "Atsvaidzināt savienojumu",
+                "removeCredentialsConfirmDialog": {
+                    "abortButtonText": "Atcelt",
+                    "content": "Pēc tam nebūs aktīva savienojuma. Lai atjaunotu savienojumu, vēlreiz ievadiet piekļuves datus.",
+                    "contentHint": "Vai vēlaties dzēst pašreizējos piekļuves datus?",
+                    "title": "Dzēst piekļuves datus"
+                },
+                "resetChecksumsConfirmDialog": {
+                    "abortButtonText": "Atcelt",
+                    "confirmButtonText": "Jā, atiestatīt",
+                    "content": "Ja atiestatīsit kontrolsummas, visi avota sistēmas dati tiks atpazīti nākamajā migrācijā. Tas ietver jau migrētas vai nemainītas datu kopas.<br><br><strong>Svarīgi:</strong> izmaiņas datu ierakstos, ko esat veicis Shopware 6 kopš pēdējās migrācijas, tiks pārrakstītas. Avota sistēmas datiem ir prioritāte.",
+                    "contentHint": "Vai vēlaties atiestatīt kontrolsummas?",
+                    "title": "Atiestatīt kontrolsummas"
+                },
+                "resetMigrationConfirmDialog": {
+                    "abortButtonText": "Atcelt",
+                    "confirmButtonText": "Pabeigt tūlīt",
+                    "content": "Lieliski! Pabeigsim jūsu migrāciju un iztīrīsim pagaidu failus un neizmantotos datus. <strong>Lūdzu, ņemiet vērā:</strong> migrācijas pabeigšana ir gala. Jūs vairs nevarēsit migrēt datus, izmantojot pašreizējo savienojumu.",
+                    "errorNotification": {
+                        "message": "Pašlaik notiek migrācija.",
+                        "title": "Pabeidzot migrēšanu, radās kļūda"
+                    },
+                    "header": "Vai esat pabeidzis veikala datu migrēšanu?",
+                    "title": "Pabeigt migrāciju"
+                },
+                "updateBanner": {
+                    "isResettingChecksums": {
+                        "message": "Kontrolsummas tiek atiestatītas. Tas var aizņemt dažas minūtes.",
+                        "title": "Kontrolsummu atiestatīšana"
+                    },
+                    "isTruncatingMigration": {
+                        "message": "Migrācijas dati tiek saīsināti. Tas var aizņemt dažas minūtes.",
+                        "title": "Migrācijas datu saīsināšana"
+                    }
+                }
+            },
+            "shopwareMajorVersionText": "Mēs esam pamanījuši, ka jūsu avota sistēmas {sourceSystem} versija neatbilst jūsu mērķa sistēmas {targetSystem} versijai. Pirms migrācijas sākšanas, lūdzu, abām sistēmām izmantojiet vienu un to pašu galveno versiju.",
+            "title": "Vispārīgi",
+            "warningModal": {
+                "cancelButton": "Atpakaļ",
+                "confirmButton": "Turpiniet jebkurā gadījumā",
+                "message": {
+                    "currency": "Migrācija ar dažādām noklusējuma valūtām var izraisīt bojātus datu ierakstus un izraisīt neparedzamas blakusparādības.",
+                    "language": "Migrācija ar dažādām noklusējuma valodām var izraisīt bojātus datu ierakstus un izraisīt neparedzamas blakusparādības."
+                },
+                "title": "Atklāta datu neatbilstība"
+            }
+        },
+        "wizard": {
+            "buttonAbort": "Atcelt",
+            "buttonConnect": "Savienot",
+            "buttonConnectionCreate": "Izveidot savienojumu",
+            "buttonConnectionSelect": "Mainīt savienojumu",
+            "buttonEdit": "Rediģēt savienojumu",
+            "buttonFinish": "Gatavs",
+            "buttonLater": "Aizvērt",
+            "buttonLetsGo": "Sākt",
+            "buttonNext": "Turpināt",
+            "buttonToProfileInformation": "Informācija",
+            "buttonUseSsl": "Izmantojiet HTTPS",
+            "pages": {
+                "connectionCreate": {
+                    "connectionLabel": "Savienojuma nosaukums",
+                    "connectionPlaceholder": "Ievadiet nosaukumu",
+                    "connectionTooltip": "Ievadiet unikālu savienojuma nosaukumu.",
+                    "gatewayLabel": "Vārteja",
+                    "gatewayPlaceholder": "Atlasiet vārteju",
+                    "gatewayTooltip": "Savienojuma veids starp sistēmām.",
+                    "gateways": {
+                        "shopwareApi": "API",
+                        "shopwareLocal": "Vietējā datubāze"
+                    },
+                    "hint": {
+                        "local": "Piezīme. Veikala sistēmām jābūt vienā serverī. Jums ir nepieciešams piekļūt datiem datu bāzei."
+                    },
+                    "profileInstall": "Instalēt citu profilu",
+                    "profileLabel": "Veikala sistēmas profils",
+                    "profilePlaceholder": "Izvēlieties profilu",
+                    "title": "Migrācija - izveidojiet jaunu savienojumu"
+                },
+                "connectionSelect": {
+                    "connectionLabel": "Savienojuma nosaukums",
+                    "connectionPlaceholder": "Lūdzu izvēlieties savienojumu",
+                    "title": "Migrācija - savienojuma maiņa"
+                },
+                "credentials": {
+                    "emptyState": "Atvainojiet, ka izvēlētajam profilam nav atrasta forma.",
+                    "error": {
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR": "Neizdevās izveidot savienojumu ar serveri. Lūdzu, pārbaudiet doto veikala domēnu.",
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR__HINT": "Ja rodas problēmas ar savienojumu, iespējams, ir vērts pārbaudīt serverī pašlaik instalēto curl versiju un atjaunināt to.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ATTRIBUTES_WRONG": "Datu bāzes savienojumam nav pareizo atribūtu, un tos nevar iestatīt.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ERROR": "Datu bāzes savienojumu nevarēja izveidot.",
+                        "SWAG_MIGRATION__DUPLICATE_SOURCE_CONNECTION": "Savienojums ar to pašu avota sistēmu jau pastāv. Lūdzu, izmantojiet citu savienojumu.",
+                        "SWAG_MIGRATION__GATEWAY_READ": "Neizdevās izveidot savienojumu ar serveri. Lūdzu, pārbaudiet doto veikala domēnu.",
+                        "SWAG_MIGRATION__GATEWAY_READ__HINT": "Ja rodas problēmas ar savienojumu, iespējams, ir vērts pārbaudīt serverī pašlaik instalēto curl versiju un atjaunināt to.",
+                        "SWAG_MIGRATION__INVALID_CONNECTION_CREDENTIALS": "Piekļuves dati savienojumam ar datu sistēmu neeksistē vai ir nepareizi. Lūdzu, pārbaudiet tos un mēģiniet vēlreiz.",
+                        "SWAG_MIGRATION__IS_RUNNING": "Pašlaik notiek migrācija. Tādēļ akreditācijas datus nevar rediģēt, kamēr migrācija nav pabeigta.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED": "Nepieciešamais spraudnis “Migrācijas savienotājs” nav instalēts Shopware 5. Lūdzu, instalējiet bezmaksas spraudni un mēģiniet vēlreiz.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED__HINT": "Ja esat jau instalējis “Migrācijas savienotāju” un notīrījis kešatmiņu Shopware 5 aizmugurē (konfigurācija > kešatmiņa/veiktspēja), mēģiniet manuāli izdzēst Shopware 5 kešatmiņas mapi (var/cache).",
+                        "SWAG_MIGRATION__SSL_REQUIRED": "Mēs esam noteikuši, ka konkrētajam veikala domēnam ir nepieciešams SSL savienojums.",
+                        "alertErrorTitle": "Uzmanību",
+                        "contentTitle": "Nav savienojuma",
+                        "undefinedErrorMsg": "Iekšējā servera kļūda. Lūdzu, mēģiniet vēlreiz."
+                    },
+                    "shopware55": {
+                        "api": {
+                            "apiKeyLabel": "API atslēga",
+                            "apiKeyPlaceholder": "Ievadiet atslēgu",
+                            "apiKeyTooltip": "API atslēga tiek izmantota drošībai un identifikācijai.",
+                            "apiUserLabel": "Lietotājvārds (API lietotājs)",
+                            "apiUserPlaceholder": "Ievadiet lietotājvārdu",
+                            "apiUserTooltip": "Lietotājvārds jūsu Shopware 5 aizmugure.",
+                            "endpointLabel": "Veikala domēns",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Mans veikals izmanto drošu savienojumu (SSL)",
+                            "pluginLinkText": "Vairāk informācijas par spraudni",
+                            "pluginName": "Migrācijas savienotājs",
+                            "steps": {
+                                "step1": "Instalējiet un aktivizējiet spraudni {pluginName} no sava Shopware 5 aizmugures sadaļā Spraudņu pārvaldnieks > Paplašinājumi > Migrācijas rīki.",
+                                "step2": "Atveriet sadaļu Lietotāja administrēšana savā Shopware 5 aizmugurē.",
+                                "step3": "Atlasiet lietotāju, kuru vēlaties izmantot savienojumam.",
+                                "step4": "Aktivizējiet API piekļuvi un saglabājiet.",
+                                "step5": "Pārliecinieties, vai lietotājam ir loma local_admin.",
+                                "step6": "Šeit ievadiet API akreditācijas datus, lai izveidotu savienojumu."
+                            },
+                            "title": "Pievienojiet savu Shopware 5 veikalu"
+                        },
+                        "local": {
+                            "dbHostLabel": "Host",
+                            "dbHostPlaceholder": "Ievadiet uzņēmēju",
+                            "dbNameLabel": "Datubāzes nosaukums",
+                            "dbNamePlaceholder": "Ievadiet vārdu",
+                            "dbPasswordLabel": "Parole",
+                            "dbPasswordPlaceholder": "Ievadiet paroli",
+                            "dbPortLabel": "Ostas",
+                            "dbUserLabel": "Lietotājs",
+                            "dbUserPlaceholder": "Ievadiet lietotājvārdu",
+                            "installationRoot": "Veikala instalācijas mape",
+                            "installationRootPlaceholder": "Ievadiet instalācijas sakni"
+                        }
+                    },
+                    "shopware6": {
+                        "api": {
+                            "apiPasswordLabel": "Slepenās piekļuves atslē",
+                            "apiPasswordPlaceholder": "Ievadīt slepeno piekļuves atslēgu",
+                            "apiPasswordTooltip": "Slepenās piekļuves atslēga tiek izmantota drošībai un identifikācijai.",
+                            "apiUserLabel": "Piekļuves atslēgas ID",
+                            "apiUserPlaceholder": "Ievadiet piekļuves atslēgas ID",
+                            "apiUserTooltip": "Piekļuve jūsu integrācijas atslēgas ID.",
+                            "endpointLabel": "Veikala domēns",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Mans veikals izmanto drošu savienojumu (SSL)",
+                            "integrationLink": "https://docs.shopware.com/en/shopware-6-en/settings/system/integrationen",
+                            "integrationLinkText": "Vairāk par integrāciju",
+                            "pluginLink": "https://store.shopware.com/en/swag257162657297f/migration-assistant.html",
+                            "pluginLinkText": "Vairāk par Migrācijas palīga paplašinājumu",
+                            "pluginName": "Migrācijas asistents",
+                            "steps": {
+                                "step1": "Instalējiet un aktivizējiet {pluginName} paplašinājumu avota sistēmā.",
+                                "step2": "Izveidojiet integrāciju avota sistēmā, izmantojot Iestatījumi> Sistēma> Integrācijas.",
+                                "step3": "Ģenerējiet piekļuves atslēgas ID un slepeno piekļuves atslēgu.",
+                                "step4": "Šeit ievadiet piekļuves atslēgas un veikala domēnu, lai izveidotu savienojumu."
+                            },
+                            "title": "Pievienojiet savu Shopware 6 veikalu"
+                        }
+                    },
+                    "statusTitle": "Savienojuma pārbaude",
+                    "success": {
+                        "SWAG_MIGRATION__REQUEST_CERTIFICATE_INVALID": "Mēs esam noteikuši, ka norādītā veikala domēna SSL sertifikāts nav drošs. Pārbaudiet sertifikātu par savu drošību.",
+                        "contentInformation": "Varat sākt migrāciju.",
+                        "contentTitle": "Savienojums veiksmīgs",
+                        "undefinedErrorMsg": "Pārbaudot SSL sertifikātu no norādītā veikala domēna, radās nezināma kļūda."
+                    },
+                    "title": "Migrācija — savienojuma izveide"
+                },
+                "introduction": {
+                    "contentHeadline": "Pārvietosim dažas lietas",
+                    "contentInformation": "Kopā mēs savienosim jūsu veikala sistēmu ar Shopware 6. Pēc tam migrācijas palīgs palīdzēs pakāpeniski migrēt datus.",
+                    "title": "Migrācijas asistents"
+                },
+                "profileInstallation": {
+                    "availabilityHeadline": "Iepriekš pieejams:",
+                    "availableVersionHeadline": "Atbalstīts:",
+                    "content": "Izvēlieties veikala sistēmu, no kuras migrēt datus, un noteikti instalējiet arī atbilstošo profila spraudni.",
+                    "installationButton": "Instalēt",
+                    "installedHint": "Instalēts",
+                    "magentoProfileHeadline": "Magento - Profils",
+                    "profileManufacturer": "shopware AG",
+                    "shopwareProfileHeadline": "Shopware - Profil",
+                    "title": "Migrācija - Veikala sistēma-Profils"
+                }
+            }
+        },
+        "worker-listener": {
+            "mediaProcessing": {
+                "message": "Neviens fails paliek. | Atlikušais viens fails. | Atlikušie {n} faili.",
+                "messageSuccess": "Multivides lejupielāde ir pabeigta.",
+                "title": "Plašsaziņas līdzekļi tiek lejupielādēti",
+                "titleSuccess": "Multivides lejupielāde pabeigta"
+            }
+        }
+    }
+}

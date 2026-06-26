@@ -1,0 +1,679 @@
+{
+    "global": {
+        "error-codes": {
+            "SWAG_MIGRATION_CONNECTION_NAME_ALREADY_EXISTS": "De verbindingsnaam bestaat al.",
+            "SWAG_MIGRATION_CONNECTION_NAME_TO_SHORT": "De verbindingsnaam moet minimaal 6 tekens lang zijn.",
+            "SWAG_MIGRATION_INVALID_API_KEY": "De API-sleutel heeft niet de juiste lengte ({length} / 40 tekens)."
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "swag_migration": {
+                "label": "Migratie-assistent"
+            }
+        }
+    },
+    "swag-migration": {
+        "api-error": {
+            "abortMigration": "Het is niet gelukt de migratie af te breken.",
+            "approveFinishedMigration": "Mislukt tijdens het voltooien van de migratie",
+            "checkConnection": "Kon de verbinding met het bronsysteem niet controleren.",
+            "fetchConnectionId": "Het ophalen van de actieve verbindings-ID is mislukt.",
+            "getDataSelection": "Het ophalen van de gegevensselectie voor de huidige verbinding is mislukt.",
+            "getState": "Kan de migratiestatus niet verkrijgen.",
+            "startMigration": "Het starten van de migratie is mislukt."
+        },
+        "dashboard": {
+            "button": "Migratie-assistent openen",
+            "headline": "Verhuizen naar Shopware",
+            "information": "Verbind eerst het bestaande shopsysteem - de Migratie Assistent zal je stapsgewijs verder helpen.",
+            "shopInfoCard": {
+                "button": "Openen",
+                "header": "Migratie assistent",
+                "resetButton": "Finish"
+            },
+            "title": "Migratie-assistent"
+        },
+        "general": {
+            "descriptionTextModule": "Module om data te migreren",
+            "disabledMessages": {
+                "disabled": "Migratie is in deze omgeving uitgeschakeld.",
+                "loading": "De migratie is momenteel aan de gang.",
+                "noData": "Er zijn geen gegevens beschikbaar voor migratie.",
+                "noPermission": "Je hebt niet de vereiste machtigingen om een migratie uit te voeren.",
+                "noSelectedData": "Er zijn geen items geselecteerd voor migratie.",
+                "resettingChecksum": "Checksums worden momenteel opnieuw ingesteld.",
+                "truncatingMigration": "Migratiegegevens worden momenteel ingekort.",
+                "unfilledPremapping": "Voltooi alle vereiste toewijzingen voordat u verder gaat."
+            },
+            "mainMenuItemGeneral": "Migratieassistent",
+            "tabDataSelector": "Gegevensselectie",
+            "tabHistory": "Geschiedenis",
+            "tabMain": "Algemeen"
+        },
+        "history": {
+            "connectionName": "Verbindingsnaam",
+            "contextMenu": {
+                "details": "Details weergeven",
+                "downloadLogs": "Download log"
+            },
+            "detailPage": {
+                "close": "Sluiten",
+                "data": "Gegevens",
+                "dataCount": "Datasets",
+                "dataName": "Naam",
+                "errorCode": "Foutmelding",
+                "errorCount": "Aantal",
+                "errorLevel": "Logniveau",
+                "errors": "Details",
+                "logDescription": "Voor meer details {link}",
+                "logDownload": "download het logbestand.",
+                "noErrorsOccurred": "Er zijn geen fouten opgetreden.",
+                "noProgressData": "Deze run is uitgevoerd in een vorige versie van de plug-in en de gegevens zijn verwijderd.",
+                "status": {
+                    "aborted": "Afgebroken",
+                    "finished": "Uitgevoerd",
+                    "running": "Draait"
+                },
+                "title": "Migratie details"
+            },
+            "gateway": "Gateway",
+            "importDateTime": "Starttijd",
+            "profile": "Profiel",
+            "selectedData": "Datums",
+            "shopDomain": "Winkeldomein",
+            "shopSystem": "Winkel systeem",
+            "status": "Toestand"
+        },
+        "index": {
+            "abortButton": "Annuleren",
+            "backToOverviewButton": "Terug naar overzicht",
+            "confirmAbortDialog": {
+                "cancel": "Blijf doorgaan",
+                "confirm": "Stop migratie",
+                "content": "De migratie is niet volledig voltooid. Reeds gemigreerde gegevens zijn mogelijk onbruikbaar. Als u nu stopt, moet u het migratieproces volledig opnieuw uitvoeren.",
+                "hint": "Wilt u de migratie stoppen?",
+                "title": "Stop migratie"
+            },
+            "confirmWarningCard": {
+                "currencyMismatch": {
+                    "text": "De valuta van de te migreren gegevens komt niet overeen met de standaardvaluta [{targetSystemCurrency}]. Gegevens met [{sourceSystemCurrency}] kunnen nog steeds worden gemigreerd, maar worden niet automatisch geconverteerd. U kunt de prijzen achteraf handmatig aanpassen.",
+                    "title": "Migratie heeft een andere valuta herkend"
+                },
+                "languageMismatch": {
+                    "text": "De taal van de te migreren gegevens komt niet overeen met de standaardtaal [{targetSystemLanguage}]. Gegevens met [{sourceSystemLanguage}] kunnen nog steeds worden gemigreerd, maar worden niet automatisch geconverteerd. U kunt de vertalingen achteraf handmatig aanpassen.",
+                    "title": "Migratie herkent een andere taal"
+                }
+            },
+            "continueButton": "Doorgaan",
+            "error-resolution": {
+                "codes": {
+                    "SWAG_MIGRATION_CONVERT_ASSOCIATION_MISSING": "Bijbehorende entiteit ontbreekt",
+                    "SWAG_MIGRATION_CONVERT_CHILD_ENTITY_FAILED": "Conversie van onderliggende entiteiten is mislukt",
+                    "SWAG_MIGRATION_CONVERT_DOCUMENT_TYPE_UNSUPPORTED": "Conversie van documenttypen wordt niet ondersteund",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_ALREADY_EXISTS": "Entiteit bestaat al",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_FAILED": "Conversie van de entiteit is mislukt",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_UNKNOWN": "Afhankelijke entiteit onbekend",
+                    "SWAG_MIGRATION_CONVERT_FIELD_REASSIGNED": "Entiteitsveld wordt automatisch opnieuw toegewezen",
+                    "SWAG_MIGRATION_CONVERT_LANGUAGE_PACK_DEACTIVATED": "Taalpakket gedeactiveerd",
+                    "SWAG_MIGRATION_CONVERT_MAIN_VARIANT_RELATION_FAILED": "Conversie van de relatie van de hoofdvariant is mislukt",
+                    "SWAG_MIGRATION_CONVERT_OBJECT_TYPE_UNSUPPORTED": "Objecttype wordt niet ondersteund",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_CALCULATION_TYPE_UNSUPPORTED": "Berekeningstype voor verzending wordt niet ondersteund",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_PRICE_UNSUPPORTED": "Verzendprijstype wordt niet ondersteund",
+                    "SWAG_MIGRATION_CONVERT_SOURCE_DATA_INCOMPLETE": "Brongegevens onvolledig",
+                    "SWAG_MIGRATION_CONVERT_UNSERIALIZED_DATA_INVALID": "Gegevens zonder serienummer zijn ongeldig",
+                    "SWAG_MIGRATION_FETCH_DATASET_MISSING": "Dataset voor ontbrekende entiteit",
+                    "SWAG_MIGRATION_FETCH_ENTITY_COUNT_FAILED": "Kon het aantal entiteiten uit het bronsysteem niet lezen",
+                    "SWAG_MIGRATION_FETCH_PROCESSOR_MISSING": "Processor voor ontbrekende entiteit",
+                    "SWAG_MIGRATION_MEDIA_DEFAULT_FOLDER_UNSUPPORTED": "De standaardmap van het medium wordt niet ondersteund",
+                    "SWAG_MIGRATION_MEDIA_FILE_MISSING": "Mediabestand ontbreekt",
+                    "SWAG_MIGRATION_MEDIA_MIME_TYPE_UNKNOWN": "MIME-mediatype onbekend",
+                    "SWAG_MIGRATION_MEDIA_TEMPORARY_FILE_FAILED": "Het aanmaken van een tijdelijk mediabestand is mislukt",
+                    "SWAG_MIGRATION_RUN_ABORTED": "Migratie wordt automatisch afgebroken",
+                    "SWAG_MIGRATION_RUN_EXCEPTION": "Er is een migratie-uitzondering opgetreden",
+                    "SWAG_MIGRATION_RUN_MESSAGE_QUEUE_EXCEPTION": "Er is een uitzondering in de berichtenwachtrij",
+                    "SWAG_MIGRATION_VALIDATION_ASSOCIATION_INVALID": "Entiteitskoppeling is ongeldig",
+                    "SWAG_MIGRATION_VALIDATION_EXCEPTION": "Er is een validatie-uitzondering opgetreden",
+                    "SWAG_MIGRATION_VALIDATION_OPTIONAL_FIELD_VALUE_INVALID": "Het optionele veld heeft een ongeldige waarde",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_MISSING": "Verplicht veld ontbreekt",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_VALUE_INVALID": "Verplicht veld heeft een ongeldige waarde",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_TRANSLATION_INVALID": "Vereiste vertaling is ongeldig",
+                    "SWAG_MIGRATION_WRITE_EXCEPTION": "Er is een schrijffout opgetreden",
+                    "SWAG_MIGRATION_WRITE_THEME_COMPILING_FAILED": "Het compileren van het thema is mislukt",
+                    "unknown": "Onbekende fout"
+                },
+                "descriptionTitle": "Beschrijving van het veld",
+                "errors": {
+                    "continueMigrationFailed": "Mislukte voortzetting van de migratie.",
+                    "downloadLogsFailed": "Het downloaden van het logbestand is mislukt.",
+                    "fetchExampleFailed": "Het ophalen van voorbeeldgegevens is mislukt.",
+                    "fetchExistingFixesFailed": "Het ophalen van bestaande oplossingen is mislukt.",
+                    "fetchFilterDataFailed": "Het ophalen van filtergegevens is mislukt.",
+                    "fetchLogsFailed": "Het ophalen van logboekgegevens is mislukt.",
+                    "fetchRunFailed": "Het ophalen van migratie-rungegevens is mislukt.",
+                    "fieldValueNotSet": "De veldwaarde is niet ingesteld.",
+                    "invalidFieldValueFormat": "Ongeldig formaat voor veldwaarden.",
+                    "noEntityIdsFound": "Geen geldige entiteits-ID's gevonden in de geselecteerde logboekvermeldingen.",
+                    "noLogsSelected": "Selecteer ten minste één logboekvermelding om op te lossen.",
+                    "resetResolutionFailed": "Het opnieuw instellen van de foutoplossing is mislukt.",
+                    "submitResolutionFailed": "Het verzenden van de foutoplossing is mislukt.",
+                    "validationFailed": "Validatie is mislukt."
+                },
+                "modals": {
+                    "details": {
+                        "convertedDataLabel": "Geconverteerde gegevens",
+                        "sourceDataLabel": "Brongegevens",
+                        "title": "Gegevens: {entityName}"
+                    },
+                    "error": {
+                        "left": {
+                            "details": "Details",
+                            "reset": "Resetten",
+                            "select-all": "Alles selecteren ({count})",
+                            "status": {
+                                "resolved": "Opgelost",
+                                "unresolved": "Onopgelost"
+                            }
+                        },
+                        "right": {
+                            "apply": "Wijzigingen toepassen",
+                            "banner": {
+                                "content": "Maak ten minste één optie aan om te selecteren in het bijbehorende beheergedeelte.",
+                                "link": "Een optie toevoegen",
+                                "title": "Geen optie beschikbaar"
+                            },
+                            "title": "Bewerken: {count} Items",
+                            "unhandledBanner": {
+                                "content": "Het veldtype kon niet worden bepaald. Corrigeer de onbewerkte brongegevens. De waarde moet de juiste indeling hebben.",
+                                "title": "Onbekend veldtype"
+                            },
+                            "unresolvableBanner": {
+                                "content": "Controleer het logbestand voor meer informatie.",
+                                "title": "Deze fout kan momenteel niet worden opgelost via de migratieassistent"
+                            }
+                        },
+                        "table": {
+                            "columns": {
+                                "status": "Status"
+                            }
+                        },
+                        "title": "Fout herstellen: {code}, {entityName}, {fieldName}"
+                    }
+                },
+                "step": {
+                    "card": {
+                        "filter": {
+                            "code": {
+                                "label": "Foutnaam",
+                                "placeholder": "Selecteer een foutnaam"
+                            },
+                            "entity": {
+                                "label": "entiteit",
+                                "placeholder": "Selecteer een entiteit"
+                            },
+                            "field": {
+                                "label": "Veld",
+                                "placeholder": "Selecteer een veld"
+                            },
+                            "reset": "Filters opnieuw instellen",
+                            "status": {
+                                "label": "Foutstatus",
+                                "options": {
+                                    "resolved": "Opgelost",
+                                    "unresolved": "Onopgelost"
+                                },
+                                "placeholder": "Selecteer een foutstatus"
+                            },
+                            "title": "Filters | Filters ({count}) | Filters ({count})"
+                        },
+                        "table": {
+                            "columns": {
+                                "code": "Code",
+                                "count": "Vast/Totaal",
+                                "entity": "entiteit",
+                                "field": "Veld",
+                                "gatewayName": "Gateway",
+                                "name": "Naam",
+                                "profileName": "Profiel"
+                            },
+                            "empty-state": {
+                                "description": "Er zijn geen logboeken gevonden die overeenkomen met de geselecteerde filters.",
+                                "headline": "Niets gevonden"
+                            }
+                        },
+                        "tabs": {
+                            "errors": "Fouten ({count})",
+                            "infos": "Informatie ({count})",
+                            "warnings": "Waarschuwingen ({count})"
+                        },
+                        "title": "Fouten die kunnen worden opgelost"
+                    },
+                    "continue-modal": {
+                        "text-fixable": "Er zijn {count} -groepen met herstelbare fouten die nog steeds niet zijn opgelost. Corrigeer deze fouten voordat u doorgaat om vervolgfouten te voorkomen.",
+                        "text-unfixable": "Er zijn {count} onherstelbare fouten die nog steeds niet zijn opgelost. Als u doorgaat zonder de resterende fouten op te lossen, kunnen er vervolgfouten optreden.",
+                        "title": "Verder"
+                    },
+                    "header": {
+                        "banner": {
+                            "content": "Er zijn {count} -fouten of waarschuwingen die niet via dit scherm kunnen worden opgelost. Download het logbestand en bekijk de gedetailleerde foutmeldingen om dit te onderzoeken. De onderliggende problemen moeten mogelijk worden opgelost in het bronsysteem. Eenmaal opgelost, voer de migratie opnieuw uit om door te gaan.",
+                            "title": "Sommige fouten kunnen niet worden hersteld via deze weergave"
+                        },
+                        "continue": "Verder",
+                        "continueTooltip": "Corrigeer alle herstelbare fouten voordat u verder gaat.",
+                        "description": "Controleer en los migratiefouten op die tijdens de import zijn opgetreden. Los gegevensproblemen rechtstreeks op in deze weergave of download het logbestand voor gedetailleerde informatie. Ga door zodra alle herstelbare fouten zijn opgelost. Je kunt deze weergave verlaten en er later op terugkomen",
+                        "documentation": "Documentatie",
+                        "download": "Logbestand downloaden",
+                        "title": "Oplossing van fouten"
+                    }
+                }
+            },
+            "errorTypes": {
+                "error": "Mislukt",
+                "info": "Informatie",
+                "warning": "Waarschuwing"
+            },
+            "finishButton": "Voltooien",
+            "loadingScreenCard": {
+                "documentationLink": "https://developer.shopware.com/docs/guides/hosting/infrastructure/message-queue.html#message-queue",
+                "documentationLinkText": "Documentatie voor de berichtenwachtrij",
+                "flowChart": {
+                    "cleanup": "Opruimen",
+                    "errorResolution": "Oplossing van fouten",
+                    "fetchData": "Lezing",
+                    "finish": "Uitgevoerd",
+                    "indexing": "Indexering",
+                    "premapping": "Controleren",
+                    "processMedia": "Bezig met downloaden",
+                    "writeData": "Schrijven"
+                },
+                "notice": "Tip: Dit proces wordt uitgevoerd in de berichtenwachtrij. Je hoeft niet op deze pagina te blijven als je winkel correct is geconfigureerd.",
+                "result": {
+                    "historyHint": "Je kunt deze informatie op elk gewenst moment bekijken in de migratiegeschiedenis. Het is mogelijk dat er op een later moment meer logberichten worden toegevoegd omdat de mediadownload nog steeds op de achtergrond wordt uitgevoerd.",
+                    "title": "De Migratie-assistent is klaar"
+                },
+                "status": {
+                    "aborting": {
+                        "caption": "Ongeschreven gegevens worden opgeschoond. Reeds gemigreerde gegevens zijn mogelijk onbruikbaar.",
+                        "long": "De migratie wordt afgebroken",
+                        "short": "Aborteren"
+                    },
+                    "cleanup": {
+                        "caption": "Tijdelijke gegevens worden verwijderd. De migratie is bijna voltooid.",
+                        "long": "De migratie wordt opgeruimd",
+                        "short": "Opruimen"
+                    },
+                    "error-resolution": {
+                        "caption": "De migratie wordt gepauzeerd totdat alle fouten zijn opgelost.",
+                        "long": "Fouten kunnen worden opgelost",
+                        "short": "Oplossing van fouten"
+                    },
+                    "fetching": {
+                        "caption": "De nieuwe opdrachten worden verwerkt.",
+                        "long": "De gegevens worden uit uw systeem gelezen",
+                        "short": "Lezing"
+                    },
+                    "finish": "Uitgevoerd",
+                    "indexing": {
+                        "caption": "De migratie is bijna voltooid.",
+                        "long": "De nieuwe gegevens worden geïndexeerd",
+                        "short": "Indexering"
+                    },
+                    "media-processing": {
+                        "caption": "De verwerking van grote beeldgegevens kan enige tijd duren.",
+                        "long": "De media worden overgedragen",
+                        "short": "Media-overdracht"
+                    },
+                    "unknown": "Onbekend",
+                    "writing": {
+                        "caption": "Afhankelijk van de winkelgrootte kan dit even duren.",
+                        "long": "De gegevens worden geschreven in Shopware 6",
+                        "short": "Schrijven"
+                    }
+                }
+            },
+            "migrateButton": "Migratie starten",
+            "migrationAlreadyRunning": "Migratie is al begonnen.",
+            "pauseButton": "Pauze",
+            "pluginVersionText": "We hebben gemerkt dat er een update van de plug-in beschikbaar is in uw bronsysteem {sourceSystem}. Werk de plug-in \"{pluginName}\" bij voordat u de migratie start.",
+            "premappingCard": {
+                "cardTitle": "Opdrachten",
+                "group": {
+                    "delivery_time": "Leveringstijd",
+                    "manufacturer": "Fabrikanten",
+                    "newsletter_status": "Nieuwsbrief status",
+                    "order_delivery_state": "Leveringsstatussen van bestellingen",
+                    "order_state": "Bestel staat",
+                    "payment_method": "Betaalwijzen",
+                    "salesChannel": "Nieuwsbrief verkoopkanaal",
+                    "salutation": "Aanhef",
+                    "shipping_availability_rule": "Beschikbaarheid van de verzendmethode",
+                    "source_timezone": "Tijdzone",
+                    "transaction_state": "Transactie statussen",
+                    "user": "Administratie gebruiker"
+                },
+                "newAssignmentTitle": "Nieuwe opdrachten",
+                "placeholder": "Gelieve te selecteren",
+                "previousTitle": "Vorige",
+                "unfilledAlert": "We hebben vastgesteld dat er gegevens zijn die handmatig moeten worden toegewezen."
+            },
+            "savePremapping": {
+                "message": "Pre-mapping is opgeslagen.",
+                "saveButton": "Bewaar pre-mapping"
+            },
+            "selectDataCard": {
+                "cardTitle": "Gegevensselectie",
+                "dataHeader": "Gegevens",
+                "dataSelection": {
+                    "basicSettings": "Basisgegevens",
+                    "cms": "Lay-outs",
+                    "customerWishlists": "Verlanglijsten",
+                    "customersOrders": "Klanten & Bestellingen",
+                    "media": "Media",
+                    "newsletterRecipient": "Nieuwsbriefontvanger",
+                    "processMediaFiles": "Media",
+                    "productReviews": "Productbeoordelingen",
+                    "products": "Producten",
+                    "promotions": "Aanbiedingen",
+                    "seoUrls": "SEO-URL's"
+                },
+                "dataTypes": {
+                    "basicData": "Winkel data",
+                    "pluginData": "Plugin data"
+                },
+                "entities": {
+                    "category": "Categorieën:",
+                    "category_association": "Categorie verenigingen:",
+                    "category_cms_page_association": "Categorie lay-outkoppelingen:",
+                    "category_custom_field": "Categorie aangepaste velden",
+                    "category_product_stream_association": "Associaties van dynamische productgroepen in de categorie:",
+                    "cms_page": "Lay-outs:",
+                    "country": "Landen:",
+                    "country_state": "Land staten:",
+                    "currency": "Valuta's:",
+                    "custom_field_set": "Aangepaste veldsets:",
+                    "customer": "Klanten:",
+                    "customer_custom_field": "Aangepaste velden voor klanten",
+                    "customer_group": "Klantgroepen:",
+                    "customer_group_custom_field": "Aangepaste velden voor klantengroepen",
+                    "customer_wishlist": "Verlanglijsten:",
+                    "delivery_time": "Levertijden:",
+                    "language": "Talen:",
+                    "mail_header_footer": "Kop- en voetteksten van e-mails",
+                    "mail_template": "E-mailsjablonen:",
+                    "main_variant_relation": "Belangrijkste variant relaties:",
+                    "media": "Media:",
+                    "media_folder": "Media mappen:",
+                    "media_folder_inheritance": "Mediamap overerven:",
+                    "number_range": "Numeriek bereik:",
+                    "order": "Bestellingen:",
+                    "order_custom_field": "Aangepaste velden bestellen",
+                    "order_document": "Besteldocumenten:",
+                    "order_document_base_config": "Documentconfiguratie:",
+                    "order_document_custom_field": "Aangepaste velden voor documenten bestellen",
+                    "order_document_inheritance": "Bestellen document relaties:",
+                    "page_system_config": "Pagina basisinformatie:",
+                    "product": "Producten:",
+                    "product_canonical_association": "Canonieke productverenigingen",
+                    "product_cms_page_association": "Associaties voor productindeling",
+                    "product_cross_selling": "Kruisverkoop:",
+                    "product_custom_field": "Aangepaste velden voor producten",
+                    "product_feature_set": "Essentiële kenmerken:",
+                    "product_manufacturer": "Productfabrikanten:",
+                    "product_manufacturer_custom_field": "Aangepaste velden van de fabrikant van het product",
+                    "product_option_relation": "Productopties:",
+                    "product_price_custom_field": "Aangepaste velden voor productprijzen",
+                    "product_property_relation": "Producteigenschappen:",
+                    "product_review": "Beoordelingen:",
+                    "product_sorting": "Product sortering:",
+                    "product_stream": "Dynamische productgroepen:",
+                    "product_stream_filter_inheritance": "Dynamische productgroep filters:",
+                    "promotion": "Promoties:",
+                    "property_group": "Property groepen:",
+                    "property_group_option": "Eigenschappen:",
+                    "rule": "Regels:",
+                    "sales_channel": "Verkoopkanalen:",
+                    "sales_channel_domain": "Domeinen:",
+                    "sales_channel_home_cms_page_association": "Verenigingen voor huisindeling via verkoopkanalen",
+                    "salutation": "Aangroet:",
+                    "seo_url": "SEO-URL's:",
+                    "seo_url_template": "SEO URL-sjablonen:",
+                    "shipping_method": "Verzendwijzen:",
+                    "snippet": "Fragmenten:",
+                    "snippet_set": "Sets van fragmenten:",
+                    "system_config": "Basisinformatie:",
+                    "tax": "Belastingtarieven:",
+                    "tax_rule": "Belastingregels:",
+                    "translation": "Vertalingen:",
+                    "unit": "Schaal eenheden:"
+                },
+                "headers": {
+                    "dataType": "Type",
+                    "name": "Naam",
+                    "total": "Data sets"
+                },
+                "noData": "Niets gevonden om te migreren.",
+                "noDataSubline": "Controleer je verbinding of probeer een ander profiel."
+            },
+            "shopInfoCard": {
+                "buttonCreateConnection": "Maak nieuwe verbinding",
+                "buttonCreateInitialConnection": "Een eerste verbinding maken",
+                "buttonEditSettings": "Verbinding aanpassen",
+                "buttonProfileInstallation": "Installeer ander profiel",
+                "buttonRemoveCredentials": "Toegangsgegevens verwijderen",
+                "buttonResetChecksums": "Controlesommen terugzetten",
+                "buttonResetMigration": "Volledige migratie",
+                "buttonSelectConnection": "Verbinding aanpassen",
+                "cardTitle": "Winkel systeem",
+                "connected": "Verbonden",
+                "connectionCheck": "Verbindingscontrole:",
+                "gateway": "Gateways:",
+                "lastMigration": "Laatste migratie:",
+                "link": "Hulp en documentatie",
+                "noConnection": "Geen verbinding",
+                "noConnectionCheckDoneYet": "Er is nog geen verbindingscontrole uitgevoerd",
+                "noMigrationDoneYet": "-",
+                "notConnected": "Geen verbinding",
+                "profile": "Systeemprofiel:",
+                "refreshButton": "Vernieuw de verbinding",
+                "removeCredentialsConfirmDialog": {
+                    "abortButtonText": "Annuleren",
+                    "content": "Hierna is er geen actieve verbinding. Vul uw toegangsgegevens opnieuw in om de verbinding te herstellen.",
+                    "contentHint": "Wilt u de huidige toegangsgegevens verwijderen?",
+                    "title": "Toegangsgegevens verwijderen"
+                },
+                "resetChecksumsConfirmDialog": {
+                    "abortButtonText": "Annuleren",
+                    "confirmButtonText": "Ja, herinstellen",
+                    "content": "Als u de Controlesommen opnieuw instelt, worden alle gegevens van het bronsysteem herkend bij de volgende migratie. Dit omvat reeds gemigreerde of ongewijzigde datasets.<br><br><strong>Belangrijk:</strong> Wijzigingen in de gegevensrecords die u in Shopware 6 heeft aangebracht sinds de laatste migratie, worden overschreven. De bronsysteemgegevens hebben prioriteit.",
+                    "contentHint": "Wilt u de controlesommen terugzetten?",
+                    "title": "Controlesommen terugzetten"
+                },
+                "resetMigrationConfirmDialog": {
+                    "abortButtonText": "Annuleren",
+                    "confirmButtonText": "Nu afronden",
+                    "content": "Super goed! Laten we nu uw migratie afronden en tijdelijke bestanden en ongebruikte gegevens opschonen. <strong>Let op:</strong> het voltooien van de migratie is terminal. U kunt geen gegevens meer migreren via de huidige verbinding.",
+                    "errorNotification": {
+                        "message": "Er wordt momenteel een migratie uitgevoerd.",
+                        "title": "Er is een fout opgetreden bij het voltooien van de migratie"
+                    },
+                    "header": "Bent u klaar met het migreren van uw winkelgegevens?",
+                    "title": "Migratie afronden"
+                },
+                "updateBanner": {
+                    "isResettingChecksums": {
+                        "message": "De checksums worden opnieuw ingesteld. Dit kan enkele minuten duren.",
+                        "title": "Checksums opnieuw instellen"
+                    },
+                    "isTruncatingMigration": {
+                        "message": "De migratiegegevens worden ingekort. Dit kan enkele minuten duren.",
+                        "title": "Migratiegegevens inkorten"
+                    }
+                }
+            },
+            "shopwareMajorVersionText": "We hebben gemerkt dat de {sourceSystem} -versie van uw bronsysteem niet overeenkomt met de {targetSystem} -versie van uw doelsysteem. Zorg ervoor dat u voor beide systemen dezelfde hoofdversie gebruikt voordat u met de migratie begint.",
+            "title": "Algemeen",
+            "warningModal": {
+                "cancelButton": "Ga terug",
+                "confirmButton": "Ga toch verder",
+                "message": {
+                    "currency": "Een migratie met verschillende standaardvaluta kan leiden tot beschadigde gegevensrecords en onvoorspelbare bijwerkingen veroorzaken.",
+                    "language": "Een migratie met verschillende standaardtalen kan leiden tot beschadigde gegevensrecords en onvoorspelbare bijwerkingen veroorzaken."
+                },
+                "title": "Mismatch tussen gegevens gedetecteerd"
+            }
+        },
+        "wizard": {
+            "buttonAbort": "Annuleren",
+            "buttonConnect": "Verbinden",
+            "buttonConnectionCreate": "Verbinding maken",
+            "buttonConnectionSelect": "Verbinding aanpassen",
+            "buttonEdit": "Verbinding aanpassen",
+            "buttonFinish": "Gereed",
+            "buttonLater": "Sluiten",
+            "buttonLetsGo": "Start",
+            "buttonNext": "Doorgaan",
+            "buttonToProfileInformation": "Informatie",
+            "buttonUseSsl": "Gebruik HTTPS",
+            "pages": {
+                "connectionCreate": {
+                    "connectionLabel": "Verbindingsnaam",
+                    "connectionPlaceholder": "Naam invullen",
+                    "connectionTooltip": "Vul een unieke naam in voor de verbinding.",
+                    "gatewayLabel": "Gateway",
+                    "gatewayPlaceholder": "Selecteer gateway",
+                    "gatewayTooltip": "Het type verbinding tussen de systemen.",
+                    "gateways": {
+                        "shopwareApi": "API",
+                        "shopwareLocal": "Lokale database"
+                    },
+                    "hint": {
+                        "local": "Let op: De winkelsystemen moeten op dezelfde server staan. Toegangsgegevens zijn nodig voor de database."
+                    },
+                    "profileInstall": "Installeer ander profiel",
+                    "profileLabel": "Winkel systeem profiel",
+                    "profilePlaceholder": "Profiel selecteren",
+                    "title": "Migratie - Maak een nieuwe verbinding"
+                },
+                "connectionSelect": {
+                    "connectionLabel": "Verbindingsnaam",
+                    "connectionPlaceholder": "Selecteer een verbinding",
+                    "title": "Migratie - De verbinding wijzigen"
+                },
+                "credentials": {
+                    "emptyState": "Helaas geen formulier voor het geselecteerde profiel gevonden.",
+                    "error": {
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR": "Kan geen verbinding maken met de server. Controleer het opgegeven winkeldomein.",
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR__HINT": "Als je problemen hebt met de verbinding, is het misschien de moeite waard om de momenteel geïnstalleerde curl-versie op je server te controleren en deze bij te werken.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ATTRIBUTES_WRONG": "De databaseverbinding heeft niet de juiste kenmerken en deze kunnen niet worden ingesteld.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ERROR": "De databaseverbinding kan niet tot stand worden gebracht.",
+                        "SWAG_MIGRATION__DUPLICATE_SOURCE_CONNECTION": "Er bestaat al een verbinding met hetzelfde bronsysteem. Gebruik een andere verbinding.",
+                        "SWAG_MIGRATION__GATEWAY_READ": "Kan geen verbinding maken met de server. Controleer het opgegeven winkeldomein.",
+                        "SWAG_MIGRATION__GATEWAY_READ__HINT": "Als je problemen hebt met de verbinding, is het misschien de moeite waard om de momenteel geïnstalleerde curl-versie op je server te controleren en deze bij te werken.",
+                        "SWAG_MIGRATION__INVALID_CONNECTION_CREDENTIALS": "De toegangsgegevens voor de verbinding met het bronsysteem bestaan niet of zijn onjuist. Controleer ze en probeer het opnieuw.",
+                        "SWAG_MIGRATION__IS_RUNNING": "Er wordt momenteel een migratie uitgevoerd. Daarom kunt u de aanmeldingsgegevens pas bewerken als de migratie is voltooid.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED": "De vereiste plug-in \"Migration Connector\" is niet geïnstalleerd in Shopware 5. Installeer de gratis plug-in en probeer het opnieuw.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED__HINT": "Als je de „Migration Connector” al hebt geïnstalleerd en de cache hebt leeggemaakt in de Shopware 5-backend (Configuration > Cache/Performance), probeer dan je Shopware 5-cachemap (var/cache) handmatig te verwijderen.",
+                        "SWAG_MIGRATION__SSL_REQUIRED": "We hebben vastgesteld dat het opgegeven winkeldomein een SSL-verbinding vereist.",
+                        "alertErrorTitle": "Opgelet",
+                        "contentTitle": "Geen verbinding",
+                        "undefinedErrorMsg": "Interne Server Fout. Probeer het opnieuw."
+                    },
+                    "shopware55": {
+                        "api": {
+                            "apiKeyLabel": "API-sleutel",
+                            "apiKeyPlaceholder": "Sleutel invoeren",
+                            "apiKeyTooltip": "De API-sleutel wordt gebruikt voor beveiliging en identificatie.",
+                            "apiUserLabel": "Gebruikersnaam (API gebruiker)",
+                            "apiUserPlaceholder": "Vul gebruikersnaam in",
+                            "apiUserTooltip": "Gebruikersnaam van uw Shopware 5 backend.",
+                            "endpointLabel": "Winkeldomein",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Mijn winkel maakt gebruik van een beveiligde verbinding (SSL)",
+                            "pluginLinkText": "Meer informatie over de plug-in",
+                            "pluginName": "Migratieconnector",
+                            "steps": {
+                                "step1": "Installeer en activeer de plug-in {pluginName} vanuit je Shopware 5-backend onder Plugin Manager > Extensies > Migratietools.",
+                                "step2": "Ga naar Gebruikersbeheer in je Shopware 5-backend.",
+                                "step3": "Selecteer de gebruiker die je wilt gebruiken voor de verbinding.",
+                                "step4": "Activeer API-toegang en sla deze op.",
+                                "step5": "Zorg ervoor dat de gebruiker de rol local_admin heeft.",
+                                "step6": "Voer hier de API-inloggegevens in om de verbinding tot stand te brengen."
+                            },
+                            "title": "Verbind je Shopware 5-winkel"
+                        },
+                        "local": {
+                            "dbHostLabel": "Host",
+                            "dbHostPlaceholder": "Vul host in",
+                            "dbNameLabel": "Database naam",
+                            "dbNamePlaceholder": "Naam invullen",
+                            "dbPasswordLabel": "Wachtwoord",
+                            "dbPasswordPlaceholder": "Wachtwoord invullen",
+                            "dbPortLabel": "Poort",
+                            "dbUserLabel": "Gebruiker",
+                            "dbUserPlaceholder": "Vul gebruikersnaam in",
+                            "installationRoot": "Winkel installatiemap",
+                            "installationRootPlaceholder": "Vul installatie root in"
+                        }
+                    },
+                    "shopware6": {
+                        "api": {
+                            "apiPasswordLabel": "Geheime toegangssleutel",
+                            "apiPasswordPlaceholder": "Geheime toegangssleutel invoeren",
+                            "apiPasswordTooltip": "De geheime toegangssleutel wordt gebruikt voor beveiliging en identificatie.",
+                            "apiUserLabel": "Toegangs-sleutel ID",
+                            "apiUserPlaceholder": "Voer toegangs-sleutel-ID in",
+                            "apiUserTooltip": "Toegang sleutel-ID van uw integratie.",
+                            "endpointLabel": "Shop domein",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Mijn winkel maakt gebruik van een beveiligde verbinding (SSL)",
+                            "integrationLink": "https://docs.shopware.com/en/shopware-6-en/settings/system/integrationen",
+                            "integrationLinkText": "Meer over integraties",
+                            "pluginLink": "https://store.shopware.com/en/swag257162657297f/migration-assistant.html",
+                            "pluginLinkText": "Meer informatie over de Migration Assistant-extensie",
+                            "pluginName": "Migratie-assistent",
+                            "steps": {
+                                "step1": "Installeer en activeer de {pluginName} -extensie op het bronsysteem.",
+                                "step2": "Maak een integratie in het bronsysteem via Instellingen > Systeem > Integraties.",
+                                "step3": "Genereer een toegangssleutel-ID en een geheime toegangssleutel.",
+                                "step4": "Voer hier de toegangssleutels en het winkeldomein in om de verbinding tot stand te brengen."
+                            },
+                            "title": "Verbind je Shopware 6-winkel"
+                        }
+                    },
+                    "statusTitle": "Verbindingscontrole",
+                    "success": {
+                        "SWAG_MIGRATION__REQUEST_CERTIFICATE_INVALID": "We hebben vastgesteld dat het SSL-certificaat van het opgegeven winkeldomein niet veilig is. Controleer het certificaat voor uw eigen veiligheid.",
+                        "contentInformation": "U kunt uw migratie starten.",
+                        "contentTitle": "Verbinding succesvol",
+                        "undefinedErrorMsg": "Er is een onbekende fout opgetreden bij het controleren van het SSL-certificaat van het opgegeven winkeldomein."
+                    },
+                    "title": "Migratie - Breng een verbinding tot stand"
+                },
+                "introduction": {
+                    "contentHeadline": "Laten we enkele zaken verhuizen",
+                    "contentInformation": "Samen verbinden we je bestaande winkelsysteem met Shopware 6. De Migratieassistent zal je helpen om al je gegevens stap voor stap te migreren.",
+                    "title": "Migratieassistent"
+                },
+                "profileInstallation": {
+                    "availabilityHeadline": "Eerder beschikbaar:",
+                    "availableVersionHeadline": "Ondersteund:",
+                    "content": "Kies het winkelsysteem om de data te migreren. Vergeet niet om ook de bijhorende profielplugin te installeren.",
+                    "installationButton": "Installeren",
+                    "installedHint": "Geïnstalleerd",
+                    "magentoProfileHeadline": "Magento - Profiel",
+                    "profileManufacturer": "shopware AG",
+                    "shopwareProfileHeadline": "Shopware - Profiel",
+                    "title": "Migratie - Winkelsysteemprofiel"
+                }
+            }
+        },
+        "worker-listener": {
+            "mediaProcessing": {
+                "message": "Geen bestanden meer. | Een bestand over. | {n} bestanden resterend.",
+                "messageSuccess": "Het downloaden van de media is voltooid.",
+                "title": "Het bestand wordt gedownload",
+                "titleSuccess": "Media downloaden voltooid"
+            }
+        }
+    }
+}

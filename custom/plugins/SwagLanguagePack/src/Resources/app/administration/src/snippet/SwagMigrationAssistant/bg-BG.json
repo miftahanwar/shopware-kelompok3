@@ -1,0 +1,679 @@
+{
+    "global": {
+        "error-codes": {
+            "SWAG_MIGRATION_CONNECTION_NAME_ALREADY_EXISTS": "Името на връзката вече съществува.",
+            "SWAG_MIGRATION_CONNECTION_NAME_TO_SHORT": "Името на връзката трябва да е с дължина най-малко 6 знака.",
+            "SWAG_MIGRATION_INVALID_API_KEY": "Клавишът API няма правилната дължина ({length}/40 знака)."
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "swag_migration": {
+                "label": "Асистент по"
+            }
+        }
+    },
+    "swag-migration": {
+        "api-error": {
+            "abortMigration": "Не успя да се прекрати миграцията.",
+            "approveFinishedMigration": "Неуспешно при завършване на миграцията",
+            "checkConnection": "Неуспешна проверка на връзката към изходната система.",
+            "fetchConnectionId": "Не успя да получите идентификатор на активната връзка.",
+            "getDataSelection": "Неуспешно получаване на избор на данни за текущата връзка.",
+            "getState": "Не успя да се намери миграционно състояние.",
+            "startMigration": "Неуспешно стартиране на миграцията."
+        },
+        "dashboard": {
+            "button": "Отворете помощника за мигриране",
+            "headline": "Преместване в магазин",
+            "information": "Първото нещо е да свържете съществуващата си система за магазини - Помощникът по миграцията ще ви помогне по пътя.",
+            "shopInfoCard": {
+                "button": "Отворете",
+                "header": "Асистент по",
+                "resetButton": "Завършете"
+            },
+            "title": "Асистент по"
+        },
+        "general": {
+            "descriptionTextModule": "Модул за мигриране на данни",
+            "disabledMessages": {
+                "disabled": "В тази среда миграцията е деактивирана.",
+                "loading": "В момента миграцията е в ход.",
+                "noData": "Няма налични данни за миграция.",
+                "noPermission": "Нямате необходимите разрешения за извършване на миграция.",
+                "noSelectedData": "Не са избрани елементи за мигриране.",
+                "resettingChecksum": "Контролните суми в момента се нулират.",
+                "truncatingMigration": "Понастоящем данните за миграцията се съкращават.",
+                "unfilledPremapping": "Попълнете всички необходими картографиране, преди да продължите."
+            },
+            "mainMenuItemGeneral": "Асистент по",
+            "tabDataSelector": "Избор на данни",
+            "tabHistory": "История",
+            "tabMain": "Общи"
+        },
+        "history": {
+            "connectionName": "Име на връзката",
+            "contextMenu": {
+                "details": "Подробности",
+                "downloadLogs": "Изтегляне на регистрационния файл"
+            },
+            "detailPage": {
+                "close": "Затвори",
+                "data": "Данни",
+                "dataCount": "Набори от данни",
+                "dataName": "Име",
+                "errorCode": "Съобщение за грешка",
+                "errorCount": "Граф",
+                "errorLevel": "Ниво на дневника",
+                "errors": "Подробности",
+                "logDescription": "За повече подробности {link}",
+                "logDownload": "изтеглете регистрационния файл.",
+                "noErrorsOccurred": "Не са възникнали грешки.",
+                "noProgressData": "Това изпълнение е извършено в предишна версия на приставката и данните му са изтрити.",
+                "status": {
+                    "aborted": "Прекратено",
+                    "finished": "Завършен",
+                    "running": "Тичане"
+                },
+                "title": "Данни за миграцията"
+            },
+            "gateway": "Шлюз",
+            "importDateTime": "Начален час",
+            "profile": "Профил",
+            "selectedData": "Данни",
+            "shopDomain": "Домейн на магазина",
+            "shopSystem": "Система за магазини",
+            "status": "Статус"
+        },
+        "index": {
+            "abortButton": "Отмени",
+            "backToOverviewButton": "Обратно към общ преглед",
+            "confirmAbortDialog": {
+                "cancel": "Продължавай",
+                "confirm": "Спиране на мигрирането",
+                "content": "Миграцията не е напълно завършена. Вече мигрираните данни може да са неизползваеми. Ако напуснете сега, ще трябва напълно да изпълните отново процеса на мигриране.",
+                "hint": "Искате ли да спрете миграцията?",
+                "title": "Спиране на мигрирането"
+            },
+            "confirmWarningCard": {
+                "currencyMismatch": {
+                    "text": "Валутата на данните, които трябва да бъдат мигрирани, не съответства на стандартната валута [{targetSystemCurrency}]. Данните с [{sourceSystemCurrency}] все още могат да бъдат мигрирани, но няма да бъдат автоматично преобразувани. Можете да коригирате цените ръчно след това.",
+                    "title": "Миграцията е признала друга валута"
+                },
+                "languageMismatch": {
+                    "text": "Езикът на данните, които трябва да бъдат мигрирани, не съответства на стандартния език [{targetSystemLanguage}]. Данните с [{sourceSystemLanguage}] все още могат да бъдат мигрирани, но няма да бъдат автоматично преобразувани. След това можете да настроите преводите ръчно.",
+                    "title": "Миграцията е разпознала друг език"
+                }
+            },
+            "continueButton": "Продължете",
+            "error-resolution": {
+                "codes": {
+                    "SWAG_MIGRATION_CONVERT_ASSOCIATION_MISSING": "Липсва свързано образувание",
+                    "SWAG_MIGRATION_CONVERT_CHILD_ENTITY_FAILED": "Преобразуването на детски обект се провали",
+                    "SWAG_MIGRATION_CONVERT_DOCUMENT_TYPE_UNSUPPORTED": "Преобразуване на тип документ не се поддържа",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_ALREADY_EXISTS": "Обектът вече съществува",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_FAILED": "Преобразуването на обект е неуспешно",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_UNKNOWN": "Зависимо образувание неизвестно",
+                    "SWAG_MIGRATION_CONVERT_FIELD_REASSIGNED": "Полето за обект автоматично преразпределя",
+                    "SWAG_MIGRATION_CONVERT_LANGUAGE_PACK_DEACTIVATED": "Езиков пакет е деактивиран",
+                    "SWAG_MIGRATION_CONVERT_MAIN_VARIANT_RELATION_FAILED": "Неуспешно преобразуване на връзката на основния вариант",
+                    "SWAG_MIGRATION_CONVERT_OBJECT_TYPE_UNSUPPORTED": "Тип обект не се поддържа",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_CALCULATION_TYPE_UNSUPPORTED": "Вид на изчислението на доставката не се поддържа",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_PRICE_UNSUPPORTED": "Тип цена за доставка неподдържан",
+                    "SWAG_MIGRATION_CONVERT_SOURCE_DATA_INCOMPLETE": "Изходните данни са непълни",
+                    "SWAG_MIGRATION_CONVERT_UNSERIALIZED_DATA_INVALID": "Несериализираните данни са невалидни",
+                    "SWAG_MIGRATION_FETCH_DATASET_MISSING": "Липсва набор от данни за образувание",
+                    "SWAG_MIGRATION_FETCH_ENTITY_COUNT_FAILED": "Неуспешно четене на броя на обектите от изходната система",
+                    "SWAG_MIGRATION_FETCH_PROCESSOR_MISSING": "Процесор за обект липсва",
+                    "SWAG_MIGRATION_MEDIA_DEFAULT_FOLDER_UNSUPPORTED": "Папката по подразбиране на медиите не се поддържа",
+                    "SWAG_MIGRATION_MEDIA_FILE_MISSING": "Липсва медиен файл",
+                    "SWAG_MIGRATION_MEDIA_MIME_TYPE_UNKNOWN": "Медиен тип MIME неизвестен",
+                    "SWAG_MIGRATION_MEDIA_TEMPORARY_FILE_FAILED": "Създаването на временни файлове с медии неуспешно",
+                    "SWAG_MIGRATION_RUN_ABORTED": "Миграцията се прекратява автоматично",
+                    "SWAG_MIGRATION_RUN_EXCEPTION": "Настъпи изключение от миграцията",
+                    "SWAG_MIGRATION_RUN_MESSAGE_QUEUE_EXCEPTION": "Възникна изключение от опашката за съобщения",
+                    "SWAG_MIGRATION_VALIDATION_ASSOCIATION_INVALID": "Асоциацията на обекта е невалидна",
+                    "SWAG_MIGRATION_VALIDATION_EXCEPTION": "Възникна изключение за валидиране",
+                    "SWAG_MIGRATION_VALIDATION_OPTIONAL_FIELD_VALUE_INVALID": "Незадължителното поле има невалидна стойност",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_MISSING": "Задължителното поле липсва",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_VALUE_INVALID": "Задължителното поле има невалидна стойност",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_TRANSLATION_INVALID": "Задължителният превод е невалиден",
+                    "SWAG_MIGRATION_WRITE_EXCEPTION": "Възникна изключение за запис",
+                    "SWAG_MIGRATION_WRITE_THEME_COMPILING_FAILED": "Компилацията на тема е неуспешна",
+                    "unknown": "Неизвестна грешка"
+                },
+                "descriptionTitle": "Описание на полето",
+                "errors": {
+                    "continueMigrationFailed": "Неуспешна продължаваща миграция.",
+                    "downloadLogsFailed": "Неуспешно изтегляне на регистрационен файл.",
+                    "fetchExampleFailed": "Неуспешно изтегляне на примерни данни.",
+                    "fetchExistingFixesFailed": "Неуспешно изтегляне на съществуващи корекции.",
+                    "fetchFilterDataFailed": "Неуспешно изтегляне на данни от филтъра.",
+                    "fetchLogsFailed": "Неуспешно изтегляне на данни от дневника.",
+                    "fetchRunFailed": "Неуспешно изтегляне на данни за миграция.",
+                    "fieldValueNotSet": "Стойността на полето не е зададена.",
+                    "invalidFieldValueFormat": "Невалиден формат на стойността на полето.",
+                    "noEntityIdsFound": "В избраните записи в дневника не са намерени валидни идентификатори на обекти.",
+                    "noLogsSelected": "Моля, изберете поне един запис в дневника, за да разрешите.",
+                    "resetResolutionFailed": "Неуспешно нулиране на разделителната способност за грешка.",
+                    "submitResolutionFailed": "Неуспешно изпращане на разрешаване на грешка.",
+                    "validationFailed": "Проверката е неуспешна."
+                },
+                "modals": {
+                    "details": {
+                        "convertedDataLabel": "Преобразувани данни",
+                        "sourceDataLabel": "Изходни данни",
+                        "title": "Детайли: {entityName}"
+                    },
+                    "error": {
+                        "left": {
+                            "details": "Подробности",
+                            "reset": "Нулиране",
+                            "select-all": "Избери всички ({count})",
+                            "status": {
+                                "resolved": "Решено",
+                                "unresolved": "Нерешени"
+                            }
+                        },
+                        "right": {
+                            "apply": "Прилагане на промени",
+                            "banner": {
+                                "content": "Моля, създайте поне една опция, която да изберете в съответната административна област.",
+                                "link": "Добавяне на опция",
+                                "title": "Няма налична опция"
+                            },
+                            "title": "Редактиране: {count} Артикули",
+                            "unhandledBanner": {
+                                "content": "Типът на полето не може да бъде определен. Моля, коригирайте необработените изходни данни. Стойността трябва да бъде в правилния формат.",
+                                "title": "Неизвестен тип поле"
+                            },
+                            "unresolvableBanner": {
+                                "content": "Моля, проверете регистрационния файл за повече информация.",
+                                "title": "Понастоящем тази грешка не може да бъде разрешена чрез асистента за миграция"
+                            }
+                        },
+                        "table": {
+                            "columns": {
+                                "status": "Статус"
+                            }
+                        },
+                        "title": "Коригиране на грешка: {code}, {entityName}, {fieldName}"
+                    }
+                },
+                "step": {
+                    "card": {
+                        "filter": {
+                            "code": {
+                                "label": "Име на грешка",
+                                "placeholder": "Изберете име на грешка"
+                            },
+                            "entity": {
+                                "label": "Субект",
+                                "placeholder": "Изберете обект"
+                            },
+                            "field": {
+                                "label": "Поле",
+                                "placeholder": "Изберете поле"
+                            },
+                            "reset": "Нулиране на филтри",
+                            "status": {
+                                "label": "Състояние на грешка",
+                                "options": {
+                                    "resolved": "Решено",
+                                    "unresolved": "Нерешени"
+                                },
+                                "placeholder": "Изберете състояние на грешка"
+                            },
+                            "title": "Филтри | Филтри ({count}) | Филтри ({count})"
+                        },
+                        "table": {
+                            "columns": {
+                                "code": "Код",
+                                "count": "Фиксиране/Общо",
+                                "entity": "Субект",
+                                "field": "Поле",
+                                "gatewayName": "Шлюз",
+                                "name": "Име",
+                                "profileName": "Профил"
+                            },
+                            "empty-state": {
+                                "description": "Не бяха намерени дневници, съответстващи на избраните филтри.",
+                                "headline": "Нищо не е намерено"
+                            }
+                        },
+                        "tabs": {
+                            "errors": "Грешки ({count})",
+                            "infos": "Информация ({count})",
+                            "warnings": "Предупреждения ({count})"
+                        },
+                        "title": "Поправяеми грешки"
+                    },
+                    "continue-modal": {
+                        "text-fixable": "Има {count} групи от поправяеми грешки, които все още не са разрешени. Моля, коригирайте тези грешки, преди да продължите, за да избегнете последващи грешки.",
+                        "text-unfixable": "Има {count} непоправими грешки, които все още не са разрешени. Ако продължите, без да разрешите останалите грешки, може да се появят последващи грешки.",
+                        "title": "Продължете"
+                    },
+                    "header": {
+                        "banner": {
+                            "content": "Има грешки или предупреждения {count} , които не могат да бъдат разрешени от този екран. За да разследвате, изтеглете регистрационния файл и прегледайте подробните съобщения за грешки. Основните проблеми може да се наложи да бъдат отстранени в изходната система. След като бъде решен, изпълнете отново миграцията, за да продължите.",
+                            "title": "Някои грешки не могат да се поправят чрез този изглед"
+                        },
+                        "continue": "Продължете",
+                        "continueTooltip": "Моля, поправете всички поправяеми грешки, преди да продължите.",
+                        "description": "Прегледайте и отстранете грешки при мигрирането, възникнали по време на импортирането. Отстранете проблемите с данните директно в този изглед или изтеглете регистрационния файл за подробна информация. Продължете, след като всички поправяеми грешки бъдат отстранени. Можете да оставите този изглед и да се върнете към него по-късно",
+                        "documentation": "Документация",
+                        "download": "Изтегляне на регистрационен файл",
+                        "title": "Разрешаване на грешки"
+                    }
+                }
+            },
+            "errorTypes": {
+                "error": "Грешка",
+                "info": "Информация",
+                "warning": "Предупреждение"
+            },
+            "finishButton": "Завършете",
+            "loadingScreenCard": {
+                "documentationLink": "https://developer.shopware.com/docs/guides/hosting/infrastructure/message-queue.html#message-queue",
+                "documentationLinkText": "Документация за опашка за съобщ",
+                "flowChart": {
+                    "cleanup": "Почистване",
+                    "errorResolution": "Разрешаване на грешки",
+                    "fetchData": "Четене",
+                    "finish": "Готово",
+                    "indexing": "Индексиране",
+                    "premapping": "Проверка",
+                    "processMedia": "Сваляне",
+                    "writeData": "Писане"
+                },
+                "notice": "Съвет: Този процес се изпълнява в опашката за съобщения. Не е нужно да останете на тази страница, ако вашият магазин е конфигуриран правилно.",
+                "result": {
+                    "historyHint": "Можете да видите тази информация по всяко време в историята на миграцията. Възможно е по-късно да се добавят още регистрационни съобщения, тъй като изтеглянето на медия все още работи във фонов режим.",
+                    "title": "Асистентът по миграцията е завършен"
+                },
+                "status": {
+                    "aborting": {
+                        "caption": "Неписаните данни се почистват. Вече мигрираните данни може да са неизползваеми.",
+                        "long": "Миграцията се прекратява",
+                        "short": "Аборт"
+                    },
+                    "cleanup": {
+                        "caption": "Временните данни се премахват. Миграцията е почти завършена.",
+                        "long": "Миграцията се почиства",
+                        "short": "Почистване"
+                    },
+                    "error-resolution": {
+                        "caption": "Миграцията се поставя на пауза, докато всички грешки бъдат отстранени.",
+                        "long": "Грешките могат да бъдат разрешени",
+                        "short": "Разрешаване на грешки"
+                    },
+                    "fetching": {
+                        "caption": "Новите задачи се обработват.",
+                        "long": "Данните ще бъдат прочетени от вашата система",
+                        "short": "Четене"
+                    },
+                    "finish": "Готово",
+                    "indexing": {
+                        "caption": "Миграцията е почти завършена.",
+                        "long": "Новите данни се индексират",
+                        "short": "Индексиране"
+                    },
+                    "media-processing": {
+                        "caption": "Обработката на големи изображения може да отнеме известно време.",
+                        "long": "Медиите се прехвърлят",
+                        "short": "Прехвърляне на медии"
+                    },
+                    "unknown": "Неизвестен",
+                    "writing": {
+                        "caption": "В зависимост от размера на магазина може да отнеме няколко минути.",
+                        "long": "Данните се записват в Shopware 6",
+                        "short": "Писане"
+                    }
+                }
+            },
+            "migrateButton": "Стартиране на мигрирането",
+            "migrationAlreadyRunning": "Миграцията вече започна.",
+            "pauseButton": "Пауза",
+            "pluginVersionText": "Забелязахме, че актуализация на приставката е налична във вашата изходна система {sourceSystem}. Моля, актуализирайте приставката \"{pluginName}\", преди да започнете мигрирането.",
+            "premappingCard": {
+                "cardTitle": "Задания",
+                "group": {
+                    "delivery_time": "Време за доставка",
+                    "manufacturer": "Производители",
+                    "newsletter_status": "Статус на бюлети",
+                    "order_delivery_state": "Поръчка за доставка",
+                    "order_state": "Ред държави",
+                    "payment_method": "Начини на плащане",
+                    "salesChannel": "Информационен бюлетин Търговския канал",
+                    "salutation": "Поздравяването",
+                    "shipping_availability_rule": "Наличност на метод за доставка",
+                    "source_timezone": "Часова зона",
+                    "transaction_state": "Държавите на сделките",
+                    "user": "Потребител на администрацията"
+                },
+                "newAssignmentTitle": "Нови задачи",
+                "placeholder": "Моля, изберете",
+                "previousTitle": "Предишна",
+                "unfilledAlert": "Открихме, че има данни, които изискват ръчно задаване."
+            },
+            "savePremapping": {
+                "message": "Предварителното картографиране е спасено.",
+                "saveButton": "Запазване на предварителното картографиране"
+            },
+            "selectDataCard": {
+                "cardTitle": "Избор на данни",
+                "dataHeader": "Данни",
+                "dataSelection": {
+                    "basicSettings": "Основни данни",
+                    "cms": "Оформления",
+                    "customerWishlists": "Списъци с желания",
+                    "customersOrders": "Клиенти и поръчки",
+                    "media": "Медии",
+                    "newsletterRecipient": "Получател на бюлетина",
+                    "processMediaFiles": "Медии",
+                    "productReviews": "Отзиви за продукти",
+                    "products": "Продукти",
+                    "promotions": "Промоции",
+                    "seoUrls": "SEO URL адреси"
+                },
+                "dataTypes": {
+                    "basicData": "Данни за магазина",
+                    "pluginData": "Данни за плъгин"
+                },
+                "entities": {
+                    "category": "Категории:",
+                    "category_association": "Асоциации на категории:",
+                    "category_cms_page_association": "Асоциации на оформлението на категорията:",
+                    "category_custom_field": "Полета по избор на категория",
+                    "category_product_stream_association": "Категория динамични асоциации на продуктови групи:",
+                    "cms_page": "Оформления:",
+                    "country": "Държави:",
+                    "country_state": "Държави държави:",
+                    "currency": "Валути:",
+                    "custom_field_set": "Набори от полета по избор:",
+                    "customer": "Клиенти:",
+                    "customer_custom_field": "Потребителски персонализирани полета",
+                    "customer_group": "Групи клиенти:",
+                    "customer_group_custom_field": "Персонализирани полета за група клиенти",
+                    "customer_wishlist": "Списъци с желания:",
+                    "delivery_time": "Време за доставка:",
+                    "language": "Езици:",
+                    "mail_header_footer": "Заглавки и долни колонтитули на имейл",
+                    "mail_template": "Шаблони за имейл:",
+                    "main_variant_relation": "Основни варианти отношения:",
+                    "media": "Медии:",
+                    "media_folder": "Медийни папки:",
+                    "media_folder_inheritance": "Наследяване на мултимедийни папки:",
+                    "number_range": "Диапазон на броя:",
+                    "order": "Поръчки:",
+                    "order_custom_field": "Поръчайте персонализирани полета",
+                    "order_document": "Поръчка на документи:",
+                    "order_document_base_config": "Конфигурация на документа:",
+                    "order_document_custom_field": "Поръчайте персонализирани полета на документа",
+                    "order_document_inheritance": "Връзки с документи:",
+                    "page_system_config": "Основна информация на страницата:",
+                    "product": "Продукти:",
+                    "product_canonical_association": "Канонични продуктови асоциации",
+                    "product_cms_page_association": "Асоциации за оформление",
+                    "product_cross_selling": "Кръстосани продажби:",
+                    "product_custom_field": "Персонализирани полета на продукта",
+                    "product_feature_set": "Основни характеристики:",
+                    "product_manufacturer": "Производители на продукти:",
+                    "product_manufacturer_custom_field": "Персонализирани полета на производителя на продукта",
+                    "product_option_relation": "Опции за продукта:",
+                    "product_price_custom_field": "Персонализирани полета за цена на продукта",
+                    "product_property_relation": "Свойства на продукта:",
+                    "product_review": "Отзиви:",
+                    "product_sorting": "Сортиране на продукта:",
+                    "product_stream": "Динамични продуктови групи:",
+                    "product_stream_filter_inheritance": "Динамични продуктови групи филтри:",
+                    "promotion": "Промоции:",
+                    "property_group": "Групи имоти:",
+                    "property_group_option": "Имоти:",
+                    "rule": "Правила:",
+                    "sales_channel": "Канали за продажба:",
+                    "sales_channel_domain": "Домейни:",
+                    "sales_channel_home_cms_page_association": "Асоциации за домашно оформление на кан",
+                    "salutation": "Поздрави:",
+                    "seo_url": "SEO URL адреси:",
+                    "seo_url_template": "Шаблони за SEO URL адреси:",
+                    "shipping_method": "Методи на доставка:",
+                    "snippet": "Откъси:",
+                    "snippet_set": "Комплекти от фрагменти:",
+                    "system_config": "Основна информация:",
+                    "tax": "Данъчни ставки:",
+                    "tax_rule": "Данъчни правила:",
+                    "translation": "Преводи:",
+                    "unit": "Мащабни единици:"
+                },
+                "headers": {
+                    "dataType": "Тип",
+                    "name": "Име",
+                    "total": "Набори от данни"
+                },
+                "noData": "Нищо не е намерено да мигрира.",
+                "noDataSubline": "Моля, проверете връзката си или опитайте друг профил."
+            },
+            "shopInfoCard": {
+                "buttonCreateConnection": "Създаване на нова връзка",
+                "buttonCreateInitialConnection": "Създайте първоначална връзка",
+                "buttonEditSettings": "Редактиране на връзката",
+                "buttonProfileInstallation": "Инсталиране на друг профил",
+                "buttonRemoveCredentials": "Изтрий данните за достъп",
+                "buttonResetChecksums": "Нулиране на контролните суми",
+                "buttonResetMigration": "Пълна миграция",
+                "buttonSelectConnection": "Промяна на връзката",
+                "cardTitle": "Система за магазини",
+                "connected": "Свързани",
+                "connectionCheck": "Проверка на връзката:",
+                "gateway": "Шлюз:",
+                "lastMigration": "Последна миграция:",
+                "link": "Помощ и документация",
+                "noConnection": "Няма връзка",
+                "noConnectionCheckDoneYet": "Все още не е извършена проверка на връзката",
+                "noMigrationDoneYet": "-",
+                "notConnected": "Не е свързан",
+                "profile": "Системен профил:",
+                "refreshButton": "Обновяване на връзката",
+                "removeCredentialsConfirmDialog": {
+                    "abortButtonText": "Отмени",
+                    "content": "След това няма да има активна връзка. Въведете данните си за достъп отново, за да възстановите връзката.",
+                    "contentHint": "Искате ли да изтриете текущите данни за достъп?",
+                    "title": "Изтрий данните за достъп"
+                },
+                "resetChecksumsConfirmDialog": {
+                    "abortButtonText": "Отмени",
+                    "confirmButtonText": "Да, нулирай.",
+                    "content": "Ако нулирате контролните суми, всички данни от изходната система ще бъдат разпознати при следващото мигриране. Това включва вече мигрирани или непроменени набори от данни. <br><br><strong>Важно:</strong> Промените в записите с данни, които сте направили в Shopware 6 след последното мигриране, ще бъдат презаписани. Данните на системата източник имат приоритет.",
+                    "contentHint": "Искате ли да нулирате контролните суми?",
+                    "title": "Нулиране на контролните суми"
+                },
+                "resetMigrationConfirmDialog": {
+                    "abortButtonText": "Отмени",
+                    "confirmButtonText": "Завършете сега",
+                    "content": "Страхотно! Нека сега финализираме вашата миграция и да изчистим временните файлове и неизползваните данни. <strong>Моля, обърнете внимание:</strong> Финализирането на миграцията е терминал. Няма да можете да мигрирате повече данни чрез текущата връзка.",
+                    "errorNotification": {
+                        "message": "В момента се извършва миграция.",
+                        "title": "Възникна грешка при финализиране на мигрирането"
+                    },
+                    "header": "Приключихте ли с мигрирането на данните от магазина си?",
+                    "title": "Финализиране на миграцията"
+                },
+                "updateBanner": {
+                    "isResettingChecksums": {
+                        "message": "Контролните суми се нулират. Това може да отнеме няколко минути.",
+                        "title": "Нулиране на контролни суми"
+                    },
+                    "isTruncatingMigration": {
+                        "message": "Данните за миграцията се съкращават. Това може да отнеме няколко минути.",
+                        "title": "Съкращаване на данни за миграция"
+                    }
+                }
+            },
+            "shopwareMajorVersionText": "Забелязахме, че версията на вашата изходна система {sourceSystem} не съвпада с версията на вашата целева система {targetSystem} . Моля, уверете се, че използвате една и съща основна версия и за двете системи, преди да започнете мигрирането.",
+            "title": "Общи",
+            "warningModal": {
+                "cancelButton": "Връщай се",
+                "confirmButton": "Продължете така или иначе",
+                "message": {
+                    "currency": "Миграцията с различни валути по подразбиране може да доведе до повредени записи на данни и да причини непредсказуеми странични ефекти.",
+                    "language": "Миграцията с различни езици по подразбиране може да доведе до повредени записи на данни и да причини непредсказуеми странични ефекти."
+                },
+                "title": "Откриха се несъответствия на данните"
+            }
+        },
+        "wizard": {
+            "buttonAbort": "Отмени",
+            "buttonConnect": "Свържете",
+            "buttonConnectionCreate": "Установяване на връзка",
+            "buttonConnectionSelect": "Промяна на връзката",
+            "buttonEdit": "Редактиране на връзката",
+            "buttonFinish": "Готово",
+            "buttonLater": "Затвори",
+            "buttonLetsGo": "Старт",
+            "buttonNext": "Продължете",
+            "buttonToProfileInformation": "Информация",
+            "buttonUseSsl": "Използване на HTTPS",
+            "pages": {
+                "connectionCreate": {
+                    "connectionLabel": "Име на връзката",
+                    "connectionPlaceholder": "Въведете име",
+                    "connectionTooltip": "Въведете уникално име за връзката.",
+                    "gatewayLabel": "Шлюз",
+                    "gatewayPlaceholder": "Изберете шлюз",
+                    "gatewayTooltip": "Видът на връзката между системите.",
+                    "gateways": {
+                        "shopwareApi": "API",
+                        "shopwareLocal": "Локална база данни"
+                    },
+                    "hint": {
+                        "local": "Забележка: Магазинните системи трябва да са на един и същ сървър. Трябват ви данни за достъп до базата данни."
+                    },
+                    "profileInstall": "Инсталиране на друг профил",
+                    "profileLabel": "Профил на системата на магазина",
+                    "profilePlaceholder": "Избор на профил",
+                    "title": "Мигриране — Създаване на нова връзка"
+                },
+                "connectionSelect": {
+                    "connectionLabel": "Име на връзката",
+                    "connectionPlaceholder": "Моля, изберете връзка",
+                    "title": "Миграция — Промяна на връзката"
+                },
+                "credentials": {
+                    "emptyState": "За съжаление не е намерен формуляр за избрания профил.",
+                    "error": {
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR": "Не може да се свърже със сървъра. Моля, проверете дадения домейн на магазина.",
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR__HINT": "Ако имате проблеми с свързването, може да си струва да проверите текущо инсталираната версия на curl на вашия сървър и да я актуализирате.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ATTRIBUTES_WRONG": "Връзката с база данни няма правилните атрибути и те не могат да бъдат зададени.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ERROR": "Връзката с базата данни не може да бъде установена.",
+                        "SWAG_MIGRATION__DUPLICATE_SOURCE_CONNECTION": "Връзка към една и съща система източник вече съществува. Моля, използвайте друга връзка.",
+                        "SWAG_MIGRATION__GATEWAY_READ": "Не може да се свърже със сървъра. Моля, проверете дадения домейн на магазина.",
+                        "SWAG_MIGRATION__GATEWAY_READ__HINT": "Ако имате проблеми с свързването, може да си струва да проверите текущо инсталираната версия на curl на вашия сървър и да я актуализирате.",
+                        "SWAG_MIGRATION__INVALID_CONNECTION_CREDENTIALS": "Данните за достъп за връзката към изходната система не съществуват или са неправилни. Моля, проверете ги и опитайте отново.",
+                        "SWAG_MIGRATION__IS_RUNNING": "В момента се извършва миграция. Следователно не можете да редактирате идентификационните данни, докато мигрирането приключи.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED": "Необходимият плъгин „Конектор за миграция“ не е инсталиран в Shopware 5. Моля, инсталирайте безплатния плъгин и опитайте отново.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED__HINT": "Ако вече сте инсталирали „Миграционния конектор“ и сте изчистили кеша в задния център на Shopware 5 (Конфигурация > Кеш/производителност), опитайте да изтриете папката за кеш Shopware 5 (var/cache) ръчно.",
+                        "SWAG_MIGRATION__SSL_REQUIRED": "Ние установихме, че даден домейн магазин се изисква SSL връзка.",
+                        "alertErrorTitle": "Внимание",
+                        "contentTitle": "Няма връзка",
+                        "undefinedErrorMsg": "Грешка в вътрешния сървър. Моля те, опитай отново."
+                    },
+                    "shopware55": {
+                        "api": {
+                            "apiKeyLabel": "API ключ",
+                            "apiKeyPlaceholder": "Въвеждане на ключ",
+                            "apiKeyTooltip": "API ключът се използва за сигурност и идентификация.",
+                            "apiUserLabel": "Потребителско име (потребител на API)",
+                            "apiUserPlaceholder": "Въведете потребителско име",
+                            "apiUserTooltip": "Потребителско име на вашия Shopware 5 бекенд.",
+                            "endpointLabel": "Домейн на магазина",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Моят магазин използва защитена връзка (SSL)",
+                            "pluginLinkText": "Повече информация за приставката",
+                            "pluginName": "Конектор за миграция",
+                            "steps": {
+                                "step1": "Инсталирайте и активирайте приставката {pluginName} от вашия backend на Shopware 5 под Мениджър на плъгини > Разширения > Инструменти за миграция.",
+                                "step2": "Отидете на Администриране на потребителя във вашия backend на Shopware 5.",
+                                "step3": "Изберете потребителя, който искате да използвате за връзката.",
+                                "step4": "Активирайте достъпа до API и запазете.",
+                                "step5": "Уверете се, че потребителят има ролята local_admin.",
+                                "step6": "Въведете идентификационните данни на API тук, за да установите връзката."
+                            },
+                            "title": "Свържете вашия магазин Shopware 5"
+                        },
+                        "local": {
+                            "dbHostLabel": "Домакин",
+                            "dbHostPlaceholder": "Въведете хост",
+                            "dbNameLabel": "Име на база данни",
+                            "dbNamePlaceholder": "Въведете име",
+                            "dbPasswordLabel": "Парола",
+                            "dbPasswordPlaceholder": "Въведете парола",
+                            "dbPortLabel": "Порт",
+                            "dbUserLabel": "Потребител",
+                            "dbUserPlaceholder": "Въведете потребителско име",
+                            "installationRoot": "Папка за инсталиране на магазина",
+                            "installationRootPlaceholder": "Въведете корен за инсталиране"
+                        }
+                    },
+                    "shopware6": {
+                        "api": {
+                            "apiPasswordLabel": "Таен ключ за достъп",
+                            "apiPasswordPlaceholder": "Въведете таен ключ за достъп",
+                            "apiPasswordTooltip": "Тайният ключ за достъп се използва за сигурност и идентификация.",
+                            "apiUserLabel": "ИД на ключ за достъп",
+                            "apiUserPlaceholder": "Въведете ID на ключа за достъп",
+                            "apiUserTooltip": "ИД на ключа за достъп до вашата интеграция.",
+                            "endpointLabel": "Домейн на магазина",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Моят магазин използва защитена връзка (SSL)",
+                            "integrationLink": "https://docs.shopware.com/en/shopware-6-en/settings/system/integrationen",
+                            "integrationLinkText": "Повече за интеграциите",
+                            "pluginLink": "https://store.shopware.com/en/swag257162657297f/migration-assistant.html",
+                            "pluginLinkText": "Повече за разширението Асистент за миграция",
+                            "pluginName": "Асистент по",
+                            "steps": {
+                                "step1": "Инсталирайте и активирайте разширението {pluginName} в изходната система.",
+                                "step2": "Създайте интеграция в изходната система чрез Настройки > Система > Интеграции.",
+                                "step3": "Генерирайте идентификатор на ключ за достъп и таен ключ за достъп.",
+                                "step4": "Въведете ключовете за достъп и домейна за магазин тук, за да установите връзката."
+                            },
+                            "title": "Свържете вашия магазин Shopware 6"
+                        }
+                    },
+                    "statusTitle": "Проверка на връзката",
+                    "success": {
+                        "SWAG_MIGRATION__REQUEST_CERTIFICATE_INVALID": "Установихме, че SSL сертификатът на посочения домейн на магазина не е защитен. Проверете сертификата за собствената си сигурност.",
+                        "contentInformation": "Можете да започнете миграцията си.",
+                        "contentTitle": "Връзката е успешна",
+                        "undefinedErrorMsg": "Възникна неизвестна грешка при проверка на SSL сертификата от посочения домейн на магазина."
+                    },
+                    "title": "Миграция — установяване на връзка"
+                },
+                "introduction": {
+                    "contentHeadline": "Да преместим някои неща",
+                    "contentInformation": "Заедно ще свържем Вашата система за магазини с Shopware 6. След това помощникът за мигриране ще ви помогне да мигрирате данните си стъпка по стъпка.",
+                    "title": "Асистент по"
+                },
+                "profileInstallation": {
+                    "availabilityHeadline": "По-рано на разположение:",
+                    "availableVersionHeadline": "Поддържани:",
+                    "content": "Изберете магазина система, от която да мигрирате данни и не забравяйте да инсталирате съответния профил плъгин, както добре.",
+                    "installationButton": "Инсталиране",
+                    "installedHint": "Инсталирана",
+                    "magentoProfileHeadline": "Магенто - Профил",
+                    "profileManufacturer": "магазин AG",
+                    "shopwareProfileHeadline": "Магазинни изделия - Профил",
+                    "title": "Миграция - Shopsystem профил"
+                }
+            }
+        },
+        "worker-listener": {
+            "mediaProcessing": {
+                "message": "Няма оставащи файлове. | Останал е един файл. | {n} файла остава.",
+                "messageSuccess": "Изтеглянето на медиите е завършено.",
+                "title": "Медиите се изтеглят",
+                "titleSuccess": "Изтеглянето на медиите приключи"
+            }
+        }
+    }
+}

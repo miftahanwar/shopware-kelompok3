@@ -1,0 +1,679 @@
+{
+    "global": {
+        "error-codes": {
+            "SWAG_MIGRATION_CONNECTION_NAME_ALREADY_EXISTS": "Il nome della connessione esiste già.",
+            "SWAG_MIGRATION_CONNECTION_NAME_TO_SHORT": "Il nome della connessione deve contenere almeno 6 caratteri.",
+            "SWAG_MIGRATION_INVALID_API_KEY": "La chiave API non ha la lunghezza corretta ({length}/40 caratteri)."
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "swag_migration": {
+                "label": "Assistente migrazione"
+            }
+        }
+    },
+    "swag-migration": {
+        "api-error": {
+            "abortMigration": "Impossibile interrompere la migrazione.",
+            "approveFinishedMigration": "Errore durante il completamento della migrazione",
+            "checkConnection": "Impossibile verificare la connessione al sistema di origine.",
+            "fetchConnectionId": "Impossibile ottenere l'ID di connessione attivo.",
+            "getDataSelection": "Impossibile ottenere la selezione dei dati per la connessione corrente.",
+            "getState": "Impossibile ottenere lo stato di migrazione.",
+            "startMigration": "Impossibile avviare la migrazione."
+        },
+        "dashboard": {
+            "button": "Apri Assistente Migrazione",
+            "headline": "Trasferirsi a Shopware",
+            "information": "La prima cosa è collegare il sistema di negozio esistente: l'Assistente Migrazione ti aiuterà lungo la strada.",
+            "shopInfoCard": {
+                "button": "Apri",
+                "header": "Assistente migrazione",
+                "resetButton": "Finitura"
+            },
+            "title": "Assistente migrazione"
+        },
+        "general": {
+            "descriptionTextModule": "Modulo per la migrazione dei dati",
+            "disabledMessages": {
+                "disabled": "La migrazione è disattivata in questo ambiente.",
+                "loading": "La migrazione è attualmente in corso.",
+                "noData": "Non ci sono dati disponibili per la migrazione.",
+                "noPermission": "Non disponi delle autorizzazioni necessarie per eseguire una migrazione.",
+                "noSelectedData": "Nessun elemento è stato selezionato per la migrazione.",
+                "resettingChecksum": "Le verifiche sono attualmente in fase di ripristino.",
+                "truncatingMigration": "I dati di migrazione sono attualmente troncati.",
+                "unfilledPremapping": "Completa tutte le mappature richieste prima di continuare."
+            },
+            "mainMenuItemGeneral": "Assistente migrazione",
+            "tabDataSelector": "Selezione dei dati",
+            "tabHistory": "Storia",
+            "tabMain": "Generale"
+        },
+        "history": {
+            "connectionName": "Nome connessione",
+            "contextMenu": {
+                "details": "Mostra dettagli",
+                "downloadLogs": "Download log"
+            },
+            "detailPage": {
+                "close": "Chiudi",
+                "data": "Dati",
+                "dataCount": "Datasets",
+                "dataName": "Nome",
+                "errorCode": "Messaggio di errore",
+                "errorCount": "Conteggio",
+                "errorLevel": "Livello di registro",
+                "errors": "Dettagli",
+                "logDescription": "Per maggiori dettagli {link}",
+                "logDownload": "scaricare il file di registro.",
+                "noErrorsOccurred": "Non si sono verificati errori.",
+                "noProgressData": "Questa esecuzione è stata eseguita in una versione precedente del plugin e i relativi dati sono stati eliminati.",
+                "status": {
+                    "aborted": "Annullato",
+                    "finished": "Finito",
+                    "running": "Corsa"
+                },
+                "title": "Dettagli sulla migrazione"
+            },
+            "gateway": "portale",
+            "importDateTime": "Ora di inizio",
+            "profile": "Profilo",
+            "selectedData": "Dati",
+            "shopDomain": "Negozio dominio",
+            "shopSystem": "Sistema negozio",
+            "status": "Stato"
+        },
+        "index": {
+            "abortButton": "Annulla",
+            "backToOverviewButton": "Torna all’account",
+            "confirmAbortDialog": {
+                "cancel": "Continua così",
+                "confirm": "Interrompi migrazione",
+                "content": "La migrazione non è completa. I dati già migrati potrebbero essere inutilizzabili. Se si esce ora, sarà necessario eseguire nuovamente il processo di migrazione.",
+                "hint": "Vuoi interrompere la migrazione?",
+                "title": "Interrompi migrazione"
+            },
+            "confirmWarningCard": {
+                "currencyMismatch": {
+                    "text": "La valuta dei dati da migrare non corrisponde alla valuta standard [{targetSystemCurrency}]. I dati con [{sourceSystemCurrency}] possono ancora essere migrati, ma non verranno convertiti automaticamente. È possibile modificare i prezzi manualmente in seguito.",
+                    "title": "La migrazione ha riconosciuto un'altra valuta"
+                },
+                "languageMismatch": {
+                    "text": "La lingua dei dati da migrare non corrisponde alla lingua standard [{targetSystemLanguage}]. I dati con [{sourceSystemLanguage}] possono ancora essere migrati, ma non verranno convertiti automaticamente. È possibile regolare manualmente le traduzioni in seguito.",
+                    "title": "La migrazione ha riconosciuto un'altra lingua"
+                }
+            },
+            "continueButton": "Continua",
+            "error-resolution": {
+                "codes": {
+                    "SWAG_MIGRATION_CONVERT_ASSOCIATION_MISSING": "Entità associata mancante",
+                    "SWAG_MIGRATION_CONVERT_CHILD_ENTITY_FAILED": "Conversione dell'entità generata non riuscita",
+                    "SWAG_MIGRATION_CONVERT_DOCUMENT_TYPE_UNSUPPORTED": "Conversione del tipo di documento non gestita",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_ALREADY_EXISTS": "L'entità esiste già",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_FAILED": "Conversione delle entità non riuscita",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_UNKNOWN": "Entità dipendente sconosciuta",
+                    "SWAG_MIGRATION_CONVERT_FIELD_REASSIGNED": "Campo Entità riassegnato automaticamente",
+                    "SWAG_MIGRATION_CONVERT_LANGUAGE_PACK_DEACTIVATED": "Pacchetto linguistico disattivato",
+                    "SWAG_MIGRATION_CONVERT_MAIN_VARIANT_RELATION_FAILED": "Conversione relazione della variante principale non riuscita",
+                    "SWAG_MIGRATION_CONVERT_OBJECT_TYPE_UNSUPPORTED": "Tipo di oggetto non gestito",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_CALCULATION_TYPE_UNSUPPORTED": "Tipo di calcolo della spedizione non gestito",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_PRICE_UNSUPPORTED": "Tipo di prezzo di spedizione non gestito",
+                    "SWAG_MIGRATION_CONVERT_SOURCE_DATA_INCOMPLETE": "Dati di origine incompleti",
+                    "SWAG_MIGRATION_CONVERT_UNSERIALIZED_DATA_INVALID": "Dati non serializzati non validi",
+                    "SWAG_MIGRATION_FETCH_DATASET_MISSING": "Insieme di dati per l'entità mancante",
+                    "SWAG_MIGRATION_FETCH_ENTITY_COUNT_FAILED": "Impossibile leggere il conteggio delle entità dal sistema di origine",
+                    "SWAG_MIGRATION_FETCH_PROCESSOR_MISSING": "Elaboratore per l'entità mancante",
+                    "SWAG_MIGRATION_MEDIA_DEFAULT_FOLDER_UNSUPPORTED": "Cartella multimediale predefinita non gestita",
+                    "SWAG_MIGRATION_MEDIA_FILE_MISSING": "File multimediale mancante",
+                    "SWAG_MIGRATION_MEDIA_MIME_TYPE_UNKNOWN": "Tipo MIME multimediale sconosciuto",
+                    "SWAG_MIGRATION_MEDIA_TEMPORARY_FILE_FAILED": "Creazione di file multimediali temporanei non riuscita",
+                    "SWAG_MIGRATION_RUN_ABORTED": "Migrazione interrotta automaticamente",
+                    "SWAG_MIGRATION_RUN_EXCEPTION": "È avvenuta un'eccezione di migrazione",
+                    "SWAG_MIGRATION_RUN_MESSAGE_QUEUE_EXCEPTION": "Si è verificata un'eccezione nella coda dei messaggi",
+                    "SWAG_MIGRATION_VALIDATION_ASSOCIATION_INVALID": "L'associazione dell'entità non è valida",
+                    "SWAG_MIGRATION_VALIDATION_EXCEPTION": "Si è verificata un'eccezione di convalida",
+                    "SWAG_MIGRATION_VALIDATION_OPTIONAL_FIELD_VALUE_INVALID": "Il campo opzionale ha un valore non valido",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_MISSING": "Campo obbligatorio non compilato",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_VALUE_INVALID": "Il campo obbligatorio ha un valore non valido",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_TRANSLATION_INVALID": "La traduzione obbligatoria non è valida",
+                    "SWAG_MIGRATION_WRITE_EXCEPTION": "È avvenuta un'eccezione di scrittura",
+                    "SWAG_MIGRATION_WRITE_THEME_COMPILING_FAILED": "Compilazione del tema non riuscita",
+                    "unknown": "Errore sconosciuto"
+                },
+                "descriptionTitle": "Descrizione del campo",
+                "errors": {
+                    "continueMigrationFailed": "Prosieguo migrazione non riuscito.",
+                    "downloadLogsFailed": "Scaricamento del file di registro non riuscito.",
+                    "fetchExampleFailed": "Recupero dei dati di esempio non riuscito.",
+                    "fetchExistingFixesFailed": "Recupero delle correzioni esistenti non riuscito.",
+                    "fetchFilterDataFailed": "Recupero dei dati del filtro non riuscito.",
+                    "fetchLogsFailed": "Recupero dei dati di registro non riuscito.",
+                    "fetchRunFailed": "Recupero dei dati relativi all'esecuzione della migrazione non riuscito.",
+                    "fieldValueNotSet": "Valore del campo non impostato.",
+                    "invalidFieldValueFormat": "Formato del valore del campo non valido.",
+                    "noEntityIdsFound": "Nessun ID di entità valido trovato nelle voci di registro selezionate.",
+                    "noLogsSelected": "Seleziona almeno una voce di registro da risolvere.",
+                    "resetResolutionFailed": "Reimpostazione della risoluzione degli errori non riuscita.",
+                    "submitResolutionFailed": "Invio della risoluzione dell'errore non riuscito.",
+                    "validationFailed": "Convalida fallita."
+                },
+                "modals": {
+                    "details": {
+                        "convertedDataLabel": "Dati convertiti",
+                        "sourceDataLabel": "Dati di origine",
+                        "title": "Dettagli: {entityName}"
+                    },
+                    "error": {
+                        "left": {
+                            "details": "Dettagli",
+                            "reset": "Reimposta",
+                            "select-all": "Seleziona tutto ({count})",
+                            "status": {
+                                "resolved": "Risolto",
+                                "unresolved": "Irrisolto"
+                            }
+                        },
+                        "right": {
+                            "apply": "Acquisisci modifiche",
+                            "banner": {
+                                "content": "Crea almeno un'opzione da selezionare nell'area di amministrazione corrispondente.",
+                                "link": "Aggiungi un'opzione",
+                                "title": "Nessuna opzione disponibile"
+                            },
+                            "title": "Modifica: {count} Oggetti",
+                            "unhandledBanner": {
+                                "content": "Impossibile determinare il tipo di campo. Correggi i dati di origine non elaborati. Il valore deve essere nel formato corretto.",
+                                "title": "Tipo di campo sconosciuto"
+                            },
+                            "unresolvableBanner": {
+                                "content": "Controlla il file di registro per ulteriori informazioni.",
+                                "title": "Questo errore al momento non può essere risolto tramite Migration Assistant"
+                            }
+                        },
+                        "table": {
+                            "columns": {
+                                "status": "Stato"
+                            }
+                        },
+                        "title": "Errore di correzione: {code}, {entityName}, {fieldName}"
+                    }
+                },
+                "step": {
+                    "card": {
+                        "filter": {
+                            "code": {
+                                "label": "Nome dell'errore",
+                                "placeholder": "Seleziona un nome di errore"
+                            },
+                            "entity": {
+                                "label": "Entità",
+                                "placeholder": "Seleziona un'entità"
+                            },
+                            "field": {
+                                "label": "Campo",
+                                "placeholder": "Seleziona un campo"
+                            },
+                            "reset": "Ripristina filtri",
+                            "status": {
+                                "label": "Stato dell'errore",
+                                "options": {
+                                    "resolved": "Risolto",
+                                    "unresolved": "Irrisolto"
+                                },
+                                "placeholder": "Seleziona uno stato di errore"
+                            },
+                            "title": "Filtri | Filtri ({count}) | Filtri ({count})"
+                        },
+                        "table": {
+                            "columns": {
+                                "code": "Codice",
+                                "count": "Fisso/totale",
+                                "entity": "Entità",
+                                "field": "Campo",
+                                "gatewayName": "portale",
+                                "name": "Nome",
+                                "profileName": "Profilo"
+                            },
+                            "empty-state": {
+                                "description": "Non è stato trovato alcun registro corrispondente ai filtri selezionati.",
+                                "headline": "Nulla trovato"
+                            }
+                        },
+                        "tabs": {
+                            "errors": "Errori ({count})",
+                            "infos": "Informazioni ({count})",
+                            "warnings": "Avvertenze ({count})"
+                        },
+                        "title": "Errori risolvibili"
+                    },
+                    "continue-modal": {
+                        "text-fixable": "Esistono {count} gruppi di errori risolvibili ancora irrisolti. Correggi questi errori prima di continuare per evitare errori di follow-up.",
+                        "text-unfixable": "Ci sono {count} errori non risolvibili che sono ancora irrisolti. Se continui senza risolvere gli errori rimanenti, potrebbero apparire degli errori di follow-up.",
+                        "title": "Continua"
+                    },
+                    "header": {
+                        "banner": {
+                            "content": "Ci sono errori o avvisi {count} che non possono essere risolti da questa schermata. Per approfondire, scarica il file di registro ed esamina i messaggi di errore dettagliati. Potrebbe essere necessario risolvere i problemi sottostanti nel sistema di origine. Una volta risolti, esegui nuovamente la migrazione per continuare.",
+                            "title": "Alcuni errori non sono risolvibili tramite questa visualizzazione"
+                        },
+                        "continue": "Continua",
+                        "continueTooltip": "Correggi tutti gli errori risolvibili prima di continuare.",
+                        "description": "Rivedi e risolvi gli errori di migrazione che si sono verificati durante l'importazione. Risolvi i problemi relativi ai dati direttamente in questa visualizzazione o scarica il file di registro per informazioni dettagliate. Continua una volta risolti tutti gli errori risolvibili. Puoi abbandonare questa visualizzazione e riprenderla più tardi",
+                        "documentation": "Documentazione",
+                        "download": "Scarica il file di registro",
+                        "title": "Risoluzione errori"
+                    }
+                }
+            },
+            "errorTypes": {
+                "error": "Errore",
+                "info": "Informazione",
+                "warning": "Avvertenza"
+            },
+            "finishButton": "Finitura",
+            "loadingScreenCard": {
+                "documentationLink": "https://developer.shopware.com/docs/guides/hosting/infrastructure/message-queue.html#message-queue",
+                "documentationLinkText": "Documentazione sulla coda dei messaggi",
+                "flowChart": {
+                    "cleanup": "Pulizia",
+                    "errorResolution": "Risoluzione errori",
+                    "fetchData": "Lettura",
+                    "finish": "Fatto",
+                    "indexing": "Indicizzazione",
+                    "premapping": "Controllo",
+                    "processMedia": "Download",
+                    "writeData": "Scrittura"
+                },
+                "notice": "Suggerimento: questo processo viene eseguito nella coda dei messaggi. Non è necessario rimanere su questa pagina se il negozio è configurato correttamente.",
+                "result": {
+                    "historyHint": "Puoi visualizzare queste informazioni in qualsiasi momento nella cronologia delle migrazioni. È possibile che vengano aggiunti altri messaggi di registro in un secondo momento perché il download dei file multimediali è ancora in esecuzione in background.",
+                    "title": "L'Assistente Migrazione è terminato"
+                },
+                "status": {
+                    "aborting": {
+                        "caption": "I dati non scritti vengono ripuliti. I dati già migrati potrebbero essere inutilizzabili.",
+                        "long": "La migrazione viene interrotta",
+                        "short": "Aborto"
+                    },
+                    "cleanup": {
+                        "caption": "I dati temporanei vengono rimossi. La migrazione è quasi completa.",
+                        "long": "La migrazione è in fase di pulizia",
+                        "short": "Pulizia"
+                    },
+                    "error-resolution": {
+                        "caption": "La migrazione è sospesa fino alla risoluzione di tutti gli errori.",
+                        "long": "Gli errori possono essere risolti",
+                        "short": "Risoluzione errori"
+                    },
+                    "fetching": {
+                        "caption": "Le nuove assegnazioni vengono elaborate.",
+                        "long": "I dati verranno letti dal tuo sistema",
+                        "short": "Lettura"
+                    },
+                    "finish": "Fatto",
+                    "indexing": {
+                        "caption": "La migrazione è quasi completa.",
+                        "long": "I nuovi dati vengono indicizzati",
+                        "short": "Indicizzazione"
+                    },
+                    "media-processing": {
+                        "caption": "L'elaborazione di dati di immagini di grandi dimensioni può richiedere del tempo.",
+                        "long": "I media vengono trasferiti",
+                        "short": "Trasferimento multimediale"
+                    },
+                    "unknown": "Sconosciuto",
+                    "writing": {
+                        "caption": "A seconda delle dimensioni del negozio, potrebbero essere necessari alcuni istanti.",
+                        "long": "I dati vengono scritti in Shopware 6",
+                        "short": "Scrittura"
+                    }
+                }
+            },
+            "migrateButton": "Avvia la migrazione",
+            "migrationAlreadyRunning": "La migrazione è già iniziata.",
+            "pauseButton": "Pausa",
+            "pluginVersionText": "Abbiamo notato che è disponibile un aggiornamento del plugin nel tuo sistema sorgente {sourceSystem}. Sei pregato di aggiornare il plugin \"{pluginName}\" prima di iniziare la migrazione.",
+            "premappingCard": {
+                "cardTitle": "Assegnazioni",
+                "group": {
+                    "delivery_time": "Tempi di consegna",
+                    "manufacturer": "Produttori",
+                    "newsletter_status": "Stato Newsletter",
+                    "order_delivery_state": "Stati di consegna dell'ordine",
+                    "order_state": "Stati dell'ordine",
+                    "payment_method": "Metodi di pagamento",
+                    "salesChannel": "Canale di vendita Newsletter",
+                    "salutation": "Saluto",
+                    "shipping_availability_rule": "Disponibilità del metodo di spedizione",
+                    "source_timezone": "Fuso orario",
+                    "transaction_state": "Stati delle transazioni",
+                    "user": "Utente di amministrazione"
+                },
+                "newAssignmentTitle": "Nuove assegnazioni",
+                "placeholder": "Si prega di selezionare",
+                "previousTitle": "precedente",
+                "unfilledAlert": "Abbiamo rilevato che ci sono dati che richiedono l'assegnazione manuale."
+            },
+            "savePremapping": {
+                "message": "La premappatura è stata salvata.",
+                "saveButton": "Salvare la premappatura"
+            },
+            "selectDataCard": {
+                "cardTitle": "Selezione dei dati",
+                "dataHeader": "Dati",
+                "dataSelection": {
+                    "basicSettings": "Dati di base",
+                    "cms": "Layout",
+                    "customerWishlists": "Liste dei desideri",
+                    "customersOrders": "Clienti e ordini",
+                    "media": "Media",
+                    "newsletterRecipient": "Destinatario",
+                    "processMediaFiles": "Media",
+                    "productReviews": "Recensioni dei prodotti",
+                    "products": "Prodotti",
+                    "promotions": "Promozioni",
+                    "seoUrls": "URL SEO"
+                },
+                "dataTypes": {
+                    "basicData": "Dati del negozio",
+                    "pluginData": "Dati del plugin"
+                },
+                "entities": {
+                    "category": "Categorie:",
+                    "category_association": "Associazioni di categoria:",
+                    "category_cms_page_association": "Associazioni di layout di categoria:",
+                    "category_custom_field": "Campi personalizzati Categoria",
+                    "category_product_stream_association": "Associazioni di gruppi di prodotti dinamici di categoria:",
+                    "cms_page": "Layout:",
+                    "country": "Paesi:",
+                    "country_state": "Stati del paese:",
+                    "currency": "Valute:",
+                    "custom_field_set": "Set di campi personalizzati:",
+                    "customer": "Clienti:",
+                    "customer_custom_field": "Campi personalizzati del cliente",
+                    "customer_group": "Gruppi di clienti:",
+                    "customer_group_custom_field": "Campi personalizzati per gruppi di clienti",
+                    "customer_wishlist": "Liste dei desideri:",
+                    "delivery_time": "Tempi di consegna:",
+                    "language": "Lingue:",
+                    "mail_header_footer": "Intestazioni e piè di pagina delle email",
+                    "mail_template": "Modelli e-mail:",
+                    "main_variant_relation": "Relazioni principali delle varianti:",
+                    "media": "Supporti:",
+                    "media_folder": "Cartelle multimediali:",
+                    "media_folder_inheritance": "Eredità delle cartelle multimediali:",
+                    "number_range": "Intervalli numerico:",
+                    "order": "Ordini:",
+                    "order_custom_field": "Ordina campi personalizzati",
+                    "order_document": "Ordinare documenti:",
+                    "order_document_base_config": "Config documento:",
+                    "order_document_custom_field": "Campi personalizzati del documento d'ordine",
+                    "order_document_inheritance": "Ordinare relazioni documento:",
+                    "page_system_config": "Informazioni di base della pagina:",
+                    "product": "Prodotti:",
+                    "product_canonical_association": "Associazioni canoniche di prodotti",
+                    "product_cms_page_association": "Associazioni di layout di prodotto",
+                    "product_cross_selling": "Cross Selling:",
+                    "product_custom_field": "Campi personalizzati del prodotto",
+                    "product_feature_set": "Caratteristiche essenziali:",
+                    "product_manufacturer": "Produttori di prodotti:",
+                    "product_manufacturer_custom_field": "Campi personalizzati del produttore del prodotto",
+                    "product_option_relation": "Opzioni di prodotto:",
+                    "product_price_custom_field": "Campi personalizzati del prezzo del prodotto",
+                    "product_property_relation": "Proprietà del prodotto:",
+                    "product_review": "Recensioni:",
+                    "product_sorting": "Smistamento dei prodotti:",
+                    "product_stream": "Gruppi di prodotti dinamici",
+                    "product_stream_filter_inheritance": "Filtri dinamici per gruppi di prodotti:",
+                    "promotion": "Promozioni:",
+                    "property_group": "Gruppi di proprietà:",
+                    "property_group_option": "Proprietà:",
+                    "rule": "Regole:",
+                    "sales_channel": "Canali di vendita:",
+                    "sales_channel_domain": "Domini:",
+                    "sales_channel_home_cms_page_association": "Associazioni del layout della home page del canale di vendita",
+                    "salutation": "Saluti:",
+                    "seo_url": "URL SEO:",
+                    "seo_url_template": "Modelli URL SEO:",
+                    "shipping_method": "Metodi di spedizione:",
+                    "snippet": "Snippet:",
+                    "snippet_set": "Set di snippet:",
+                    "system_config": "Informazioni di base:",
+                    "tax": "Aliquote fiscali:",
+                    "tax_rule": "Regole fiscali:",
+                    "translation": "Traduzioni:",
+                    "unit": "Unità di scala:"
+                },
+                "headers": {
+                    "dataType": "Tipo",
+                    "name": "Nome",
+                    "total": "Set di dati"
+                },
+                "noData": "Niente trovato per migrare.",
+                "noDataSubline": "Controlla la tua connessione o prova con un altro profilo."
+            },
+            "shopInfoCard": {
+                "buttonCreateConnection": "Crea una nuova connessione",
+                "buttonCreateInitialConnection": "Crea una connessione iniziale",
+                "buttonEditSettings": "Modifica connessione",
+                "buttonProfileInstallation": "Installare un altro profilo",
+                "buttonRemoveCredentials": "Eliminare i dati di accesso",
+                "buttonResetChecksums": "Ripristina checksum",
+                "buttonResetMigration": "Migrazione completa",
+                "buttonSelectConnection": "Modificare la connessione",
+                "cardTitle": "Sistema negozio",
+                "connected": "Connesso",
+                "connectionCheck": "Verifica connessione:",
+                "gateway": "Gateway:",
+                "lastMigration": "Ultima migrazione:",
+                "link": "Aiuto e documentazione",
+                "noConnection": "Nessuna connessione",
+                "noConnectionCheckDoneYet": "Nessun controllo della connessione finora eseguito",
+                "noMigrationDoneYet": "-",
+                "notConnected": "Non collegato",
+                "profile": "Profilo di sistema:",
+                "refreshButton": "Aggiorna connessione",
+                "removeCredentialsConfirmDialog": {
+                    "abortButtonText": "Annulla",
+                    "content": "Non ci sarà alcuna connessione attiva dopo questo. Immettere nuovamente i dati di accesso per ripristinare la connessione.",
+                    "contentHint": "Eliminare i dati di accesso correnti?",
+                    "title": "Eliminare i dati di accesso"
+                },
+                "resetChecksumsConfirmDialog": {
+                    "abortButtonText": "Annulla",
+                    "confirmButtonText": "Sì, azzerare",
+                    "content": "Se si reimpostano i checksum, tutti i dati del sistema di origine verranno riconosciuti durante la migrazione successiva. Ciò include set di dati già migrati o invariati. <br><br><strong>Importante:</strong> Le modifiche ai record di dati che hai apportato in Shopware 6 dall'ultima migrazione, verranno sovrascritte. I dati del sistema di origine hanno la priorità.",
+                    "contentHint": "Vuoi reimpostare i checksum?",
+                    "title": "Ripristina checksum"
+                },
+                "resetMigrationConfirmDialog": {
+                    "abortButtonText": "Annulla",
+                    "confirmButtonText": "Finalizza ora",
+                    "content": "Fantastico! Ora finalizziamo la migrazione e ripuliamo i file temporanei e i dati inutilizzati. <strong>Nota:</strong> La finalizzazione della migrazione è terminale. Non sarà possibile eseguire la migrazione di altri dati tramite la connessione corrente.",
+                    "errorNotification": {
+                        "message": "È attualmente in corso una migrazione.",
+                        "title": "Errore durante la finalizzazione della migrazione"
+                    },
+                    "header": "Hai finito di migrare i dati del tuo negozio?",
+                    "title": "Finalizzare la migrazione"
+                },
+                "updateBanner": {
+                    "isResettingChecksums": {
+                        "message": "I controlli saranno ora ripristinati. L'operazione potrebbe richiedere alcuni minuti.",
+                        "title": "Reimpostazione controlli"
+                    },
+                    "isTruncatingMigration": {
+                        "message": "I dati di migrazione saranno ora troncati. Questo può richiedere alcuni minuti.",
+                        "title": "Troncatura dei dati di migrazione"
+                    }
+                }
+            },
+            "shopwareMajorVersionText": "Abbiamo notato che la versione {sourceSystem} del sistema di origine non corrisponde alla versione {targetSystem} del sistema di destinazione. Assicurati di utilizzare la stessa versione principale per entrambi i sistemi prima di iniziare la migrazione.",
+            "title": "Generale",
+            "warningModal": {
+                "cancelButton": "Indietro",
+                "confirmButton": "Continua comunque",
+                "message": {
+                    "currency": "Una migrazione con diverse valute predefinite può portare a record di dati danneggiati e causare effetti collaterali imprevedibili.",
+                    "language": "Una migrazione con diverse lingue predefinite può portare a record di dati danneggiati e causare effetti collaterali imprevedibili."
+                },
+                "title": "Rilevata mancata corrispondenza dei dati"
+            }
+        },
+        "wizard": {
+            "buttonAbort": "Annulla",
+            "buttonConnect": "Connetti",
+            "buttonConnectionCreate": "Stabilisci connessione",
+            "buttonConnectionSelect": "Cambia connessione",
+            "buttonEdit": "Modifica connessione",
+            "buttonFinish": "Fatto",
+            "buttonLater": "Chiudi",
+            "buttonLetsGo": "Inizio",
+            "buttonNext": "Continua",
+            "buttonToProfileInformation": "Informazione",
+            "buttonUseSsl": "Usa HTTPS",
+            "pages": {
+                "connectionCreate": {
+                    "connectionLabel": "Nome connessione",
+                    "connectionPlaceholder": "Inserisci il nome",
+                    "connectionTooltip": "Immettere un nome univoco per la connessione.",
+                    "gatewayLabel": "portale",
+                    "gatewayPlaceholder": "Seleziona gateway",
+                    "gatewayTooltip": "Il tipo di connessione tra i sistemi.",
+                    "gateways": {
+                        "shopwareApi": "API",
+                        "shopwareLocal": "Database locale"
+                    },
+                    "hint": {
+                        "local": "Nota: i sistemi del negozio devono trovarsi sullo stesso server. È necessario accedere ai dati al database."
+                    },
+                    "profileInstall": "Installare un altro profilo",
+                    "profileLabel": "Acquista il profilo del sistema",
+                    "profilePlaceholder": "Seleziona profilo",
+                    "title": "Migrazione — Crea nuova connessione"
+                },
+                "connectionSelect": {
+                    "connectionLabel": "Nome connessione",
+                    "connectionPlaceholder": "Selezionare una connessione",
+                    "title": "Migrazione: modifica della connessione"
+                },
+                "credentials": {
+                    "emptyState": "Spiacenti, nessun modulo per il profilo selezionato trovato.",
+                    "error": {
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR": "Impossibile connettersi al server. Si prega di controllare il dominio del negozio specificato.",
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR__HINT": "Se hai problemi di connessione, potrebbe valere la pena controllare la versione curl attualmente installata sul tuo server e aggiornarla.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ATTRIBUTES_WRONG": "La connessione al database non ha gli attributi corretti e non possono essere impostati.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ERROR": "Impossibile stabilire la connessione al database.",
+                        "SWAG_MIGRATION__DUPLICATE_SOURCE_CONNECTION": "Esiste già una connessione allo stesso sistema di origine. Utilizza un'altra connessione.",
+                        "SWAG_MIGRATION__GATEWAY_READ": "Impossibile connettersi al server. Si prega di controllare il dominio del negozio specificato.",
+                        "SWAG_MIGRATION__GATEWAY_READ__HINT": "Se hai problemi di connessione, potrebbe valere la pena controllare la versione curl attualmente installata sul tuo server e aggiornarla.",
+                        "SWAG_MIGRATION__INVALID_CONNECTION_CREDENTIALS": "I dati di accesso per la connessione al sistema di origine non esistono o sono errati. Controllali e riprova.",
+                        "SWAG_MIGRATION__IS_RUNNING": "È attualmente in corso una migrazione. Pertanto, non è possibile modificare le credenziali fino al completamento della migrazione.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED": "Il plugin richiesto «Migration Connector» non è installato in Shopware 5. Installa il plugin gratuito e riprova.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED__HINT": "Se hai già installato il «Migration Connector» e hai svuotato la cache nel backend di Shopware 5 (Configurazione > Cache/performance), prova a eliminare la cartella cache di Shopware 5 (var/cache) manualmente.",
+                        "SWAG_MIGRATION__SSL_REQUIRED": "Abbiamo stabilito che il dominio del negozio dato è necessaria una connessione SSL.",
+                        "alertErrorTitle": "Attenzione",
+                        "contentTitle": "Nessuna connessione",
+                        "undefinedErrorMsg": "Errore interno del server. Per favore, riprova."
+                    },
+                    "shopware55": {
+                        "api": {
+                            "apiKeyLabel": "Chiave API",
+                            "apiKeyPlaceholder": "Invio chiave",
+                            "apiKeyTooltip": "La chiave API viene utilizzata per la sicurezza e l'identificazione.",
+                            "apiUserLabel": "Nome utente (utente API)",
+                            "apiUserPlaceholder": "Inserisci nome utente",
+                            "apiUserTooltip": "Nome utente del tuo backend Shopware 5.",
+                            "endpointLabel": "Negozio dominio",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Il mio negozio utilizza una connessione sicura (SSL)",
+                            "pluginLinkText": "Ulteriori informazioni sul plugin",
+                            "pluginName": "Connettore di migrazione",
+                            "steps": {
+                                "step1": "Installa e attiva il plugin {pluginName} dal tuo backend Shopware 5 in Plugin Manager > Estensioni > Strumenti di migrazione.",
+                                "step2": "Vai a Amministrazione utenti nel backend di Shopware 5.",
+                                "step3": "Seleziona l'utente che desideri utilizzare per la connessione.",
+                                "step4": "Attiva l'accesso all'API e salva.",
+                                "step5": "Assicurati che l'utente abbia il ruolo local_admin.",
+                                "step6": "Inserisci qui le credenziali API per stabilire la connessione."
+                            },
+                            "title": "Collega il tuo negozio Shopware 5"
+                        },
+                        "local": {
+                            "dbHostLabel": "Host",
+                            "dbHostPlaceholder": "Immettere l'host",
+                            "dbNameLabel": "Nome database",
+                            "dbNamePlaceholder": "Inserisci il nome",
+                            "dbPasswordLabel": "Password",
+                            "dbPasswordPlaceholder": "Immettere la password",
+                            "dbPortLabel": "Porta",
+                            "dbUserLabel": "Utente",
+                            "dbUserPlaceholder": "Inserisci nome utente",
+                            "installationRoot": "Cartella di installazione negozio",
+                            "installationRootPlaceholder": "Immettere la radice di installazione"
+                        }
+                    },
+                    "shopware6": {
+                        "api": {
+                            "apiPasswordLabel": "Chiave di accesso segreto",
+                            "apiPasswordPlaceholder": "Immettere la chiave di accesso segreto",
+                            "apiPasswordTooltip": "La chiave di accesso segreto viene utilizzata per la sicurezza e l'identificazione.",
+                            "apiUserLabel": "ID chiave di accesso",
+                            "apiUserPlaceholder": "Immettere l'ID chiave di accesso",
+                            "apiUserTooltip": "ID chiave di accesso della tua integrazione.",
+                            "endpointLabel": "Negozio dominio",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Il mio negozio utilizza una connessione sicura (SSL)",
+                            "integrationLink": "https://docs.shopware.com/en/shopware-6-en/settings/system/integrationen",
+                            "integrationLinkText": "Maggiori informazioni sulle integrazioni",
+                            "pluginLink": "https://store.shopware.com/en/swag257162657297f/migration-assistant.html",
+                            "pluginLinkText": "Ulteriori informazioni sull'estensione Migration Assistant",
+                            "pluginName": "Assistente migrazione",
+                            "steps": {
+                                "step1": "Installa e attiva l'estensione {pluginName} sul sistema sorgente.",
+                                "step2": "Crea un'integrazione nel sistema sorgente tramite Impostazioni > Sistema > Integrazioni.",
+                                "step3": "Genera un ID chiave di accesso e una chiave di accesso segreta.",
+                                "step4": "Inserisci qui le chiavi di accesso e il dominio del negozio per stabilire la connessione."
+                            },
+                            "title": "Collega il tuo negozio Shopware 6"
+                        }
+                    },
+                    "statusTitle": "Controllo connessione",
+                    "success": {
+                        "SWAG_MIGRATION__REQUEST_CERTIFICATE_INVALID": "Abbiamo stabilito che il certificato SSL del dominio negozio specificato non è sicuro. Controlla il certificato per la tua sicurezza.",
+                        "contentInformation": "È possibile avviare la migrazione.",
+                        "contentTitle": "Connessione riuscita",
+                        "undefinedErrorMsg": "Si è verificato un errore sconosciuto durante il controllo del certificato SSL dal dominio del negozio specificato."
+                    },
+                    "title": "Migrazione — Stabilire una connessione"
+                },
+                "introduction": {
+                    "contentHeadline": "Spostiamo alcune cose",
+                    "contentInformation": "Insieme collegheremo il vostro sistema negozio a Shopware 6. Successivamente l'Assistente Migrazione ti aiuterà a migrare i tuoi dati passo dopo passo.",
+                    "title": "Assistente migrazione"
+                },
+                "profileInstallation": {
+                    "availabilityHeadline": "Precedentemente disponibile:",
+                    "availableVersionHeadline": "Supportati:",
+                    "content": "Scegli il sistema del negozio da cui migrare i dati e assicurati di installare anche il plugin del profilo corrispondente.",
+                    "installationButton": "Installa",
+                    "installedHint": "Installato",
+                    "magentoProfileHeadline": "Magento - Profil",
+                    "profileManufacturer": "shopware AG",
+                    "shopwareProfileHeadline": "Shopware - Profil",
+                    "title": "Migrazione - Profilo Shopsystem-"
+                }
+            }
+        },
+        "worker-listener": {
+            "mediaProcessing": {
+                "message": "Nessun file rimanente. | Un file rimanente. | {n} file rimanenti.",
+                "messageSuccess": "Il download dei contenuti multimediali è stato completato.",
+                "title": "Il file multimediale è in fase di download",
+                "titleSuccess": "Download multimediale completato"
+            }
+        }
+    }
+}

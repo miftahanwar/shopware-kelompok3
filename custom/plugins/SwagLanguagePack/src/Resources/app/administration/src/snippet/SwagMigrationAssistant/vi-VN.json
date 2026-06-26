@@ -1,0 +1,679 @@
+{
+    "global": {
+        "error-codes": {
+            "SWAG_MIGRATION_CONNECTION_NAME_ALREADY_EXISTS": "Tên kết nối đã tồn tại.",
+            "SWAG_MIGRATION_CONNECTION_NAME_TO_SHORT": "Tên kết nối phải dài ít nhất 6 ký tự.",
+            "SWAG_MIGRATION_INVALID_API_KEY": "Khóa API không có độ dài chính xác ({length}/40 ký tự)."
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "swag_migration": {
+                "label": "Trợ lý di chuyển"
+            }
+        }
+    },
+    "swag-migration": {
+        "api-error": {
+            "abortMigration": "Không thể hủy bỏ quá trình di chuyển.",
+            "approveFinishedMigration": "Không thành công trong khi hoàn tất quá trình di chuyển",
+            "checkConnection": "Không kiểm tra kết nối với hệ thống nguồn.",
+            "fetchConnectionId": "Không nhận được ID kết nối đang hoạt động.",
+            "getDataSelection": "Không thể lấy lựa chọn dữ liệu cho kết nối hiện tại.",
+            "getState": "Không thể nhận được trạng thái di chuyển.",
+            "startMigration": "Không thể bắt đầu di chuyển."
+        },
+        "dashboard": {
+            "button": "Mở Trợ lý Di chuyển",
+            "headline": "Chuyển đến Shopware",
+            "information": "Điều đầu tiên là liên kết hệ thống cửa hàng hiện tại của bạn - Trợ lý di chuyển sẽ giúp bạn các bước để thực điều đó.",
+            "shopInfoCard": {
+                "button": "Mở",
+                "header": "Trợ lý di chuyển",
+                "resetButton": "Kết thúc"
+            },
+            "title": "Trợ lý di chuyển"
+        },
+        "general": {
+            "descriptionTextModule": "Mô-đun để di chuyển dữ liệu",
+            "disabledMessages": {
+                "disabled": "Di chuyển bị vô hiệu hóa trong môi trường này.",
+                "loading": "Di cư hiện đang được tiến hành.",
+                "noData": "Không có dữ liệu có sẵn để di chuyển.",
+                "noPermission": "Bạn không có các quyền cần thiết để thực hiện di chuyển.",
+                "noSelectedData": "Không có mục nào được chọn để di chuyển.",
+                "resettingChecksum": "Checksum hiện đang được thiết lập lại.",
+                "truncatingMigration": "Dữ liệu di chuyển hiện đang bị cắt ngắn.",
+                "unfilledPremapping": "Hoàn thành tất cả các ánh xạ bắt buộc trước khi tiếp tục."
+            },
+            "mainMenuItemGeneral": "Trợ lý di chuyển",
+            "tabDataSelector": "Lựa chọn dữ liệu",
+            "tabHistory": "Lịch sử",
+            "tabMain": "Cài đặt chung"
+        },
+        "history": {
+            "connectionName": "Tên kết nối",
+            "contextMenu": {
+                "details": "Hiển thị chi tiết",
+                "downloadLogs": "Tải xuống bản ghi"
+            },
+            "detailPage": {
+                "close": "Đóng",
+                "data": "Dữ liệu",
+                "dataCount": "Bộ dữ liệu",
+                "dataName": "Tên",
+                "errorCode": "Thông báo lỗi",
+                "errorCount": "Tổng số",
+                "errorLevel": "Cấp nhật ký",
+                "errors": "Thông tin chi tiết",
+                "logDescription": "Để biết thêm chi tiết {link}",
+                "logDownload": "tải xuống tệp nhật ký.",
+                "noErrorsOccurred": "Không có lỗi xảy ra.",
+                "noProgressData": "Việc chạy này đã được thực hiện trong một phiên bản trước của plugin và dữ liệu của nó đã bị xóa.",
+                "status": {
+                    "aborted": "Đã hủy bỏ",
+                    "finished": "Đã hoàn thành",
+                    "running": "Đang chạy"
+                },
+                "title": "Xem chi tiết di chuyển dữ liệu"
+            },
+            "gateway": "Cổng",
+            "importDateTime": "Thời gian bắt đầu",
+            "profile": "Hồ sơ Cá nhân",
+            "selectedData": "Dữ liệu",
+            "shopDomain": "Tên miền cửa hàng",
+            "shopSystem": "Hệ thống cửa hàng",
+            "status": "Trạng thái"
+        },
+        "index": {
+            "abortButton": "Hủy",
+            "backToOverviewButton": "Quay lại tổng quan",
+            "confirmAbortDialog": {
+                "cancel": "Tiếp tục",
+                "confirm": "Ngừng di chuyển dữ liệu",
+                "content": "Quá trình di chuyển dữ liệu chưa hoàn tất. Dữ liệu đã di chuyển có thể không sử dụng được. Nếu bạn thoát khỏi ngay bây giờ, bạn sẽ phải chạy lại toàn bộ quá trình di chuyển dữ liệu.",
+                "hint": "Bạn có muốn ngừng di chuyển dữ liệu không?",
+                "title": "Ngừng di chuyển dữ liệu"
+            },
+            "confirmWarningCard": {
+                "currencyMismatch": {
+                    "text": "Đơn vị tiền tệ của dữ liệu cần di chuyển không khớp với đơn vị tiền tệ chuẩn [{targetSystemCurrency}]. Dữ liệu có [{sourceSystemCurrency}] vẫn có thể được di chuyển, nhưng nó sẽ không được tự động chuyển đổi. Bạn có thể điều chỉnh giá theo cách thủ công sau đó.",
+                    "title": "Sự di chuyển dữ liệu đã nhận ra một loại tiền tệ khác"
+                },
+                "languageMismatch": {
+                    "text": "Ngôn ngữ của dữ liệu cần di chuyển không khớp với ngôn ngữ chuẩn [{targetSystemLanguage}]. Dữ liệu có [{sourceSystemLanguage}] vẫn có thể được di chuyển, nhưng nó sẽ không được tự động chuyển đổi. Bạn có thể điều chỉnh bản dịch theo cách thủ công sau đó.",
+                    "title": "Sự di chuyển dữ liệu đã nhận ra một ngôn ngữ khác"
+                }
+            },
+            "continueButton": "Tiếp tục",
+            "error-resolution": {
+                "codes": {
+                    "SWAG_MIGRATION_CONVERT_ASSOCIATION_MISSING": "Thiếu thực thể liên kết",
+                    "SWAG_MIGRATION_CONVERT_CHILD_ENTITY_FAILED": "Chuyển đổi thực thể con không thành công",
+                    "SWAG_MIGRATION_CONVERT_DOCUMENT_TYPE_UNSUPPORTED": "Chuyển đổi loại tài liệu không được hỗ trợ",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_ALREADY_EXISTS": "Thực thể đã tồn tại",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_FAILED": "Chuyển đổi thực thể không thành công",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_UNKNOWN": "Thực thể phụ thuộc không xác định",
+                    "SWAG_MIGRATION_CONVERT_FIELD_REASSIGNED": "Trường thực thể tự động được gán lại",
+                    "SWAG_MIGRATION_CONVERT_LANGUAGE_PACK_DEACTIVATED": "Gói ngôn ngữ bị vô hiệu hóa",
+                    "SWAG_MIGRATION_CONVERT_MAIN_VARIANT_RELATION_FAILED": "Chuyển đổi quan hệ biến thể chính không thành công",
+                    "SWAG_MIGRATION_CONVERT_OBJECT_TYPE_UNSUPPORTED": "Loại đối tượng không được hỗ trợ",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_CALCULATION_TYPE_UNSUPPORTED": "Loại tính toán vận chuyển không được hỗ trợ",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_PRICE_UNSUPPORTED": "Loại giá vận chuyển không được hỗ trợ",
+                    "SWAG_MIGRATION_CONVERT_SOURCE_DATA_INCOMPLETE": "Dữ liệu nguồn không đầy đủ",
+                    "SWAG_MIGRATION_CONVERT_UNSERIALIZED_DATA_INVALID": "Dữ liệu không nối tiếp không hợp lệ",
+                    "SWAG_MIGRATION_FETCH_DATASET_MISSING": "Tập dữ liệu cho thực thể bị thiếu",
+                    "SWAG_MIGRATION_FETCH_ENTITY_COUNT_FAILED": "Không thể đọc số thực thể từ hệ thống nguồn",
+                    "SWAG_MIGRATION_FETCH_PROCESSOR_MISSING": "Bộ xử lý cho thực thể bị thiếu",
+                    "SWAG_MIGRATION_MEDIA_DEFAULT_FOLDER_UNSUPPORTED": "Thư mục mặc định phương tiện truyền thông không được hỗ trợ",
+                    "SWAG_MIGRATION_MEDIA_FILE_MISSING": "Thiếu tập tin phương tiện",
+                    "SWAG_MIGRATION_MEDIA_MIME_TYPE_UNKNOWN": "Loại MIME phương tiện không xác định",
+                    "SWAG_MIGRATION_MEDIA_TEMPORARY_FILE_FAILED": "Tạo tệp tạm thời của phương tiện truyền thông không thành công",
+                    "SWAG_MIGRATION_RUN_ABORTED": "Di chuyển tự động bị hủy",
+                    "SWAG_MIGRATION_RUN_EXCEPTION": "Đã xảy ra ngoại lệ di chuyển",
+                    "SWAG_MIGRATION_RUN_MESSAGE_QUEUE_EXCEPTION": "Đã xảy ra ngoại lệ hàng đợi tin nhắn",
+                    "SWAG_MIGRATION_VALIDATION_ASSOCIATION_INVALID": "Liên kết thực thể không hợp lệ",
+                    "SWAG_MIGRATION_VALIDATION_EXCEPTION": "Đã xảy ra ngoại lệ xác thực",
+                    "SWAG_MIGRATION_VALIDATION_OPTIONAL_FIELD_VALUE_INVALID": "Trường tùy chọn có giá trị không hợp lệ",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_MISSING": "Thiếu trường bắt buộc",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_VALUE_INVALID": "Trường bắt buộc có giá trị không hợp lệ",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_TRANSLATION_INVALID": "Bản dịch bắt buộc không hợp lệ",
+                    "SWAG_MIGRATION_WRITE_EXCEPTION": "Đã xảy ra ngoại lệ ghi",
+                    "SWAG_MIGRATION_WRITE_THEME_COMPILING_FAILED": "Biên dịch chủ đề thất bại",
+                    "unknown": "Lỗi không xác định"
+                },
+                "descriptionTitle": "Mô tả lĩnh vực",
+                "errors": {
+                    "continueMigrationFailed": "Không thể tiếp tục di chuyển.",
+                    "downloadLogsFailed": "Tải xuống tệp nhật ký không thành công.",
+                    "fetchExampleFailed": "Lấy dữ liệu ví dụ không thành công.",
+                    "fetchExistingFixesFailed": "Không thể tìm nạp các bản sửa lỗi hiện có.",
+                    "fetchFilterDataFailed": "Truy xuất dữ liệu bộ lọc không thành công.",
+                    "fetchLogsFailed": "Truy xuất dữ liệu nhật ký không thành công.",
+                    "fetchRunFailed": "Không thành công khi lấy dữ liệu chạy di chuyển.",
+                    "fieldValueNotSet": "Giá trị trường không được đặt.",
+                    "invalidFieldValueFormat": "Định dạng giá trị trường không hợp lệ.",
+                    "noEntityIdsFound": "Không tìm thấy ID thực thể hợp lệ trong các mục nhật ký đã chọn.",
+                    "noLogsSelected": "Vui lòng chọn ít nhất một mục nhật ký để giải quyết.",
+                    "resetResolutionFailed": "Không thành công khi đặt lại độ phân giải lỗi.",
+                    "submitResolutionFailed": "Không thể gửi giải quyết lỗi.",
+                    "validationFailed": "Xác thực không thành công."
+                },
+                "modals": {
+                    "details": {
+                        "convertedDataLabel": "Dữ liệu đã chuyển đổi",
+                        "sourceDataLabel": "Nguồn dữ liệu",
+                        "title": "Chi tiết: {entityName}"
+                    },
+                    "error": {
+                        "left": {
+                            "details": "Hiển thị chi tiết",
+                            "reset": "Đặt lại",
+                            "select-all": "Chọn tất cả ({count})",
+                            "status": {
+                                "resolved": "Đã giải quyết",
+                                "unresolved": "Chưa được giải quyết"
+                            }
+                        },
+                        "right": {
+                            "apply": "Áp dụng thay đổi",
+                            "banner": {
+                                "content": "Vui lòng tạo ít nhất một tùy chọn để chọn trong khu vực Quản trị tương ứng.",
+                                "link": "Thêm một tùy chọn",
+                                "title": "Không có tùy chọn khả dụng"
+                            },
+                            "title": "Chỉnh sửa: {count} Items",
+                            "unhandledBanner": {
+                                "content": "Không thể xác định loại trường. Vui lòng sửa dữ liệu nguồn thô. Giá trị phải ở định dạng chính xác.",
+                                "title": "Loại trường không xác định"
+                            },
+                            "unresolvableBanner": {
+                                "content": "Vui lòng kiểm tra tệp nhật ký để biết thêm thông tin.",
+                                "title": "Lỗi này hiện không thể được giải quyết thông qua Trợ lý di chuyển"
+                            }
+                        },
+                        "table": {
+                            "columns": {
+                                "status": "Trạng thái"
+                            }
+                        },
+                        "title": "Sửa lỗi: {code}, {entityName}, {fieldName}"
+                    }
+                },
+                "step": {
+                    "card": {
+                        "filter": {
+                            "code": {
+                                "label": "Tên lỗi",
+                                "placeholder": "Chọn tên lỗi"
+                            },
+                            "entity": {
+                                "label": "Thực thể",
+                                "placeholder": "Chọn một thực thể"
+                            },
+                            "field": {
+                                "label": "Trường",
+                                "placeholder": "Chọn một trường"
+                            },
+                            "reset": "Đặt lại bộ lọc",
+                            "status": {
+                                "label": "Trạng thái lỗi",
+                                "options": {
+                                    "resolved": "Đã giải quyết",
+                                    "unresolved": "Chưa được giải quyết"
+                                },
+                                "placeholder": "Chọn trạng thái lỗi"
+                            },
+                            "title": "Bộ lọc | Bộ lọc ({count}) | Bộ lọc ({count})"
+                        },
+                        "table": {
+                            "columns": {
+                                "code": "Mã",
+                                "count": "Cố định/Tổng",
+                                "entity": "Thực thể",
+                                "field": "Trường",
+                                "gatewayName": "Cổng",
+                                "name": "Tên",
+                                "profileName": "Hồ sơ Cá nhân"
+                            },
+                            "empty-state": {
+                                "description": "Không tìm thấy nhật ký nào phù hợp với các bộ lọc đã chọn.",
+                                "headline": "Không tìm thấy gì"
+                            }
+                        },
+                        "tabs": {
+                            "errors": "Lỗi ({count})",
+                            "infos": "Thông tin ({count})",
+                            "warnings": "Cảnh báo ({count})"
+                        },
+                        "title": "Lỗi có thể sửa"
+                    },
+                    "continue-modal": {
+                        "text-fixable": "Có {count} nhóm lỗi có thể sửa được vẫn chưa được giải quyết. Vui lòng sửa các lỗi này trước khi tiếp tục để tránh các lỗi tiếp theo.",
+                        "text-unfixable": "Có {count} lỗi không thể sửa được vẫn chưa được giải quyết. Nếu bạn tiếp tục mà không giải quyết các lỗi còn lại, các lỗi tiếp theo có thể xuất hiện.",
+                        "title": "Tiếp tục"
+                    },
+                    "header": {
+                        "banner": {
+                            "content": "Có lỗi {count} hoặc cảnh báo không thể giải quyết được từ màn hình này. Để điều tra, tải xuống tệp nhật ký và xem lại các thông báo lỗi chi tiết. Các vấn đề cơ bản có thể cần được khắc phục trong hệ thống nguồn. Sau khi giải quyết, hãy chạy lại quá trình di chuyển để tiếp tục.",
+                            "title": "Một số lỗi không thể sửa được thông qua chế độ xem này"
+                        },
+                        "continue": "Tiếp tục",
+                        "continueTooltip": "Vui lòng sửa tất cả các lỗi có thể sửa trước khi tiếp tục.",
+                        "description": "Xem lại và giải quyết các lỗi di chuyển xảy ra trong quá trình nhập. Khắc phục sự cố dữ liệu trực tiếp trong chế độ xem này hoặc tải xuống tệp nhật ký để biết thông tin chi tiết. Tiếp tục sau khi tất cả các lỗi có thể sửa được giải quyết. Bạn có thể rời khỏi chế độ xem này và quay lại nó sau",
+                        "documentation": "Tài liệu",
+                        "download": "Tải tập tin nhật ký",
+                        "title": "Giải quyết lỗi"
+                    }
+                }
+            },
+            "errorTypes": {
+                "error": "Lỗi",
+                "info": "Thông tin",
+                "warning": "Cảnh báo"
+            },
+            "finishButton": "Kết thúc",
+            "loadingScreenCard": {
+                "documentationLink": "https://developer.shopware.com/docs/guides/hosting/infrastructure/message-queue.html#message-queue",
+                "documentationLinkText": "Tài liệu về hàng đợi tin nhắn",
+                "flowChart": {
+                    "cleanup": "Dọn dẹp",
+                    "errorResolution": "Giải quyết lỗi",
+                    "fetchData": "Đang đọc",
+                    "finish": "Hoàn tất",
+                    "indexing": "Lập chỉ mục",
+                    "premapping": "Kiểm tra",
+                    "processMedia": "Đang tải xuống",
+                    "writeData": "Đang lưu"
+                },
+                "notice": "Mẹo: Quá trình này chạy trong hàng đợi thư. Bạn không cần phải ở lại trang này nếu cửa hàng của bạn được cấu hình chính xác.",
+                "result": {
+                    "historyHint": "Bạn có thể xem thông tin này bất cứ lúc nào trong lịch sử di chuyển. Có thể nhiều tin nhắn nhật ký sẽ được thêm vào sau vì quá trình tải xuống phương tiện vẫn đang chạy trong nền.",
+                    "title": "Trợ lý di chuyển dữ liệu đã hoàn thành"
+                },
+                "status": {
+                    "aborting": {
+                        "caption": "Dữ liệu bất thành văn được dọn dẹp. Dữ liệu đã di chuyển có thể không sử dụng được.",
+                        "long": "Việc di chuyển đang bị hủy",
+                        "short": "Hủy bỏ"
+                    },
+                    "cleanup": {
+                        "caption": "Dữ liệu tạm thời đang bị xóa. Quá trình di cư gần như hoàn tất.",
+                        "long": "Việc di cư đang được dọn dẹp",
+                        "short": "Dọn dẹp"
+                    },
+                    "error-resolution": {
+                        "caption": "Việc di chuyển được tạm dừng cho đến khi tất cả các lỗi được giải quyết.",
+                        "long": "Lỗi có thể được giải quyết",
+                        "short": "Giải quyết lỗi"
+                    },
+                    "fetching": {
+                        "caption": "Các nhiệm vụ mới được xử lý.",
+                        "long": "Dữ liệu sẽ được đọc từ hệ thống của bạn",
+                        "short": "Đang đọc"
+                    },
+                    "finish": "Xong",
+                    "indexing": {
+                        "caption": "Quá trình di cư gần như hoàn tất.",
+                        "long": "Dữ liệu mới đang được lập chỉ mục",
+                        "short": "Lập chỉ mục"
+                    },
+                    "media-processing": {
+                        "caption": "Dữ liệu hình ảnh lớn có thể mất một thời gian để xử lý.",
+                        "long": "Các phương tiện truyền thông đang được chuyển",
+                        "short": "Truyền phương tiện truyền thông"
+                    },
+                    "unknown": "Không xác định",
+                    "writing": {
+                        "caption": "Tùy thuộc vào quy mô cửa hàng, nó có thể mất một vài phút.",
+                        "long": "Dữ liệu đang được ghi trong Shopware 6",
+                        "short": "Đang lưu"
+                    }
+                }
+            },
+            "migrateButton": "Bắt đầu di chuyển",
+            "migrationAlreadyRunning": "Việc di chuyển dữ liệu đã bắt đầu.",
+            "pauseButton": "Tạm dừng",
+            "pluginVersionText": "Chúng tôi đã nhận thấy rằng một bản cập nhật plugin có sẵn trong hệ thống nguồn của bạn {sourceSystem}. Vui lòng cập nhật plugin \"{pluginName}\" trước khi bạn bắt đầu di chuyển.",
+            "premappingCard": {
+                "cardTitle": "Bài tập",
+                "group": {
+                    "delivery_time": "Thời gian giao hàng",
+                    "manufacturer": "Nhà sản xuất",
+                    "newsletter_status": "Tình trạng bản tin",
+                    "order_delivery_state": "Trạng thái vận chuyển của đơn hàng",
+                    "order_state": "Trạng thái đơn hàng",
+                    "payment_method": "Phương thức thanh toán",
+                    "salesChannel": "Bản tin của kênh bán hàng",
+                    "salutation": "Danh xưng",
+                    "shipping_availability_rule": "Phương thức vận chuyển sẵn có",
+                    "source_timezone": "Múi giờ",
+                    "transaction_state": "Các trạng thái giao dịch",
+                    "user": "Người dùng quản trị"
+                },
+                "newAssignmentTitle": "Những chỉ định mới",
+                "placeholder": "Vui lòng chọn",
+                "previousTitle": "Trước",
+                "unfilledAlert": "Chúng tôi đã phát hiện ra rằng có dữ liệu cần phải gán thủ công."
+            },
+            "savePremapping": {
+                "message": "Liên kết dữ liệu đã được lưu.",
+                "saveButton": "Lưu liên kết dữ liệu"
+            },
+            "selectDataCard": {
+                "cardTitle": "Lựa chọn dữ liệu",
+                "dataHeader": "Dữ liệu",
+                "dataSelection": {
+                    "basicSettings": "Dữ liệu cơ bản",
+                    "cms": "Bố cục",
+                    "customerWishlists": "Danh sách mong muốn",
+                    "customersOrders": "Khách hàng & đơn đặt hàng",
+                    "media": "Phương tiện truyền thông",
+                    "newsletterRecipient": "Người nhận bản tin",
+                    "processMediaFiles": "Phương tiện truyền thông",
+                    "productReviews": "Đánh giá sản phẩm",
+                    "products": "Sản Phẩm",
+                    "promotions": "Khuyến mãi",
+                    "seoUrls": "URL SEO"
+                },
+                "dataTypes": {
+                    "basicData": "Dữ liệu cửa hàng",
+                    "pluginData": "Dữ liệu plugin"
+                },
+                "entities": {
+                    "category": "Danh mục:",
+                    "category_association": "Các hiệp hội thể loại:",
+                    "category_cms_page_association": "Các hiệp hội bố trí thể loại:",
+                    "category_custom_field": "Thể loại trường tùy chỉnh",
+                    "category_product_stream_association": "Danh mục liên kết nhóm sản phẩm động:",
+                    "cms_page": "Bố cục:",
+                    "country": "Các quốc gia:",
+                    "country_state": "Quốc gia ghi:",
+                    "currency": "Các loại tiền tệ:",
+                    "custom_field_set": "Bộ trường tùy chỉnh:",
+                    "customer": "Khách hàng:",
+                    "customer_custom_field": "Các trường tùy chỉnh của khách hàng",
+                    "customer_group": "Nhóm khách hàng:",
+                    "customer_group_custom_field": "Trường tùy chỉnh nhóm khách hàng",
+                    "customer_wishlist": "Danh sách mong muốn:",
+                    "delivery_time": "Thời gian giao hàng:",
+                    "language": "Ngôn ngữ:",
+                    "mail_header_footer": "Tiêu đề và chân trang email",
+                    "mail_template": "Mẫu email:",
+                    "main_variant_relation": "Quan hệ biến thể chính:",
+                    "media": "Phương tiện truyền thông:",
+                    "media_folder": "Thư mục phương tiện:",
+                    "media_folder_inheritance": "Phương tiện thư mục kế thừa:",
+                    "number_range": "Phạm vi số:",
+                    "order": "Đơn đặt hàng:",
+                    "order_custom_field": "Đặt hàng các trường tùy chỉnh",
+                    "order_document": "Tài liệu đơn hàng:",
+                    "order_document_base_config": "Cấu hình tài liệu:",
+                    "order_document_custom_field": "Đặt hàng các trường tùy chỉnh tài liệu",
+                    "order_document_inheritance": "Quan hệ tài liệu đơn hàng:",
+                    "page_system_config": "Trang thông tin cơ bản:",
+                    "product": "Sản phẩm:",
+                    "product_canonical_association": "Hiệp hội sản phẩm tiêu chuẩn",
+                    "product_cms_page_association": "Liên kết bố cục sản phẩm",
+                    "product_cross_selling": "Bán chéo:",
+                    "product_custom_field": "Các trường tùy chỉnh sản phẩm",
+                    "product_feature_set": "Các đặc điểm thiết yếu:",
+                    "product_manufacturer": "Các nhà sản xuất sản phẩm:",
+                    "product_manufacturer_custom_field": "Các lĩnh vực tùy chỉnh của nhà sản xuất sản phẩm",
+                    "product_option_relation": "Tùy chọn sản phẩm:",
+                    "product_price_custom_field": "Các trường tùy chỉnh giá sản phẩm",
+                    "product_property_relation": "Thuộc tính sản phẩm:",
+                    "product_review": "Đánh giá:",
+                    "product_sorting": "Phân loại sản phẩm:",
+                    "product_stream": "Nhóm sản phẩm động:",
+                    "product_stream_filter_inheritance": "Bộ lọc nhóm sản phẩm động:",
+                    "promotion": "Khuyến mãi:",
+                    "property_group": "Nhóm thuộc tính:",
+                    "property_group_option": "Thuộc tính:",
+                    "rule": "Quy tắc:",
+                    "sales_channel": "Các kênh bán hàng:",
+                    "sales_channel_domain": "Tên miền:",
+                    "sales_channel_home_cms_page_association": "Hiệp hội bố trí nhà kênh bán hàng",
+                    "salutation": "Lời chào:",
+                    "seo_url": "URL SEO:",
+                    "seo_url_template": "Các mẫu URL SEO:",
+                    "shipping_method": "Phương thức vận chuyển:",
+                    "snippet": "Đoạn:",
+                    "snippet_set": "Bộ đoạn:",
+                    "system_config": "Thông tin cơ bản:",
+                    "tax": "Thuế suất:",
+                    "tax_rule": "Quy tắc thuế:",
+                    "translation": "Bản dịch:",
+                    "unit": "Các đơn vị quy mô:"
+                },
+                "headers": {
+                    "dataType": "Loại",
+                    "name": "Tên",
+                    "total": "Tập dữ liệu"
+                },
+                "noData": "Không tìm thấy dữ cần để di chuyển.",
+                "noDataSubline": "Vui lòng kiểm tra kết nối của bạn hoặc thử một hồ sơ khác."
+            },
+            "shopInfoCard": {
+                "buttonCreateConnection": "Tạo kết nối mới",
+                "buttonCreateInitialConnection": "Tạo kết nối ban đầu",
+                "buttonEditSettings": "Chỉnh sửa kết nối",
+                "buttonProfileInstallation": "Cài đặt một hồ sơ khác",
+                "buttonRemoveCredentials": "Xóa dữ liệu truy cập",
+                "buttonResetChecksums": "Đặt lại tổng kiểm tra",
+                "buttonResetMigration": "Hoàn tất di chuyển dữ liệu",
+                "buttonSelectConnection": "Thay đổi kết nối",
+                "cardTitle": "Hệ thống cửa hàng",
+                "connected": "Đã kết nối",
+                "connectionCheck": "Kiểm tra kết nối:",
+                "gateway": "Cổng:",
+                "lastMigration": "Lần cuối di chuyển dữ liệu:",
+                "link": "Trợ giúp & tài liệu",
+                "noConnection": "Không có kết nối",
+                "noConnectionCheckDoneYet": "Chưa thực hiện kiểm tra kết nối",
+                "noMigrationDoneYet": "-",
+                "notConnected": "Không được kết nối",
+                "profile": "Hồ sơ hệ thống:",
+                "refreshButton": "Làm mới kết nối",
+                "removeCredentialsConfirmDialog": {
+                    "abortButtonText": "Hủy bỏ",
+                    "content": "Kết nối sẽ không hoạt động sau hành động này. Nhập lại dữ liệu truy cập của bạn để khôi phục kết nối.",
+                    "contentHint": "Bạn có muốn xóa dữ liệu truy cập hiện tại không?",
+                    "title": "Xóa dữ liệu truy cập"
+                },
+                "resetChecksumsConfirmDialog": {
+                    "abortButtonText": "Hủy bỏ",
+                    "confirmButtonText": "Có, đặt lại",
+                    "content": "Nếu bạn đặt lại tổng kiểm tra, tất cả dữ liệu từ hệ thống nguồn sẽ được nhận dạng trong lần di chuyển tiếp theo. Điều này bao gồm các tập dữ liệu đã được di chuyển hoặc không thay đổi. <br><br><strong>Quan trọng:</strong> Thay đổi đối với các hồ sơ dữ liệu bạn đã thực hiện trong Shopware 6 kể từ lần di chuyển cuối cùng, sẽ bị ghi đè. Dữ liệu hệ thống nguồn được ưu tiên.",
+                    "contentHint": "Bạn có muốn cài đặt lại tổng kiểm tra không?",
+                    "title": "Đặt lại tổng kiểm tra"
+                },
+                "resetMigrationConfirmDialog": {
+                    "abortButtonText": "Hủy bỏ",
+                    "confirmButtonText": "Hoàn tất ngay bây giờ",
+                    "content": "Tuyệt! Bây giờ hãy hoàn tất việc di chuyển của bạn và dọn dẹp các tệp tạm thời và dữ liệu không sử dụng. <strong>Xin lưu ý:</strong> Hoàn thành việc di chuyển dữ liệu là phần cuối cùng. Bạn sẽ không thể di chuyển thêm bất kỳ dữ liệu nào qua kết nối hiện tại.",
+                    "errorNotification": {
+                        "message": "Việc di chuyển dữ liệu hiện đang được tiến hành.",
+                        "title": "Đã xảy ra lỗi trong khi hoàn tất quá trình di chuyển dữ liệu"
+                    },
+                    "header": "Bạn đã hoàn tất việc di chuyển dữ liệu cho cửa hàng của mình chưa?",
+                    "title": "Hoàn tất việc di chuyển"
+                },
+                "updateBanner": {
+                    "isResettingChecksums": {
+                        "message": "Các tổng kiểm tra đang được thiết lập lại. Điều này có thể mất vài phút.",
+                        "title": "Đặt lại tổng kiểm tra"
+                    },
+                    "isTruncatingMigration": {
+                        "message": "Dữ liệu di chuyển đang bị cắt ngắn. Điều này có thể mất vài phút.",
+                        "title": "Cắt ngắn dữ liệu di chuyển"
+                    }
+                }
+            },
+            "shopwareMajorVersionText": "Chúng tôi nhận thấy rằng phiên bản hệ thống nguồn {sourceSystem} của bạn không khớp với phiên bản {targetSystem} của hệ thống mục tiêu của bạn. Vui lòng đảm bảo sử dụng cùng một phiên bản chính cho cả hai hệ thống trước khi bạn bắt đầu di chuyển.",
+            "title": "Chung",
+            "warningModal": {
+                "cancelButton": "Quay lại",
+                "confirmButton": "Dù sao vẫn tiếp tục",
+                "message": {
+                    "currency": "Việc di chuyển với các loại tiền tệ mặc định khác nhau có thể dẫn đến các bản ghi dữ liệu bị hỏng và gây ra các tác dụng phụ không thể đoán trước.",
+                    "language": "Việc di chuyển với các ngôn ngữ mặc định khác nhau có thể dẫn đến các bản ghi dữ liệu bị hỏng và gây ra các tác dụng phụ không thể đoán trước."
+                },
+                "title": "Phát hiện không khớp dữ liệu"
+            }
+        },
+        "wizard": {
+            "buttonAbort": "Huỷ bỏ",
+            "buttonConnect": "Kết nối",
+            "buttonConnectionCreate": "Thiết lập kết nối",
+            "buttonConnectionSelect": "Thay đổi kết nối",
+            "buttonEdit": "Chỉnh sửa kết nối",
+            "buttonFinish": "Hoàn tất",
+            "buttonLater": "Đóng",
+            "buttonLetsGo": "Bắt đầu",
+            "buttonNext": "Tiếp tục",
+            "buttonToProfileInformation": "Thông tin",
+            "buttonUseSsl": "Sử dụng HTTPS",
+            "pages": {
+                "connectionCreate": {
+                    "connectionLabel": "Tên kết nối",
+                    "connectionPlaceholder": "Nhập tên",
+                    "connectionTooltip": "Nhập tên duy nhất cho kết nối.",
+                    "gatewayLabel": "Cổng",
+                    "gatewayPlaceholder": "Chọn cổng",
+                    "gatewayTooltip": "Loại kết nối giữa các hệ thống.",
+                    "gateways": {
+                        "shopwareApi": "API",
+                        "shopwareLocal": "Cơ sở dữ liệu cục bộ"
+                    },
+                    "hint": {
+                        "local": "Lưu ý: Các hệ thống cửa hàng phải nằm trên cùng một máy chủ. Bạn cần quyền truy cập dữ liệu vào cơ sở dữ liệu."
+                    },
+                    "profileInstall": "Cài đặt một hồ sơ khác",
+                    "profileLabel": "Hồ sơ hệ thống cửa hàng",
+                    "profilePlaceholder": "Chọn hồ sơ",
+                    "title": "Di chuyển — Tạo kết nối mới"
+                },
+                "connectionSelect": {
+                    "connectionLabel": "Tên kết nối",
+                    "connectionPlaceholder": "Vui lòng chọn một kết nối",
+                    "title": "Di chuyển — Thay đổi kết nối"
+                },
+                "credentials": {
+                    "emptyState": "Xin lỗi không tìm thấy mẫu thông tin cho hồ sơ đã chọn.",
+                    "error": {
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR": "Không thể kết nối với máy chủ. Vui lòng kiểm tra tên miền của cửa hàng.",
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR__HINT": "Nếu bạn gặp sự cố khi kết nối, có thể đáng để kiểm tra phiên bản curl hiện đang được cài đặt trên máy chủ của bạn và cập nhật nó.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ATTRIBUTES_WRONG": "Kết nối cơ sở dữ liệu không có các thuộc tính phù hợp và chúng không thể được đặt.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ERROR": "Không thể thiết lập kết nối cơ sở dữ liệu.",
+                        "SWAG_MIGRATION__DUPLICATE_SOURCE_CONNECTION": "Một kết nối với cùng một hệ thống nguồn đã tồn tại. Vui lòng sử dụng một kết nối khác.",
+                        "SWAG_MIGRATION__GATEWAY_READ": "Không thể kết nối với máy chủ. Vui lòng kiểm tra tên miền của cửa hàng.",
+                        "SWAG_MIGRATION__GATEWAY_READ__HINT": "Nếu bạn gặp sự cố khi kết nối, có thể đáng để kiểm tra phiên bản curl hiện đang được cài đặt trên máy chủ của bạn và cập nhật nó.",
+                        "SWAG_MIGRATION__INVALID_CONNECTION_CREDENTIALS": "Dữ liệu truy cập cho kết nối với hệ thống nguồn không tồn tại hoặc không chính xác. Vui lòng kiểm tra chúng và thử lại.",
+                        "SWAG_MIGRATION__IS_RUNNING": "Việc di chuyển hiện đang được tiến hành. Do đó, bạn không thể chỉnh sửa thông tin đăng nhập cho đến khi quá trình di chuyển dữ liệu hoàn tất.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED": "Plugin yêu cầu phải có “Migration Connector” không được cài đặt trong Shopware 5. Vui lòng cài đặt plugin miễn phí này và thử lại.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED__HINT": "Nếu bạn đã cài đặt “Migration Connector” và xóa bộ nhớ cache trong phụ trợ Shopware 5 (Configuration > cache/performance), hãy thử xóa thư mục bộ nhớ cache Shopware 5 (var/cache) theo cách thủ công.",
+                        "SWAG_MIGRATION__SSL_REQUIRED": "Chúng tôi đã xác định rằng miền cửa hàng cần có một kết nối SSL.",
+                        "alertErrorTitle": "Chú ý",
+                        "contentTitle": "Không có kết nối",
+                        "undefinedErrorMsg": "Lỗi máy chủ. Xin vui lòng thử lại."
+                    },
+                    "shopware55": {
+                        "api": {
+                            "apiKeyLabel": "Khóa API",
+                            "apiKeyPlaceholder": "Nhập khóa",
+                            "apiKeyTooltip": "Khóa API được sử dụng để bảo mật và nhận dạng.",
+                            "apiUserLabel": "Tên người dùng (người dùng API)",
+                            "apiUserPlaceholder": "Nhập tên người dùng",
+                            "apiUserTooltip": "Tên người dùng của Shopware 5 backend.",
+                            "endpointLabel": "Tên miền cửa hàng",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Cửa hàng của tôi sử dụng một kết nối an toàn (SSL)",
+                            "pluginLinkText": "Thông tin thêm về plugin",
+                            "pluginName": "Đầu nối di chuyển",
+                            "steps": {
+                                "step1": "Cài đặt và kích hoạt plugin {pluginName} từ phần phụ trợ Shopware 5 của bạn trong Trình quản lý Plugin > Tiện ích mở rộng> Công cụ di chuyển.",
+                                "step2": "Chuyển đến Quản trị người dùng trong phần phụ trợ Shopware 5 của bạn.",
+                                "step3": "Chọn người dùng bạn muốn sử dụng cho kết nối.",
+                                "step4": "Kích hoạt truy cập API và lưu.",
+                                "step5": "Đảm bảo người dùng có vai trò local_admin.",
+                                "step6": "Nhập thông tin đăng nhập API ở đây để thiết lập kết nối."
+                            },
+                            "title": "Kết nối cửa hàng Shopware 5 của bạn"
+                        },
+                        "local": {
+                            "dbHostLabel": "Máy chủ",
+                            "dbHostPlaceholder": "Nhập tên máy chủ",
+                            "dbNameLabel": "Tên cơ sở dữ liệu",
+                            "dbNamePlaceholder": "Nhập tên",
+                            "dbPasswordLabel": "Mật khẩu",
+                            "dbPasswordPlaceholder": "Nhập mật khẩu",
+                            "dbPortLabel": "Cổng",
+                            "dbUserLabel": "Người dùng",
+                            "dbUserPlaceholder": "Nhập tên người dùng",
+                            "installationRoot": "Thư mục cài đặt cửa hàng",
+                            "installationRootPlaceholder": "Nhập thư mục cài đặt gốc"
+                        }
+                    },
+                    "shopware6": {
+                        "api": {
+                            "apiPasswordLabel": "Khóa truy cập bí mật",
+                            "apiPasswordPlaceholder": "Nhập khóa truy cập bí mật",
+                            "apiPasswordTooltip": "Khóa truy cập bí mật được sử dụng để bảo mật và nhận dạng.",
+                            "apiUserLabel": "ID khóa truy cập",
+                            "apiUserPlaceholder": "Nhập ID khóa truy cập",
+                            "apiUserTooltip": "ID khóa truy cập của tích hợp của bạn.",
+                            "endpointLabel": "Tên miền cửa hàng",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Cửa hàng của tôi sử dụng một kết nối an toàn (SSL)",
+                            "integrationLink": "https://docs.shopware.com/en/shopware-6-en/settings/system/integrationen",
+                            "integrationLinkText": "Tìm hiểu thêm về tích hợp",
+                            "pluginLink": "https://store.shopware.com/en/swag257162657297f/migration-assistant.html",
+                            "pluginLinkText": "Tìm hiểu thêm về tiện ích mở rộng Migration Assistant",
+                            "pluginName": "Trợ lý di chuyển",
+                            "steps": {
+                                "step1": "Cài đặt và kích hoạt tiện ích mở rộng {pluginName} trên hệ thống nguồn.",
+                                "step2": "Tạo một tích hợp trong hệ thống nguồn thông qua Cài đặt> Hệ thống> Tích hợp.",
+                                "step3": "Tạo ID khóa truy cập và khóa truy cập bí mật.",
+                                "step4": "Nhập khóa truy cập và miền cửa hàng tại đây để thiết lập kết nối."
+                            },
+                            "title": "Kết nối cửa hàng Shopware 6 của bạn"
+                        }
+                    },
+                    "statusTitle": "Kiểm tra kết nối",
+                    "success": {
+                        "SWAG_MIGRATION__REQUEST_CERTIFICATE_INVALID": "Chúng tôi đã xác định rằng chứng chỉ SSL của tên miền cửa hàng được chỉ định không an toàn. Vui lòng kiểm tra lại chứng chỉ bảo mật.",
+                        "contentInformation": "Bạn có thể bắt đầu di chuyển dữ liệu của mình.",
+                        "contentTitle": "Kết nối thành công",
+                        "undefinedErrorMsg": "Lỗi không xác định xảy ra trong khi kiểm tra chứng chỉ SSL từ tên miền cửa hàng được chỉ định."
+                    },
+                    "title": "Di chuyển dữ liệu — Thiết lập kết nối"
+                },
+                "introduction": {
+                    "contentHeadline": "Hãy di chuyển vài thứ",
+                    "contentInformation": "Chúng tôi sẽ kết nối hệ thống cửa hàng của bạn với Shopware 6. Sau đó, Trợ lý Di chuyển sẽ giúp bạn di chuyển dữ liệu từng bước một.",
+                    "title": "Trợ lý di chuyển"
+                },
+                "profileInstallation": {
+                    "availabilityHeadline": "Có sẵn trước đây:",
+                    "availableVersionHeadline": "Được hỗ trợ:",
+                    "content": "Chọn hệ thống cửa hàng để di chuyển dữ liệu nguồn và đảm bảo cài đặt plugin hồ sơ tương ứng.",
+                    "installationButton": "Cài đặt",
+                    "installedHint": "Đã cài đặt",
+                    "magentoProfileHeadline": "Hồ sơ Magento",
+                    "profileManufacturer": "shopware AG",
+                    "shopwareProfileHeadline": "Hồ sơ Shopware",
+                    "title": "Di chuyển dữ liệu - Hệ thống cửa hàng - Hồ sơ"
+                }
+            }
+        },
+        "worker-listener": {
+            "mediaProcessing": {
+                "message": "Không còn tập tin nào. | Còn lại một tập tin. | Còn lại {n} tập tin.",
+                "messageSuccess": "Quá trình tải về tệp đa phương tiện đã được hoàn tất.",
+                "title": "File truyền thông đa phương tiện đang được tải xuống",
+                "titleSuccess": "Việc tải về các tệp đa phương tiện đã hoàn tất"
+            }
+        }
+    }
+}

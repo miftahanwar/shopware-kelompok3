@@ -1,0 +1,679 @@
+{
+    "global": {
+        "error-codes": {
+            "SWAG_MIGRATION_CONNECTION_NAME_ALREADY_EXISTS": "Nama koneksi sudah ada.",
+            "SWAG_MIGRATION_CONNECTION_NAME_TO_SHORT": "Nama sambungan harus minimal 6 karakter.",
+            "SWAG_MIGRATION_INVALID_API_KEY": "Kunci API tidak memiliki panjang yang benar ({length}/40 karakter)."
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "swag_migration": {
+                "label": "Asisten migrasi"
+            }
+        }
+    },
+    "swag-migration": {
+        "api-error": {
+            "abortMigration": "Gagal membatalkan migrasi.",
+            "approveFinishedMigration": "Gagal saat menyelesaikan migrasi",
+            "checkConnection": "Gagal memeriksa koneksi ke sistem sumber.",
+            "fetchConnectionId": "Gagal mendapatkan ID koneksi aktif.",
+            "getDataSelection": "Gagal mendapatkan pilihan data untuk koneksi saat ini.",
+            "getState": "Gagal mendapatkan status migrasi.",
+            "startMigration": "Gagal memulai migrasi."
+        },
+        "dashboard": {
+            "button": "Asisten Migrasi",
+            "headline": "Pindah ke Shopware",
+            "information": "Hal pertama adalah menghubungkan sistem toko Anda yang ada - Asisten Migrasi akan membantu Anda sepanjang jalan.",
+            "shopInfoCard": {
+                "button": "Buka",
+                "header": "Asisten migrasi",
+                "resetButton": "Selesai"
+            },
+            "title": "Asisten migrasi"
+        },
+        "general": {
+            "descriptionTextModule": "Modul untuk memigrasi data",
+            "disabledMessages": {
+                "disabled": "Migrasi dinonaktifkan di lingkungan ini.",
+                "loading": "Migrasi saat ini sedang berlangsung.",
+                "noData": "Tidak ada data yang tersedia untuk migrasi.",
+                "noPermission": "Anda tidak memiliki izin yang diperlukan untuk melakukan migrasi.",
+                "noSelectedData": "Tidak ada item yang dipilih untuk migrasi.",
+                "resettingChecksum": "Checksum saat ini sedang diatur ulang.",
+                "truncatingMigration": "Data migrasi saat ini sedang dipotong.",
+                "unfilledPremapping": "Lengkapi semua pemetaan yang diperlukan sebelum melanjutkan."
+            },
+            "mainMenuItemGeneral": "Asisten migrasi",
+            "tabDataSelector": "Pemilihan data",
+            "tabHistory": "Sejarah",
+            "tabMain": "Umum"
+        },
+        "history": {
+            "connectionName": "Nama koneksi",
+            "contextMenu": {
+                "details": "Tampilkan rincian",
+                "downloadLogs": "Unduh log"
+            },
+            "detailPage": {
+                "close": "Tutup",
+                "data": "Data",
+                "dataCount": "Dataset",
+                "dataName": "Nama",
+                "errorCode": "Pesan galat",
+                "errorCount": "Hitung",
+                "errorLevel": "Tingkat log",
+                "errors": "Rincian",
+                "logDescription": "Untuk lebih jelasnya {link}",
+                "logDownload": "unduh berkas log.",
+                "noErrorsOccurred": "Tidak ada kesalahan yang terjadi.",
+                "noProgressData": "Proses ini dilakukan di versi plugin sebelumnya dan datanya telah dihapus.",
+                "status": {
+                    "aborted": "Dibatalkan",
+                    "finished": "Selesai",
+                    "running": "Menjalankan"
+                },
+                "title": "Rincian migrasi"
+            },
+            "gateway": "Pintu gerbang",
+            "importDateTime": "Waktu mulai",
+            "profile": "Profil",
+            "selectedData": "Data",
+            "shopDomain": "Domain toko",
+            "shopSystem": "Sistem toko",
+            "status": "Status"
+        },
+        "index": {
+            "abortButton": "Batalkan",
+            "backToOverviewButton": "Kembali ke ikhtisar",
+            "confirmAbortDialog": {
+                "cancel": "Terus berjalan",
+                "confirm": "Hentikan migrasi",
+                "content": "Migrasi tidak sepenuhnya lengkap. Data yang sudah bermigrasi mungkin tidak dapat digunakan. Jika Anda berhenti sekarang, Anda harus benar-benar menjalankan kembali proses migrasi.",
+                "hint": "Apakah Anda ingin menghentikan migrasi?",
+                "title": "Hentikan migrasi"
+            },
+            "confirmWarningCard": {
+                "currencyMismatch": {
+                    "text": "Mata uang data yang akan dimigrasi tidak sesuai dengan mata uang standar [{targetSystemCurrency}]. Data dengan [{sourceSystemCurrency}] masih dapat dimigrasi, tetapi tidak akan otomatis dikonversi. Anda dapat menyesuaikan harga secara manual setelah itu.",
+                    "title": "Migrasi telah mengenali mata uang lain"
+                },
+                "languageMismatch": {
+                    "text": "Bahasa data yang akan dimigrasi tidak cocok dengan bahasa standar [{targetSystemLanguage}]. Data dengan [{sourceSystemLanguage}] masih dapat dimigrasi, tetapi tidak akan otomatis dikonversi. Anda dapat menyesuaikan terjemahan secara manual setelahnya.",
+                    "title": "Migrasi telah mengenali bahasa lain"
+                }
+            },
+            "continueButton": "Lanjutkan",
+            "error-resolution": {
+                "codes": {
+                    "SWAG_MIGRATION_CONVERT_ASSOCIATION_MISSING": "Entitas terkait hilang",
+                    "SWAG_MIGRATION_CONVERT_CHILD_ENTITY_FAILED": "Konversi entitas anak gagal",
+                    "SWAG_MIGRATION_CONVERT_DOCUMENT_TYPE_UNSUPPORTED": "Konversi jenis dokumen tidak didukung",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_ALREADY_EXISTS": "Entitas sudah ada",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_FAILED": "Konversi entitas gagal",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_UNKNOWN": "Entitas dependen tidak diketahui",
+                    "SWAG_MIGRATION_CONVERT_FIELD_REASSIGNED": "Bidang entitas ditugaskan kembali secara otomatis",
+                    "SWAG_MIGRATION_CONVERT_LANGUAGE_PACK_DEACTIVATED": "Paket bahasa dinonaktifkan",
+                    "SWAG_MIGRATION_CONVERT_MAIN_VARIANT_RELATION_FAILED": "Konversi relasi varian utama gagal",
+                    "SWAG_MIGRATION_CONVERT_OBJECT_TYPE_UNSUPPORTED": "Jenis objek tidak didukung",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_CALCULATION_TYPE_UNSUPPORTED": "Jenis perhitungan pengiriman tidak didukung",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_PRICE_UNSUPPORTED": "Jenis harga pengiriman tidak didukung",
+                    "SWAG_MIGRATION_CONVERT_SOURCE_DATA_INCOMPLETE": "Sumber data tidak lengkap",
+                    "SWAG_MIGRATION_CONVERT_UNSERIALIZED_DATA_INVALID": "Data yang tidak diserialisasi tidak valid",
+                    "SWAG_MIGRATION_FETCH_DATASET_MISSING": "Dataset untuk entitas hilang",
+                    "SWAG_MIGRATION_FETCH_ENTITY_COUNT_FAILED": "Gagal membaca jumlah entitas dari sistem sumber",
+                    "SWAG_MIGRATION_FETCH_PROCESSOR_MISSING": "Prosesor untuk entitas hilang",
+                    "SWAG_MIGRATION_MEDIA_DEFAULT_FOLDER_UNSUPPORTED": "Folder default media tidak didukung",
+                    "SWAG_MIGRATION_MEDIA_FILE_MISSING": "File media hilang",
+                    "SWAG_MIGRATION_MEDIA_MIME_TYPE_UNKNOWN": "Jenis MIME media tidak diketahui",
+                    "SWAG_MIGRATION_MEDIA_TEMPORARY_FILE_FAILED": "Pembuatan file sementara media gagal",
+                    "SWAG_MIGRATION_RUN_ABORTED": "Migrasi dibatalkan secara otomatis",
+                    "SWAG_MIGRATION_RUN_EXCEPTION": "Pengecualian migrasi terjadi",
+                    "SWAG_MIGRATION_RUN_MESSAGE_QUEUE_EXCEPTION": "Pengecualian antrian pesan terjadi",
+                    "SWAG_MIGRATION_VALIDATION_ASSOCIATION_INVALID": "Asosiasi entitas tidak valid",
+                    "SWAG_MIGRATION_VALIDATION_EXCEPTION": "Pengecualian validasi terjadi",
+                    "SWAG_MIGRATION_VALIDATION_OPTIONAL_FIELD_VALUE_INVALID": "Bidang opsional memiliki nilai yang tidak valid",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_MISSING": "Bidang wajib tidak ada",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_VALUE_INVALID": "Bidang wajib memiliki nilai yang tidak valid",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_TRANSLATION_INVALID": "Terjemahan yang diperlukan tidak valid",
+                    "SWAG_MIGRATION_WRITE_EXCEPTION": "Terjadi pengecualian tulis",
+                    "SWAG_MIGRATION_WRITE_THEME_COMPILING_FAILED": "Kompilasi tema gagal",
+                    "unknown": "Kesalahan tidak diketahui"
+                },
+                "descriptionTitle": "Deskripsi bidang",
+                "errors": {
+                    "continueMigrationFailed": "Gagal melanjutkan migrasi.",
+                    "downloadLogsFailed": "Gagal mengunduh file log.",
+                    "fetchExampleFailed": "Gagal mengambil contoh data.",
+                    "fetchExistingFixesFailed": "Gagal mengambil perbaikan yang ada.",
+                    "fetchFilterDataFailed": "Gagal mengambil data filter.",
+                    "fetchLogsFailed": "Gagal mengambil data log.",
+                    "fetchRunFailed": "Gagal mengambil data yang dijalankan migrasi.",
+                    "fieldValueNotSet": "Nilai bidang tidak disetel.",
+                    "invalidFieldValueFormat": "Format nilai bidang tidak valid.",
+                    "noEntityIdsFound": "Tidak ada ID entitas valid yang ditemukan di entri log yang dipilih.",
+                    "noLogsSelected": "Silakan pilih setidaknya satu entri log untuk diselesaikan.",
+                    "resetResolutionFailed": "Gagal mengatur ulang resolusi kesalahan.",
+                    "submitResolutionFailed": "Gagal mengirimkan resolusi kesalahan.",
+                    "validationFailed": "Validasi gagal."
+                },
+                "modals": {
+                    "details": {
+                        "convertedDataLabel": "Data yang dikonversi",
+                        "sourceDataLabel": "Sumber data",
+                        "title": "Rincian: {entityName}"
+                    },
+                    "error": {
+                        "left": {
+                            "details": "Tampilkan detil",
+                            "reset": "Setel ulang",
+                            "select-all": "Pilih semua ({count})",
+                            "status": {
+                                "resolved": "Terselesaikan",
+                                "unresolved": "Belum terselesaikan"
+                            }
+                        },
+                        "right": {
+                            "apply": "Terapkan perubahan",
+                            "banner": {
+                                "content": "Harap buat setidaknya satu opsi untuk dipilih di area Administrasi yang sesuai.",
+                                "link": "Tambahkan Opsi",
+                                "title": "Tidak ada opsi yang tersedia"
+                            },
+                            "title": "Sunting: Item {count}",
+                            "unhandledBanner": {
+                                "content": "Jenis bidang tidak dapat ditentukan. Harap perbaiki data sumber mentah. Nilai harus dalam format yang benar.",
+                                "title": "Jenis bidang tidak diketahui"
+                            },
+                            "unresolvableBanner": {
+                                "content": "Silakan periksa file log untuk informasi lebih lanjut.",
+                                "title": "Kesalahan ini saat ini tidak dapat diselesaikan melalui Asisten Migrasi"
+                            }
+                        },
+                        "table": {
+                            "columns": {
+                                "status": "Status"
+                            }
+                        },
+                        "title": "Perbaiki kesalahan: {code}, {entityName}, {fieldName}"
+                    }
+                },
+                "step": {
+                    "card": {
+                        "filter": {
+                            "code": {
+                                "label": "Nama kesalahan",
+                                "placeholder": "Pilih nama kesalahan"
+                            },
+                            "entity": {
+                                "label": "Entitas",
+                                "placeholder": "Pilih entitas"
+                            },
+                            "field": {
+                                "label": "Field",
+                                "placeholder": "Pilih bidang"
+                            },
+                            "reset": "Setel ulang filter",
+                            "status": {
+                                "label": "Status kesalahan",
+                                "options": {
+                                    "resolved": "Terselesaikan",
+                                    "unresolved": "Belum terselesaikan"
+                                },
+                                "placeholder": "Pilih status kesalahan"
+                            },
+                            "title": "Filter | Filter ({count}) | Filter ({count})"
+                        },
+                        "table": {
+                            "columns": {
+                                "code": "Kode",
+                                "count": "Tetap/Total",
+                                "entity": "Entitas",
+                                "field": "Field",
+                                "gatewayName": "Pintu gerbang",
+                                "name": "Nama",
+                                "profileName": "Profil"
+                            },
+                            "empty-state": {
+                                "description": "Tidak ada log yang cocok dengan filter yang dipilih ditemukan.",
+                                "headline": "Tidak ditemukan"
+                            }
+                        },
+                        "tabs": {
+                            "errors": "Kesalahan ({count})",
+                            "infos": "Info ({count})",
+                            "warnings": "Peringatan ({count})"
+                        },
+                        "title": "Kesalahan yang Dapat Diperbaiki"
+                    },
+                    "continue-modal": {
+                        "text-fixable": "Ada {count} kelompok kesalahan yang dapat diperbaiki yang masih belum terselesaikan. Harap perbaiki kesalahan ini sebelum melanjutkan untuk menghindari kesalahan tindak lanjut.",
+                        "text-unfixable": "Ada {count} kesalahan yang tidak dapat diperbaiki yang masih belum terselesaikan. Jika Anda melanjutkan tanpa menyelesaikan kesalahan yang tersisa, kesalahan tindak lanjut dapat muncul.",
+                        "title": "Lanjutkan"
+                    },
+                    "header": {
+                        "banner": {
+                            "content": "Ada kesalahan atau peringatan {count} yang tidak dapat diselesaikan dari layar ini. Untuk menyelidiki, unduh file log dan tinjau pesan kesalahan terperinci. Masalah yang mendasarinya mungkin perlu diperbaiki dalam sistem sumber. Setelah diselesaikan, jalankan kembali migrasi untuk melanjutkan.",
+                            "title": "Beberapa kesalahan tidak dapat diperbaiki melalui tampilan ini"
+                        },
+                        "continue": "Lanjutkan",
+                        "continueTooltip": "Harap perbaiki semua kesalahan yang dapat diperbaiki sebelum melanjutkan.",
+                        "description": "Tinjau dan selesaikan kesalahan migrasi yang terjadi selama impor. Perbaiki masalah data secara langsung di tampilan ini atau unduh file log untuk informasi terperinci. Lanjutkan setelah semua kesalahan yang dapat diperbaiki diselesaikan. Anda dapat meninggalkan tampilan ini dan kembali lagi nanti",
+                        "documentation": "Dokumentasi",
+                        "download": "Unduh berkas log",
+                        "title": "Resolusi kesalahan"
+                    }
+                }
+            },
+            "errorTypes": {
+                "error": "Galat",
+                "info": "Informasi",
+                "warning": "Peringatan"
+            },
+            "finishButton": "Selesai",
+            "loadingScreenCard": {
+                "documentationLink": "https://developer.shopware.com/docs/guides/hosting/infrastructure/message-queue.html#message-queue",
+                "documentationLinkText": "Dokumentasi antrian pesan",
+                "flowChart": {
+                    "cleanup": "Pembersihan",
+                    "errorResolution": "Resolusi kesalahan",
+                    "fetchData": "Membaca",
+                    "finish": "Selesai",
+                    "indexing": "Pengindeksan",
+                    "premapping": "Memeriksa",
+                    "processMedia": "Mengunduh",
+                    "writeData": "Menulis"
+                },
+                "notice": "Tip: Proses ini berjalan di antrian pesan. Anda tidak perlu tetap berada di halaman ini jika toko Anda dikonfigurasi dengan benar.",
+                "result": {
+                    "historyHint": "Anda dapat melihat informasi ini kapan saja di riwayat migrasi. Ada kemungkinan bahwa lebih banyak pesan log akan ditambahkan di lain waktu karena unduhan media masih berjalan di latar belakang.",
+                    "title": "Asisten Migrasi selesai"
+                },
+                "status": {
+                    "aborting": {
+                        "caption": "Data yang tidak tertulis dibersihkan. Data yang sudah dimigrasi mungkin tidak dapat digunakan.",
+                        "long": "Migrasi sedang dibatalkan",
+                        "short": "Membatalkan"
+                    },
+                    "cleanup": {
+                        "caption": "Data sementara sedang dihapus. Migrasi hampir selesai.",
+                        "long": "Migrasi sedang dibersihkan",
+                        "short": "Pembersihan"
+                    },
+                    "error-resolution": {
+                        "caption": "Migrasi dijeda sampai semua kesalahan diselesaikan.",
+                        "long": "Kesalahan bisa diatasi",
+                        "short": "Resolusi kesalahan"
+                    },
+                    "fetching": {
+                        "caption": "Tugas baru diproses.",
+                        "long": "Data akan dibaca dari sistem Anda",
+                        "short": "Membaca"
+                    },
+                    "finish": "Selesai",
+                    "indexing": {
+                        "caption": "Migrasi hampir selesai.",
+                        "long": "Data baru sedang diindeks",
+                        "short": "Pengindeksan"
+                    },
+                    "media-processing": {
+                        "caption": "Data gambar besar dapat memakan waktu untuk diproses.",
+                        "long": "Media sedang ditransfer",
+                        "short": "Transfer media"
+                    },
+                    "unknown": "Tidak diketahui",
+                    "writing": {
+                        "caption": "Tergantung pada ukuran toko, mungkin perlu beberapa saat.",
+                        "long": "Data sedang ditulis di Shopware 6",
+                        "short": "Menulis"
+                    }
+                }
+            },
+            "migrateButton": "Mulai migrasi",
+            "migrationAlreadyRunning": "Migrasi sudah dimulai.",
+            "pauseButton": "Jeda",
+            "pluginVersionText": "Kami telah memperhatikan bahwa pembaruan plugin tersedia dalam sistem sumber Anda {sourceSystem}. Silahkan perbarui plugin \"{pluginName}\" sebelum Anda memulai migrasi.",
+            "premappingCard": {
+                "cardTitle": "Penugasan",
+                "group": {
+                    "delivery_time": "Waktu pengiriman",
+                    "manufacturer": "Pabrikan",
+                    "newsletter_status": "Status buletin",
+                    "order_delivery_state": "Statasi pengiriman pesanan",
+                    "order_state": "Statasi pesanan",
+                    "payment_method": "Metode pembayaran",
+                    "salesChannel": "Saleschannel buletin",
+                    "salutation": "Salam",
+                    "shipping_availability_rule": "Ketersediaan metode pengiriman",
+                    "source_timezone": "Zona waktu",
+                    "transaction_state": "Statasi transaksi",
+                    "user": "Pengguna administrasi"
+                },
+                "newAssignmentTitle": "Tugas baru",
+                "placeholder": "Silahkan pilih",
+                "previousTitle": "Sebelumnya",
+                "unfilledAlert": "Kami telah mendeteksi bahwa ada data yang membutuhkan penugasan manual."
+            },
+            "savePremapping": {
+                "message": "Premapping telah disimpan.",
+                "saveButton": "Simpan premapping"
+            },
+            "selectDataCard": {
+                "cardTitle": "Pemilihan data",
+                "dataHeader": "Data",
+                "dataSelection": {
+                    "basicSettings": "Data dasar",
+                    "cms": "Layout",
+                    "customerWishlists": "Daftar Keinginan",
+                    "customersOrders": "Pelanggan & pesanan",
+                    "media": "Media",
+                    "newsletterRecipient": "Penerima Newsletter",
+                    "processMediaFiles": "Media",
+                    "productReviews": "Ulasan produk",
+                    "products": "Produk",
+                    "promotions": "Promosi",
+                    "seoUrls": "URL SEO"
+                },
+                "dataTypes": {
+                    "basicData": "Data toko",
+                    "pluginData": "Data plugin"
+                },
+                "entities": {
+                    "category": "Kategori:",
+                    "category_association": "Kategori asosiasi:",
+                    "category_cms_page_association": "Asosiasi tata letak kategori:",
+                    "category_custom_field": "Kolom kustom kategori",
+                    "category_product_stream_association": "Kategori asosiasi kelompok produk dinamis:",
+                    "cms_page": "Layout:",
+                    "country": "Negara:",
+                    "country_state": "Negara negara:",
+                    "currency": "Mata Uang:",
+                    "custom_field_set": "Set bidang kustom:",
+                    "customer": "Pelanggan:",
+                    "customer_custom_field": "Bidang kustom pelanggan",
+                    "customer_group": "Kelompok pelanggan:",
+                    "customer_group_custom_field": "Bidang kustom grup pelanggan",
+                    "customer_wishlist": "Daftar-daftar keinginan:",
+                    "delivery_time": "Waktu pengiriman:",
+                    "language": "Bahasa:",
+                    "mail_header_footer": "Header dan footer email",
+                    "mail_template": "Templat email:",
+                    "main_variant_relation": "Hubungan varian utama:",
+                    "media": "Media:",
+                    "media_folder": "Folder media:",
+                    "media_folder_inheritance": "Warisan folder media:",
+                    "number_range": "Rentang nomor:",
+                    "order": "Pesanan:",
+                    "order_custom_field": "Pesan bidang khusus",
+                    "order_document": "Dokumen pesanan:",
+                    "order_document_base_config": "Konfigurasi dokumen:",
+                    "order_document_custom_field": "Memesan kolom kustom dokumen",
+                    "order_document_inheritance": "Hubungan dokumen pesanan:",
+                    "page_system_config": "Informasi dasar halaman:",
+                    "product": "Produk:",
+                    "product_canonical_association": "Asosiasi produk kanonik",
+                    "product_cms_page_association": "Asosiasi tata letak produk",
+                    "product_cross_selling": "Cross Selling:",
+                    "product_custom_field": "Bidang kustom produk",
+                    "product_feature_set": "Karakteristik penting:",
+                    "product_manufacturer": "Produsen produk:",
+                    "product_manufacturer_custom_field": "Bidang kustom produsen produk",
+                    "product_option_relation": "Pilihan produk:",
+                    "product_price_custom_field": "Bidang kustom harga produk",
+                    "product_property_relation": "Properti produk:",
+                    "product_review": "Ulasan:",
+                    "product_sorting": "Penyortiran produk:",
+                    "product_stream": "Grup produk dinamis:",
+                    "product_stream_filter_inheritance": "Filter grup produk dinamis:",
+                    "promotion": "Promosi:",
+                    "property_group": "Grup properti:",
+                    "property_group_option": "Properti:",
+                    "rule": "Aturan:",
+                    "sales_channel": "Saluran penjualan:",
+                    "sales_channel_domain": "Domain:",
+                    "sales_channel_home_cms_page_association": "Asosiasi tata letak rumah saluran penjualan",
+                    "salutation": "Salam:",
+                    "seo_url": "URL SEO:",
+                    "seo_url_template": "Templat URL SEO:",
+                    "shipping_method": "Metode pengiriman:",
+                    "snippet": "Snippet:",
+                    "snippet_set": "Set snippet:",
+                    "system_config": "Informasi dasar:",
+                    "tax": "Tarif pajak:",
+                    "tax_rule": "Aturan pajak:",
+                    "translation": "Terjemahan:",
+                    "unit": "Skala unit:"
+                },
+                "headers": {
+                    "dataType": "Jenis",
+                    "name": "Nama",
+                    "total": "Set data"
+                },
+                "noData": "Tidak ada yang ditemukan untuk bermigrasi.",
+                "noDataSubline": "Silakan periksa koneksi Anda atau coba profil lain."
+            },
+            "shopInfoCard": {
+                "buttonCreateConnection": "Buat koneksi baru",
+                "buttonCreateInitialConnection": "Buat koneksi awal",
+                "buttonEditSettings": "Edit koneksi",
+                "buttonProfileInstallation": "Pasang profil lain",
+                "buttonRemoveCredentials": "Menghapus data akses",
+                "buttonResetChecksums": "Reset checksum",
+                "buttonResetMigration": "Migrasi lengkap",
+                "buttonSelectConnection": "Mengubah koneksi",
+                "cardTitle": "Sistem toko",
+                "connected": "Terhubung",
+                "connectionCheck": "Pemeriksaan koneksi:",
+                "gateway": "Gerbang:",
+                "lastMigration": "Migrasi terakhir:",
+                "link": "Bantuan & dokumentasi",
+                "noConnection": "Tidak ada koneksi",
+                "noConnectionCheckDoneYet": "Belum ada pemeriksaan koneksi yang dilakukan",
+                "noMigrationDoneYet": "-",
+                "notConnected": "Tidak terhubung",
+                "profile": "Profil sistem:",
+                "refreshButton": "Segarkan koneksi",
+                "removeCredentialsConfirmDialog": {
+                    "abortButtonText": "Batalkan",
+                    "content": "Tidak akan ada koneksi aktif setelah ini. Masukkan data akses Anda lagi untuk memulihkan koneksi.",
+                    "contentHint": "Apakah Anda ingin menghapus data akses saat ini?",
+                    "title": "Menghapus data akses"
+                },
+                "resetChecksumsConfirmDialog": {
+                    "abortButtonText": "Batalkan",
+                    "confirmButtonText": "Ya, reset",
+                    "content": "Jika Anda mengatur ulang checksum, semua data dari sistem sumber akan dikenali dalam migrasi berikutnya. Ini termasuk set data yang sudah dimigrasi atau tidak berubah. <br><br><strong>Penting:</strong> Perubahan pada catatan data yang telah Anda buat di Shopware 6 sejak migrasi terakhir, akan ditimpa. Data sistem sumber memiliki prioritas.",
+                    "contentHint": "Apakah Anda ingin mengatur ulang checksum?",
+                    "title": "Reset checksum"
+                },
+                "resetMigrationConfirmDialog": {
+                    "abortButtonText": "Batalkan",
+                    "confirmButtonText": "Selesaikan sekarang",
+                    "content": "Hebat! Sekarang mari selesaikan migrasi Anda dan bersihkan file sementara serta data yang tidak digunakan. <strong>Harap dicatat:</strong> Menyelesaikan migrasi adalah terminal. Anda tidak akan dapat memigrasi data lagi melalui koneksi saat ini.",
+                    "errorNotification": {
+                        "message": "Migrasi saat ini sedang berlangsung.",
+                        "title": "Terjadi galat ketika menyelesaikan migrasi"
+                    },
+                    "header": "Sudahkah Anda selesai memigrasi data toko Anda?",
+                    "title": "Menyelesaikan migrasi"
+                },
+                "updateBanner": {
+                    "isResettingChecksums": {
+                        "message": "Checksum sedang diatur ulang. Ini mungkin memakan waktu beberapa menit.",
+                        "title": "Mengatur ulang checksum"
+                    },
+                    "isTruncatingMigration": {
+                        "message": "Data migrasi sedang dipotong. Ini mungkin memakan waktu beberapa menit.",
+                        "title": "Memotong data migrasi"
+                    }
+                }
+            },
+            "shopwareMajorVersionText": "Kami telah memperhatikan bahwa versi sistem sumber Anda {sourceSystem} tidak sesuai dengan sistem target versi {targetSystem} Anda. Pastikan untuk menggunakan versi utama yang sama untuk kedua sistem sebelum Anda memulai migrasi.",
+            "title": "Umum",
+            "warningModal": {
+                "cancelButton": "Kembali",
+                "confirmButton": "Tetap lanjutkan",
+                "message": {
+                    "currency": "Migrasi dengan mata uang default yang berbeda dapat menyebabkan catatan data rusak dan menyebabkan efek samping yang tidak terduga.",
+                    "language": "Migrasi dengan bahasa default yang berbeda dapat menyebabkan catatan data rusak dan menyebabkan efek samping yang tidak terduga."
+                },
+                "title": "Ketidakcocokan data terdeteksi"
+            }
+        },
+        "wizard": {
+            "buttonAbort": "Batalkan",
+            "buttonConnect": "Hubungkan",
+            "buttonConnectionCreate": "Membangun koneksi",
+            "buttonConnectionSelect": "Ubah koneksi",
+            "buttonEdit": "Edit koneksi",
+            "buttonFinish": "Selesai",
+            "buttonLater": "Tutup",
+            "buttonLetsGo": "Mulai",
+            "buttonNext": "Lanjutkan",
+            "buttonToProfileInformation": "Informasi",
+            "buttonUseSsl": "Gunakan HTTPS",
+            "pages": {
+                "connectionCreate": {
+                    "connectionLabel": "Nama koneksi",
+                    "connectionPlaceholder": "Masukkan nama",
+                    "connectionTooltip": "Masukkan nama unik untuk koneksi.",
+                    "gatewayLabel": "Pintu gerbang",
+                    "gatewayPlaceholder": "Pilih gateway",
+                    "gatewayTooltip": "Jenis koneksi antar sistem.",
+                    "gateways": {
+                        "shopwareApi": "API",
+                        "shopwareLocal": "Database lokal"
+                    },
+                    "hint": {
+                        "local": "Catatan: Sistem toko harus berada di server yang sama. Anda membutuhkan data akses ke database."
+                    },
+                    "profileInstall": "Pasang profil lain",
+                    "profileLabel": "Profil sistem toko",
+                    "profilePlaceholder": "Pilih profil",
+                    "title": "Migrasi — Buat koneksi baru"
+                },
+                "connectionSelect": {
+                    "connectionLabel": "Nama koneksi",
+                    "connectionPlaceholder": "Silahkan pilih koneksi",
+                    "title": "Migrasi — Mengubah koneksi"
+                },
+                "credentials": {
+                    "emptyState": "Maaf tidak ada formulir untuk profil yang dipilih ditemukan.",
+                    "error": {
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR": "Tidak dapat menyambung ke server. Silakan periksa domain toko yang diberikan.",
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR__HINT": "Jika Anda mengalami masalah saat terhubung, mungkin ada baiknya memeriksa versi curl yang saat ini diinstal di server Anda dan memperbaruinya.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ATTRIBUTES_WRONG": "Koneksi database tidak memiliki atribut yang tepat dan mereka tidak dapat diatur.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ERROR": "Koneksi database tidak dapat dibuat.",
+                        "SWAG_MIGRATION__DUPLICATE_SOURCE_CONNECTION": "Koneksi ke sistem sumber yang sama sudah ada. Silakan gunakan koneksi lain.",
+                        "SWAG_MIGRATION__GATEWAY_READ": "Tidak dapat menyambung ke server. Silakan periksa domain toko yang diberikan.",
+                        "SWAG_MIGRATION__GATEWAY_READ__HINT": "Jika Anda mengalami masalah saat terhubung, mungkin ada baiknya memeriksa versi curl yang saat ini diinstal di server Anda dan memperbaruinya.",
+                        "SWAG_MIGRATION__INVALID_CONNECTION_CREDENTIALS": "Data akses untuk koneksi ke sistem sumber tidak ada atau salah. Silakan periksa dan coba lagi.",
+                        "SWAG_MIGRATION__IS_RUNNING": "Migrasi saat ini sedang berlangsung. Oleh karena itu, Anda tidak dapat mengedit kredensials sampai migrasi selesai.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED": "Plugin yang diperlukan “Migration Connector” tidak dipasang di Shopware 5. Silahkan instal plugin gratis dan coba lagi.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED__HINT": "Jika Anda sudah menginstal “Konektor Migrasi” dan menghapus cache di backend Shopware 5 (Konfigurasi> cache/kinerja), coba hapus folder cache Shopware 5 Anda (var/cache) secara manual.",
+                        "SWAG_MIGRATION__SSL_REQUIRED": "Kami telah menentukan bahwa domain toko yang diberikan diperlukan koneksi SSL.",
+                        "alertErrorTitle": "Perhatian",
+                        "contentTitle": "Tidak ada koneksi",
+                        "undefinedErrorMsg": "Galat server internal. Silakan coba lagi."
+                    },
+                    "shopware55": {
+                        "api": {
+                            "apiKeyLabel": "Kunci API",
+                            "apiKeyPlaceholder": "Masukkan kunci",
+                            "apiKeyTooltip": "Kunci API digunakan untuk keamanan dan identifikasi.",
+                            "apiUserLabel": "Nama pengguna (pengguna API)",
+                            "apiUserPlaceholder": "Masukkan nama pengguna",
+                            "apiUserTooltip": "Nama pengguna dari backend Shopware 5 anda.",
+                            "endpointLabel": "Domain toko",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Toko saya menggunakan koneksi aman (SSL)",
+                            "pluginLinkText": "Informasi lebih lanjut tentang plugin",
+                            "pluginName": "Konektor Migrasi",
+                            "steps": {
+                                "step1": "Instal dan aktifkan plugin {pluginName} dari backend Shopware 5 Anda di bawah Pengelola Plugin > Ekstensi> Alat Migrasi.",
+                                "step2": "Buka Administrasi pengguna di backend Shopware 5 Anda.",
+                                "step3": "Pilih pengguna yang ingin Anda gunakan untuk koneksi.",
+                                "step4": "Aktifkan akses API dan simpan.",
+                                "step5": "Pastikan pengguna memiliki peran local_admin.",
+                                "step6": "Masukkan kredenSIAL API di sini untuk membuat koneksi."
+                            },
+                            "title": "Hubungkan toko Shopware 5 Anda"
+                        },
+                        "local": {
+                            "dbHostLabel": "Host",
+                            "dbHostPlaceholder": "Masukkan host",
+                            "dbNameLabel": "Nama database",
+                            "dbNamePlaceholder": "Masukkan nama",
+                            "dbPasswordLabel": "Kata Sandi",
+                            "dbPasswordPlaceholder": "Masukkan kata sandi",
+                            "dbPortLabel": "Port",
+                            "dbUserLabel": "Pengguna",
+                            "dbUserPlaceholder": "Masukkan nama pengguna",
+                            "installationRoot": "Folder instalasi toko",
+                            "installationRootPlaceholder": "Masukkan root instalasi"
+                        }
+                    },
+                    "shopware6": {
+                        "api": {
+                            "apiPasswordLabel": "Kunci akses rahasia",
+                            "apiPasswordPlaceholder": "Masukkan kunci akses rahasia",
+                            "apiPasswordTooltip": "Kunci akses rahasia digunakan untuk keamanan dan identifikasi.",
+                            "apiUserLabel": "ID kunci akses",
+                            "apiUserPlaceholder": "Masukkan ID kunci akses",
+                            "apiUserTooltip": "Akses ID kunci integrasi Anda.",
+                            "endpointLabel": "Domain toko",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Toko saya menggunakan koneksi aman (SSL)",
+                            "integrationLink": "https://docs.shopware.com/en/shopware-6-en/settings/system/integrationen",
+                            "integrationLinkText": "Lebih lanjut tentang integrasi",
+                            "pluginLink": "https://store.shopware.com/en/swag257162657297f/migration-assistant.html",
+                            "pluginLinkText": "Selengkapnya tentang ekstensi Asisten Migrasi",
+                            "pluginName": "Asisten migrasi",
+                            "steps": {
+                                "step1": "Instal dan aktifkan ekstensi {pluginName} pada sistem sumber.",
+                                "step2": "Buat integrasi dalam sistem sumber melalui Pengaturan> Sistem> Integrasi.",
+                                "step3": "Hasilkan ID kunci akses dan kunci akses rahasia.",
+                                "step4": "Masukkan kunci akses dan domain toko di sini untuk membuat koneksi."
+                            },
+                            "title": "Hubungkan toko Shopware 6 Anda"
+                        }
+                    },
+                    "statusTitle": "Pemeriksaan koneksi",
+                    "success": {
+                        "SWAG_MIGRATION__REQUEST_CERTIFICATE_INVALID": "Kami telah menentukan bahwa sertifikat SSL domain toko yang ditentukan tidak aman. Periksa sertifikat untuk keamanan Anda sendiri.",
+                        "contentInformation": "Anda dapat memulai migrasi.",
+                        "contentTitle": "Koneksi berhasil",
+                        "undefinedErrorMsg": "Terjadi galat yang tidak diketahui saat memeriksa sertifikat SSL dari domain toko tertentu."
+                    },
+                    "title": "Migrasi — Membangun koneksi"
+                },
+                "introduction": {
+                    "contentHeadline": "Mari kita pindahkan beberapa hal",
+                    "contentInformation": "Bersama-sama kita akan menghubungkan sistem toko Anda ke Shopware 6. Setelah itu, Asisten Migrasi akan membantu Anda memigrasi data Anda selangkah demi selangkah.",
+                    "title": "Asisten migrasi"
+                },
+                "profileInstallation": {
+                    "availabilityHeadline": "Sebelumnya tersedia:",
+                    "availableVersionHeadline": "Didukung:",
+                    "content": "Pilih sistem toko untuk memigrasi data dari dan pastikan untuk menginstal plugin profil yang sesuai juga.",
+                    "installationButton": "Instal",
+                    "installedHint": "Dipasang",
+                    "magentoProfileHeadline": "Magento - Profil",
+                    "profileManufacturer": "shopware AG",
+                    "shopwareProfileHeadline": "Shopware - Profil",
+                    "title": "Migrasi - Profil Sistem Toko"
+                }
+            }
+        },
+        "worker-listener": {
+            "mediaProcessing": {
+                "message": "Tidak ada file yang tersisa. | Satu file tersisa. | {n} file tersisa.",
+                "messageSuccess": "Muat turun media telah selesai.",
+                "title": "Media sedang diunduh",
+                "titleSuccess": "Unduhan media selesai"
+            }
+        }
+    }
+}

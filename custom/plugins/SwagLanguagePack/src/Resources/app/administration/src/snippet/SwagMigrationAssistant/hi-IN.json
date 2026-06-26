@@ -1,0 +1,679 @@
+{
+    "global": {
+        "error-codes": {
+            "SWAG_MIGRATION_CONNECTION_NAME_ALREADY_EXISTS": "कनेक्शन नाम पहले से ही मौज़ूद है।",
+            "SWAG_MIGRATION_CONNECTION_NAME_TO_SHORT": "कनेक्शन नाम कम से कम 6 वर्ण लंबा होना चाहिए।",
+            "SWAG_MIGRATION_INVALID_API_KEY": "एपीआई कुंजी में सही लंबाई ({length}/40 वर्ण) नहीं है।"
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "swag_migration": {
+                "label": "प्रवासन सहायक"
+            }
+        }
+    },
+    "swag-migration": {
+        "api-error": {
+            "abortMigration": "माइग्रेशन रद्द करने में विफल।",
+            "approveFinishedMigration": "माइग्रेशन पूरा करने के दौरान असफल",
+            "checkConnection": "स्रोत सिस्टम से कनेक्शन की जांच करने में विफल।",
+            "fetchConnectionId": "सक्रिय कनेक्शन आईडी प्राप्त करने में विफल।",
+            "getDataSelection": "मौजूदा कनेक्शन के लिए डेटा चयन प्राप्त करने में विफल।",
+            "getState": "माइग्रेशन स्थिति प्राप्त करने में विफल।",
+            "startMigration": "माइग्रेशन प्रारंभ करने में विफल।"
+        },
+        "dashboard": {
+            "button": "माइग्रेशन सहायक खोलें",
+            "headline": "शॉपवेयर में जा रहा है",
+            "information": "पहली बात यह है कि अपनी मौजूदा दुकान प्रणाली को लिंक करना - माइग्रेशन सहायक आपको रास्ते में मदद करेगा।",
+            "shopInfoCard": {
+                "button": "खोलें",
+                "header": "प्रवासन सहायक",
+                "resetButton": "समाप्त"
+            },
+            "title": "प्रवासन सहायक"
+        },
+        "general": {
+            "descriptionTextModule": "डेटा माइग्रेट करने के लिए मॉड्यूल",
+            "disabledMessages": {
+                "disabled": "इस वातावरण में माइग्रेशन अक्षम है।",
+                "loading": "अभी माइग्रेशन जारी है।",
+                "noData": "माइग्रेशन के लिए कोई डेटा उपलब्ध नहीं है।",
+                "noPermission": "माइग्रेशन करने के लिए आपके पास आवश्यक अनुमतियां नहीं हैं।",
+                "noSelectedData": "माइग्रेशन के लिए कोई आइटम नहीं चुना गया है।",
+                "resettingChecksum": "वर्तमान में चेकसम रीसेट किए जा रहे हैं।",
+                "truncatingMigration": "माइग्रेशन डेटा को फ़िलहाल छोटा किया जा रहा है।",
+                "unfilledPremapping": "जारी रखने से पहले सभी आवश्यक मैपिंग को पूरा करें।"
+            },
+            "mainMenuItemGeneral": "प्रवासन सहायक",
+            "tabDataSelector": "डाटा चयन",
+            "tabHistory": "इतिहास",
+            "tabMain": "साधारण"
+        },
+        "history": {
+            "connectionName": "कनेक्शन नाम",
+            "contextMenu": {
+                "details": "विवरण दिखाएँ",
+                "downloadLogs": "लॉग डाउनलोड करें"
+            },
+            "detailPage": {
+                "close": "बंद करें",
+                "data": "डाटा",
+                "dataCount": "डेटासेट",
+                "dataName": "नाम",
+                "errorCode": "त्रुटि संदेश",
+                "errorCount": "गणना",
+                "errorLevel": "लॉग स्तर",
+                "errors": "विवरण",
+                "logDescription": "अधिक जानकारी के लिए {link}",
+                "logDownload": "लॉग फ़ाइल डाउनलोड करें।",
+                "noErrorsOccurred": "कोई त्रुटि नहीं हुई।",
+                "noProgressData": "यह रन प्लगइन के पिछले संस्करण में किया गया था और इसका डेटा हटा दिया गया है।",
+                "status": {
+                    "aborted": "निरस्त",
+                    "finished": "समाप्त",
+                    "running": "चल रहा है"
+                },
+                "title": "माइग्रेशन विवरण"
+            },
+            "gateway": "द्वार",
+            "importDateTime": "प्रारंभ समय",
+            "profile": "प्रोफ़ाइल",
+            "selectedData": "डाटा",
+            "shopDomain": "दुकान डोमेन",
+            "shopSystem": "दुकान प्रणाली",
+            "status": "स्थिति"
+        },
+        "index": {
+            "abortButton": "रद्द करें",
+            "backToOverviewButton": "ओवरव्यू पर वापस जाएं",
+            "confirmAbortDialog": {
+                "cancel": "चलते रहो",
+                "confirm": "माइग्रेशन रोकें",
+                "content": "माइग्रेशन पूरी तरह से पूरा नहीं हुआ है। पहले से माइग्रेट किए गए डेटा अनुपयोगी हो सकते हैं। यदि आप अभी छोड़ देते हैं, तो आपको माइग्रेशन प्रक्रिया को पूरी तरह से फिर से चलाना होगा।",
+                "hint": "क्या आप माइग्रेशन को रोकना चाहते हैं?",
+                "title": "माइग्रेशन रोकें"
+            },
+            "confirmWarningCard": {
+                "currencyMismatch": {
+                    "text": "माइग्रेट किए जाने वाले डेटा की मुद्रा मानक मुद्रा [{targetSystemCurrency}] से मेल नहीं खाती है। [{sourceSystemCurrency}] के साथ डेटा अभी भी माइग्रेट किया जा सकता है, लेकिन इसे स्वचालित रूप से परिवर्तित नहीं किया जाएगा। आप कीमतों को मैन्युअल रूप से बाद में समायोजित कर सकते हैं।",
+                    "title": "प्रवासन एक और मुद्रा को मान्यता दी है"
+                },
+                "languageMismatch": {
+                    "text": "माइग्रेट किए जाने वाले डेटा की भाषा मानक भाषा [{targetSystemLanguage}] से मेल नहीं खाती है। [{sourceSystemLanguage}] के साथ डेटा अभी भी माइग्रेट किया जा सकता है, लेकिन इसे स्वचालित रूप से परिवर्तित नहीं किया जाएगा। आप बाद में मैन्युअल रूप से अनुवाद समायोजित कर सकते हैं।",
+                    "title": "माइग्रेशन ने दूसरी भाषा को पहचाना है"
+                }
+            },
+            "continueButton": "जारी रखें",
+            "error-resolution": {
+                "codes": {
+                    "SWAG_MIGRATION_CONVERT_ASSOCIATION_MISSING": "संबद्ध इकाई अनुपलब्ध",
+                    "SWAG_MIGRATION_CONVERT_CHILD_ENTITY_FAILED": "चाइल्ड एंटिटी रूपांतरण असफल",
+                    "SWAG_MIGRATION_CONVERT_DOCUMENT_TYPE_UNSUPPORTED": "दस्तावेज़ प्रकार रूपांतरण असमर्थित",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_ALREADY_EXISTS": "एंटिटी पहले से मौजूद है",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_FAILED": "एंटिटी रूपांतरण असफल",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_UNKNOWN": "आश्रित इकाई अज्ञात",
+                    "SWAG_MIGRATION_CONVERT_FIELD_REASSIGNED": "इकाई फ़ील्ड स्वचालित रूप से पुन: असाइन किया गया",
+                    "SWAG_MIGRATION_CONVERT_LANGUAGE_PACK_DEACTIVATED": "भाषा पैक निष्क्रिय किया गया",
+                    "SWAG_MIGRATION_CONVERT_MAIN_VARIANT_RELATION_FAILED": "मुख्य संस्करण संबंध रूपांतरण विफल",
+                    "SWAG_MIGRATION_CONVERT_OBJECT_TYPE_UNSUPPORTED": "ऑब्जेक्ट क़िस्म असमर्थित",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_CALCULATION_TYPE_UNSUPPORTED": "शिपिंग गणना प्रकार असमर्थित",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_PRICE_UNSUPPORTED": "शिपिंग मूल्य प्रकार असमर्थित",
+                    "SWAG_MIGRATION_CONVERT_SOURCE_DATA_INCOMPLETE": "स्रोत डेटा अधूरा",
+                    "SWAG_MIGRATION_CONVERT_UNSERIALIZED_DATA_INVALID": "अनसीरियलाइज़्ड डेटा अमान्य है",
+                    "SWAG_MIGRATION_FETCH_DATASET_MISSING": "अनुपलब्ध इकाई के लिए डेटासेट",
+                    "SWAG_MIGRATION_FETCH_ENTITY_COUNT_FAILED": "स्रोत सिस्टम से इकाई गणना पढ़ने में विफल",
+                    "SWAG_MIGRATION_FETCH_PROCESSOR_MISSING": "इकाई के लिए प्रोसेसर अनुपलब्ध है",
+                    "SWAG_MIGRATION_MEDIA_DEFAULT_FOLDER_UNSUPPORTED": "मीडिया डिफ़ॉल्ट फ़ोल्डर असमर्थित",
+                    "SWAG_MIGRATION_MEDIA_FILE_MISSING": "मीडिया फ़ाइल अनुपलब्ध",
+                    "SWAG_MIGRATION_MEDIA_MIME_TYPE_UNKNOWN": "मीडिया माइम क़िस्म अज्ञात",
+                    "SWAG_MIGRATION_MEDIA_TEMPORARY_FILE_FAILED": "मीडिया अस्थायी फ़ाइल बनाने में असफल",
+                    "SWAG_MIGRATION_RUN_ABORTED": "माइग्रेशन स्वचालित रूप से निरस्त हो गया",
+                    "SWAG_MIGRATION_RUN_EXCEPTION": "माइग्रेशन अपवाद हुआ",
+                    "SWAG_MIGRATION_RUN_MESSAGE_QUEUE_EXCEPTION": "संदेश कतार अपवाद उत्पन्न हुआ",
+                    "SWAG_MIGRATION_VALIDATION_ASSOCIATION_INVALID": "एंटिटी एसोसिएशन अमान्य है",
+                    "SWAG_MIGRATION_VALIDATION_EXCEPTION": "सत्यापन अपवाद हुआ",
+                    "SWAG_MIGRATION_VALIDATION_OPTIONAL_FIELD_VALUE_INVALID": "वैकल्पिक फ़ील्ड में अमान्य मान है",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_MISSING": "आवश्यक फ़ील्ड अनुपलब्ध है",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_VALUE_INVALID": "आवश्यक फ़ील्ड में अमान्य मान है",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_TRANSLATION_INVALID": "आवश्यक अनुवाद अमान्य है",
+                    "SWAG_MIGRATION_WRITE_EXCEPTION": "अपवाद लिखें",
+                    "SWAG_MIGRATION_WRITE_THEME_COMPILING_FAILED": "प्रसंग संकलन असफल",
+                    "unknown": "अज्ञात त्रुटि"
+                },
+                "descriptionTitle": "फ़ील्ड का वर्णन",
+                "errors": {
+                    "continueMigrationFailed": "माइग्रेशन जारी रखने में असफल।",
+                    "downloadLogsFailed": "लॉग फ़ाइल डाउनलोड करने में असफल।",
+                    "fetchExampleFailed": "उदाहरण डेटा फ़ेच करने में असफल।",
+                    "fetchExistingFixesFailed": "मौजूदा फ़िक्सेस फ़ेच करने में विफल।",
+                    "fetchFilterDataFailed": "फ़िल्टर डेटा फ़ेच करने में असफल।",
+                    "fetchLogsFailed": "लॉग डेटा फ़ेच करने में असफल।",
+                    "fetchRunFailed": "माइग्रेशन रन डेटा लाने में असफल।",
+                    "fieldValueNotSet": "फ़ील्ड मान सेट नहीं है।",
+                    "invalidFieldValueFormat": "अमान्य फ़ील्ड मान फ़ॉर्मेट।",
+                    "noEntityIdsFound": "चयनित लॉग प्रविष्टियों में कोई मान्य इकाई आईडी नहीं मिला।",
+                    "noLogsSelected": "हल करने के लिए कृपया कम से कम एक लॉग प्रविष्टि का चयन करें।",
+                    "resetResolutionFailed": "त्रुटि समाधान रीसेट करने में विफल।",
+                    "submitResolutionFailed": "त्रुटि समाधान सबमिट करने में विफल।",
+                    "validationFailed": "सत्यापन असफल।"
+                },
+                "modals": {
+                    "details": {
+                        "convertedDataLabel": "परिवर्तित डेटा",
+                        "sourceDataLabel": "स्रोत डेटा",
+                        "title": "विवरण: {entityName}"
+                    },
+                    "error": {
+                        "left": {
+                            "details": "विवरण दिखाएँ",
+                            "reset": "रीसेट करें",
+                            "select-all": "सभी का चयन करें ({count})",
+                            "status": {
+                                "resolved": "हल किया गया",
+                                "unresolved": "अनसुलझे"
+                            }
+                        },
+                        "right": {
+                            "apply": "परिवर्तन लागू करें",
+                            "banner": {
+                                "content": "कृपया संबंधित व्यवस्थापन क्षेत्र में चयन करने के लिए कम से कम एक विकल्प बनाएं।",
+                                "link": "एक विकल्प जोड़ें",
+                                "title": "कोई विकल्प उपलब्ध नहीं"
+                            },
+                            "title": "संपादित करें: {count} आइटम",
+                            "unhandledBanner": {
+                                "content": "फ़ील्ड प्रकार निर्धारित नहीं किया जा सका। कृपया रॉ सोर्स डेटा ठीक करें। मान सही फ़ॉर्मेट में होना चाहिए।",
+                                "title": "अज्ञात फ़ील्ड क़िस्म"
+                            },
+                            "unresolvableBanner": {
+                                "content": "अधिक जानकारी के लिए कृपया लॉग फ़ाइल देखें।",
+                                "title": "इस त्रुटि को वर्तमान में माइग्रेशन सहायक के माध्यम से हल नहीं किया जा सकता है"
+                            }
+                        },
+                        "table": {
+                            "columns": {
+                                "status": "स्थिति"
+                            }
+                        },
+                        "title": "त्रुटि ठीक करें: {code}, {entityName}, {fieldName}"
+                    }
+                },
+                "step": {
+                    "card": {
+                        "filter": {
+                            "code": {
+                                "label": "त्रुटि का नाम",
+                                "placeholder": "त्रुटि नाम चुनें"
+                            },
+                            "entity": {
+                                "label": "एंटिटी",
+                                "placeholder": "एक इकाई का चयन करें"
+                            },
+                            "field": {
+                                "label": "फील्ड",
+                                "placeholder": "एक फ़ील्ड चुनें"
+                            },
+                            "reset": "फ़िल्टर रीसेट करें",
+                            "status": {
+                                "label": "त्रुटि की स्थिति",
+                                "options": {
+                                    "resolved": "हल किया गया",
+                                    "unresolved": "अनसुलझे"
+                                },
+                                "placeholder": "त्रुटि स्थिति चुनें"
+                            },
+                            "title": "फिल्टर | फिल्टर ({count}) | फिल्टर ({count})"
+                        },
+                        "table": {
+                            "columns": {
+                                "code": "कोड",
+                                "count": "फिक्स्ड/टोटल",
+                                "entity": "एंटिटी",
+                                "field": "फील्ड",
+                                "gatewayName": "द्वार",
+                                "name": "नाम",
+                                "profileName": "प्रोफ़ाइल"
+                            },
+                            "empty-state": {
+                                "description": "चयनित फ़िल्टर से मेल खाने वाला कोई लॉग नहीं मिला।",
+                                "headline": "कुछ भी नहीं मिला"
+                            }
+                        },
+                        "tabs": {
+                            "errors": "त्रुटियाँ ({count})",
+                            "infos": "जानकारी ({count})",
+                            "warnings": "चेतावनियां ({count})"
+                        },
+                        "title": "ठीक करने योग्य त्रुटियां"
+                    },
+                    "continue-modal": {
+                        "text-fixable": "ठीक करने योग्य त्रुटियों के {count} समूह हैं जो अभी भी अनसुलझे हैं। फ़ॉलो-अप त्रुटियों से बचने के लिए कृपया जारी रखने से पहले इन त्रुटियों को ठीक करें।",
+                        "text-unfixable": "ऐसी {count} त्रुटियां हैं जिन्हें ठीक नहीं किया जा सकता है जो अभी भी अनसुलझी हैं। यदि आप शेष त्रुटियों को हल किए बिना जारी रखते हैं, तो अनुवर्ती त्रुटियां दिखाई दे सकती हैं।",
+                        "title": "जारी रखें"
+                    },
+                    "header": {
+                        "banner": {
+                            "content": "ऐसी {count} त्रुटियां या चेतावनियां हैं जिन्हें इस स्क्रीन से हल नहीं किया जा सकता है। जांच करने के लिए, लॉग फ़ाइल डाउनलोड करें और विस्तृत त्रुटि संदेशों की समीक्षा करें। स्रोत सिस्टम में अंतर्निहित समस्याओं को ठीक करने की आवश्यकता हो सकती है। एक बार हल हो जाने पर, जारी रखने के लिए माइग्रेशन फिर से चलाएँ।",
+                            "title": "इस दृश्य के माध्यम से कुछ त्रुटियों को ठीक नहीं किया जा सकता है"
+                        },
+                        "continue": "जारी रखें",
+                        "continueTooltip": "कृपया जारी रखने से पहले सभी ठीक करने योग्य त्रुटियों को ठीक करें।",
+                        "description": "आयात के दौरान हुई माइग्रेशन त्रुटियों की समीक्षा करें और उन्हें हल करें। इस दृश्य में सीधे डेटा समस्याओं को ठीक करें या विस्तृत जानकारी के लिए लॉग फ़ाइल डाउनलोड करें। सभी ठीक करने योग्य त्रुटियों का समाधान हो जाने के बाद जारी रखें। आप इस दृश्य को छोड़ सकते हैं और बाद में इस पर वापस आ सकते हैं।",
+                        "documentation": "दस्तावेज़ीकरण",
+                        "download": "लॉग फ़ाइल डाउनलोड करें",
+                        "title": "त्रुटि समाधान"
+                    }
+                }
+            },
+            "errorTypes": {
+                "error": "त्रुटि",
+                "info": "सूचना",
+                "warning": "चेतावनी"
+            },
+            "finishButton": "समाप्त",
+            "loadingScreenCard": {
+                "documentationLink": "https://developer.shopware.com/docs/guides/hosting/infrastructure/message-queue.html#message-queue",
+                "documentationLinkText": "संदेश कतार दस्तावेज़",
+                "flowChart": {
+                    "cleanup": "क्लीनअप",
+                    "errorResolution": "त्रुटि समाधान",
+                    "fetchData": "पढ़ना",
+                    "finish": "हो गया",
+                    "indexing": "इंडेक्सिंग",
+                    "premapping": "जाँच",
+                    "processMedia": "डाउनलोड कर रहा है",
+                    "writeData": "लेखन"
+                },
+                "notice": "सुझाव: यह प्रक्रिया संदेश कतार में चलती है। अगर आपकी दुकान सही तरीके से कॉन्फ़िगर की गई है, तो आपको इस पेज पर बने रहने की ज़रूरत नहीं है।",
+                "result": {
+                    "historyHint": "आप माइग्रेशन इतिहास में किसी भी समय यह जानकारी देख सकते हैं। यह संभव है कि बाद में और लॉग संदेश जोड़े जाएंगे क्योंकि मीडिया डाउनलोड अभी भी बैकग्राउंड में चल रहा है।",
+                    "title": "प्रवासन सहायक किया जाता है"
+                },
+                "status": {
+                    "aborting": {
+                        "caption": "अलिखित डेटा को साफ किया जाता है। पहले से माइग्रेट किया गया डेटा अनुपयोगी हो सकता है।",
+                        "long": "माइग्रेशन निरस्त किया जा रहा है",
+                        "short": "गर्भपात करना"
+                    },
+                    "cleanup": {
+                        "caption": "अस्थायी डेटा हटाया जा रहा है। माइग्रेशन लगभग पूरा हो चुका है।",
+                        "long": "माइग्रेशन को साफ किया जा रहा है",
+                        "short": "क्लीनअप"
+                    },
+                    "error-resolution": {
+                        "caption": "माइग्रेशन तब तक रोका जाता है जब तक सभी त्रुटियों का समाधान नहीं हो जाता है।",
+                        "long": "त्रुटियों को हल किया जा सकता है",
+                        "short": "त्रुटि समाधान"
+                    },
+                    "fetching": {
+                        "caption": "नए असाइनमेंट प्रोसेस किए जाते हैं।",
+                        "long": "डेटा आपके सिस्टम से पढ़ा जाएगा",
+                        "short": "पढ़ना"
+                    },
+                    "finish": "हो गया",
+                    "indexing": {
+                        "caption": "माइग्रेशन लगभग पूरा हो चुका है।",
+                        "long": "नए डेटा को इंडेक्स किया जा रहा है",
+                        "short": "इंडेक्सिंग"
+                    },
+                    "media-processing": {
+                        "caption": "बड़े इमेज डेटा को प्रोसेस होने में कुछ समय लग सकता है।",
+                        "long": "मीडिया का तबादला किया जा रहा है",
+                        "short": "मीडिया ट्रांसफर"
+                    },
+                    "unknown": "अनजान",
+                    "writing": {
+                        "caption": "दुकान के आकार के आधार पर इसमें कुछ पल लग सकते हैं।",
+                        "long": "डेटा शॉपवेयर 6 में लिखा जा रहा है",
+                        "short": "लेखन"
+                    }
+                }
+            },
+            "migrateButton": "माइग्रेशन प्रारंभ करें",
+            "migrationAlreadyRunning": "माइग्रेशन पहले से ही शुरू हुआ।",
+            "pauseButton": "रोकें",
+            "pluginVersionText": "हमने देखा है कि एक प्लगइन अद्यतन आपके स्रोत सिस्टम {sourceSystem}में उपलब्ध है। माइग्रेशन प्रारंभ करने से पहले कृपया प्लगइन \"{pluginName}\" को अपडेट करें।",
+            "premappingCard": {
+                "cardTitle": "असाइनमेंट",
+                "group": {
+                    "delivery_time": "डिलीवरी का समय",
+                    "manufacturer": "निर्माता",
+                    "newsletter_status": "न्यूज़लेटर स्थिति",
+                    "order_delivery_state": "आदेश वितरण राज्य",
+                    "order_state": "आदेश राज्यों",
+                    "payment_method": "भुगतान के तरीके",
+                    "salesChannel": "न्यूज़लेटर सेल्सचैनल",
+                    "salutation": "अभिवादन",
+                    "shipping_availability_rule": "शिपिंग विधि की उपलब्धता",
+                    "source_timezone": "टाइमज़ोन",
+                    "transaction_state": "लेन-देन राज्यों",
+                    "user": "प्रशासन उपयोगकर्ता"
+                },
+                "newAssignmentTitle": "नया असाइनमेंट",
+                "placeholder": "कृपया चुनें",
+                "previousTitle": "पिछला",
+                "unfilledAlert": "हमने पाया है कि डेटा है जिसके लिए मैन्युअल असाइनमेंट की आवश्यकता है।"
+            },
+            "savePremapping": {
+                "message": "प्रीमैपिंग सहेजा गया है।",
+                "saveButton": "प्रीमैपिंग सहेजें"
+            },
+            "selectDataCard": {
+                "cardTitle": "डाटा चयन",
+                "dataHeader": "डाटा",
+                "dataSelection": {
+                    "basicSettings": "मूलभूत डेटा",
+                    "cms": "लेआउट",
+                    "customerWishlists": "इच्छासूची",
+                    "customersOrders": "ग्राहक और आदेश",
+                    "media": "मीडिया",
+                    "newsletterRecipient": "न्यूज़लेटर प्राप्तकर्ता",
+                    "processMediaFiles": "मीडिया",
+                    "productReviews": "उत्पाद समीक्षाएँ",
+                    "products": "प्रोडक्ट्स",
+                    "promotions": "प्रोन्नति",
+                    "seoUrls": "एसईओ यूआरएल"
+                },
+                "dataTypes": {
+                    "basicData": "दुकान डेटा",
+                    "pluginData": "प्लगइन डेटा"
+                },
+                "entities": {
+                    "category": "श्रेणियाँ:",
+                    "category_association": "श्रेणी संघों:",
+                    "category_cms_page_association": "श्रेणी खाका संबद्धता:",
+                    "category_custom_field": "श्रेणी कस्टम फ़ील्ड्स",
+                    "category_product_stream_association": "श्रेणी गतिशील उत्पाद समूह संघ:",
+                    "cms_page": "लेआउट:",
+                    "country": "देश:",
+                    "country_state": "देश राज्यों:",
+                    "currency": "मुद्राओं:",
+                    "custom_field_set": "मनपसंद फ़ील्ड सेट:",
+                    "customer": "ग्राहक:",
+                    "customer_custom_field": "ग्राहक कस्टम फ़ील्ड",
+                    "customer_group": "ग्राहक समूह:",
+                    "customer_group_custom_field": "ग्राहक समूह कस्टम फ़ील्ड",
+                    "customer_wishlist": "इच्छासूची:",
+                    "delivery_time": "प्रसव के समय:",
+                    "language": "भाषाएँ:",
+                    "mail_header_footer": "ईमेल हेडर और फुटर",
+                    "mail_template": "ईमेल टेम्प्लेट:",
+                    "main_variant_relation": "मुख्य संस्करण संबंध:",
+                    "media": "मीडिया:",
+                    "media_folder": "मीडिया फ़ोल्डर:",
+                    "media_folder_inheritance": "मीडिया फ़ोल्डर विरासत:",
+                    "number_range": "संख्या श्रेणियाँ:",
+                    "order": "आदेश:",
+                    "order_custom_field": "कस्टम फ़ील्ड ऑर्डर करें",
+                    "order_document": "आदेश दस्तावेज़:",
+                    "order_document_base_config": "दस्तावेज़ कॉन्फ़िग:",
+                    "order_document_custom_field": "दस्तावेज़ कस्टम फ़ील्ड ऑर्डर करें",
+                    "order_document_inheritance": "दस्तावेज़ संबंध ऑर्डर करें:",
+                    "page_system_config": "पृष्ठ मूलभूत जानकारी:",
+                    "product": "उत्पाद:",
+                    "product_canonical_association": "कैनोनिकल उत्पाद संघ",
+                    "product_cms_page_association": "उत्पाद लेआउट एसोसिएशन",
+                    "product_cross_selling": "क्रॉस सेलिंग:",
+                    "product_custom_field": "उत्पाद कस्टम फ़ील्ड",
+                    "product_feature_set": "आवश्यक विशेषताओं:",
+                    "product_manufacturer": "उत्पाद निर्माताओं:",
+                    "product_manufacturer_custom_field": "उत्पाद निर्माता कस्टम फ़ील्ड",
+                    "product_option_relation": "उत्पाद विकल्प:",
+                    "product_price_custom_field": "उत्पाद मूल्य कस्टम फ़ील्ड",
+                    "product_property_relation": "उत्पाद गुण:",
+                    "product_review": "समीक्षाएँ:",
+                    "product_sorting": "उत्पाद सॉर्टिंग:",
+                    "product_stream": "डायनामिक उत्पाद समूह:",
+                    "product_stream_filter_inheritance": "डायनामिक उत्पाद समूह फ़िल्टर:",
+                    "promotion": "प्रोन्नति:",
+                    "property_group": "गुण समूह:",
+                    "property_group_option": "गुण:",
+                    "rule": "नियम:",
+                    "sales_channel": "बिक्री चैनल:",
+                    "sales_channel_domain": "डोमेन:",
+                    "sales_channel_home_cms_page_association": "सेल्स चैनल होम लेआउट एसोसिएशन",
+                    "salutation": "सलामी:",
+                    "seo_url": "एसईओ यूआरएल:",
+                    "seo_url_template": "एसईओ यूआरएल टेम्पलेट्स:",
+                    "shipping_method": "शिपिंग विधियां:",
+                    "snippet": "स्निपेट:",
+                    "snippet_set": "स्निपेट सेट:",
+                    "system_config": "बुनियादी जानकारी:",
+                    "tax": "कर की दरें:",
+                    "tax_rule": "कर नियम:",
+                    "translation": "अनुवाद:",
+                    "unit": "स्केल इकाइयां:"
+                },
+                "headers": {
+                    "dataType": "टाइप करें",
+                    "name": "नाम",
+                    "total": "डेटा सेट"
+                },
+                "noData": "माइग्रेट करने के लिए कुछ भी नहीं मिला।",
+                "noDataSubline": "कृपया अपना कनेक्शन जांचें या कोई अन्य प्रोफ़ाइल आज़माएं।"
+            },
+            "shopInfoCard": {
+                "buttonCreateConnection": "नया कनेक्शन बनाएँ",
+                "buttonCreateInitialConnection": "प्रारंभिक कनेक्शन बनाएं",
+                "buttonEditSettings": "कनेक्शन संपादित करें",
+                "buttonProfileInstallation": "किसी अन्य प्रोफ़ाइल को स्थापित करें",
+                "buttonRemoveCredentials": "पहुँच डेटा मिटाएँ",
+                "buttonResetChecksums": "चेकसम रीसेट करें",
+                "buttonResetMigration": "पूर्ण माइग्रेशन",
+                "buttonSelectConnection": "कनेक्शन बदलें",
+                "cardTitle": "दुकान प्रणाली",
+                "connected": "कनेक्टेड",
+                "connectionCheck": "कनेक्शन जांच:",
+                "gateway": "गेटवे:",
+                "lastMigration": "अंतिम माइग्रेशन:",
+                "link": "मदद और दस्तावेज़ीकरण",
+                "noConnection": "कोई कनेक्शन नहीं",
+                "noConnectionCheckDoneYet": "अभी तक कोई कनेक्शन जांच नहीं की गई",
+                "noMigrationDoneYet": "-",
+                "notConnected": "कनेक्ट नहीं",
+                "profile": "सिस्टम प्रोफ़ाइल:",
+                "refreshButton": "कनेक्शन रीफ़्रेश करें",
+                "removeCredentialsConfirmDialog": {
+                    "abortButtonText": "रद्द करें",
+                    "content": "इसके बाद कोई सक्रिय कनेक्शन नहीं होगा। कनेक्शन को पुनर्स्थापित करने के लिए अपना एक्सेस डेटा फिर से दर्ज करें।",
+                    "contentHint": "क्या आप मौजूदा पहुँच डेटा को मिटाना चाहेंगे?",
+                    "title": "पहुँच डेटा मिटाएँ"
+                },
+                "resetChecksumsConfirmDialog": {
+                    "abortButtonText": "रद्द करें",
+                    "confirmButtonText": "हाँ, रीसेट",
+                    "content": "यदि आप चेकसम रीसेट करते हैं, तो स्रोत सिस्टम से सभी डेटा अगले माइग्रेशन में पहचाना जाएगा। इसमें पहले से माइग्रेट किए गए या अपरिवर्तित डेटा सेट शामिल हैं। <br><br><strong>महत्वपूर्ण:</strong> डेटा रिकॉर्ड आप Shopware में किए गए परिवर्तन 6 पिछले माइग्रेशन के बाद से, अधिलेखित किया जाएगा। स्रोत सिस्टम डेटा की प्राथमिकता है।",
+                    "contentHint": "क्या आप चेकसम को रीसेट करना चाहते हैं?",
+                    "title": "चेकसम रीसेट करें"
+                },
+                "resetMigrationConfirmDialog": {
+                    "abortButtonText": "रद्द करें",
+                    "confirmButtonText": "अब अंतिम रूप दें",
+                    "content": "महान! आइए अब अपने माइग्रेशन को अंतिम रूप दें और अस्थायी फ़ाइलों और अप्रयुक्त डेटा को साफ़ करें। <strong>कृपया ध्यान दें:</strong> माइग्रेशन को अंतिम रूप देना टर्मिनल है। आप वर्तमान कनेक्शन के माध्यम से किसी और डेटा को माइग्रेट नहीं कर पाएंगे।",
+                    "errorNotification": {
+                        "message": "एक माइग्रेशन वर्तमान में प्रगति पर है।",
+                        "title": "माइग्रेशन को अंतिम रूप देने के दौरान त्रुटि हुई"
+                    },
+                    "header": "क्या आपने अपना शॉप डेटा माइग्रेट करना समाप्त कर दिया है?",
+                    "title": "माइग्रेशन को अंतिम रूप दें"
+                },
+                "updateBanner": {
+                    "isResettingChecksums": {
+                        "message": "चेकसम रीसेट किए जा रहे हैं। इसमें कुछ मिनट लग सकते हैं।",
+                        "title": "चेकसम रीसेट करना"
+                    },
+                    "isTruncatingMigration": {
+                        "message": "माइग्रेशन डेटा को छोटा किया जा रहा है। इसमें कुछ मिनट लग सकते हैं।",
+                        "title": "माइग्रेशन डेटा को छोटा करना"
+                    }
+                }
+            },
+            "shopwareMajorVersionText": "हमने देखा है कि आपका स्रोत सिस्टम {sourceSystem} संस्करण आपके लक्षित सिस्टम {targetSystem} संस्करण से मेल नहीं खाता है। कृपया माइग्रेशन शुरू करने से पहले दोनों सिस्टम के लिए एक ही प्रमुख संस्करण का उपयोग करना सुनिश्चित करें।",
+            "title": "साधारण",
+            "warningModal": {
+                "cancelButton": "वापस जाओ",
+                "confirmButton": "वैसे भी जारी रखें",
+                "message": {
+                    "currency": "अलग-अलग डिफ़ॉल्ट मुद्राओं के साथ माइग्रेशन से दूषित डेटा रिकॉर्ड हो सकते हैं और अप्रत्याशित दुष्प्रभाव हो सकते हैं।",
+                    "language": "अलग-अलग डिफ़ॉल्ट भाषाओं के साथ माइग्रेशन से डेटा रिकॉर्ड दूषित हो सकते हैं और अप्रत्याशित दुष्प्रभाव हो सकते हैं।"
+                },
+                "title": "डेटा बेमेल का पता चला"
+            }
+        },
+        "wizard": {
+            "buttonAbort": "रद्द करें",
+            "buttonConnect": "कनेक्ट",
+            "buttonConnectionCreate": "कनेक्शन स्थापित करें",
+            "buttonConnectionSelect": "कनेक्शन बदलें",
+            "buttonEdit": "कनेक्शन संपादित करें",
+            "buttonFinish": "हो गया",
+            "buttonLater": "बंद करें",
+            "buttonLetsGo": "प्रारंभ करें",
+            "buttonNext": "जारी रखें",
+            "buttonToProfileInformation": "सूचना",
+            "buttonUseSsl": "HTTPS इस्तेमाल करें",
+            "pages": {
+                "connectionCreate": {
+                    "connectionLabel": "कनेक्शन नाम",
+                    "connectionPlaceholder": "नाम दर्ज करें",
+                    "connectionTooltip": "कनेक्शन के लिए एक अद्वितीय नाम दर्ज करें।",
+                    "gatewayLabel": "द्वार",
+                    "gatewayPlaceholder": "गेटवे चुनें",
+                    "gatewayTooltip": "सिस्टम के बीच कनेक्शन का प्रकार।",
+                    "gateways": {
+                        "shopwareApi": "एपीआई",
+                        "shopwareLocal": "स्थानीय डाटाबेस"
+                    },
+                    "hint": {
+                        "local": "नोट: शॉप सिस्टम को एक ही सर्वर पर होना चाहिए। आपको डेटाबेस में एक्सेस डेटा की आवश्यकता है।"
+                    },
+                    "profileInstall": "किसी अन्य प्रोफ़ाइल को स्थापित करें",
+                    "profileLabel": "सिस्टम प्रोफाइल की दुकान",
+                    "profilePlaceholder": "प्रोफ़ाइल चुनें",
+                    "title": "माइग्रेशन — नया कनेक्शन बनाएँ"
+                },
+                "connectionSelect": {
+                    "connectionLabel": "कनेक्शन नाम",
+                    "connectionPlaceholder": "कृपया एक कनेक्शन चुनें",
+                    "title": "माइग्रेशन — कनेक्शन बदलना"
+                },
+                "credentials": {
+                    "emptyState": "क्षमा करें चयनित प्रोफ़ाइल के लिए कोई फॉर्म नहीं मिला।",
+                    "error": {
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR": "सर्वर से जुड़ नहीं सका। कृपया दिए गए दुकान डोमेन की जांच करें।",
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR__HINT": "यदि आपको कनेक्ट करने में समस्या हो रही है, तो आपके सर्वर पर वर्तमान में इंस्टॉल किए गए कर्ल संस्करण की जाँच करना और उसे अपडेट करना उचित हो सकता है।",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ATTRIBUTES_WRONG": "डेटाबेस कनेक्शन में सही विशेषताएँ नहीं हैं और उन्हें सेट नहीं किया जा सकता है।",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ERROR": "डाटाबेस कनेक्शन स्थापित नहीं किया जा सका।",
+                        "SWAG_MIGRATION__DUPLICATE_SOURCE_CONNECTION": "समान स्रोत सिस्टम से कनेक्शन पहले से मौजूद है। कृपया दूसरे कनेक्शन का उपयोग करें।",
+                        "SWAG_MIGRATION__GATEWAY_READ": "सर्वर से जुड़ नहीं सका। कृपया दिए गए दुकान डोमेन की जांच करें।",
+                        "SWAG_MIGRATION__GATEWAY_READ__HINT": "यदि आपको कनेक्ट करने में समस्या हो रही है, तो आपके सर्वर पर वर्तमान में इंस्टॉल किए गए कर्ल संस्करण की जाँच करना और उसे अपडेट करना उचित हो सकता है।",
+                        "SWAG_MIGRATION__INVALID_CONNECTION_CREDENTIALS": "स्रोत सिस्टम से कनेक्शन के लिए एक्सेस डेटा मौजूद नहीं है या गलत है। कृपया उन्हें जाँचें और फिर से कोशिश करें।",
+                        "SWAG_MIGRATION__IS_RUNNING": "एक माइग्रेशन वर्तमान में प्रगति पर है। इसलिए, आप माइग्रेशन पूर्ण होने तक क्रेडेंशियल्स संपादित नहीं कर सकता।",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED": "आवश्यक प्लगइन “माइग्रेशन कनेक्टर” शॉपवेयर 5 में स्थापित नहीं है। कृपया मुफ्त प्लगइन स्थापित करें और पुनः प्रयास करें।",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED__HINT": "यदि आपने पहले ही “माइग्रेशन कनेक्टर” इंस्टॉल कर लिया है और शॉपवेयर 5 बैकएंड (कॉन्फ़िगरेशन> कैश/प्रदर्शन) में कैश को साफ़ कर दिया है, तो अपने शॉपवेयर 5 कैश फ़ोल्डर (var/cache) को मैन्युअल रूप से हटाने का प्रयास करें।",
+                        "SWAG_MIGRATION__SSL_REQUIRED": "हमने निर्धारित किया है कि दिए गए दुकान डोमेन को SSL कनेक्शन की आवश्यकता है।",
+                        "alertErrorTitle": "ध्यान",
+                        "contentTitle": "कोई कनेक्शन नहीं",
+                        "undefinedErrorMsg": "आंतरिक सर्वर त्रुटि। कृपया पुन: प्रयास करें।"
+                    },
+                    "shopware55": {
+                        "api": {
+                            "apiKeyLabel": "एपीआई कुंजी",
+                            "apiKeyPlaceholder": "कुंजी दर्ज करें",
+                            "apiKeyTooltip": "एपीआई कुंजी का उपयोग सुरक्षा और पहचान के लिए किया जाता है।",
+                            "apiUserLabel": "उपयोक्तानाम (API उपयोक्ता)",
+                            "apiUserPlaceholder": "उपयोगकर्ता नाम दर्ज करें",
+                            "apiUserTooltip": "आपके शॉपवेयर 5 बैकएंड का उपयोगकर्ता नाम।",
+                            "endpointLabel": "दुकान डोमेन",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "मेरी दुकान एक सुरक्षित कनेक्शन का उपयोग करता है (एसएसएल)",
+                            "pluginLinkText": "प्लगइन के बारे में अधिक जानकारी",
+                            "pluginName": "माइग्रेशन कनेक्टर",
+                            "steps": {
+                                "step1": "प्लगइन मैनेजर> एक्सटेंशन> माइग्रेशन टूल के तहत अपने शॉपवेयर 5 बैकएंड से प्लगइन {pluginName} को इंस्टॉल और सक्रिय करें।",
+                                "step2": "अपने शॉपवेयर 5 बैकएंड में यूज़र एडमिनिस्ट्रेशन पर जाएं।",
+                                "step3": "उस उपयोगकर्ता का चयन करें जिसे आप कनेक्शन के लिए उपयोग करना चाहते हैं।",
+                                "step4": "API एक्सेस को सक्रिय करें और सहेजें।",
+                                "step5": "पक्का करें कि उपयोगकर्ता की भूमिका local_admin हो।",
+                                "step6": "कनेक्शन स्थापित करने के लिए यहां API क्रेडेंशियल दर्ज करें।"
+                            },
+                            "title": "अपने शॉपवेयर 5 स्टोर को कनेक्ट करें"
+                        },
+                        "local": {
+                            "dbHostLabel": "मेज़बान",
+                            "dbHostPlaceholder": "होस्ट दर्ज करें",
+                            "dbNameLabel": "डाटाबेस नाम",
+                            "dbNamePlaceholder": "नाम दर्ज करें",
+                            "dbPasswordLabel": "कूटशब्द",
+                            "dbPasswordPlaceholder": "पासवर्ड दर्ज करें",
+                            "dbPortLabel": "पोर्ट",
+                            "dbUserLabel": "उपयोक्ता",
+                            "dbUserPlaceholder": "उपयोगकर्ता नाम दर्ज करें",
+                            "installationRoot": "संस्थापन फ़ोल्डर की दुकान करें",
+                            "installationRootPlaceholder": "संस्थापन रूट दर्ज करें"
+                        }
+                    },
+                    "shopware6": {
+                        "api": {
+                            "apiPasswordLabel": "गुप्त पहुँच कुंजी",
+                            "apiPasswordPlaceholder": "गुप्त पहुँच कुंजी दर्ज करें",
+                            "apiPasswordTooltip": "सुरक्षा और पहचान के लिए गुप्त पहुंच कुंजी का उपयोग किया जाता है।",
+                            "apiUserLabel": "पहुँच कुंजी आईडी",
+                            "apiUserPlaceholder": "पहुँच कुंजी आईडी दर्ज करें",
+                            "apiUserTooltip": "अपने एकीकरण की कुंजी आईडी एक्सेस करें।",
+                            "endpointLabel": "दुकान डोमेन",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "मेरी दुकान एक सुरक्षित कनेक्शन का उपयोग करता है (एसएसएल)",
+                            "integrationLink": "https://docs.shopware.com/en/shopware-6-en/settings/system/integrationen",
+                            "integrationLinkText": "इंटीग्रेशन के बारे में ज़्यादा जानकारी",
+                            "pluginLink": "https://store.shopware.com/en/swag257162657297f/migration-assistant.html",
+                            "pluginLinkText": "माइग्रेशन असिस्टेंट एक्सटेंशन के बारे में अधिक जानकारी",
+                            "pluginName": "प्रवासन सहायक",
+                            "steps": {
+                                "step1": "स्रोत सिस्टम पर {pluginName} एक्सटेंशन इंस्टॉल करें और सक्रिय करें।",
+                                "step2": "सेटिंग> सिस्टम> इंटीग्रेशन के माध्यम से स्रोत सिस्टम में एकीकरण बनाएं।",
+                                "step3": "एक एक्सेस कुंजी आईडी और गुप्त एक्सेस कुंजी जेनरेट करें।",
+                                "step4": "कनेक्शन स्थापित करने के लिए यहां एक्सेस कुंजियां और शॉप डोमेन दर्ज करें।"
+                            },
+                            "title": "अपने शॉपवेयर 6 स्टोर को कनेक्ट करें"
+                        }
+                    },
+                    "statusTitle": "कनेक्शन की जांच",
+                    "success": {
+                        "SWAG_MIGRATION__REQUEST_CERTIFICATE_INVALID": "हमने निर्धारित किया है कि निर्दिष्ट दुकान डोमेन का SSL प्रमाणपत्र सुरक्षित नहीं है। अपनी सुरक्षा के लिए प्रमाण पत्र की जांच करें।",
+                        "contentInformation": "आप अपना माइग्रेशन शुरू कर सकते हैं।",
+                        "contentTitle": "कनेक्शन सफल",
+                        "undefinedErrorMsg": "निर्दिष्ट दुकान डोमेन से SSL प्रमाणपत्र की जाँच करते समय एक अज्ञात त्रुटि उत्पन्न हुई।"
+                    },
+                    "title": "माइग्रेशन - एक कनेक्शन स्थापित करें"
+                },
+                "introduction": {
+                    "contentHeadline": "चलो कुछ चीजें चलते हैं",
+                    "contentInformation": "साथ में हम आपकी दुकान प्रणाली को शॉपवेयर 6 से कनेक्ट करेंगे। बाद में माइग्रेशन सहायक आपको अपने डेटा को चरण-दर-चरण माइग्रेट करने में मदद करेगा।",
+                    "title": "प्रवासन सहायक"
+                },
+                "profileInstallation": {
+                    "availabilityHeadline": "पहले उपलब्ध:",
+                    "availableVersionHeadline": "समर्थित:",
+                    "content": "से डेटा माइग्रेट करने के लिए दुकान प्रणाली उठाओ और के रूप में अच्छी तरह से इसी प्रोफ़ाइल प्लगइन स्थापित करने के लिए सुनिश्चित हो।",
+                    "installationButton": "स्थापित करें",
+                    "installedHint": "संस्थापित",
+                    "magentoProfileHeadline": "Magento - प्रोफिल",
+                    "profileManufacturer": "दुकानदार एजी",
+                    "shopwareProfileHeadline": "शॉपवेयर - प्रोफिल",
+                    "title": "माइग्रेशन - शॉपसिस्टम-प्रोफाइल"
+                }
+            }
+        },
+        "worker-listener": {
+            "mediaProcessing": {
+                "message": "कोई फाइल शेष नहीं है. | एक फाइल शेष है | {n} फ़ाइलें शेष।",
+                "messageSuccess": "मीडिया डाउनलोड पूरा हो गया है।",
+                "title": "मीडिया डाउनलोड किया जा रहा है",
+                "titleSuccess": "मीडिया डाउनलोड पूरा हुआ"
+            }
+        }
+    }
+}

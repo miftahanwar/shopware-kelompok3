@@ -1,0 +1,679 @@
+{
+    "global": {
+        "error-codes": {
+            "SWAG_MIGRATION_CONNECTION_NAME_ALREADY_EXISTS": "Název připojení již existuje.",
+            "SWAG_MIGRATION_CONNECTION_NAME_TO_SHORT": "Název připojení musí mít délku nejméně 6 znaků.",
+            "SWAG_MIGRATION_INVALID_API_KEY": "Klíč API nemá správnou délku ({length}/40 znaků)."
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "swag_migration": {
+                "label": "Pomocník pro migraci"
+            }
+        }
+    },
+    "swag-migration": {
+        "api-error": {
+            "abortMigration": "Selhalo přerušení migrace.",
+            "approveFinishedMigration": "Při dokončení migrace se nezdařilo",
+            "checkConnection": "Nepodařilo se zkontrolovat připojení ke zdrojovému systému.",
+            "fetchConnectionId": "Nepodařilo se získat ID aktivního připojení.",
+            "getDataSelection": "Nepodařilo se získat výběr dat pro aktuální připojení.",
+            "getState": "Nepodařilo se získat stav migrace.",
+            "startMigration": "Nepodařilo se spustit migraci."
+        },
+        "dashboard": {
+            "button": "Otevřít Průvodce migrací",
+            "headline": "Přesun do Shopware",
+            "information": "První věcí je propojení stávajícího obchodního systému - Migration Assistant vám pomůže po cestě.",
+            "shopInfoCard": {
+                "button": "Otevřít",
+                "header": "Pomocník pro migraci",
+                "resetButton": "Povrchová úprava"
+            },
+            "title": "Pomocník pro migraci"
+        },
+        "general": {
+            "descriptionTextModule": "Modul pro migraci dat",
+            "disabledMessages": {
+                "disabled": "V tomto prostředí je migrace zakázána.",
+                "loading": "V současné době probíhá migrace.",
+                "noData": "Pro migraci nejsou k dispozici žádná data.",
+                "noPermission": "Nemáte potřebná oprávnění k provedení migrace.",
+                "noSelectedData": "Pro migraci nebyly vybrány žádné položky.",
+                "resettingChecksum": "Kontrolní součty jsou v současné době resetovány.",
+                "truncatingMigration": "Data migrace jsou v současné době zkrácena.",
+                "unfilledPremapping": "Před pokračováním dokončete všechna požadovaná mapování."
+            },
+            "mainMenuItemGeneral": "Pomocník pro migraci",
+            "tabDataSelector": "Výběr dat",
+            "tabHistory": "Historie",
+            "tabMain": "generál"
+        },
+        "history": {
+            "connectionName": "Název připojení",
+            "contextMenu": {
+                "details": "Zobrazit podrobnosti",
+                "downloadLogs": "Protokol ke stažení"
+            },
+            "detailPage": {
+                "close": "Zavřít",
+                "data": "Data",
+                "dataCount": "Datové sady",
+                "dataName": "Jméno",
+                "errorCode": "Chybová zpráva",
+                "errorCount": "Počet",
+                "errorLevel": "Úroveň protokolu",
+                "errors": "Podrobnosti",
+                "logDescription": "Pro více informací {link}",
+                "logDownload": "stáhněte soubor protokolu.",
+                "noErrorsOccurred": "Došlo k žádným chybám.",
+                "noProgressData": "Tento běh byl proveden v předchozí verzi pluginu a jeho data byla smazána.",
+                "status": {
+                    "aborted": "Přerušení",
+                    "finished": "Hotovo",
+                    "running": "Běh"
+                },
+                "title": "Podrobnosti o migraci"
+            },
+            "gateway": "Brána",
+            "importDateTime": "Počáteční čas",
+            "profile": "Profil",
+            "selectedData": "Data",
+            "shopDomain": "Doména obchodu",
+            "shopSystem": "Systém obchodu",
+            "status": "Stav"
+        },
+        "index": {
+            "abortButton": "Zrušit",
+            "backToOverviewButton": "Zpět k účtu",
+            "confirmAbortDialog": {
+                "cancel": "Pokračuj",
+                "confirm": "Zastavit migraci",
+                "content": "Migrace není zcela dokončena. Již migrovaná data mohou být nepoužitelná. Pokud nyní ukončíte, budete muset zcela znovu spustit proces migrace.",
+                "hint": "Chcete zastavit migraci?",
+                "title": "Zastavit migraci"
+            },
+            "confirmWarningCard": {
+                "currencyMismatch": {
+                    "text": "Měna dat, která mají být přenesena, neodpovídá standardní měně [{targetSystemCurrency}]. Data s [{sourceSystemCurrency}] mohou být stále migrována, ale nebudou automaticky převedena. Ceny můžete upravit ručně poté.",
+                    "title": "Migrace uznala jinou měnu"
+                },
+                "languageMismatch": {
+                    "text": "Jazyk přenesených dat se neshoduje se standardním jazykem [{targetSystemLanguage}]. Data s [{sourceSystemLanguage}] mohou být stále migrována, ale nebudou automaticky převedena. Překlady můžete upravit ručně poté.",
+                    "title": "Migrace uznala jiný jazyk"
+                }
+            },
+            "continueButton": "Pokračovat",
+            "error-resolution": {
+                "codes": {
+                    "SWAG_MIGRATION_CONVERT_ASSOCIATION_MISSING": "Přidružená entita chybí",
+                    "SWAG_MIGRATION_CONVERT_CHILD_ENTITY_FAILED": "Převod podřízených entit se nezdařil",
+                    "SWAG_MIGRATION_CONVERT_DOCUMENT_TYPE_UNSUPPORTED": "Převod typu dokumentu není podporován",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_ALREADY_EXISTS": "Entita již existuje",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_FAILED": "Převod entity se nezdařil",
+                    "SWAG_MIGRATION_CONVERT_ENTITY_UNKNOWN": "Neznámá závislá entita",
+                    "SWAG_MIGRATION_CONVERT_FIELD_REASSIGNED": "Pole entity automaticky přepřiřazeno",
+                    "SWAG_MIGRATION_CONVERT_LANGUAGE_PACK_DEACTIVATED": "Jazykový balíček deaktivován",
+                    "SWAG_MIGRATION_CONVERT_MAIN_VARIANT_RELATION_FAILED": "Převod relace hlavní varianty se nezdařil",
+                    "SWAG_MIGRATION_CONVERT_OBJECT_TYPE_UNSUPPORTED": "Typ objektu není podporován",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_CALCULATION_TYPE_UNSUPPORTED": "Typ výpočtu přepravy není podporován",
+                    "SWAG_MIGRATION_CONVERT_SHIPPING_PRICE_UNSUPPORTED": "Typ přepravní ceny není podporován",
+                    "SWAG_MIGRATION_CONVERT_SOURCE_DATA_INCOMPLETE": "Zdrojová data neúplná",
+                    "SWAG_MIGRATION_CONVERT_UNSERIALIZED_DATA_INVALID": "Neserializovaná data neplatná",
+                    "SWAG_MIGRATION_FETCH_DATASET_MISSING": "Datová sada pro chybějící entitu",
+                    "SWAG_MIGRATION_FETCH_ENTITY_COUNT_FAILED": "Nepodařilo se přečíst počet entit ze zdrojového systému",
+                    "SWAG_MIGRATION_FETCH_PROCESSOR_MISSING": "Chybějící procesor pro entitu",
+                    "SWAG_MIGRATION_MEDIA_DEFAULT_FOLDER_UNSUPPORTED": "Výchozí složka média není podporována",
+                    "SWAG_MIGRATION_MEDIA_FILE_MISSING": "Chybí mediální soubor",
+                    "SWAG_MIGRATION_MEDIA_MIME_TYPE_UNKNOWN": "Typ média MIME neznámý",
+                    "SWAG_MIGRATION_MEDIA_TEMPORARY_FILE_FAILED": "Vytvoření dočasného souboru médií se nezdařilo",
+                    "SWAG_MIGRATION_RUN_ABORTED": "Migrace byla automaticky přerušena",
+                    "SWAG_MIGRATION_RUN_EXCEPTION": "Došlo k výjimce migrace",
+                    "SWAG_MIGRATION_RUN_MESSAGE_QUEUE_EXCEPTION": "Došlo k výjimce fronty zpráv",
+                    "SWAG_MIGRATION_VALIDATION_ASSOCIATION_INVALID": "Asociace entity je neplatná",
+                    "SWAG_MIGRATION_VALIDATION_EXCEPTION": "Došlo k výjimce ověření",
+                    "SWAG_MIGRATION_VALIDATION_OPTIONAL_FIELD_VALUE_INVALID": "Volitelné pole má neplatnou hodnotu",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_MISSING": "Požadované pole chybí",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_FIELD_VALUE_INVALID": "Povinné pole má neplatnou hodnotu",
+                    "SWAG_MIGRATION_VALIDATION_REQUIRED_TRANSLATION_INVALID": "Požadovaný překlad je neplatný",
+                    "SWAG_MIGRATION_WRITE_EXCEPTION": "Došlo k výjimce zápisu",
+                    "SWAG_MIGRATION_WRITE_THEME_COMPILING_FAILED": "Kompilace motivu se nezdařila",
+                    "unknown": "Neznámá chyba"
+                },
+                "descriptionTitle": "Popis pole",
+                "errors": {
+                    "continueMigrationFailed": "Pokračování migrace se nezdařilo.",
+                    "downloadLogsFailed": "Stahování souboru protokolu se nezdařilo.",
+                    "fetchExampleFailed": "Načítání příkladů dat se nezdařilo.",
+                    "fetchExistingFixesFailed": "Nepodařilo se načíst existující opravy.",
+                    "fetchFilterDataFailed": "Načítání dat filtru se nezdařilo.",
+                    "fetchLogsFailed": "Načítání dat protokolu se nezdařilo.",
+                    "fetchRunFailed": "Načítání dat ze spuštění migrace se nezdařilo.",
+                    "fieldValueNotSet": "Hodnota pole není nastavena.",
+                    "invalidFieldValueFormat": "Neplatný formát hodnoty pole.",
+                    "noEntityIdsFound": "Ve vybraných položkách protokolu nebyly nalezeny žádné platné ID entity.",
+                    "noLogsSelected": "Vyberte alespoň jednu položku protokolu, kterou chcete vyřešit.",
+                    "resetResolutionFailed": "Resetování chybového rozlišení se nezdařilo.",
+                    "submitResolutionFailed": "Nepodařilo se odeslat řešení chyby.",
+                    "validationFailed": "Ověření se nezdařilo."
+                },
+                "modals": {
+                    "details": {
+                        "convertedDataLabel": "Převedená data",
+                        "sourceDataLabel": "Zdrojová data",
+                        "title": "Detaily: {entityName}"
+                    },
+                    "error": {
+                        "left": {
+                            "details": "Podrobnosti",
+                            "reset": "Vrátit zpět",
+                            "select-all": "Vybrat vše ({count})",
+                            "status": {
+                                "resolved": "Vyřešeno",
+                                "unresolved": "Nevyřešené"
+                            }
+                        },
+                        "right": {
+                            "apply": "Převzít změny",
+                            "banner": {
+                                "content": "Vytvořte alespoň jednu možnost, kterou chcete vybrat v příslušné oblasti správy.",
+                                "link": "Přidání možnosti",
+                                "title": "Není k dispozici žádná možnost"
+                            },
+                            "title": "Upravit: {count} Položky",
+                            "unhandledBanner": {
+                                "content": "Typ pole nelze určit. Opravte prosím nezpracovaná zdrojová data. Hodnota musí být ve správném formátu.",
+                                "title": "Neznámý typ pole"
+                            },
+                            "unresolvableBanner": {
+                                "content": "Další informace naleznete v souboru protokolu.",
+                                "title": "Tuto chybu v současné době nelze vyřešit pomocí nástroje Migration Assistant"
+                            }
+                        },
+                        "table": {
+                            "columns": {
+                                "status": "Stav"
+                            }
+                        },
+                        "title": "Opravit chybu: {code}, {entityName}, {fieldName}"
+                    }
+                },
+                "step": {
+                    "card": {
+                        "filter": {
+                            "code": {
+                                "label": "Název chyby",
+                                "placeholder": "Vyberte název chyby"
+                            },
+                            "entity": {
+                                "label": "Subjekt",
+                                "placeholder": "Vyberte entitu"
+                            },
+                            "field": {
+                                "label": "Pole",
+                                "placeholder": "Vyberte pole"
+                            },
+                            "reset": "Obnovit filtry",
+                            "status": {
+                                "label": "Stav chyby",
+                                "options": {
+                                    "resolved": "Vyřešeno",
+                                    "unresolved": "Nevyřešené"
+                                },
+                                "placeholder": "Vyberte stav chyby"
+                            },
+                            "title": "Filtry | Filtry ({count}) | Filtry ({count})"
+                        },
+                        "table": {
+                            "columns": {
+                                "code": "Kód",
+                                "count": "Pevné/Celkem",
+                                "entity": "Subjekt",
+                                "field": "Pole",
+                                "gatewayName": "Brána",
+                                "name": "Název",
+                                "profileName": "Profil"
+                            },
+                            "empty-state": {
+                                "description": "Nebyly nalezeny žádné protokoly odpovídající vybraným filtrům.",
+                                "headline": "Nic nenalezeno"
+                            }
+                        },
+                        "tabs": {
+                            "errors": "Chyby ({count})",
+                            "infos": "Informace ({count})",
+                            "warnings": "Varování ({count})"
+                        },
+                        "title": "Opravitelné chyby"
+                    },
+                    "continue-modal": {
+                        "text-fixable": "Existují {count} skupiny opravitelných chyb, které jsou stále nevyřešeny. Než budete pokračovat, opravte tyto chyby, abyste předešli následným chybám.",
+                        "text-unfixable": "Existují {count} neopravitelné chyby, které jsou stále nevyřešeny. Pokud budete pokračovat bez vyřešení zbývajících chyb, mohou se objevit následné chyby.",
+                        "title": "Další"
+                    },
+                    "header": {
+                        "banner": {
+                            "content": "Existují chyby nebo varování {count} , které nelze vyřešit z této obrazovky. Chcete-li prozkoumat, stáhněte soubor protokolu a zkontrolujte podrobné chybové zprávy. Základní problémy může být nutné opravit ve zdrojovém systému. Po vyřešení pokračujte opětovným spuštěním migrace.",
+                            "title": "Některé chyby nelze opravit pomocí tohoto zobrazení"
+                        },
+                        "continue": "Další",
+                        "continueTooltip": "Před pokračováním opravte všechny opravitelné chyby.",
+                        "description": "Zkontrolujte a vyřešte chyby migrace, ke kterým došlo během importu. Opravte problémy s daty přímo v tomto zobrazení nebo stáhněte soubor protokolu pro podrobné informace. Pokračujte, jakmile jsou vyřešeny všechny opravitelné chyby. Tento pohled můžete opustit a vrátit se k němu později",
+                        "documentation": "Dokumentace",
+                        "download": "Stáhnout soubor protokolu",
+                        "title": "Řešení chyb"
+                    }
+                }
+            },
+            "errorTypes": {
+                "error": "Chyba",
+                "info": "Informace",
+                "warning": "Varování"
+            },
+            "finishButton": "Povrchová úprava",
+            "loadingScreenCard": {
+                "documentationLink": "https://developer.shopware.com/docs/guides/hosting/infrastructure/message-queue.html#message-queue",
+                "documentationLinkText": "Dokumentace k frontě zpráv",
+                "flowChart": {
+                    "cleanup": "Vyčištění",
+                    "errorResolution": "Řešení chyb",
+                    "fetchData": "Čtení",
+                    "finish": "Hotovo",
+                    "indexing": "Indexování",
+                    "premapping": "Kontrola",
+                    "processMedia": "Stahování",
+                    "writeData": "Psaní"
+                },
+                "notice": "Tip: Tento proces běží ve frontě zpráv. Pokud je váš obchod správně nakonfigurován, nemusíte na této stránce zůstat.",
+                "result": {
+                    "historyHint": "Tyto informace můžete kdykoli zobrazit v historii migrace. Je možné, že později budou přidány další zprávy protokolu, protože stahování médií stále běží na pozadí.",
+                    "title": "Pomocník pro migraci je hotový"
+                },
+                "status": {
+                    "aborting": {
+                        "caption": "Nepsaná data jsou vyčištěna. Již migrovaná data mohou být nepoužitelná.",
+                        "long": "Migrace je přerušena",
+                        "short": "Přerušení"
+                    },
+                    "cleanup": {
+                        "caption": "Dočasná data jsou odstraněna. Migrace je téměř dokončena.",
+                        "long": "Migrace se čistí",
+                        "short": "Vyčištění"
+                    },
+                    "error-resolution": {
+                        "caption": "Migrace je pozastavena, dokud nebudou vyřešeny všechny chyby.",
+                        "long": "Chyby lze vyřešit",
+                        "short": "Řešení chyb"
+                    },
+                    "fetching": {
+                        "caption": "Nové úkoly jsou zpracovány.",
+                        "long": "Data budou načítána z vašeho systému",
+                        "short": "Čtení"
+                    },
+                    "finish": "Hotovo",
+                    "indexing": {
+                        "caption": "Migrace je téměř dokončena.",
+                        "long": "Nová data jsou indexována",
+                        "short": "Indexování"
+                    },
+                    "media-processing": {
+                        "caption": "Zpracování velkých obrazových dat může nějakou dobu trvat.",
+                        "long": "Média jsou přenášena",
+                        "short": "Přenos médií"
+                    },
+                    "unknown": "Neznámý",
+                    "writing": {
+                        "caption": "V závislosti na velikosti obchodu to může trvat několik okamžiků.",
+                        "long": "Data jsou zapisována v Shopware 6",
+                        "short": "Psaní"
+                    }
+                }
+            },
+            "migrateButton": "Zahájení migrace",
+            "migrationAlreadyRunning": "Migrace už začala.",
+            "pauseButton": "Pauza",
+            "pluginVersionText": "Všimli jsme si, že aktualizace pluginu je k dispozici ve vašem zdrojovém systému {sourceSystem}. Před zahájením migrace prosím aktualizujte plugin \"{pluginName}“.",
+            "premappingCard": {
+                "cardTitle": "Úkoly",
+                "group": {
+                    "delivery_time": "Dodací lhůta",
+                    "manufacturer": "Výrobci",
+                    "newsletter_status": "Stav newsletteru",
+                    "order_delivery_state": "Dodací stavy objednávek",
+                    "order_state": "Státy objednávek",
+                    "payment_method": "Způsoby platby",
+                    "salesChannel": "Prodejní kanál zpravodaje",
+                    "salutation": "Pozdrav",
+                    "shipping_availability_rule": "Dostupnost způsobu dopravy",
+                    "source_timezone": "Časové pásmo",
+                    "transaction_state": "Stavy transakce",
+                    "user": "Uživatel administrace"
+                },
+                "newAssignmentTitle": "Nové úkoly",
+                "placeholder": "Vyberte prosím",
+                "previousTitle": "Předchozí",
+                "unfilledAlert": "Zjistili jsme, že existují data, která vyžadují ruční přiřazení."
+            },
+            "savePremapping": {
+                "message": "Předmapování bylo uloženo.",
+                "saveButton": "Uložit předmapování"
+            },
+            "selectDataCard": {
+                "cardTitle": "Výběr dat",
+                "dataHeader": "Data",
+                "dataSelection": {
+                    "basicSettings": "Základní údaje",
+                    "cms": "Rozvržení",
+                    "customerWishlists": "Seznam přání",
+                    "customersOrders": "Zákazníci a objednávky",
+                    "media": "Média",
+                    "newsletterRecipient": "Příjemce newsletteru",
+                    "processMediaFiles": "Média",
+                    "productReviews": "Recenze produktů",
+                    "products": "Produkty",
+                    "promotions": "Propagace",
+                    "seoUrls": "SEO URL"
+                },
+                "dataTypes": {
+                    "basicData": "Údaje o prodejně",
+                    "pluginData": "Data zásuvných modulů"
+                },
+                "entities": {
+                    "category": "Kategorie:",
+                    "category_association": "Kategorie sdružení:",
+                    "category_cms_page_association": "Sdružení rozvržení kategorií:",
+                    "category_custom_field": "Vlastní pole kategorie",
+                    "category_product_stream_association": "Kategorie dynamické asociace skupin produktů:",
+                    "cms_page": "Rozvržení:",
+                    "country": "Země:",
+                    "country_state": "Státy země:",
+                    "currency": "Měny:",
+                    "custom_field_set": "Vlastní sady polí:",
+                    "customer": "Zákazníci:",
+                    "customer_custom_field": "Vlastní pole zákazníka",
+                    "customer_group": "Skupiny zákazníků:",
+                    "customer_group_custom_field": "Vlastní pole skupiny zákazníků",
+                    "customer_wishlist": "Seznamy přání:",
+                    "delivery_time": "Dodací lhůty:",
+                    "language": "Jazyky:",
+                    "mail_header_footer": "Záhlaví a zápatí e-mailů",
+                    "mail_template": "E-mailové šablony:",
+                    "main_variant_relation": "Hlavní variantní vztahy:",
+                    "media": "Média:",
+                    "media_folder": "Složky médií:",
+                    "media_folder_inheritance": "Dědičnost složek médií:",
+                    "number_range": "Číselné rozsahy:",
+                    "order": "Objednávky:",
+                    "order_custom_field": "Objednat vlastní pole",
+                    "order_document": "Objednávací dokumenty:",
+                    "order_document_base_config": "Konfigurace dokumentu:",
+                    "order_document_custom_field": "Objednat vlastní pole dokumentu",
+                    "order_document_inheritance": "Vztahy dokumentů objednávky:",
+                    "page_system_config": "Základní informace o stránce:",
+                    "product": "Produkty:",
+                    "product_canonical_association": "Kanonické produktové asociace",
+                    "product_cms_page_association": "Asociace rozvržení produktu",
+                    "product_cross_selling": "Křížový prodej:",
+                    "product_custom_field": "Vlastní pole produktu",
+                    "product_feature_set": "Základní vlastnosti:",
+                    "product_manufacturer": "Výrobci výrobků:",
+                    "product_manufacturer_custom_field": "Vlastní pole výrobce produktu",
+                    "product_option_relation": "Možnosti produktu:",
+                    "product_price_custom_field": "Vlastní pole ceny produktu",
+                    "product_property_relation": "Vlastnosti produktu:",
+                    "product_review": "Recenze:",
+                    "product_sorting": "Třídění produktů:",
+                    "product_stream": "Dynamické skupiny produktů:",
+                    "product_stream_filter_inheritance": "Dynamické filtry skupiny produktů:",
+                    "promotion": "Propagace:",
+                    "property_group": "Skupiny nemovitostí:",
+                    "property_group_option": "Vlastnosti:",
+                    "rule": "Pravidla:",
+                    "sales_channel": "Prodejní kanály:",
+                    "sales_channel_domain": "Domény:",
+                    "sales_channel_home_cms_page_association": "Asociace rozvržení domů prodejního kanálu",
+                    "salutation": "Pozdravy:",
+                    "seo_url": "SEO URL:",
+                    "seo_url_template": "SEO URL šablony:",
+                    "shipping_method": "Způsoby přepravy:",
+                    "snippet": "Úryvky:",
+                    "snippet_set": "Sady fragmentů:",
+                    "system_config": "Základní informace:",
+                    "tax": "Daňové sazby:",
+                    "tax_rule": "Daňová pravidla:",
+                    "translation": "Překlady:",
+                    "unit": "Jednotky měřítka:"
+                },
+                "headers": {
+                    "dataType": "Typ",
+                    "name": "Jméno",
+                    "total": "Datové sady"
+                },
+                "noData": "Nic nenalezeno k migraci.",
+                "noDataSubline": "Zkontrolujte prosím své připojení nebo zkuste jiný profil."
+            },
+            "shopInfoCard": {
+                "buttonCreateConnection": "Vytvořit nové připojení",
+                "buttonCreateInitialConnection": "Vytvoření počátečního připojení",
+                "buttonEditSettings": "Upravit připojení",
+                "buttonProfileInstallation": "Instalace jiného profilu",
+                "buttonRemoveCredentials": "Smazat přístupová data",
+                "buttonResetChecksums": "Obnovit kontrolní součty",
+                "buttonResetMigration": "Úplná migrace",
+                "buttonSelectConnection": "Změna připojení",
+                "cardTitle": "Systém obchodu",
+                "connected": "Připojeno",
+                "connectionCheck": "Kontrola připojení:",
+                "gateway": "Brána:",
+                "lastMigration": "Poslední migrace:",
+                "link": "Nápověda a dokumentace",
+                "noConnection": "Žádné spojení",
+                "noConnectionCheckDoneYet": "Dosud nebyla provedena žádná kontrola připojení",
+                "noMigrationDoneYet": "-",
+                "notConnected": "Není připojen",
+                "profile": "Profil systému:",
+                "refreshButton": "Obnovit připojení",
+                "removeCredentialsConfirmDialog": {
+                    "abortButtonText": "Zrušit",
+                    "content": "Po tomto nebude aktivní připojení. Znovu zadejte přístupová data pro obnovení připojení.",
+                    "contentHint": "Chcete smazat aktuální přístupová data?",
+                    "title": "Smazat přístupová data"
+                },
+                "resetChecksumsConfirmDialog": {
+                    "abortButtonText": "Zrušit",
+                    "confirmButtonText": "Ano, resetovat",
+                    "content": "Pokud obnovíte kontrolní součty, všechna data ze zdrojového systému budou rozpoznána při příští migraci. To zahrnuje již migrované nebo nezměněné datové sady. <br><br><strong>Důležité:</strong> Změny datových záznamů, které jste provedli v Shopware 6 od poslední migrace, budou přepsány. Zdrojová systémová data mají prioritu.",
+                    "contentHint": "Chcete resetovat kontrolní součty?",
+                    "title": "Obnovit kontrolní součty"
+                },
+                "resetMigrationConfirmDialog": {
+                    "abortButtonText": "Zrušit",
+                    "confirmButtonText": "Dokončit nyní",
+                    "content": "Skvělé! Nyní dokončí migraci a vyčistíme dočasné soubory a nepoužitá data. <strong>Upozornění:</strong> Finalizace migrace je ukončena. Nebudete moci migrovat žádná další data prostřednictvím aktuálního připojení.",
+                    "errorNotification": {
+                        "message": "V současné době probíhá migrace.",
+                        "title": "Při dokončení migrace došlo k chybě"
+                    },
+                    "header": "Už jste dokončili migraci dat z obchodu?",
+                    "title": "Dokončit migraci"
+                },
+                "updateBanner": {
+                    "isResettingChecksums": {
+                        "message": "Kontrolní součty jsou resetovány. To může trvat několik minut.",
+                        "title": "Resetování kontrolních součtů"
+                    },
+                    "isTruncatingMigration": {
+                        "message": "Data migrace jsou zkrácena. To může trvat několik minut.",
+                        "title": "Zkrácení dat migrace"
+                    }
+                }
+            },
+            "shopwareMajorVersionText": "Všimli jsme si, že verze zdrojového systému {sourceSystem} neodpovídá vaší cílové verzi systému {targetSystem} . Před zahájením migrace se ujistěte, že používáte stejnou hlavní verzi pro oba systémy.",
+            "title": "generál",
+            "warningModal": {
+                "cancelButton": "Zpět",
+                "confirmButton": "Pokračujte v každém případě",
+                "message": {
+                    "currency": "Migrace s různými výchozími měnami může vést k poškození datových záznamů a způsobit nepředvídatelné vedlejší účinky.",
+                    "language": "Migrace s různými výchozími jazyky může vést k poškození datových záznamů a způsobit nepředvídatelné vedlejší účinky."
+                },
+                "title": "Zjištěn nesoulad dat"
+            }
+        },
+        "wizard": {
+            "buttonAbort": "Zrušit",
+            "buttonConnect": "Připojit",
+            "buttonConnectionCreate": "Navázat spojení",
+            "buttonConnectionSelect": "Změnit připojení",
+            "buttonEdit": "Upravit připojení",
+            "buttonFinish": "Hotovo",
+            "buttonLater": "Zavřít",
+            "buttonLetsGo": "Začátek",
+            "buttonNext": "Pokračovat",
+            "buttonToProfileInformation": "Informace",
+            "buttonUseSsl": "Použít HTTPS",
+            "pages": {
+                "connectionCreate": {
+                    "connectionLabel": "Název připojení",
+                    "connectionPlaceholder": "Zadejte název",
+                    "connectionTooltip": "Zadejte jedinečný název připojení.",
+                    "gatewayLabel": "Brána",
+                    "gatewayPlaceholder": "Vybrat bránu",
+                    "gatewayTooltip": "Typ spojení mezi systémy.",
+                    "gateways": {
+                        "shopwareApi": "API",
+                        "shopwareLocal": "Lokální databáze"
+                    },
+                    "hint": {
+                        "local": "Poznámka: Systémy obchodu musí být na stejném serveru. Potřebujete přístup k datům do databáze."
+                    },
+                    "profileInstall": "Instalace jiného profilu",
+                    "profileLabel": "Profil systému obchodu",
+                    "profilePlaceholder": "Vybrat profil",
+                    "title": "Migrace — Vytvoření nového připojení"
+                },
+                "connectionSelect": {
+                    "connectionLabel": "Název připojení",
+                    "connectionPlaceholder": "Vyberte prosím připojení",
+                    "title": "Migrace — Změna připojení"
+                },
+                "credentials": {
+                    "emptyState": "Omlouváme se, nebyl nalezen žádný formulář pro vybraný profil.",
+                    "error": {
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR": "Nelze se připojit k serveru. Zkontrolujte prosím danou doménu obchodu.",
+                        "SWAG_MIGRATION__API_CONNECTION_ERROR__HINT": "Pokud máte potíže s připojením, možná stojí za to zkontrolovat aktuálně nainstalovanou verzi curl na vašem serveru a aktualizovat ji.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ATTRIBUTES_WRONG": "Databázové připojení nemá správné atributy a nelze je nastavit.",
+                        "SWAG_MIGRATION__DATABASE_CONNECTION_ERROR": "Nelze navázat připojení k databázi.",
+                        "SWAG_MIGRATION__DUPLICATE_SOURCE_CONNECTION": "Připojení ke stejnému zdrojovému systému již existuje. Použijte prosím jiné připojení.",
+                        "SWAG_MIGRATION__GATEWAY_READ": "Nelze se připojit k serveru. Zkontrolujte prosím danou doménu obchodu.",
+                        "SWAG_MIGRATION__GATEWAY_READ__HINT": "Pokud máte potíže s připojením, možná stojí za to zkontrolovat aktuálně nainstalovanou verzi curl na vašem serveru a aktualizovat ji.",
+                        "SWAG_MIGRATION__INVALID_CONNECTION_CREDENTIALS": "Přístupové údaje pro připojení ke zdrojovému systému neexistují nebo jsou nesprávné. Zkontrolujte je a zkuste to znovu.",
+                        "SWAG_MIGRATION__IS_RUNNING": "V současné době probíhá migrace. Proto nelze pověření upravovat, dokud migrace není dokončena.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED": "Požadovaný plugin „Migrace Connector“ není nainstalován v Shopware 5. Nainstalujte prosím bezplatný plugin a zkuste to znovu.",
+                        "SWAG_MIGRATION__PLUGIN_NOT_INSTALLED__HINT": "Pokud jste již nainstalovali „Migration Connector“ a vymazali mezipaměť v backendu Shopware 5 (Configuration > Cache/Performance), zkuste ručně odstranit složku mezipaměti Shopware 5 (var/cache).",
+                        "SWAG_MIGRATION__SSL_REQUIRED": "Zjistili jsme, že daná doména obchodu je vyžadována připojení SSL.",
+                        "alertErrorTitle": "Pozor",
+                        "contentTitle": "Žádné spojení",
+                        "undefinedErrorMsg": "Vnitřní chyba serveru. Zkuste to prosím znovu."
+                    },
+                    "shopware55": {
+                        "api": {
+                            "apiKeyLabel": "Klíč API",
+                            "apiKeyPlaceholder": "Zadejte klíč",
+                            "apiKeyTooltip": "Klíč API se používá pro zabezpečení a identifikaci.",
+                            "apiUserLabel": "Uživatelské jméno (uživatel rozhraní API)",
+                            "apiUserPlaceholder": "Zadejte uživatelské jméno",
+                            "apiUserTooltip": "Uživatelské jméno vašeho backendu Shopware 5.",
+                            "endpointLabel": "Doména obchodu",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Můj obchod používá zabezpečené připojení (SSL)",
+                            "pluginLinkText": "Více informací o pluginu",
+                            "pluginName": "Konektor migrace",
+                            "steps": {
+                                "step1": "Nainstalujte a aktivujte plugin {pluginName} ze svého backendu Shopware 5 pod Správcem pluginů > Rozšíření > Nástroje migrace.",
+                                "step2": "Přejděte na Správa uživatelů v backendu Shopware 5.",
+                                "step3": "Vyberte uživatele, kterého chcete použít pro připojení.",
+                                "step4": "Aktivujte přístup API a uložte.",
+                                "step5": "Ujistěte se, že uživatel má roli local_admin.",
+                                "step6": "Zde zadejte přihlašovací údaje API pro navázání spojení."
+                            },
+                            "title": "Připojte svůj obchod Shopware 5"
+                        },
+                        "local": {
+                            "dbHostLabel": "Hostitel",
+                            "dbHostPlaceholder": "Zadejte hostitele",
+                            "dbNameLabel": "Název databáze",
+                            "dbNamePlaceholder": "Zadejte název",
+                            "dbPasswordLabel": "Heslo",
+                            "dbPasswordPlaceholder": "Zadejte heslo",
+                            "dbPortLabel": "Port",
+                            "dbUserLabel": "Uživatel",
+                            "dbUserPlaceholder": "Zadejte uživatelské jméno",
+                            "installationRoot": "Instalační složka obchodu",
+                            "installationRootPlaceholder": "Zadejte kořenový adresář instalace"
+                        }
+                    },
+                    "shopware6": {
+                        "api": {
+                            "apiPasswordLabel": "Tajný přístupový klíč",
+                            "apiPasswordPlaceholder": "Zadejte tajný přístupový klíč",
+                            "apiPasswordTooltip": "Tajný přístupový klíč se používá pro zabezpečení a identifikaci.",
+                            "apiUserLabel": "ID přístupového klíče",
+                            "apiUserPlaceholder": "Zadejte ID přístupového klíče",
+                            "apiUserTooltip": "ID přístupového klíče vaší integrace.",
+                            "endpointLabel": "Doména obchodu",
+                            "endpointPlaceholder": "www.demoshop.com",
+                            "endpointSSLLabel": "Můj obchod používá zabezpečené připojení (SSL)",
+                            "integrationLink": "https://docs.shopware.com/en/shopware-6-en/settings/system/integrationen",
+                            "integrationLinkText": "Více o integracích",
+                            "pluginLink": "https://store.shopware.com/en/swag257162657297f/migration-assistant.html",
+                            "pluginLinkText": "Více o rozšíření Migration Assistant",
+                            "pluginName": "Pomocník pro migraci",
+                            "steps": {
+                                "step1": "Nainstalujte a aktivujte rozšíření {pluginName} ve zdrojovém systému.",
+                                "step2": "Vytvořte integraci ve zdrojovém systému přes Nastavení > Systém > Integrace.",
+                                "step3": "Vygenerujte ID přístupového klíče a tajný přístupový klíč.",
+                                "step4": "Zde zadejte přístupové klíče a doménu obchodu pro navázání spojení."
+                            },
+                            "title": "Připojte svůj obchod Shopware 6"
+                        }
+                    },
+                    "statusTitle": "Kontrola připojení",
+                    "success": {
+                        "SWAG_MIGRATION__REQUEST_CERTIFICATE_INVALID": "Zjistili jsme, že certifikát SSL zadané domény obchodu není bezpečný. Zkontrolujte certifikát pro vlastní bezpečnost.",
+                        "contentInformation": "Můžete začít migrace.",
+                        "contentTitle": "Připojení bylo úspěšné",
+                        "undefinedErrorMsg": "Při kontrole certifikátu SSL ze zadané domény obchodu došlo k neznámé chybě."
+                    },
+                    "title": "Migrace — navázání připojení"
+                },
+                "introduction": {
+                    "contentHeadline": "Přesuňme pár věcí.",
+                    "contentInformation": "Společně propojíme váš obchod s Shopware 6. Následně vám Průvodce migrací pomůže migrovat data krok za krokem.",
+                    "title": "Pomocník pro migraci"
+                },
+                "profileInstallation": {
+                    "availabilityHeadline": "Dříve dostupné:",
+                    "availableVersionHeadline": "Podporované:",
+                    "content": "Vyberte si systém obchodu, ze kterého chcete migrovat data a nezapomeňte nainstalovat i příslušný plugin profilu.",
+                    "installationButton": "Nainstalovat",
+                    "installedHint": "Nainstalováno",
+                    "magentoProfileHeadline": "Magento - Profil",
+                    "profileManufacturer": "shopware AG",
+                    "shopwareProfileHeadline": "Shopware - Profil",
+                    "title": "Migrace - Shopsystem-Profile"
+                }
+            }
+        },
+        "worker-listener": {
+            "mediaProcessing": {
+                "message": "Zbývají žádné soubory. | Zbývá jeden soubor. | Zbývá {n} souborů.",
+                "messageSuccess": "Stahování médií bylo dokončeno.",
+                "title": "Média se stahují",
+                "titleSuccess": "Stahování médií dokončeno"
+            }
+        }
+    }
+}
